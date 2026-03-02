@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geo-agent"
+version = "0.1.0"
+description = "Automated GEO dataset search agent with skill-based pipeline"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+geo-agent = "geo_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["geo_agent*"]
