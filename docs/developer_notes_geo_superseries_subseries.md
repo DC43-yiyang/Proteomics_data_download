@@ -7,11 +7,20 @@ When querying single-cell data via NCBI E-utilities, GEO’s nesting for multi-o
 - **SubSeries**: Holds a single omics type. For example, GSE317605 contains only CITE-seq data (168 samples).
 - **SuperSeries**: A logical parent that bundles multiple sub-series from the same cohort. For example, GSE317606 is a SuperSeries that groups the CITE-seq data above with Spatial Transcriptomics (GSE316402, 12 samples) from the same patients, for a total of 180 samples.
 
+### Observed examples
+
+| SuperSeries | SubSeries | Technology | Samples |
+|---|---|---|---|
+| GSE317606 (180 total) | GSE317605 | CITE-seq | 168 |
+| | GSE316402 | Spatial Transcriptomics | 12 |
+| GSE318420 (210 total) | GSE313642 | **CITE-seq** | — |
+| | GSE318418 | (other) | — |
+
 ## Current decision: keep isolated, no special handling
 
 - **Rationale**: The tool’s main goal is to fetch homogeneous, single data types (e.g. CITE-seq only) for analysis.
-- **Natural filtering**: SearchQuery forces specific technology terms (e.g. CITE-seq), so NCBI search returns the concrete SubSeries and tends to exclude the SuperSeries wrapper.
-- **Conclusion**: For the MVP, we do not add SuperSeries/SubSeries logic in parsers or data models.
+- **Natural filtering (partially broken)**: We initially assumed SearchQuery's technology terms (e.g. CITE-seq) would naturally filter out SuperSeries wrappers. In practice, GEO search **does return SuperSeries** (e.g. GSE318420 with Summary "This SuperSeries is composed of the SubSeries listed below" showed up in CITE-seq results). SuperSeries have no actual data and inflate result counts.
+- **Conclusion**: For the MVP, we do not add SuperSeries/SubSeries logic in parsers or data models. However, SampleSelectorSkill's false-positive detection (TODO) should flag SuperSeries shells — they can be identified by Summary containing "SuperSeries" or Overall Design containing "Refer to individual Series".
 
 ## Future work
 

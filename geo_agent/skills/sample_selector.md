@@ -1,204 +1,144 @@
 # SampleSelectorSkill
 
-## 1. Overview
+## What it does
 
-Classifies GEO samples (GSMs) within each filtered Series by library type using an LLM. Given a Series with mixed library types (e.g. GEX + ADT + TCR), this skill identifies which samples belong to which category and selects the ones matching the user's target.
+Classifies GSM samples by library type (GEX/ADT/TCR/BCR/HTO/ATAC/OTHER) using LLM. Given a CITE-seq Series with mixed library types, identifies which samples belong to which category.
 
-**Code location**: `geo_agent/skills/sample_selector.py` → `SampleSelectorSkill`
+## Context I/O
 
-**Why LLM instead of rules?** GEO sample naming is highly inconsistent across uploaders. The same library type can appear as `_GEX`, `_RNA`, `_transcriptome`, `_3prime`, or have no naming convention at all. Characteristics fields vary too: `library type: mRNA` vs `molecule: cDNA` vs nothing. Rule-based parsing cannot scale; LLM handles this variability naturally.
+| Direction | Field | Type |
+|---|---|---|
+| Input | `filtered_datasets` | `list[GEODataset]` |
+| Input | `target_library_types` | `list[str]` (default `["GEX"]`) |
+| Output | `sample_metadata` | `dict[str, list[GEOSample]]` |
+| Output | `selected_samples` | `dict[str, list[SampleSelection]]` |
 
-## 2. Constructor parameters
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `ncbi_client` | `NCBIClient` | — | For fetching Family SOFT via `fetch_family_soft_batch()` |
-| `llm_client` | `anthropic.Anthropic` | — | Anthropic SDK client instance |
-| `model` | `str` | `"claude-haiku-4-5-20251001"` | LLM model identifier |
-| `confidence_threshold` | `float` | `0.7` | Below this → `needs_review=True` |
-
-`NCBIClient` is configured via `load_config()` in `geo_agent/config.py`.
-`anthropic.Anthropic` is initialized with `ANTHROPIC_API_KEY` from `.env`.
-
-## 3. PipelineContext input/output
-
-### Input
-
-| Field | Type | Required | Source |
-|-------|------|----------|--------|
-| `filtered_datasets` | `list[GEODataset]` | Yes | FilterSkill output |
-| `target_library_types` | `list[str]` | Yes | CLI `--library-type` or caller (default `["GEX"]`) |
-
-### Output
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `sample_metadata` | `dict[str, list[GEOSample]]` | accession → all parsed samples from Family SOFT |
-| `selected_samples` | `dict[str, list[SampleSelection]]` | accession → samples matching `target_library_types` |
-
-## 4. LLM classification rules
-
-### 4.1 Categories
-
-| Category | Definition | Typical signals |
-|----------|------------|-----------------|
-| **GEX** | Gene expression (scRNA-seq) | title: `_GEX`, `_RNA`, `_transcriptome`, `_3prime`; characteristics: `library type: mRNA`; molecule: `polyA RNA`, `total RNA`; library_source: `transcriptomic` |
-| **ADT** | Antibody-derived tags (protein) | title: `_ADT`, `_protein`, `_AbSeq`, `_TotalSeq`; characteristics: `library type: ADT`; molecule: `protein`; library_source: `other`; description: `antibody-derived oligonucleotide` |
-| **TCR** | T-cell receptor repertoire | title: `_TCR`, `_VDJ_T`; characteristics: `library type: TCR`; molecule: `genomic DNA` or `cDNA`; library_source: `genomic`; description: `TCR` |
-| **BCR** | B-cell receptor repertoire | title: `_BCR`, `_VDJ_B`; characteristics: `library type: BCR`; molecule: `genomic DNA`; description: `BCR` |
-| **HTO** | Hashtag oligos (multiplexing) | title: `_HTO`, `_hashtag`; characteristics: `library type: HTO`; description: `hashtag`, `cell hashing` |
-| **ATAC** | Chromatin accessibility | title: `_ATAC`; characteristics: `library type: ATAC`; molecule: `genomic DNA`; library_source: `genomic` |
-| **OTHER** | Anything not matching above | Fallback; always assigned with low confidence |
-
-### 4.2 Signal priority
-
-When signals conflict, the LLM should prioritize in this order:
-
-```
-characteristics > molecule > library_source > title > description > overall_design
-```
-
-Rationale: `characteristics` is the most explicit structured field (e.g. `library type: ADT`); `title` is free-text and sometimes misleading (e.g. an ADT sample may still say "scRNAseq" in the title).
-
-### 4.3 Confidence standards
-
-| Confidence | When to use |
-|------------|-------------|
-| **0.9 – 1.0** | Multiple signals agree (e.g. title has `_GEX`, molecule is `polyA RNA`, library_source is `transcriptomic`) |
-| **0.7 – 0.9** | One strong signal present (e.g. characteristics says `library type: ADT` but title is ambiguous) |
-| **0.5 – 0.7** | Weak or indirect signals only (e.g. only title contains a partial hint like `_RNA`) |
-| **< 0.5** | No clear signal; classify as `OTHER` |
-
-Samples with confidence below `confidence_threshold` (default 0.7) are marked `needs_review=True`.
-
-## 5. Validation criteria
-
-### 5.1 Correctness checklist
-
-For any classified series, verify:
-
-- [ ] Every GSM in the Family SOFT appears in the output (no samples dropped)
-- [ ] Each GSM is assigned exactly one `library_type`
-- [ ] Paired samples from the same patient/timepoint have different library types (e.g. Patient 10-02 should have one GEX + one ADT, not two GEX)
-- [ ] `confidence` values are consistent (clear signals → high, ambiguous → low)
-- [ ] `supplementary_files` are carried over from the parsed sample metadata
-
-### 5.2 Verification example: GSE317605
-
-This series contains 168 samples: 84 GEX + 84 ADT.
-
-| Sample | Expected type | Key signals | Expected confidence |
-|--------|---------------|-------------|---------------------|
-| GSM9474997 `Patient 10-02_GEX timepoint T01 scRNAseq` | GEX | title: `_GEX`; characteristics: `library type: mRNA`; molecule: `polyA RNA`; library_source: `transcriptomic` | ≥ 0.9 |
-| GSM9475081 `Patient 10-02_ADT timepoint T01 scRNAseq` | ADT | title: `_ADT`; characteristics: `library type: ADT`; molecule: `protein`; library_source: `other`; description: `antibody-derived oligonucleotide` | ≥ 0.9 |
-
-Expected result summary:
-- 84 samples classified as GEX, all confidence ≥ 0.9
-- 84 samples classified as ADT, all confidence ≥ 0.9
-- 0 samples classified as OTHER
-- 0 samples with `needs_review=True`
-
-## 6. AI Agent usage guide
-
-When debugging or invoking this skill manually (e.g. from Claude Code or a script), follow these steps:
-
-### Step 1: Ensure prerequisites
-
-```python
-from geo_agent.config import load_config
-from geo_agent.ncbi.client import NCBIClient
-
-config = load_config()
-client = NCBIClient(api_key=config.api_key, email=config.email)
-```
-
-### Step 2: Create LLM client
-
-```python
-import anthropic
-
-llm_client = anthropic.Anthropic(api_key=config.anthropic_api_key)
-```
-
-### Step 3: Instantiate skill
+## Code entry
 
 ```python
 from geo_agent.skills.sample_selector import SampleSelectorSkill
+import anthropic
 
 skill = SampleSelectorSkill(
-    ncbi_client=client,
-    llm_client=llm_client,
-    model=config.llm_model,          # default: claude-haiku-4-5-20251001
+    ncbi_client=ncbi_client,
+    llm_client=anthropic.Anthropic(api_key="..."),
     confidence_threshold=0.7,
 )
-```
-
-### Step 4: Prepare context
-
-```python
-from geo_agent.models.context import PipelineContext
-from geo_agent.models.query import SearchQuery
-
-context = PipelineContext(
-    query=SearchQuery(data_type="CITE-seq", organism="Homo sapiens"),
-    filtered_datasets=[...],          # from FilterSkill
-    target_library_types=["ADT"],     # which types to select
-)
-```
-
-### Step 5: Execute
-
-```python
+context.target_library_types = ["GEX", "ADT"]
 context = skill.execute(context)
 ```
 
-### Step 6: Inspect results
+## Pipeline position
 
-```python
-for accession, selections in context.selected_samples.items():
-    print(f"\n{accession}: {len(selections)} samples selected")
-    for s in selections[:3]:
-        print(f"  {s.accession} → {s.library_type} (confidence={s.confidence:.2f})")
-        if s.needs_review:
-            print(f"    ⚠ NEEDS REVIEW: {s.reasoning}")
+FilterSkill → **SampleSelectorSkill** → (future) DownloadSkill
+
+---
+
+## Real-world classification guide (from 10 series, 566 samples)
+
+### Golden examples — clear cases the LLM should get right
+
+**GSE317605** (168 samples: 84 GEX + 84 ADT) — 最标准的命名
+
+| GSM | Title | characteristics | molecule | → 应判为 |
+|---|---|---|---|---|
+| GSM9474997 | `Patient 10-02_GEX timepoint T01 scRNAseq` | `library type: mRNA` | `polyA RNA` | **GEX** (≥0.9) |
+| GSM9475081 | `Patient 10-02_ADT timepoint T01 scRNAseq` | `library type: ADT` | `protein` | **ADT** (≥0.9) |
+
+所有信号一致：title 含 `_GEX`/`_ADT`，characteristics 有 `library type`，molecule 区分明确。
+
+**GSE306608** (6 samples: 2 GEX + 2 ADT + 2 HTO) — 三种类型都有标记
+
+characteristics 字段完整（`library type: mRNA` / `library type: ADT` / `library type: HTO`），是最容易的 case。
+
+**GSE320155** (60 samples: 20 GEX + 20 ADT + 20 TCR) — 命名略不同
+
+Title 用 `, GEX` 而非 `_GEX`（如 `Liver, GEX`），但 characteristics 字段完整。应该靠 characteristics 判断，不要只看 title 格式。
+
+---
+
+### Failure patterns — LLM 容易犯的错
+
+#### 错误 1: Title 含 "scRNAseq" ≠ GEX
+
+GSE317605 的 ADT 样本 title 是 `Patient 10-02_ADT timepoint T01 scRNAseq`。title 里有 "scRNAseq" 但这是 ADT，不是 GEX。
+
+```
+❌ 看到 title 含 "scRNAseq" → 判为 GEX
+✅ 看 molecule=protein + library_source=other → 判为 ADT
 ```
 
-### Step 7: Check for issues
+#### 错误 2: 非标准命名导致漏判
 
-```python
-# Low-confidence samples across all series
-for acc, selections in context.selected_samples.items():
-    flagged = [s for s in selections if s.needs_review]
-    if flagged:
-        print(f"{acc}: {len(flagged)} samples need review")
+GSE268991 用 `5'GEX` 而非 `_GEX`，用 `Surface` 而非 `_ADT`。如果 LLM 只识别 `_GEX`/`_ADT` 模式，会把这些判为 OTHER。
+
+```
+❌ title 不含 "_ADT" → 判为 OTHER
+✅ molecule=protein + description 含 "antibody" → 判为 ADT
 ```
 
-## 7. Error handling
+#### 错误 3: 混合类型样本
+
+GSE303197 有标为 `ADT/HTO mixed` 的样本 — 一个样本同时包含 ADT 和 HTO。当前分类框架只允许每个样本一个类型。
+
+```
+❌ 判为 ADT（丢失 HTO 信息）或 OTHER（丢失 ADT 信息）
+✅ 判为 ADT（主要用途），confidence 降低，needs_review=True
+```
+
+#### 错误 4: 假阳性 series
+
+GSE280852 的全部 6 个样本都是 `polyA RNA` + `transcriptomic`。这个 series 根本没有 CITE-seq sub-library，是 GEO 搜索的误命中。
+
+```
+❌ 把所有样本分类为 GEX，不做任何标记
+✅ 所有样本都是 GEX、零 ADT → 应在结果中注明 "this series may not be genuine CITE-seq"
+```
+
+#### 错误 5: supplementary_file = NONE
+
+GSE320155 的全部 60 个样本的 `supplementary_file` 都是 `NONE`。数据以 Series 级别的聚合文件形式存在。分类正确但下载链接为空。
+
+```
+❌ 忽略这种情况，导致下游 DownloadSkill 拿到空列表
+✅ 分类照常，但在结果中标记 "no per-sample files, use Series-level download"
+```
+
+---
+
+### Signal priority — 判断顺序
+
+从 10 个 series 的真实数据中归纳的可靠性排序：
+
+| 优先级 | 信号 | 可靠性 | 依据 |
+|---|---|---|---|
+| 1 | `characteristics` 中的 `library type` | 最高 | 结构化字段，GSE317605/GSE306608/GSE320155 都准确 |
+| 2 | `molecule` | 高 | `polyA RNA`=GEX, `protein`=ADT, `genomic DNA`=TCR/ATAC — 基本不出错 |
+| 3 | `library_source` | 中 | `transcriptomic`=GEX, `other`=ADT — 但有些 series 不填 |
+| 4 | `title` 关键词 | 中低 | 变体太多（`_GEX`, `5'GEX`, `, GEX`, `_RNA`, `_mRNA`），且 ADT 样本也可能含 "scRNAseq" |
+| 5 | `description` | 最低 | 有些 series 没有 description，有些用 description 存无关信息 |
+
+---
+
+### Naming variants actually observed (10 series)
+
+| Type | Naming variants | Series |
+|---|---|---|
+| GEX | `_GEX`, `, GEX`, `_RNA`, `_mRNA`, `5'GEX`, `gene expression` | GSE317605, GSE320155, GSE313153, GSE283984, GSE268991, GSE269123 |
+| ADT | `_ADT`, `, ADT`, `Surface`, `ADT/HTO mixed` | GSE317605, GSE320155, GSE268991, GSE303197 |
+| TCR | `_VDJ`, `library type: TCR`, `gdTCR`, `abTCR` | GSE317605, GSE320155, GSE269123 |
+| HTO | `_HTO`, `ADT/HTO mixed` | GSE306608, GSE303197 |
+
+**Rule-based parsing cannot cover this.** 10 个 series 就有 5+ 种 GEX 命名方式。
+
+---
+
+## Error handling
 
 | Scenario | Handling |
-|----------|----------|
-| Family SOFT fetch fails (HTTP error) | Log warning, skip series, add to `context.errors` |
-| Family SOFT is empty or unparseable | Skip series, flag in `context.errors` |
-| LLM returns invalid JSON | Retry once with stricter prompt; if still fails, skip series and log |
-| LLM returns unknown `library_type` | Map to `"OTHER"`, set `needs_review=True` |
-
-## 8. Pipeline position
-
-- **Depends on**: FilterSkill (reads `filtered_datasets`)
-- **Followed by**: DownloadSkill (future; reads `selected_samples` to get per-GSM FTP URLs)
-
-```
-[GEOSearchSkill] → [ReportSkill] → [FilterSkill] → [SampleSelectorSkill] → [DownloadSkill]
-```
-
-## Requirements
-
-- Network access (GEO acc.cgi for Family SOFT + Anthropic API for LLM)
-- `ANTHROPIC_API_KEY` in `.env`
-- Optional: `LLM_MODEL` in `.env` to override default model
-
-## Performance notes
-
-- Family SOFT fetch: one request per series to GEO acc.cgi (0.25s spacing); response is 5K–20K lines depending on sample count
-- LLM call: ~1–2s per series (Haiku); ~3K input tokens + ~5K output tokens for 168 samples
-- Total for 317 series: ~80s SOFT fetch + ~10min LLM calls (sequential) or ~2min (concurrent)
+|---|---|
+| Family SOFT fetch fails | Skip series, log to `context.errors` |
+| Family SOFT is empty | Skip series, log to `context.errors` |
+| LLM returns invalid JSON | Retry 1x; still fails → skip series |
+| Unknown `library_type` | Map to `OTHER`, set `needs_review=True` |
+| Confidence < threshold | Set `needs_review=True`, keep in results |

@@ -128,6 +128,7 @@ def parse_soft_text(soft_text: str) -> dict[str, str]:
         "!Series_contributor": "contributors",
         "!Series_sample_id": "sample_ids",
         "!Series_supplementary_file": "supplementary_files",
+        "!Series_relation": "relations",
     }
 
     multi_values: dict[str, list[str]] = {v: [] for v in multi_fields.values()}

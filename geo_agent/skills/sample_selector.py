@@ -16,32 +16,53 @@ VALID_LIBRARY_TYPES = {"GEX", "ADT", "TCR", "BCR", "HTO", "ATAC", "OTHER"}
 SYSTEM_PROMPT = """\
 You are a bioinformatics expert classifying GEO samples by library type.
 
-For each sample, classify it into exactly ONE of these categories:
-- GEX: Gene expression (scRNA-seq, mRNA). Signals: title contains _GEX/_RNA/_transcriptome; molecule=polyA RNA/total RNA/cDNA; library_source=transcriptomic; characteristics has library type: mRNA
-- ADT: Antibody-derived tag (CITE-seq protein). Signals: title contains _ADT/_protein/_AbSeq; molecule=protein; library_source=other; characteristics has library type: ADT; description mentions antibody
-- TCR: T-cell receptor. Signals: title contains _TCR/_VDJ_T; characteristics has library type: TCR
-- BCR: B-cell receptor. Signals: title contains _BCR/_VDJ_B; characteristics has library type: BCR
-- HTO: Hashtag oligo. Signals: title contains _HTO/_hashtag; molecule=synthetic; characteristics has library type: HTO
-- ATAC: Chromatin accessibility. Signals: title contains _ATAC; characteristics has library type: ATAC
-- OTHER: Does not match any above category
+Classify each sample into exactly ONE category: GEX, ADT, TCR, BCR, HTO, ATAC, or OTHER.
 
-Signal priority (judge in this order):
-1. characteristics "library type" field (most reliable)
-2. molecule field (polyA RNA vs protein vs genomic DNA)
-3. library_source field (transcriptomic vs other)
-4. Title keywords (_GEX, _ADT, etc.)
-5. Description supplementary info
-6. Series-level context for disambiguation
+## How to judge — use fields in this order
 
-Confidence guidelines:
-- 0.9+: Multiple signals agree (e.g. title has _GEX + molecule=polyA RNA + library_source=transcriptomic)
-- 0.7-0.9: Partial signal match (e.g. only title keyword, other fields missing)
-- 0.5-0.7: Ambiguous or contradictory signals
-- <0.5: Nearly impossible to determine, classify as OTHER
+1. characteristics "library type" field — most reliable. If it says "mRNA" → GEX, "ADT" → ADT, "TCR" → TCR.
+2. molecule field — "polyA RNA" or "total RNA" → GEX, "protein" → ADT, "genomic DNA" → TCR/BCR/ATAC.
+3. library_source — "transcriptomic" → GEX, "other" → usually ADT.
+4. Title keywords — but be careful, naming varies wildly (see mistakes below).
+5. description — least reliable, often missing or irrelevant.
 
-Return a JSON array (no markdown fences) with one object per sample:
+## Common mistakes to avoid
+
+WRONG: Title contains "scRNAseq" → must be GEX.
+RIGHT: ADT samples often have "scRNAseq" in the title too (e.g. "Patient 10-02_ADT timepoint T01 scRNAseq"). Look at molecule and library_source instead.
+
+WRONG: Title doesn't contain "_ADT" → not ADT.
+RIGHT: Some series use "Surface" (GSE268991) or "ADT/HTO mixed" (GSE303197) instead of "_ADT". Check molecule=protein.
+
+WRONG: Title doesn't contain "_GEX" → not GEX.
+RIGHT: Variants include "5'GEX", "_RNA", "_mRNA", ", GEX", "gene expression". Check molecule=polyA RNA.
+
+## Naming variants I've seen across real GEO series
+
+- GEX: "_GEX", ", GEX", "_RNA", "_mRNA", "5'GEX", "gene expression"
+- ADT: "_ADT", ", ADT", "Surface", "ADT/HTO mixed"
+- TCR: "_VDJ", "_TCR", "gdTCR", "abTCR", "library type: TCR"
+- HTO: "_HTO", "ADT/HTO mixed"
+
+## Confidence
+
+- 0.9+: Multiple fields agree (characteristics + molecule + library_source all point the same way)
+- 0.7-0.9: One strong field matches (e.g. characteristics says "library type: ADT" but title is ambiguous)
+- 0.5-0.7: Signals conflict or are mostly missing
+- <0.5: Cannot determine → classify as OTHER
+
+## False positive series detection
+
+If ALL samples in a batch look like the same type (e.g. all GEX, zero ADT/TCR/HTO), add a note in the reasoning of the first sample: "WARNING: no multi-library diversity detected — this series may not be genuine CITE-seq". This helps downstream tools flag false positives from GEO search.
+
+## Output format
+
+Return a JSON array (no markdown fences):
 [{"accession": "GSM...", "library_type": "GEX", "confidence": 0.95, "reasoning": "brief explanation"}]
 """
+
+
+BATCH_SIZE = 50  # Max samples per LLM call to avoid output token truncation
 
 
 class SampleSelectorSkill(Skill):
@@ -79,7 +100,7 @@ class SampleSelectorSkill(Skill):
             return context
 
         accessions = [ds.accession for ds in datasets]
-        target_types = set(t.upper() for t in context.target_library_types)
+        target_types = set(t.upper() for t in (context.target_library_types or ["GEX"]))
 
         logger.info(
             f"Classifying samples for {len(accessions)} series, "
@@ -129,7 +150,28 @@ class SampleSelectorSkill(Skill):
     def _classify_samples(
         self, accession: str, samples: list[GEOSample]
     ) -> list[SampleSelection]:
-        """Build compact JSON prompt and classify via LLM."""
+        """Build compact JSON prompt and classify via LLM.
+
+        Splits into chunks of BATCH_SIZE to avoid output token truncation.
+        """
+        if len(samples) <= BATCH_SIZE:
+            return self._classify_chunk(accession, samples)
+
+        # Split into chunks and merge results
+        all_results: list[SampleSelection] = []
+        for i in range(0, len(samples), BATCH_SIZE):
+            chunk = samples[i : i + BATCH_SIZE]
+            logger.info(
+                f"{accession}: classifying chunk {i // BATCH_SIZE + 1} "
+                f"({len(chunk)} samples)"
+            )
+            all_results.extend(self._classify_chunk(accession, chunk))
+        return all_results
+
+    def _classify_chunk(
+        self, accession: str, samples: list[GEOSample]
+    ) -> list[SampleSelection]:
+        """Classify a single chunk of samples via LLM."""
         # Compress sample data for LLM
         sample_data = []
         for s in samples:
@@ -156,24 +198,21 @@ class SampleSelectorSkill(Skill):
         # Parse response into SampleSelection objects
         return self._parse_llm_response(raw_response, samples)
 
-    def _call_llm(self, user_msg: str, retries: int = 1) -> str:
-        """Call LLM with system prompt + sample data."""
-        for attempt in range(retries + 1):
-            try:
-                response = self._llm_client.messages.create(
-                    model=self._model,
-                    max_tokens=4096,
-                    system=SYSTEM_PROMPT,
-                    messages=[{"role": "user", "content": user_msg}],
-                )
-                return response.content[0].text
-            except Exception as e:
-                if attempt < retries:
-                    logger.warning(
-                        f"LLM call failed (attempt {attempt + 1}), retrying: {e}"
-                    )
-                    continue
-                raise SkillError(f"LLM call failed after {retries + 1} attempts: {e}")
+    def _call_llm(self, user_msg: str) -> str:
+        """Call LLM with system prompt + sample data.
+
+        Retries are handled by the Anthropic SDK (set max_retries on client init).
+        """
+        try:
+            response = self._llm_client.messages.create(
+                model=self._model,
+                max_tokens=8192,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": user_msg}],
+            )
+            return response.content[0].text
+        except Exception as e:
+            raise SkillError(f"LLM call failed: {e}") from e
 
     def _parse_llm_response(
         self, raw_response: str, samples: list[GEOSample]
@@ -184,6 +223,12 @@ class SampleSelectorSkill(Skill):
         text = re.sub(r"^```(?:json)?\s*\n?", "", text)
         text = re.sub(r"\n?```\s*$", "", text)
         text = text.strip()
+
+        # Extract JSON array — LLM sometimes outputs text before/after the JSON
+        bracket_start = text.find("[")
+        bracket_end = text.rfind("]")
+        if bracket_start != -1 and bracket_end > bracket_start:
+            text = text[bracket_start : bracket_end + 1]
 
         try:
             data = json.loads(text)

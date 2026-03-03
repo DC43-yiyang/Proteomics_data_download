@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from typing import Any
 
 from geo_agent.models.dataset import GEODataset
 from geo_agent.models.query import SearchQuery
@@ -26,6 +27,9 @@ class PipelineContext:
 
     # FilterSkill outputs (Phase 3)
     filtered_datasets: list[GEODataset] = field(default_factory=list)
+
+    # HierarchySkill outputs
+    series_hierarchy: dict[str, Any] = field(default_factory=dict)  # accession -> SeriesNode
 
     # ValidationSkill outputs (Phase 3)
     validated_datasets: list[GEODataset] = field(default_factory=list)

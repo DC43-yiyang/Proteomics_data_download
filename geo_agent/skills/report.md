@@ -1,58 +1,34 @@
 # ReportSkill
 
-## Overview
+## What it does
 
-Turns search results into a human-readable Markdown report and structured data (`report_data`) for manual review or downstream AI Agent filtering.
+Generates a Markdown report and structured `report_data` from search results for human review.
 
-## Code location
+## Context I/O
 
-`geo_agent/skills/report.py` → `ReportSkill`
+| Direction | Field | Type |
+|---|---|---|
+| Input | `query` | `SearchQuery` |
+| Input | `datasets` | `list[GEODataset]` |
+| Input | `total_found` | `int` |
+| Output | `report` | `str` (Markdown) |
+| Output | `report_data` | `list[dict]` |
 
-## Constructor parameters
+## Domain knowledge
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `output_file` | `str \| None` | `None` | Optional; path to save the Markdown report |
+- The report is for **human review before downstream processing**. It helps researchers quickly decide which series are worth investigating.
+- `overall_design` is the most important field — it tells the researcher exactly what the experiment did. Truncated to 500 chars in the report.
+- `supplementary_files` here are Series-level files (e.g. `_RAW.tar`), not per-sample files. Per-sample files come from Family SOFT (SampleSelectorSkill).
 
-## PipelineContext input
+## Code entry
 
-| Field | Type | Required | Source |
-|-------|------|----------|--------|
-| `query` | `SearchQuery` | Yes | CLI-constructed |
-| `datasets` | `list[GEODataset]` | Yes | GEOSearchSkill output |
-| `total_found` | `int` | Yes | GEOSearchSkill output |
+```python
+from geo_agent.skills.report import ReportSkill
 
-## PipelineContext output
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `report` | `str` | Full report in Markdown (overview table + per-dataset details) |
-| `report_data` | `list[dict]` | Structured dict per dataset; fields listed below |
-
-### report_data record fields
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `accession` | `str` | GSE accession |
-| `title` | `str` | Dataset title |
-| `organism` | `str` | Organism |
-| `platform` | `str` | GPL platform id |
-| `series_type` | `str` | Series type |
-| `sample_count` | `int` | Sample count |
-| `summary` | `str` | Summary |
-| `overall_design` | `str` | Experiment design (from GEO acc.cgi SOFT; often contains key protocol info) |
-| `geo_url` | `str` | GEO page URL |
-| `ftp_link` | `str` | FTP download URL |
-| `supplementary_files` | `list[dict]` | Supplementary files; each has `name` and `url` |
-
-## CLI usage
-
-```bash
-# Search and save report to file
-.venv/bin/geo-agent search --data-type "CITE-seq" --organism "Homo sapiens" --report results.md
+skill = ReportSkill(output_file="report.md")
+context = skill.execute(context)
 ```
 
 ## Pipeline position
 
-- Depends on: GEOSearchSkill
-- Followed by: FilterSkill
+GEOSearchSkill → **ReportSkill** → FilterSkill

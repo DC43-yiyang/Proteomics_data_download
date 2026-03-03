@@ -17,6 +17,7 @@ class Config:
 
     # Anthropic LLM config
     anthropic_api_key: Optional[str] = None
+    anthropic_base_url: Optional[str] = None
     llm_model: str = "claude-haiku-4-5-20251001"
 
     # Rate limiting (derived from api_key presence)
@@ -40,5 +41,6 @@ def load_config(env_file: Optional[str] = None) -> Config:
         api_key=os.getenv("NCBI_API_KEY") or None,
         email=os.getenv("NCBI_EMAIL", ""),
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY") or None,
+        anthropic_base_url=os.getenv("ANTHROPIC_BASE_URL") or None,
         llm_model=os.getenv("LLM_MODEL", "claude-haiku-4-5-20251001"),
     )

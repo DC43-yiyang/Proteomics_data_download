@@ -27,6 +27,9 @@ class GEODataset:
     ftp_link: str = ""
     supplementary_files: list[SupplementaryFile] = field(default_factory=list)
 
+    # Populated from Series SOFT !Series_relation field
+    relations: list[str] = field(default_factory=list)
+
     # Populated during filtering
     relevance_score: float = 0.0
 

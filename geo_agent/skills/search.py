@@ -80,6 +80,9 @@ class GEOSearchSkill(Skill):
                 if soft_text:
                     parsed = parse_soft_text(soft_text)
                     ds.overall_design = parsed.get("overall_design", "")
+                    relations_str = parsed.get("relations", "")
+                    if relations_str:
+                        ds.relations = [r.strip() for r in relations_str.split("; ") if r.strip()]
 
             filled = sum(1 for ds in datasets if ds.overall_design)
             logger.info(f"Overall design populated for {filled}/{len(datasets)} datasets")

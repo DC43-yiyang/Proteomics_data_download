@@ -1,55 +1,32 @@
 # FilterSkill
 
-## Overview
+## What it does
 
-Filters and scores search results. Designed to be invoked directly by an AI Agent (e.g. Claude Code): filter criteria are specified via constructor parameters, and datasets are relevance-scored and filtered.
+Filters and scores datasets by relevance. Removes irrelevant series before expensive downstream steps (Family SOFT fetch, LLM classification).
 
-## Code location
+## Context I/O
 
-`geo_agent/skills/filter.py` → `FilterSkill`
+| Direction | Field | Type |
+|---|---|---|
+| Input | `datasets` | `list[GEODataset]` |
+| Input | `query` | `SearchQuery` |
+| Output | `filtered_datasets` | `list[GEODataset]` sorted by `relevance_score` desc |
 
-## Constructor parameters
+## Domain knowledge
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `min_samples` | `int` | `0` | Minimum sample count; datasets below this are excluded |
-| `required_keywords` | `list[str]` | `[]` | Keywords that must appear in title, summary, or Overall design (any match passes) |
-| `exclude_keywords` | `list[str]` | `[]` | Datasets containing these keywords in title, summary, or Overall design are excluded |
-| `min_score` | `float` | `0.0` | Minimum relevance score threshold |
+- `min_score=0.0` passes everything — useful for debug, bad for production. For CITE-seq searches, `min_score=0.3` is a reasonable starting point.
+- `exclude_keywords` is more useful than `required_keywords` in practice. GEO metadata is inconsistent — requiring specific keywords drops valid series. But excluding "organoid" or "mouse" when you only want human PBMC works well.
+- This skill does NOT look at sample-level data. A series can score 0.8 here and still be useless (e.g. GSE280852 — high series-level relevance but zero CITE-seq sub-libraries). That's SampleSelectorSkill's job.
 
-## PipelineContext input
+## Code entry
 
-| Field | Type | Required | Source |
-|-------|------|----------|--------|
-| `datasets` | `list[GEODataset]` | Yes | GEOSearchSkill output |
-| `query` | `SearchQuery` | Yes | CLI-constructed (used for keyword scoring) |
+```python
+from geo_agent.skills.filter import FilterSkill
 
-## PipelineContext output
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `filtered_datasets` | `list[GEODataset]` | Filtered datasets, sorted by `relevance_score` descending |
-
-Each `GEODataset`'s `relevance_score` field (0.0 ~ 1.0) is filled in this stage.
-
-## Scoring dimensions
-
-| Dimension | Weight | Description |
-|-----------|--------|-------------|
-| Data type match | 0.30 / 0.25 / 0.15 | data_type in title / Overall design / summary |
-| Organism exact match | 0.20 | organism matches query exactly |
-| Disease match | 0.20 / 0.10 | disease in title / Overall design or summary |
-| Tissue match | 0.15 / 0.08 | tissue in title / Overall design or summary |
-| Sample count | 0.10 / 0.05 | ≥50 / ≥20 samples |
-| Has supplementary files | 0.05 | supplementary_files non-empty |
-
-> **Design note**: Overall design weight (0.25) is second only to title (0.30) and higher than summary (0.15). Many scRNA-seq/CITE-seq experiments put key protocol info only in Overall design, while title and summary often describe study background.
+skill = FilterSkill(min_samples=0, min_score=0.3, exclude_keywords=["organoid"])
+context = skill.execute(context)
+```
 
 ## Pipeline position
 
-- Depends on: GEOSearchSkill
-- Followed by: ValidateSkill (not yet implemented)
-
-## AI Agent usage
-
-After reviewing `report_data` from ReportSkill, the AI Agent should set FilterSkill constructor parameters (e.g. which keywords to require/exclude, minimum samples) based on the analysis, then call `FilterSkill.execute(context)` to obtain filtered results.
+GEOSearchSkill → ReportSkill → **FilterSkill** → SampleSelectorSkill
