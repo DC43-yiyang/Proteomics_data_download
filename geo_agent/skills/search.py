@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 from geo_agent.models.context import PipelineContext
 from geo_agent.ncbi.client import NCBIClient
@@ -19,9 +20,10 @@ class GEOSearchSkill(Skill):
         context.total_found — int, total matching records in GEO
     """
 
-    def __init__(self, client: NCBIClient, fetch_details: bool = True):
+    def __init__(self, client: NCBIClient, fetch_details: bool = True, debug_dir: str | None = None):
         self._client = client
         self._fetch_details = fetch_details
+        self._debug_dir = debug_dir
 
     @property
     def name(self) -> str:
@@ -63,6 +65,15 @@ class GEOSearchSkill(Skill):
             logger.info(f"Fetching detailed metadata (Overall design) for {len(datasets)} datasets...")
             accessions = [ds.accession for ds in datasets]
             soft_data = self._client.fetch_geo_soft_batch(accessions)
+
+            # Save raw SOFT files if debug_dir is set
+            if self._debug_dir:
+                out = Path(self._debug_dir)
+                out.mkdir(parents=True, exist_ok=True)
+                for acc, text in soft_data.items():
+                    if text:
+                        (out / f"{acc}.soft").write_text(text, encoding="utf-8")
+                logger.info(f"Saved {sum(1 for t in soft_data.values() if t)} raw SOFT files to {out}")
 
             for ds in datasets:
                 soft_text = soft_data.get(ds.accession, "")
