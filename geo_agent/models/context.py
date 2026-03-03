@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 
 from geo_agent.models.dataset import GEODataset
 from geo_agent.models.query import SearchQuery
+from geo_agent.models.sample import GEOSample, SampleSelection
 
 
 @dataclass
@@ -28,6 +29,11 @@ class PipelineContext:
 
     # ValidationSkill outputs (Phase 3)
     validated_datasets: list[GEODataset] = field(default_factory=list)
+
+    # SampleSelectorSkill inputs/outputs
+    target_library_types: list[str] = field(default_factory=lambda: ["GEX"])
+    sample_metadata: dict[str, list[GEOSample]] = field(default_factory=dict)
+    selected_samples: dict[str, list[SampleSelection]] = field(default_factory=dict)
 
     # Download config (Phase 4)
     download_dir: str = "./geo_downloads"

@@ -440,19 +440,104 @@ This directly feeds DownloadSkill: iterate `selected_samples`, download each `su
 
 ## 7. Implementation steps
 
-| Step | Task | Files | Dependencies |
-|---|---|---|---|
-| 1 | Add `fetch_family_soft()` to NCBIClient | `ncbi/client.py` | None |
-| 2 | Add `parse_family_soft()` parser | `ncbi/parsers.py` | Step 1 for testing |
-| 3 | Create `GEOSample` and `SampleSelection` models | `models/sample.py` | None |
-| 4 | Extend `PipelineContext` with new fields | `models/context.py` | Step 3 |
-| 5 | Add `anthropic` to dependencies | `pyproject.toml` | None |
-| 6 | Add `ANTHROPIC_API_KEY` to config | `config.py`, `.env.example` | None |
-| 7 | Implement `SampleSelectorSkill` | `skills/sample_selector.py` | Steps 1–6 |
-| 8 | Write skill spec doc | `skills/sample_selector.md` | Step 7 |
-| 9 | Add `--library-type` CLI flag | `cli.py` | Step 7 |
-| 10 | Integration test with GSE317605 | `tests/` | All above |
-| 11 | Update Architecture.md | `docs/Architecture.md` | Step 7 |
+### Step 1: Create data models
+
+**New** `geo_agent/models/sample.py` — `GEOSample` and `SampleSelection` dataclasses (see §3.2).
+
+**Modify** `geo_agent/models/__init__.py` — export the new types.
+
+### Step 2: Extend PipelineContext
+
+**Modify** `geo_agent/models/context.py` — add three fields:
+
+- `target_library_types: list[str]` (default `["GEX"]`)
+- `sample_metadata: dict[str, list[GEOSample]]`
+- `selected_samples: dict[str, list[SampleSelection]]`
+
+### Step 3: Add Family SOFT fetch methods
+
+**Modify** `geo_agent/ncbi/client.py` — add `fetch_family_soft()` and `fetch_family_soft_batch()`.
+
+- Same pattern as existing `fetch_geo_soft()`, but with `targ=gsm` (fetches all `^SAMPLE` blocks).
+- Timeout raised to 60s (response body is 10–50x larger than Series SOFT).
+
+### Step 4: Add Family SOFT parser
+
+**Modify** `geo_agent/ncbi/parsers.py` — add `parse_family_soft(soft_text: str) -> list[GEOSample]`.
+
+- Split text on `^SAMPLE = ` boundaries.
+- Per sample block, extract:
+  - `!Sample_title`
+  - `!Sample_characteristics_ch1` (multiple, parse `key: value` pairs)
+  - `!Sample_molecule_ch1`
+  - `!Sample_library_source`
+  - `!Sample_supplementary_file_*` (collect all numbered entries)
+  - `!Sample_description`
+
+### Step 5: Add `anthropic` dependency
+
+**Modify** `pyproject.toml` — add `"anthropic>=0.39.0"` to `[project.dependencies]`.
+
+Then run: `uv lock && uv sync`
+
+### Step 6: Add Anthropic configuration
+
+**Modify** `geo_agent/config.py` — add `anthropic_api_key: str` and `llm_model: str` to `Config`; `load_config()` reads `ANTHROPIC_API_KEY` and `LLM_MODEL` from `.env`.
+
+**Modify** `.env.example` — add `ANTHROPIC_API_KEY=` and `LLM_MODEL=` templates.
+
+### Step 7: Implement SampleSelectorSkill (core)
+
+**New** `geo_agent/skills/sample_selector.py`
+
+- **Constructor**: `ncbi_client`, `llm_client` (`anthropic.Anthropic`), `model`, `confidence_threshold`.
+- **`execute(context)`**: fetch Family SOFT → parse → compress to JSON → LLM classification → parse response → filter by `target_library_types`.
+- **`_call_llm()`**: call `llm_client.messages.create()`; 1 retry on failure.
+- **`_parse_llm_response()`**: parse JSON array from response; strip markdown code fences if present; map unknown `library_type` to `"OTHER"`; set `needs_review=True` when confidence < threshold.
+
+### Step 8: CLI integration
+
+**Modify** `geo_agent/cli.py`
+
+- Add `--library-type` argument (`action="append"`, repeatable, e.g. `--library-type GEX --library-type ADT`).
+- When `--library-type` is specified: register `FilterSkill` + `SampleSelectorSkill`, create `anthropic.Anthropic` client, set `context.target_library_types`.
+- Print sample selection summary after pipeline run.
+- `import anthropic` inside the conditional branch (lazy import — only needed when `--library-type` is used).
+
+### Step 9: Skill spec document
+
+**New** `geo_agent/skills/sample_selector.md` — constructor params, context input/output, execution flow, pipeline position.
+
+### Step 10: Update Architecture.md
+
+**Modify** `docs/Architecture.md` — update data flow diagram, context key table, NCBI method table, data models section, implementation status table.
+
+### Step 11: Tests
+
+**New** `tests/test_parse_family_soft.py` — unit tests for `parse_family_soft()` using fixture data from `Example/GSE317605/GSE317605_family.soft`.
+
+**New** `tests/test_sample_selector.py` — Skill tests with mock NCBI client + mock LLM client.
+
+---
+
+### File summary
+
+| Action | File |
+|---|---|
+| New | `geo_agent/models/sample.py` |
+| Modify | `geo_agent/models/__init__.py` |
+| Modify | `geo_agent/models/context.py` |
+| Modify | `geo_agent/ncbi/client.py` |
+| Modify | `geo_agent/ncbi/parsers.py` |
+| Modify | `pyproject.toml` |
+| Modify | `geo_agent/config.py` |
+| Modify | `.env.example` |
+| New | `geo_agent/skills/sample_selector.py` |
+| Modify | `geo_agent/cli.py` |
+| New | `geo_agent/skills/sample_selector.md` |
+| Modify | `docs/Architecture.md` |
+| New | `tests/test_parse_family_soft.py` |
+| New | `tests/test_sample_selector.py` |
 
 ---
 

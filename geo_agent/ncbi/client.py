@@ -162,6 +162,49 @@ class NCBIClient:
         resp = self._request_with_retry(f"{self.BASE_URL}/efetch.fcgi", params)
         return resp.text
 
+    def fetch_family_soft(self, accession: str) -> str:
+        """Fetch GEO Family SOFT format (targ=gsm) for a single GSE accession.
+
+        Returns all ^SAMPLE blocks with per-sample metadata (title,
+        characteristics, molecule, library_source, supplementary files).
+        Responses are 10-50x larger than targ=self, so uses a 60s timeout.
+
+        Args:
+            accession: GSE accession number (e.g. "GSE317605")
+
+        Returns:
+            Raw Family SOFT format text containing all sample blocks
+        """
+        url = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi"
+        params = {"acc": accession, "targ": "gsm", "form": "text", "view": "brief"}
+        self._rate_limit(interval=self._min_interval_geo)
+        resp = self.session.get(url, params=params, timeout=60)
+        resp.raise_for_status()
+        return resp.text
+
+    def fetch_family_soft_batch(self, accessions: list[str]) -> dict[str, str]:
+        """Fetch Family SOFT format for multiple accessions.
+
+        Args:
+            accessions: List of GSE accession numbers
+
+        Returns:
+            Dict mapping accession -> raw Family SOFT text (empty string on error)
+        """
+        results = {}
+        total = len(accessions)
+        for i, acc in enumerate(accessions, 1):
+            try:
+                results[acc] = self.fetch_family_soft(acc)
+            except Exception as e:
+                logger.warning(f"Failed to fetch Family SOFT for {acc}: {e}")
+                results[acc] = ""
+
+            if total > 10 and i % 20 == 0:
+                logger.info(f"Fetched Family SOFT metadata {i}/{total}")
+
+        return results
+
     def fetch_geo_soft(self, accession: str) -> str:
         """Fetch GEO Series SOFT format for a single accession.
 

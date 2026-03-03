@@ -1,7 +1,9 @@
 import logging
+import re
 from typing import Any
 
 from geo_agent.models.dataset import GEODataset, SupplementaryFile
+from geo_agent.models.sample import GEOSample
 
 logger = logging.getLogger(__name__)
 
@@ -153,3 +155,88 @@ def parse_soft_text(soft_text: str) -> dict[str, str]:
             fields[field_name] = "; ".join(values)
 
     return fields
+
+
+def parse_family_soft(soft_text: str) -> list[GEOSample]:
+    """Parse Family SOFT format (targ=gsm) into per-sample GEOSample objects.
+
+    Family SOFT contains multiple ^SAMPLE blocks, each with sample-level
+    metadata like title, characteristics, molecule, library_source, etc.
+
+    Args:
+        soft_text: Raw Family SOFT text from GEO acc.cgi (targ=gsm)
+
+    Returns:
+        List of GEOSample objects, one per sample block
+    """
+    samples: list[GEOSample] = []
+
+    # Split on ^SAMPLE boundaries
+    blocks = re.split(r"^\^SAMPLE\s*=\s*", soft_text, flags=re.MULTILINE)
+
+    for block in blocks:
+        block = block.strip()
+        if not block:
+            continue
+
+        # First line is the accession (rest of the ^SAMPLE = line)
+        lines = block.splitlines()
+        accession = lines[0].strip()
+        if not accession.startswith("GSM"):
+            continue
+
+        title = ""
+        organism = ""
+        molecule = ""
+        library_source = ""
+        description = ""
+        characteristics: dict[str, str] = {}
+        supplementary_files: list[str] = []
+
+        for line in lines[1:]:
+            line = line.strip()
+            if not line or not line.startswith("!"):
+                continue
+            if " = " not in line:
+                continue
+
+            key, _, value = line.partition(" = ")
+            key = key.strip()
+            value = value.strip()
+
+            if key == "!Sample_title":
+                title = value
+            elif key == "!Sample_organism_ch1":
+                organism = value
+            elif key == "!Sample_molecule_ch1":
+                molecule = value
+            elif key == "!Sample_library_source":
+                library_source = value
+            elif key == "!Sample_description":
+                if description:
+                    description += "; " + value
+                else:
+                    description = value
+            elif key == "!Sample_characteristics_ch1":
+                # Format: "key: value" or just "value"
+                if ": " in value:
+                    char_key, _, char_val = value.partition(": ")
+                    characteristics[char_key.strip()] = char_val.strip()
+                else:
+                    characteristics[value] = value
+            elif key == "!Sample_supplementary_file" or key.startswith("!Sample_supplementary_file_"):
+                if value and value.lower() != "none":
+                    supplementary_files.append(value)
+
+        samples.append(GEOSample(
+            accession=accession,
+            title=title,
+            organism=organism,
+            molecule=molecule,
+            characteristics=characteristics,
+            library_source=library_source,
+            supplementary_files=supplementary_files,
+            description=description,
+        ))
+
+    return samples

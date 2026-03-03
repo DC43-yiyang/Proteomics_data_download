@@ -42,6 +42,14 @@ def main():
         "--verbose", "-v", action="store_true",
         help="Show detailed info for each dataset",
     )
+    search_p.add_argument(
+        "--library-type", action="append", default=None,
+        help=(
+            "Filter samples by library type (e.g. GEX, ADT, TCR, BCR, HTO, ATAC). "
+            "Repeatable: --library-type GEX --library-type ADT. "
+            "Requires ANTHROPIC_API_KEY in .env"
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -83,10 +91,54 @@ def _run_search(args):
     agent.register(GEOSearchSkill(client))
     agent.register(ReportSkill(output_file=args.report))
 
-    context = agent.run(PipelineContext(query=query))
+    # When --library-type is provided, add FilterSkill + SampleSelectorSkill
+    library_types = getattr(args, "library_type", None)
+    if library_types:
+        from geo_agent.skills.filter import FilterSkill
+
+        if not config.anthropic_api_key:
+            print(
+                "Error: --library-type requires ANTHROPIC_API_KEY in .env\n"
+                "Get yours at: https://console.anthropic.com/",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        import anthropic
+
+        anthropic_client = anthropic.Anthropic(api_key=config.anthropic_api_key)
+
+        from geo_agent.skills.sample_selector import SampleSelectorSkill
+
+        agent.register(FilterSkill())
+        agent.register(SampleSelectorSkill(
+            ncbi_client=client,
+            llm_client=anthropic_client,
+            model=config.llm_model,
+        ))
+
+    context = PipelineContext(query=query)
+    if library_types:
+        context.target_library_types = [t.upper() for t in library_types]
+
+    context = agent.run(context)
 
     # Print the Markdown report to stdout
     print(context.report or "No report generated.")
+
+    # Print sample selection summary if --library-type was used
+    if library_types and context.selected_samples:
+        print("\n\n## Sample Selection Summary\n")
+        for gse, selections in context.selected_samples.items():
+            print(f"\n### {gse} ({len(selections)} matching samples)\n")
+            print("| GSM | Library Type | Confidence | Needs Review | Reasoning |")
+            print("|-----|-------------|------------|--------------|-----------|")
+            for s in selections:
+                review = "Yes" if s.needs_review else "No"
+                print(
+                    f"| {s.accession} | {s.library_type} | "
+                    f"{s.confidence:.2f} | {review} | {s.reasoning} |"
+                )
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v0.5
+> **Version**: v0.6
 > **Created**: 2026-03-02
-> **Last updated**: 2026-03-02
+> **Last updated**: 2026-03-03
 > **Environment**: Python 3.12.12 (uv) | isolated venv `.venv/`
 
 ---
@@ -44,6 +44,7 @@ Proteomics_data_download/
 │   │   ├── __init__.py
 │   │   ├── query.py                # SearchQuery dataclass
 │   │   ├── dataset.py              # GEODataset, SupplementaryFile
+│   │   ├── sample.py               # GEOSample, SampleSelection (sample-level models)
 │   │   └── result.py               # PipelineResult (not yet implemented)
 │   │
 │   ├── skills/
@@ -56,6 +57,8 @@ Proteomics_data_download/
 │   │   ├── report.md              # ReportSkill spec
 │   │   ├── filter.py              # FilterSkill: keyword scoring + filtering
 │   │   ├── filter.md              # FilterSkill spec
+│   │   ├── sample_selector.py     # SampleSelectorSkill: LLM-based sample classification
+│   │   ├── sample_selector.md     # SampleSelectorSkill spec / 操作指南
 │   │   └── validate.py            # ValidationSkill (not yet implemented)
 │   │
 │   ├── ncbi/
@@ -69,6 +72,8 @@ Proteomics_data_download/
 │
 └── tests/
     ├── __init__.py
+    ├── test_parse_family_soft.py   # Family SOFT parser tests
+    ├── test_sample_selector.py     # SampleSelectorSkill tests (mocked LLM)
     └── fixtures/                   # Offline test response data
 ```
 
@@ -95,7 +100,13 @@ SearchQuery ──▶ [GEOSearchSkill] ──▶ list[GEODataset]
                                                    [FilterSkill] ──▶ scored & sorted (implemented)
                                                                          │
                                                                          ▼
-                                                                  [ValidateSkill] ──▶ validation (not yet implemented)
+                                                               [SampleSelectorSkill] ──▶ per-GSM classification
+                                                                  │                       (when --library-type)
+                                                                  ├─ acc.cgi Family SOFT (targ=gsm)
+                                                                  └─ LLM classification (Claude Haiku)
+                                                                                              │
+                                                                                              ▼
+                                                                                       [ValidateSkill] ──▶ validation (not yet implemented)
 ```
 
 ### 3.2 Skill interface
@@ -119,6 +130,7 @@ class Skill(ABC):
 | GEOSearchSkill | `query` | `datasets`, `total_found` | Implemented |
 | ReportSkill | `query`, `datasets`, `total_found` | `report`, `report_data` | Implemented |
 | FilterSkill | `datasets`, `query` | `filtered_datasets` | Implemented |
+| SampleSelectorSkill | `filtered_datasets`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented |
 | ValidationSkill | `filtered_datasets` | `validated_datasets` | Not yet implemented |
 
 ### 3.3 Agent orchestrator
@@ -139,6 +151,8 @@ class Skill(ABC):
 | `efetch(db, ids, rettype, retmode)` | E-utilities | Get full records (XML) |
 | `fetch_geo_soft(accession)` | GEO acc.cgi | Get SOFT metadata for one GSE (incl. Overall design) |
 | `fetch_geo_soft_batch(accessions)` | GEO acc.cgi | Batch SOFT metadata; returns `dict[str, str]` |
+| `fetch_family_soft(accession)` | GEO acc.cgi | Get Family SOFT (`targ=gsm`) with all sample blocks; 60s timeout |
+| `fetch_family_soft_batch(accessions)` | GEO acc.cgi | Batch Family SOFT; returns `dict[str, str]` |
 
 **Rate limits (implemented)**:
 
@@ -207,7 +221,35 @@ All types live under `geo_agent/models/`. Skills read/write these; changing repo
 Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →  
 `CITE-seq AND "Homo sapiens"[Organism] AND gse[EntryType]`
 
-### 4.3 PipelineContext
+### 4.3 GEOSample and SampleSelection
+
+**File**: `geo_agent/models/sample.py`
+
+**GEOSample** — per-GSM metadata parsed from Family SOFT:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `accession` | `str` | e.g. `"GSM9474997"` |
+| `title` | `str` | Sample title |
+| `organism` | `str` | e.g. `"Homo sapiens"` |
+| `molecule` | `str` | e.g. `"polyA RNA"`, `"protein"`, `"genomic DNA"` |
+| `characteristics` | `dict[str, str]` | Parsed from `!Sample_characteristics_ch1` (key: value pairs) |
+| `library_source` | `str` | e.g. `"transcriptomic"`, `"other"` |
+| `supplementary_files` | `list[str]` | URLs from `!Sample_supplementary_file` |
+| `description` | `str` | Sample description text |
+
+**SampleSelection** — LLM classification result:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `accession` | `str` | GSM accession |
+| `library_type` | `str` | `GEX\|ADT\|TCR\|BCR\|HTO\|ATAC\|OTHER` |
+| `confidence` | `float` | 0.0–1.0 |
+| `reasoning` | `str` | LLM explanation |
+| `needs_review` | `bool` | `True` if confidence < threshold |
+| `supplementary_files` | `list[str]` | Carried from GEOSample |
+
+### 4.4 PipelineContext
 
 **File**: `geo_agent/models/context.py`
 
@@ -219,6 +261,9 @@ Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →
 | `report` | `str` | ReportSkill | Markdown report text |
 | `report_data` | `list[dict]` | ReportSkill | Per-dataset dicts for AI/filter |
 | `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored and sorted subset |
+| `target_library_types` | `list[str]` | CLI `--library-type` | Target library types (default `["GEX"]`) |
+| `sample_metadata` | `dict[str, list[GEOSample]]` | SampleSelectorSkill | Parsed samples per GSE |
+| `selected_samples` | `dict[str, list[SampleSelection]]` | SampleSelectorSkill | Classified + filtered samples per GSE |
 | `validated_datasets` | `list[GEODataset]` | ValidationSkill | Not yet implemented |
 | `download_dir` | `str` | Config | Default `"./geo_downloads"` |
 | `downloaded_files` | `list[str]` | Download skill | Not yet implemented |
@@ -366,6 +411,7 @@ These improvements came from review and are reflected in the code:
 | Phase 2 | Search Skill + Agent + CLI (MVP) | **Done** |
 | Phase 2.5 | Report Skill (Markdown + structured data) | **Done** |
 | Phase 3 | FilterSkill (relevance scoring) + Skill docs | **Done** |
+| Phase 3.5 | SampleSelectorSkill (LLM sample classification) | **Done** |
 | Phase 4 | Download Skill (deferred) | Not implemented |
 | Phase 5 | Logging, PipelineResult, JSON output | Not implemented |
 
@@ -373,7 +419,7 @@ These improvements came from review and are reflected in the code:
 
 ## 10. Technology choices
 
-- **Custom framework vs LangChain**: Pipeline is deterministic (search → report → filter → validate), no LLM; a small Agent class is enough
+- **Custom framework vs LangChain**: Pipeline is mostly deterministic (search → report → filter); LLM is only used for sample classification (SampleSelectorSkill)
 - **requests vs httpx/aiohttp**: NCBI rate limit 3–10 req/s; async adds little for metadata phase
 - **uv + Python 3.12**: Isolated environment, independent of system Python
 - **Current focus on search**: Ensure search → report is correct first; download can follow later
@@ -398,3 +444,4 @@ These improvements came from review and are reflected in the code:
 | 2026-03-02 | v0.3 | PipelineContext dataclass; FilterSkill (keyword scoring); Skill docs under `docs/skills/` |
 | 2026-03-02 | v0.4 | Overall design: GEO acc.cgi SOFT; `fetch_geo_soft()` / `fetch_geo_soft_batch()`; `parse_soft_text()`; GEOSearchSkill 3-step (esearch→esummary→SOFT); FilterSkill scoring with design_lower (title 0.30 > design 0.25 > summary 0.15); GEO acc.cgi rate limit 0.25s |
 | 2026-03-02 | v0.5 | Self-contained doc: Data models (GEODataset, SearchQuery, PipelineContext); Overall design motivation + SOFT example + parse logic; End-to-end example (CLI → query → esearch → esummary → SOFT → report → filter); FilterSkill scoring weights in Architecture |
+| 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM sample classification; Family SOFT fetch/parse (`fetch_family_soft`, `parse_family_soft`); GEOSample/SampleSelection data models; Anthropic SDK integration; `--library-type` CLI flag; Unit tests |

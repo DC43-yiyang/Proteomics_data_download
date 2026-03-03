@@ -15,6 +15,10 @@ class Config:
     tool_name: str = "geo_agent"
     download_dir: Path = field(default_factory=lambda: Path("./geo_downloads"))
 
+    # Anthropic LLM config
+    anthropic_api_key: Optional[str] = None
+    llm_model: str = "claude-haiku-4-5-20251001"
+
     # Rate limiting (derived from api_key presence)
     @property
     def min_request_interval(self) -> float:
@@ -35,4 +39,6 @@ def load_config(env_file: Optional[str] = None) -> Config:
     return Config(
         api_key=os.getenv("NCBI_API_KEY") or None,
         email=os.getenv("NCBI_EMAIL", ""),
+        anthropic_api_key=os.getenv("ANTHROPIC_API_KEY") or None,
+        llm_model=os.getenv("LLM_MODEL", "claude-haiku-4-5-20251001"),
     )
