@@ -1,6 +1,6 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v0.4
+> **Version**: v0.5
 > **Created**: 2026-03-02
 > **Last updated**: 2026-03-02
 > **Environment**: Python 3.12.12 (uv) | isolated venv `.venv/`
@@ -154,7 +154,167 @@ class Skill(ABC):
 
 ---
 
-## 4. Adopted improvements
+## 4. Data models
+
+All types live under `geo_agent/models/`. Skills read/write these; changing report or filter logic requires knowing the exact fields.
+
+### 4.1 GEODataset and SupplementaryFile
+
+**File**: `geo_agent/models/dataset.py`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `accession` | `str` | e.g. `"GSE164378"` |
+| `uid` | `str` | NCBI internal UID |
+| `title` | `str` | Dataset title |
+| `summary` | `str` | Series summary text |
+| `organism` | `str` | e.g. `"Homo sapiens"` |
+| `platform` | `str` | e.g. `"GPL24676"` |
+| `series_type` | `str` | e.g. `"Expression profiling by high throughput sequencing"` |
+| `sample_count` | `int` | Number of samples |
+| `overall_design` | `str` | Experiment design (from SOFT; often contains protocol info) |
+| `ftp_link` | `str` | FTP base URL for future download |
+| `supplementary_files` | `list[SupplementaryFile]` | Name + URL (+ optional size) |
+| `relevance_score` | `float` | Filled by FilterSkill (0.0 ~ 1.0) |
+| `is_valid` | `bool` | Filled by ValidationSkill (not yet implemented) |
+| `validation_notes` | `str` | Filled by ValidationSkill |
+
+**Computed**: `geo_url` property → `https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={accession}`
+
+**SupplementaryFile**: `name: str`, `url: str`, `size_bytes: Optional[int]`
+
+### 4.2 SearchQuery
+
+**File**: `geo_agent/models/query.py`
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `data_type` | `str` | e.g. `"CITE-seq"`, `"scRNA-seq"`, `"WGS"`, `"WES"` |
+| `organism` | `Optional[str]` | e.g. `"Homo sapiens"` |
+| `disease` | `Optional[str]` | e.g. `"breast cancer"` |
+| `tissue` | `Optional[str]` | e.g. `"PBMC"`, `"T cells"` |
+| `file_types` | `list[str]` | Default `[".h5", ".mtx.gz", ".csv.gz"]` (for future download) |
+| `max_results` | `int` | Default 100 |
+
+**`to_geo_query() -> str`**: Builds NCBI GEO search string. Logic:
+
+- `data_type` is first term (matched in [All Fields] by GEO).
+- If `organism`: append `"<organism>"[Organism]`.
+- If `disease` or `tissue`: append as extra terms (All Fields).
+- Always append `gse[EntryType]`.
+- All parts joined with ` AND `.
+
+Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →  
+`CITE-seq AND "Homo sapiens"[Organism] AND gse[EntryType]`
+
+### 4.3 PipelineContext
+
+**File**: `geo_agent/models/context.py`
+
+| Field | Type | Set by | Description |
+|-------|------|--------|-------------|
+| `query` | `SearchQuery` | Caller (required) | Input search parameters |
+| `datasets` | `list[GEODataset]` | GEOSearchSkill | Search results with metadata |
+| `total_found` | `int` | GEOSearchSkill | Total matching records in GEO |
+| `report` | `str` | ReportSkill | Markdown report text |
+| `report_data` | `list[dict]` | ReportSkill | Per-dataset dicts for AI/filter |
+| `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored and sorted subset |
+| `validated_datasets` | `list[GEODataset]` | ValidationSkill | Not yet implemented |
+| `download_dir` | `str` | Config | Default `"./geo_downloads"` |
+| `downloaded_files` | `list[str]` | Download skill | Not yet implemented |
+| `errors` | `list[str]` | Agent | Accumulated SkillError messages |
+
+---
+
+## 5. Overall design: why and how
+
+### 5.1 Why a third step (SOFT)?
+
+E-utilities **esummary** does not return the **Overall design** field. For many scRNA-seq/CITE-seq entries, Title and Summary describe study background; the actual protocol (e.g. "CITE-seq, 151 antibodies") is only in **Overall design**. So GEOSearchSkill adds a third step: request SOFT from GEO acc.cgi per record and parse out `!Series_overall_design`.
+
+### 5.2 SOFT format example
+
+GEO acc.cgi returns SOFT: line-oriented key-value lines with `!` prefix and ` = ` separator. Example snippet:
+
+```
+!Series_geo_accession = GSE164378
+!Series_title = Single-cell RNA and protein profiling of ...
+!Series_summary = We applied joint single cell RNA and epitope analysis...
+!Series_overall_design = Tumour samples were processed for CITE-seq using 151 antibodies. Libraries were...
+!Series_type = Expression profiling by high throughput sequencing
+!Series_contributor = Smith,,John
+!Series_sample_id = GSM5012345
+!Series_sample_id = GSM5012346
+```
+
+### 5.3 Parsing logic
+
+**File**: `geo_agent/ncbi/parsers.py` → `parse_soft_text(soft_text: str) -> dict[str, str]`
+
+- Iterate lines; keep only lines starting with `!` and containing ` = `.
+- Split on first ` = `; key and value stripped.
+- Single-value fields (e.g. `!Series_overall_design`) → one entry in the dict (e.g. `overall_design`).
+- Multi-value fields (e.g. `!Series_contributor`, `!Series_sample_id`) → collected then joined with `"; "`.
+- GEOSearchSkill uses `parsed.get("overall_design", "")` to set `GEODataset.overall_design`; other fields are available for future use.
+
+---
+
+## 6. End-to-end example
+
+One full data flow from CLI to filtered output.
+
+### 6.1 CLI command
+
+```bash
+.venv/bin/geo-agent search --data-type "CITE-seq" --organism "Homo sapiens" --disease "breast cancer" --max-results 10 --report results.md
+```
+
+### 6.2 Query building
+
+CLI builds `SearchQuery(data_type="CITE-seq", organism="Homo sapiens", disease="breast cancer", max_results=10)`.  
+`to_geo_query()` returns:
+
+```
+CITE-seq AND "Homo sapiens"[Organism] AND breast cancer AND gse[EntryType]
+```
+
+### 6.3 GEOSearchSkill (three steps)
+
+1. **esearch** — `NCBIClient.esearch(db="gds", term=geo_query, retmax=10)` → JSON → `parse_esearch_response()` → list of UIDs + `total_found`.
+2. **esummary** — `NCBIClient.esummary(db="gds", ids=uids)` → JSON → `parse_esummary_to_datasets()` → `list[GEODataset]` with accession, title, summary, organism, sample_count, ftp_link, etc. (no Overall design yet).
+3. **SOFT** — `NCBIClient.fetch_geo_soft_batch(accessions)` → one acc.cgi request per accession (0.25s spacing) → `parse_soft_text()` per response → set `ds.overall_design` on each dataset.
+
+Context after search: `context.datasets`, `context.total_found` populated.
+
+### 6.4 ReportSkill
+
+Reads `context.query`, `context.datasets`, `context.total_found`. Builds:
+
+- `context.report_data`: list of dicts (accession, title, organism, summary, overall_design, geo_url, …) for each dataset.
+- `context.report`: Markdown (overview table + per-dataset details). If `--report results.md` was given, also writes that file.
+
+### 6.5 FilterSkill (when registered)
+
+Reads `context.datasets` and `context.query`. For each dataset:
+
+- Applies `min_samples`, `required_keywords`, `exclude_keywords` (constructor params).
+- Computes **relevance score** from: data_type in title (0.30) / Overall design (0.25) / summary (0.15); organism exact (0.20); disease in title (0.20) / design or summary (0.10); tissue in title (0.15) / design or summary (0.08); sample count ≥50 (0.10) or ≥20 (0.05); has supplementary files (0.05). Sorted by score descending; threshold by `min_score`.
+- Writes `context.filtered_datasets`.
+
+> **Note**: The current CLI only registers GEOSearchSkill and ReportSkill; it does not register FilterSkill. To use filtering, instantiate and register FilterSkill (e.g. in a custom script or future CLI flag) before `agent.run()`.
+
+### 6.6 Summary flow
+
+```
+CLI args → SearchQuery → to_geo_query()
+    → esearch (UIDs) → esummary (GEODataset list) → acc.cgi SOFT (overall_design)
+    → ReportSkill (report + report_data)
+    → FilterSkill (filtered_datasets, if registered)
+```
+
+---
+
+## 7. Adopted improvements
 
 These improvements came from review and are reflected in the code:
 
@@ -171,7 +331,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 5. CLI usage
+## 8. CLI usage
 
 ```bash
 # Basic search
@@ -198,7 +358,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 6. Implementation status
+## 9. Implementation status
 
 | Phase | Content | Status |
 |-------|---------|--------|
@@ -211,7 +371,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 7. Technology choices
+## 10. Technology choices
 
 - **Custom framework vs LangChain**: Pipeline is deterministic (search → report → filter → validate), no LLM; a small Agent class is enough
 - **requests vs httpx/aiohttp**: NCBI rate limit 3–10 req/s; async adds little for metadata phase
@@ -220,7 +380,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 8. Extensibility
+## 11. Extensibility
 
 - **New Skill**: Implement `Skill` and call `agent.register()`
 - **Web UI**: Agent is CLI-agnostic; call `agent.run(context)` from FastAPI/Flask
@@ -237,3 +397,4 @@ These improvements came from review and are reflected in the code:
 | 2026-03-02 | v0.2 | Phase 1/2/2.5 done; ReportSkill; review feedback (retry, FTP separation); flow search→report→AI filter; uv + API Key |
 | 2026-03-02 | v0.3 | PipelineContext dataclass; FilterSkill (keyword scoring); Skill docs under `docs/skills/` |
 | 2026-03-02 | v0.4 | Overall design: GEO acc.cgi SOFT; `fetch_geo_soft()` / `fetch_geo_soft_batch()`; `parse_soft_text()`; GEOSearchSkill 3-step (esearch→esummary→SOFT); FilterSkill scoring with design_lower (title 0.30 > design 0.25 > summary 0.15); GEO acc.cgi rate limit 0.25s |
+| 2026-03-02 | v0.5 | Self-contained doc: Data models (GEODataset, SearchQuery, PipelineContext); Overall design motivation + SOFT example + parse logic; End-to-end example (CLI → query → esearch → esummary → SOFT → report → filter); FilterSkill scoring weights in Architecture |
