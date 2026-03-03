@@ -10,5 +10,7 @@ geo_downloads/
 /debug_soft/
 /Example/
 
+.omc/
+/task_api/
 debug_report.md
 debug_run.py

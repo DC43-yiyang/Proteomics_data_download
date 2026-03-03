@@ -1,6 +1,6 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v0.6
+> **Version**: v0.7
 > **Created**: 2026-03-02
 > **Last updated**: 2026-03-03
 > **Environment**: Python 3.12.12 (uv) | isolated venv `.venv/`
@@ -359,7 +359,38 @@ CLI args → SearchQuery → to_geo_query()
 
 ---
 
-## 7. Adopted improvements
+## 7. Known issues from real-world testing
+
+> Full analysis: `docs/developer_notes_family_soft_findings.md` (10 series tested)
+
+### 7.1 GEO search returns false positives
+
+GEO's `esearch` matches keywords loosely. Example: GSE280852 was returned for a CITE-seq query but contains **only scRNA-seq** (6 samples, all polyA RNA, no ADT library). The study likely mentions "CITE-seq" in text without actually containing CITE-seq data.
+
+**Current mitigation**: FilterSkill scores catch some false positives (low data_type match). **Planned**: SampleSelectorSkill post-classification check — if all samples classify as GEX with no ADT/TCR, flag the series as a likely false positive (TODO, not yet implemented).
+
+### 7.2 Per-sample supplementary files can be empty
+
+Some series (e.g. GSE320155, 60 samples) set `!Sample_supplementary_file_1 = NONE` for every sample. Data is uploaded as Series-level aggregated files only (e.g. `_cellranger_aggr.gz`, `_RAW.tar`).
+
+**Impact on DownloadSkill**: Cannot rely solely on per-GSM FTP links. Must fall back to Series-level `supplementary_file` list when per-sample files are absent.
+
+### 7.3 Sample naming is wildly inconsistent across uploaders
+
+Observed naming for the same library type across 10 tested series:
+
+| Library type | Variants seen |
+|---|---|
+| GEX | `_GEX`, `, GEX`, `_RNA`, `_mRNA`, `5'GEX` |
+| ADT | `_ADT`, `, ADT`, `Surface`, `ADT/HTO mixed` |
+| TCR | `_VDJ`, `library type: TCR`, `gdTCR` / `abTCR` |
+| HTO | `_HTO`, `ADT/HTO mixed` |
+
+Rule-based classification cannot scale. This is the primary motivation for LLM-based sample classification in SampleSelectorSkill (see `docs/LLM_sample_selector.md`).
+
+---
+
+## 8. Adopted improvements
 
 These improvements came from review and are reflected in the code:
 
@@ -376,7 +407,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 8. CLI usage
+## 9. CLI usage
 
 ```bash
 # Basic search
@@ -403,7 +434,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 9. Implementation status
+## 10. Implementation status
 
 | Phase | Content | Status |
 |-------|---------|--------|
@@ -417,7 +448,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 10. Technology choices
+## 11. Technology choices
 
 - **Custom framework vs LangChain**: Pipeline is mostly deterministic (search → report → filter); LLM is only used for sample classification (SampleSelectorSkill)
 - **requests vs httpx/aiohttp**: NCBI rate limit 3–10 req/s; async adds little for metadata phase
@@ -426,7 +457,7 @@ These improvements came from review and are reflected in the code:
 
 ---
 
-## 11. Extensibility
+## 12. Extensibility
 
 - **New Skill**: Implement `Skill` and call `agent.register()`
 - **Web UI**: Agent is CLI-agnostic; call `agent.run(context)` from FastAPI/Flask
@@ -445,3 +476,4 @@ These improvements came from review and are reflected in the code:
 | 2026-03-02 | v0.4 | Overall design: GEO acc.cgi SOFT; `fetch_geo_soft()` / `fetch_geo_soft_batch()`; `parse_soft_text()`; GEOSearchSkill 3-step (esearch→esummary→SOFT); FilterSkill scoring with design_lower (title 0.30 > design 0.25 > summary 0.15); GEO acc.cgi rate limit 0.25s |
 | 2026-03-02 | v0.5 | Self-contained doc: Data models (GEODataset, SearchQuery, PipelineContext); Overall design motivation + SOFT example + parse logic; End-to-end example (CLI → query → esearch → esummary → SOFT → report → filter); FilterSkill scoring weights in Architecture |
 | 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM sample classification; Family SOFT fetch/parse (`fetch_family_soft`, `parse_family_soft`); GEOSample/SampleSelection data models; Anthropic SDK integration; `--library-type` CLI flag; Unit tests |
+| 2026-03-03 | v0.7 | Known issues from real-world testing (§7): GEO false positives, empty per-sample files, naming inconsistency; naming variant table; TODO for series-level false positive detection |

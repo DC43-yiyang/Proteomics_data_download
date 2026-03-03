@@ -52,5 +52,5 @@ The `characteristics` field is equally inconsistent: some use `library type: mRN
 These findings reinforce three design decisions in `docs/LLM_sample_selector.md`:
 
 1. **LLM classification is not optional** — it's the only reliable way to handle the variability.
-2. **SampleSelectorSkill should also detect false-positive series** — if LLM classifies all samples as GEX with no ADT/TCR, the series should be flagged as "likely not a true CITE-seq dataset" (addresses Finding 1).
+2. **SampleSelectorSkill should also detect false-positive series** (TODO — not yet implemented) — if LLM classifies all samples as GEX with no ADT/TCR, the series should be flagged as "likely not a true CITE-seq dataset". Current implementation only classifies individual samples; series-level validation is planned as a post-classification check (addresses Finding 1).
 3. **DownloadSkill must support both per-GSM and Series-level file retrieval** — `supplementary_file = NONE` is a common pattern (addresses Finding 2).
