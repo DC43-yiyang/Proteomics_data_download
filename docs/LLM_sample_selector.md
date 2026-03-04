@@ -1,215 +1,210 @@
-# LLM Sample Selector
+# LLM 生信样本智能筛选（Selector Only）计划书
 
-> **Status**: Implemented
-> **Updated**: 2026-03-03
-> **Code**: `geo_agent/skills/sample_selector.py`
-> **Spec**: `geo_agent/skills/sample_selector.md`
+## 1. 项目定位
 
----
+本项目目标是做一个 **样本筛选器（Selector）**，不是下载器。
 
-## 1. Problem
-
-A single CITE-seq Series contains multiple library types as separate GSM samples. GSE317605 has 168 samples: 84 GEX + 84 ADT. If a researcher only needs ADT data, they need to know *which* GSMs are ADT before downloading.
-
-The pipeline's Series SOFT (`targ=self`) only has Series-level metadata — no sample titles, no molecule fields, no per-sample FTP links. **Family SOFT** (`targ=gsm`) has everything, but its naming conventions are wildly inconsistent across uploaders.
-
-### Why rules don't work — real data from 10 series
-
-| Library type | Observed naming variants (10 series) |
-|---|---|
-| GEX | `_GEX`, `, GEX`, `_RNA`, `_mRNA`, `5'GEX`, `gene expression` |
-| ADT | `_ADT`, `, ADT`, `Surface`, `ADT/HTO mixed` |
-| TCR | `_VDJ`, `library type: TCR`, `gdTCR`, `abTCR` |
-| HTO | `_HTO`, `ADT/HTO mixed` |
-
-Rule-based parsing cannot scale. LLM handles this naturally.
+- 输入：自然语言筛选需求 + GEO 系列/样本元数据（Family SOFT 预处理结果）
+- 输出：可人工复核的筛选结果表（重点是“选中哪些 sample + 对应下载链接”）
+- 当前阶段：Debug 阶段，优先“信息充分、可审计、可复核”
 
 ---
 
-## 2. Solution
+## 2. 范围边界（重要）
 
-```
-FilterSkill output (GSE list)
-        │
-        ▼
-  SampleSelectorSkill
-    ├─ fetch Family SOFT per GSE (targ=gsm)
-    ├─ parse sample-level metadata (GEOSample)
-    ├─ compress → JSON prompt → LLM classifies each GSM
-    └─ filter by target_library_types
-        │
-        ▼
-  Selection Report (Markdown)
-    ├─ per-GSE sample classification table
-    ├─ per-GSM download links (FTP)
-    └─ needs_review flags for ambiguous samples
-```
+### 2.1 包含
 
-**Goal**: Run the selector, output a detailed report containing:
-- Which database (GSE accession)
-- Which samples to use (GSM accessions + library type + confidence)
-- Download links (per-sample FTP URLs from supplementary_files)
-- Flagged samples needing human review
+- 识别目标 sample（例如 ADT / Surface / AbSeq / CITE 蛋白相关）
+- 识别假阳性系列（标题提到 CITE-seq，但样本层面无蛋白证据）
+- 输出可检查的表格 + 调试字段（证据、置信度、规则命中情况）
 
-The skill does **not** download files — it produces an actionable report.
+### 2.2 不包含
+
+- 不做自动下载
+- 不做下载路由执行（仅输出链接与建议）
 
 ---
 
-## 3. Data flow
+## 3. 关键痛点（Selector 视角）
 
-### Input signals per sample (from Family SOFT)
+1. **命名不统一**：ADT 可能叫 ADT / Surface / Antibody / AbSeq / Tags
+2. **摘要假阳性**：Series 介绍写 CITE-seq，但样本都是 RNA
+3. **GSM 无文件或信息不足**：样本标题有 GEX/ADT 拆分，但 sample 级链接为空
+4. **整合对象**：可能是 integrated 对象（如 `.h5ad` / `.rds`），非显式分模态
 
-| Field | Example (GEX) | Example (ADT) |
-|---|---|---|
-| `title` | `Patient 10-02_GEX timepoint T01 scRNAseq` | `Patient 10-02_ADT timepoint T01 scRNAseq` |
-| `characteristics` | `library type: mRNA` | `library type: ADT` |
-| `molecule` | `polyA RNA` | `protein` |
-| `library_source` | `transcriptomic` | `other` |
-| `description` | `Gene expression library` | `antibody-derived oligonucleotide` |
-| `supplementary_files` | 3 FTP URLs (barcodes/features/matrix) | 3 FTP URLs |
+---
 
-### LLM classification
+## 4. 输入与输出规范
 
-Model: **Claude Haiku** (`claude-haiku-4-5-20251001`) — fast, cheap, sufficient for extraction tasks.
+### 4.1 输入
 
-Categories: `GEX` | `ADT` | `TCR` | `BCR` | `HTO` | `ATAC` | `OTHER`
+- `query`：用户自然语言目标（例如：`Extract all CITE-seq protein/ADT samples`）
+- `metadata`：Phase 1 预处理后的单个 GSE JSON（包含 sample 列表与精简字段）
 
-Signal priority:
-```
-characteristics > molecule > library_source > title > description
-```
+### 4.2 输出（核心 JSON）
 
-Confidence: 0.9+ (multiple signals agree) → 0.7–0.9 (partial match) → <0.7 (ambiguous, `needs_review=True`)
-
-### Output: `context.selected_samples`
-
-```python
+```json
 {
-    "GSE317605": [
-        SampleSelection(
-            accession="GSM9475081",
-            library_type="ADT",
-            confidence=0.98,
-            reasoning="title=_ADT, molecule=protein, library_source=other",
-            needs_review=False,
-            supplementary_files=[
-                "ftp://...GSM9475081_barcodes.tsv.gz",
-                "ftp://...GSM9475081_features.tsv.gz",
-                "ftp://...GSM9475081_matrix.mtx.gz",
-            ],
-        ),
-        # ... 83 more ADT samples
-    ]
+  "is_false_positive": false,
+  "download_strategy": "GSM_Level_Separated",
+  "selected_samples": [
+    {
+      "gsm_id": "GSMXXXXXXX",
+      "sample_title": "...",
+      "modality_inferred": "ADT"
+    }
+  ],
+  "reasoning": "..."
 }
 ```
 
 ---
 
-## 4. Real-world test corpus (10 CITE-seq series, 566 samples)
+## 5. 人工复核用表格（主输出）
 
-| GSE | Samples | Library types | Notes |
-|-----|---------|---------------|-------|
-| GSE317605 | 168 | 84 GEX + 84 ADT | Clean `_GEX`/`_ADT` naming, characteristics tagged |
-| GSE268991 | 56 | GEX + ADT + TCR | Uses `5'GEX` / `Surface` — non-standard naming |
-| GSE306608 | 6 | 2 GEX + 2 ADT + 2 HTO | Small, clean |
-| GSE313153 | 4 | 2 RNA + 2 ADT | Uses `_RNA` instead of `_GEX` |
-| GSE283984 | 3 | 1 mRNA + 1 ADT + 1 HTO | Uses `_mRNA` |
-| GSE269123 | 28 | GEX + ADT + gdTCR + abTCR | TCR split into gamma-delta vs alpha-beta |
-| GSE303197 | 25 | mRNA + ADT/HTO mixed + TCR | Combined ADT+HTO in single samples |
-| GSE280852 | 6 | All polyA RNA (no ADT) | **False positive** — GEO search returned it for CITE-seq but it's pure scRNA-seq |
-| GSE320155 | 60 | 20 GEX + 20 ADT + 20 TCR | `supplementary_file = NONE` for all — data is Series-level only |
-| GSE318420 | 210 | GEX + ADT mixed | Largest dataset |
+运行后按 **每个 GSE 一行（可展开 sample）** 输出汇总表，至少包含以下列：
 
-### Key findings
-
-1. **GEO returns false positives** — GSE280852 has zero CITE-seq sub-libraries. The LLM can detect this (all samples = GEX, no ADT) and flag it.
-
-2. **Some series have no per-sample files** — GSE320155 has `supplementary_file = NONE` for all 60 GSMs. Data lives at Series level as aggregated CellRanger output. The report should note this.
-
-3. **Naming is chaotic** — The same library type has 5+ naming variants across 10 series. This is exactly why LLM classification is the right approach.
-
----
-
-## 5. Cost
-
-| Component | Per series | 300 series |
-|---|---|---|
-| Input tokens | ~3,900 | ~1.2M |
-| Output tokens | ~5,000 | ~1.5M |
-| **Haiku cost** | ~$0.001 | **~$0.30** |
-
-Negligible. Even Sonnet stays under $10 for 300 series.
-
----
-
-## 6. Error handling
-
-| Scenario | Handling |
+| 列名 | 说明 |
 |---|---|
-| Family SOFT fetch fails | Skip series, log to `context.errors` |
-| Family SOFT is empty | Skip series, log to `context.errors` |
-| LLM returns invalid JSON | Retry 1x; still fails → skip series |
-| Unknown `library_type` | Map to `OTHER`, set `needs_review=True` |
-| Confidence < threshold | Set `needs_review=True`, keep in results |
-| `supplementary_file = NONE` | Keep in report, note "Series-level files only" |
+| `series_id` | GSE 编号 |
+| `is_false_positive` | 是否判定为假阳性 |
+| `download_strategy` | 仅用于定位数据组织方式（不执行下载） |
+| `selected_gsm_count` | 被选中的 sample 数量 |
+| `selected_gsm_ids` | 被选中的 GSM 列表 |
+| `selected_sample_titles` | 被选中 sample 标题（可截断） |
+| `selected_links` | 被选中 sample 的 supplementary file 链接（尽可能完整） |
+| `reasoning` | 简要判定理由 |
 
 ---
 
-## 7. Usage
+## 6. Debug 阶段增强字段（建议尽量多输出）
 
-### CLI
+为了便于人工反馈，建议额外输出调试列：
 
-```bash
-geo-agent search \
-    --data-type "CITE-seq" \
-    --organism "Homo sapiens" \
-    --max-results 10 \
-    --library-type GEX \
-    --library-type ADT
-```
-
-### debug_run.py
-
-```python
-FETCH_FAMILY_SOFT = True          # Parse samples without LLM (verification mode)
-FAMILY_SOFT_DEBUG_DIR = "debug_family_soft/"  # Save raw .soft files
-```
-
-### Programmatic
-
-```python
-from geo_agent.skills.sample_selector import SampleSelectorSkill
-import anthropic
-
-skill = SampleSelectorSkill(
-    ncbi_client=client,
-    llm_client=anthropic.Anthropic(api_key="..."),
-    confidence_threshold=0.7,
-)
-context.target_library_types = ["ADT"]
-context = skill.execute(context)
-
-# Generate report from context.selected_samples
-for acc, selections in context.selected_samples.items():
-    for s in selections:
-        print(f"{acc} → {s.accession} [{s.library_type}] conf={s.confidence:.2f}")
-        for url in s.supplementary_files:
-            print(f"    {url}")
-```
-
----
-
-## 8. Files
-
-| File | Role |
+| 列名 | 说明 |
 |---|---|
-| `geo_agent/models/sample.py` | `GEOSample`, `SampleSelection` dataclasses |
-| `geo_agent/models/context.py` | `target_library_types`, `sample_metadata`, `selected_samples` on PipelineContext |
-| `geo_agent/ncbi/client.py` | `fetch_family_soft()`, `fetch_family_soft_batch()` |
-| `geo_agent/ncbi/parsers.py` | `parse_family_soft()` |
-| `geo_agent/skills/sample_selector.py` | `SampleSelectorSkill` |
-| `geo_agent/skills/sample_selector.md` | Skill spec (classification rules, validation criteria) |
-| `geo_agent/config.py` | `anthropic_api_key`, `llm_model` |
-| `geo_agent/cli.py` | `--library-type` flag |
-| `tests/test_parse_family_soft.py` | Parser tests (7 cases) |
-| `tests/test_sample_selector.py` | Skill tests with mocked NCBI + LLM (12 cases) |
+| `total_samples` | 该 GSE 下样本总数 |
+| `samples_with_files` | 有 sample 级文件的样本数 |
+| `samples_without_files` | 无 sample 级文件的样本数 |
+| `candidate_adt_like_count` | 被规则/模型初判为 ADT-like 的样本数 |
+| `excluded_rna_like_count` | 被排除的 RNA-only 样本数 |
+| `confidence_summary` | 置信度摘要（min/mean/max） |
+| `evidence_keywords` | 命中的关键词（ADT/Surface/AbSeq/Antibody 等） |
+| `raw_selector_output` | 原始模型输出（建议 JSON 字符串保存） |
+| `validation_errors` | JSON 校验或字段修正信息 |
+
+---
+
+## 7. 推荐产物（便于复核）
+
+每次运行建议产出两份文件：
+
+1. `selector_results_table.md`（给人看）
+   - Markdown 表格，便于快速浏览和人工打标
+2. `selector_results_debug.json`（给程序和追溯）
+   - 保留完整字段、链接、原始输出、校验日志
+
+---
+
+## 8. 评估与反馈闭环
+
+人工复核时重点检查：
+
+1. 是否漏掉应选 sample（False Negative）
+2. 是否误选 RNA-only sample（False Positive）
+3. 链接是否对应被选中的 sample
+4. `reasoning` 是否能解释选择依据
+
+根据复核反馈，迭代：
+
+- prompt 规则
+- 输出校验器
+- 别名词典（Surface/AbSeq/HTO/FB 等）
+
+---
+
+## 9. 分阶段实施（更新版）
+
+### Phase 1：Context 预处理（已做）
+
+- 解析 Family SOFT
+- 生成轻量 metadata JSON
+
+### Phase 2：Selector 推理与严格校验（进行中）
+
+- 执行 `select_samples(query, metadata)`
+- 校验输出 schema，清洗字段
+
+### Phase 3：表格化调试输出（下一步）
+
+- 将 22 个 GSE 批量结果汇总成 table + debug JSON
+- 输出尽可能多的可审查证据
+
+### Phase 4：人工反馈驱动迭代
+
+- 根据你的人工检查结果调整规则与提示词
+
+---
+
+## 10. 示例表头（Markdown）
+
+| series_id | is_false_positive | download_strategy | selected_gsm_count | selected_gsm_ids | selected_links | reasoning | total_samples | samples_with_files | validation_errors |
+|---|---:|---|---:|---|---|---|---:|---:|---|
+| GSEXXXXXX | false | GSM_Level_Separated | 3 | GSM1; GSM2; GSM3 | link1; link2; link3 | ... | 48 | 12 | |
+
+> 说明：`download_strategy` 在本项目中仅作诊断标签，不触发下载动作。
+
+---
+
+## 11. 当前进展总结（2026-03-04）
+
+### 11.1 已完成
+
+- Phase 1：已完成 22 个 standalone GSE 的 metadata 预处理
+- Phase 2：已实现 `select_samples(query, metadata)` + 严格 JSON 校验
+- Phase 3：已完成 22 个 GSE 的批量 debug 运行并导出表格
+
+### 11.2 本次批量运行结果（22 个 GSE）
+
+数据来源：`selector_results_debug.json`
+
+- `series_count`: 22
+- `series_with_selected_samples`: 18
+- `false_positive_count`: 4
+- `total_selected_samples`: 178
+- `llm_status`: ok
+- `model`: `claude-haiku-4-5-20251001`
+
+假阳性（当前结果）：
+
+- `GSE280852`
+- `GSE291290`
+- `GSE316069`
+- `GSE316782`
+
+### 11.3 已生成的复核产物
+
+1. `selector_results_table.md`
+   - 人工快速浏览表（每个 GSE 一行）
+2. `selector_results_debug.json`
+   - 完整调试信息（raw 输出、校验信息、每个 series 的详细字段）
+3. `debug_phase1_context.json`
+   - Phase 1 预处理上下文（供 selector 输入）
+4. `debug_phase1_summary.json`
+   - Phase 1 汇总统计
+
+### 11.4 当前观察（用于下一轮迭代）
+
+- 22 个 GSE 中有 18 个被选出目标样本，4 个判为假阳性
+- 仅 5 个 GSE 在“被选中 sample”上直接拿到了 sample 级 supplementary links
+- 其余部分 series 的目标 sample 缺少直接文件链接，后续可补充 SRA relation 链接或 GSE-level 附件定位信息（仅展示，不下载）
+
+---
+
+## 12. 下一步（你给反馈后迭代）
+
+优先按人工复核反馈修正：
+
+1. 误检（False Positive）和漏检（False Negative）
+2. `selected_links` 的完整性（补充 relation/SRA/GSE-level 线索）
+3. reasoning 过长或不清晰的条目

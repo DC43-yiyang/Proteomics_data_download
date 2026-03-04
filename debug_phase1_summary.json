@@ -1,0 +1,140 @@
+{
+  "series_count": 22,
+  "total_samples": 631,
+  "samples_with_supp_files": 301,
+  "samples_without_supp_files": 330,
+  "series": [
+    {
+      "series_id": "GSE266455",
+      "sample_count": 48,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 48
+    },
+    {
+      "series_id": "GSE268991",
+      "sample_count": 56,
+      "samples_with_supp_files": 28,
+      "samples_without_supp_files": 28
+    },
+    {
+      "series_id": "GSE269123",
+      "sample_count": 28,
+      "samples_with_supp_files": 21,
+      "samples_without_supp_files": 7
+    },
+    {
+      "series_id": "GSE280852",
+      "sample_count": 6,
+      "samples_with_supp_files": 6,
+      "samples_without_supp_files": 0
+    },
+    {
+      "series_id": "GSE283984",
+      "sample_count": 3,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 3
+    },
+    {
+      "series_id": "GSE287976",
+      "sample_count": 12,
+      "samples_with_supp_files": 2,
+      "samples_without_supp_files": 10
+    },
+    {
+      "series_id": "GSE291290",
+      "sample_count": 6,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 6
+    },
+    {
+      "series_id": "GSE294427",
+      "sample_count": 9,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 9
+    },
+    {
+      "series_id": "GSE296447",
+      "sample_count": 8,
+      "samples_with_supp_files": 8,
+      "samples_without_supp_files": 0
+    },
+    {
+      "series_id": "GSE299416",
+      "sample_count": 9,
+      "samples_with_supp_files": 3,
+      "samples_without_supp_files": 6
+    },
+    {
+      "series_id": "GSE303197",
+      "sample_count": 25,
+      "samples_with_supp_files": 5,
+      "samples_without_supp_files": 20
+    },
+    {
+      "series_id": "GSE303984",
+      "sample_count": 102,
+      "samples_with_supp_files": 34,
+      "samples_without_supp_files": 68
+    },
+    {
+      "series_id": "GSE305370",
+      "sample_count": 80,
+      "samples_with_supp_files": 60,
+      "samples_without_supp_files": 20
+    },
+    {
+      "series_id": "GSE306022",
+      "sample_count": 9,
+      "samples_with_supp_files": 6,
+      "samples_without_supp_files": 3
+    },
+    {
+      "series_id": "GSE306608",
+      "sample_count": 6,
+      "samples_with_supp_files": 6,
+      "samples_without_supp_files": 0
+    },
+    {
+      "series_id": "GSE313153",
+      "sample_count": 4,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 4
+    },
+    {
+      "series_id": "GSE313894",
+      "sample_count": 68,
+      "samples_with_supp_files": 68,
+      "samples_without_supp_files": 0
+    },
+    {
+      "series_id": "GSE315668",
+      "sample_count": 42,
+      "samples_with_supp_files": 42,
+      "samples_without_supp_files": 0
+    },
+    {
+      "series_id": "GSE316069",
+      "sample_count": 14,
+      "samples_with_supp_files": 6,
+      "samples_without_supp_files": 8
+    },
+    {
+      "series_id": "GSE316096",
+      "sample_count": 18,
+      "samples_with_supp_files": 6,
+      "samples_without_supp_files": 12
+    },
+    {
+      "series_id": "GSE316782",
+      "sample_count": 18,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 18
+    },
+    {
+      "series_id": "GSE320155",
+      "sample_count": 60,
+      "samples_with_supp_files": 0,
+      "samples_without_supp_files": 60
+    }
+  ]
+}

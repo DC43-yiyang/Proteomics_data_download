@@ -1,273 +1,510 @@
 import json
 import logging
 import re
+from pathlib import Path
 from typing import Any
 
 from geo_agent.models.context import PipelineContext
-from geo_agent.models.sample import GEOSample, SampleSelection
+from geo_agent.models.sample import GEOSample
 from geo_agent.ncbi.client import NCBIClient
 from geo_agent.ncbi.parsers import parse_family_soft
 from geo_agent.skills.base import Skill, SkillError
 
 logger = logging.getLogger(__name__)
 
-VALID_LIBRARY_TYPES = {"GEX", "ADT", "TCR", "BCR", "HTO", "ATAC", "OTHER"}
+_CORE_CHARACTERISTICS = {
+    "library type",
+    "cell type",
+    "tissue",
+    "sample type",
+    "disease",
+    "disease state",
+    "time point",
+    "batch",
+    "condition",
+    "treatment",
+}
 
-SYSTEM_PROMPT = """\
-You are a bioinformatics expert classifying GEO samples by library type.
+VALID_DOWNLOAD_STRATEGIES = {
+    "GSM_Level_Separated",
+    "GSE_Level_Bundled",
+    "Integrated_Object",
+    "None",
+}
 
-Classify each sample into exactly ONE category: GEX, ADT, TCR, BCR, HTO, ATAC, or OTHER.
+VALID_MODALITIES = {"ADT", "Integrated GEX+ADT"}
 
-## How to judge — use fields in this order
+_ADT_KEYWORDS = (
+    "adt",
+    "antibody",
+    "abseq",
+    "surface",
+    "cite",
+    "protein",
+    "fb",
+)
+_RNA_ONLY_KEYWORDS = (
+    "gex",
+    "rna",
+    "scrna",
+    "snrna",
+    "tcr",
+    "bcr",
+    "vdj",
+)
+_INTEGRATED_KEYWORDS = (
+    "integrated",
+    "multiome",
+    ".h5ad",
+    ".rds",
+    "raw_feature_bc_matrix",
+    ".h5",
+)
 
-1. characteristics "library type" field — most reliable. If it says "mRNA" → GEX, "ADT" → ADT, "TCR" → TCR.
-2. molecule field — "polyA RNA" or "total RNA" → GEX, "protein" → ADT, "genomic DNA" → TCR/BCR/ATAC.
-3. library_source — "transcriptomic" → GEX, "other" → usually ADT.
-4. Title keywords — but be careful, naming varies wildly (see mistakes below).
-5. description — least reliable, often missing or irrelevant.
+SELECTOR_SYSTEM_PROMPT = """\
+You are an expert Bioinformatics Data Curator and an AI module for GEO sample selection.
 
-## Common mistakes to avoid
+Task:
+- Read the provided JSON metadata for one GSE series.
+- Select only samples containing CITE-seq protein/ADT signal.
+- Diagnose data locus and output strict JSON.
 
-WRONG: Title contains "scRNAseq" → must be GEX.
-RIGHT: ADT samples often have "scRNAseq" in the title too (e.g. "Patient 10-02_ADT timepoint T01 scRNAseq"). Look at molecule and library_source instead.
+Output schema (strict JSON object, no markdown):
+{
+  "is_false_positive": boolean,
+  "download_strategy": "GSM_Level_Separated" | "GSE_Level_Bundled" | "Integrated_Object" | "None",
+  "selected_samples": [
+    {
+      "gsm_id": "GSMXXXXXXX",
+      "sample_title": "Original title",
+      "modality_inferred": "ADT" | "Integrated GEX+ADT"
+    }
+  ],
+  "reasoning": "Concise justification."
+}
 
-WRONG: Title doesn't contain "_ADT" → not ADT.
-RIGHT: Some series use "Surface" (GSE268991) or "ADT/HTO mixed" (GSE303197) instead of "_ADT". Check molecule=protein.
-
-WRONG: Title doesn't contain "_GEX" → not GEX.
-RIGHT: Variants include "5'GEX", "_RNA", "_mRNA", ", GEX", "gene expression". Check molecule=polyA RNA.
-
-## Naming variants I've seen across real GEO series
-
-- GEX: "_GEX", ", GEX", "_RNA", "_mRNA", "5'GEX", "gene expression"
-- ADT: "_ADT", ", ADT", "Surface", "ADT/HTO mixed"
-- TCR: "_VDJ", "_TCR", "gdTCR", "abTCR", "library type: TCR"
-- HTO: "_HTO", "ADT/HTO mixed"
-
-## Confidence
-
-- 0.9+: Multiple fields agree (characteristics + molecule + library_source all point the same way)
-- 0.7-0.9: One strong field matches (e.g. characteristics says "library type: ADT" but title is ambiguous)
-- 0.5-0.7: Signals conflict or are mostly missing
-- <0.5: Cannot determine → classify as OTHER
-
-## False positive series detection
-
-If ALL samples in a batch look like the same type (e.g. all GEX, zero ADT/TCR/HTO), add a note in the reasoning of the first sample: "WARNING: no multi-library diversity detected — this series may not be genuine CITE-seq". This helps downstream tools flag false positives from GEO search.
-
-## Output format
-
-Return a JSON array (no markdown fences):
-[{"accession": "GSM...", "library_type": "GEX", "confidence": 0.95, "reasoning": "brief explanation"}]
+Rules:
+- Exclude pure RNA/GEX/TCR/BCR only samples unless they are integrated multi-omic objects.
+- If CITE-seq is mentioned but no sample/file evidence supports ADT/protein, mark false positive with empty selected_samples.
+- Prefer sample-level ADT files when present.
+- Use GSE_Level_Bundled when samples are modality-split but files are bundled at GSE-level.
+- Keep reasoning concise.
 """
 
 
-BATCH_SIZE = 50  # Max samples per LLM call to avoid output token truncation
-
-
 class SampleSelectorSkill(Skill):
-    """Classify GSM samples by library type using LLM.
+    """Phase 1 preprocessor for LLM-driven sample selection.
 
-    Reads:
-        context.filtered_datasets — list[GEODataset] (uses accessions)
-        context.target_library_types — list[str] (e.g. ["GEX", "ADT"])
-
-    Writes:
-        context.sample_metadata — dict[str, list[GEOSample]]
-        context.selected_samples — dict[str, list[SampleSelection]]
+    This phase only builds compact metadata context for LLM input.
+    It does not run LLM classification yet.
     """
 
     def __init__(
         self,
-        ncbi_client: NCBIClient,
-        llm_client: Any,  # anthropic.Anthropic
-        model: str = "claude-haiku-4-5-20251001",
-        confidence_threshold: float = 0.7,
+        ncbi_client: NCBIClient | None,
+        max_chars: int = 140,
+        max_files_per_sample: int = 4,
+        max_characteristics_per_sample: int = 6,
     ):
         self._ncbi_client = ncbi_client
-        self._llm_client = llm_client
-        self._model = model
-        self._confidence_threshold = confidence_threshold
+        self._max_chars = max_chars
+        self._max_files_per_sample = max_files_per_sample
+        self._max_characteristics_per_sample = max_characteristics_per_sample
 
     @property
     def name(self) -> str:
         return "sample_selector"
 
     def execute(self, context: PipelineContext) -> PipelineContext:
+        if self._ncbi_client is None:
+            context.errors.append("SampleSelectorSkill requires ncbi_client for execute()")
+            logger.warning("SampleSelectorSkill requires ncbi_client for execute()")
+            return context
+
         datasets = context.filtered_datasets or context.datasets
         if not datasets:
-            logger.warning("No datasets to classify samples for")
+            logger.warning("No datasets to preprocess for sample selector")
             return context
 
         accessions = [ds.accession for ds in datasets]
-        target_types = set(t.upper() for t in (context.target_library_types or ["GEX"]))
-
-        logger.info(
-            f"Classifying samples for {len(accessions)} series, "
-            f"target types: {target_types}"
-        )
-
-        # Step 1: Fetch Family SOFT in batch
         soft_texts = self._ncbi_client.fetch_family_soft_batch(accessions)
 
-        # Step 2: Parse samples per series
-        for acc, soft_text in soft_texts.items():
+        for accession, soft_text in soft_texts.items():
             if not soft_text:
-                context.errors.append(f"Failed to fetch Family SOFT for {acc}")
+                context.errors.append(f"Failed to fetch Family SOFT for {accession}")
                 continue
+
             try:
                 samples = parse_family_soft(soft_text)
-                context.sample_metadata[acc] = samples
-                logger.info(f"{acc}: parsed {len(samples)} samples")
-            except Exception as e:
-                context.errors.append(f"Failed to parse Family SOFT for {acc}: {e}")
-                logger.warning(f"Failed to parse Family SOFT for {acc}: {e}")
-
-        # Step 3: Classify samples per series via LLM
-        for acc, samples in context.sample_metadata.items():
-            if not samples:
+            except Exception as exc:
+                context.errors.append(f"Failed to parse Family SOFT for {accession}: {exc}")
+                logger.warning("Failed to parse Family SOFT for %s: %s", accession, exc)
                 continue
-            try:
-                classifications = self._classify_samples(acc, samples)
-                # Filter by target library types
-                selected = [
-                    c for c in classifications
-                    if c.library_type in target_types
-                ]
-                context.selected_samples[acc] = selected
-                logger.info(
-                    f"{acc}: {len(selected)}/{len(classifications)} samples "
-                    f"match target types {target_types}"
-                )
-            except Exception as e:
-                context.errors.append(
-                    f"Failed to classify samples for {acc}: {e}"
-                )
-                logger.warning(f"Failed to classify samples for {acc}: {e}")
+
+            context.sample_metadata[accession] = samples
+
+            compact = self.build_series_context(accession, samples)
+            context.sample_selector_context[accession] = compact
+            context.sample_selector_context_json[accession] = json.dumps(
+                compact,
+                separators=(",", ":"),
+                sort_keys=True,
+            )
+
+            logger.info(
+                "%s: preprocessed %s samples for LLM context",
+                accession,
+                len(samples),
+            )
 
         return context
 
-    def _classify_samples(
-        self, accession: str, samples: list[GEOSample]
-    ) -> list[SampleSelection]:
-        """Build compact JSON prompt and classify via LLM.
+    def build_series_context(self, accession: str, samples: list[GEOSample]) -> dict[str, Any]:
+        """Build compact JSON-safe metadata used in Phase 1 prompts."""
+        compact_samples: list[dict[str, Any]] = []
+        samples_with_files = 0
+        unique_characteristic_keys: set[str] = set()
 
-        Splits into chunks of BATCH_SIZE to avoid output token truncation.
-        """
-        if len(samples) <= BATCH_SIZE:
-            return self._classify_chunk(accession, samples)
+        for sample in samples:
+            compact_characteristics = self._compact_characteristics(sample.characteristics)
+            compact_files = self._compact_supplementary_files(sample.supplementary_files)
 
-        # Split into chunks and merge results
-        all_results: list[SampleSelection] = []
-        for i in range(0, len(samples), BATCH_SIZE):
-            chunk = samples[i : i + BATCH_SIZE]
-            logger.info(
-                f"{accession}: classifying chunk {i // BATCH_SIZE + 1} "
-                f"({len(chunk)} samples)"
-            )
-            all_results.extend(self._classify_chunk(accession, chunk))
-        return all_results
+            if compact_files:
+                samples_with_files += 1
 
-    def _classify_chunk(
-        self, accession: str, samples: list[GEOSample]
-    ) -> list[SampleSelection]:
-        """Classify a single chunk of samples via LLM."""
-        # Compress sample data for LLM
-        sample_data = []
-        for s in samples:
-            entry: dict[str, Any] = {"accession": s.accession, "title": s.title}
-            if s.molecule:
-                entry["molecule"] = s.molecule
-            if s.library_source:
-                entry["library_source"] = s.library_source
-            if s.characteristics:
-                entry["characteristics"] = s.characteristics
-            if s.description:
-                entry["description"] = s.description
-            sample_data.append(entry)
+            unique_characteristic_keys.update(compact_characteristics.keys())
 
-        user_msg = (
-            f"Series {accession} has {len(samples)} samples. "
-            f"Classify each by library type.\n\n"
-            f"{json.dumps(sample_data, indent=None)}"
+            entry: dict[str, Any] = {
+                "gsm_id": sample.accession,
+                "sample_title": self._truncate(sample.title),
+            }
+
+            if compact_characteristics:
+                entry["characteristics"] = compact_characteristics
+            if compact_files:
+                entry["supplementary_files"] = compact_files
+            if sample.molecule:
+                entry["molecule"] = self._truncate(sample.molecule)
+            if sample.library_source:
+                entry["library_source"] = self._truncate(sample.library_source)
+
+            compact_samples.append(entry)
+
+        return {
+            "series_id": accession,
+            "sample_count": len(samples),
+            "samples_with_supp_files": samples_with_files,
+            "samples_without_supp_files": len(samples) - samples_with_files,
+            "characteristic_keys": sorted(unique_characteristic_keys),
+            "samples": compact_samples,
+        }
+
+    def build_series_context_json(self, accession: str, samples: list[GEOSample]) -> str:
+        """Return minified JSON string for prompt injection."""
+        return json.dumps(
+            self.build_series_context(accession, samples),
+            separators=(",", ":"),
+            sort_keys=True,
         )
 
-        # Call LLM with 1 retry
-        raw_response = self._call_llm(user_msg)
+    def _compact_characteristics(self, characteristics: dict[str, str]) -> dict[str, str]:
+        if not characteristics:
+            return {}
 
-        # Parse response into SampleSelection objects
-        return self._parse_llm_response(raw_response, samples)
+        ranked_keys = []
+        for key in characteristics:
+            low_key = key.strip().lower()
+            is_core = low_key in _CORE_CHARACTERISTICS
+            ranked_keys.append((0 if is_core else 1, low_key, key))
 
-    def _call_llm(self, user_msg: str) -> str:
-        """Call LLM with system prompt + sample data.
+        ranked_keys.sort()
 
-        Retries are handled by the Anthropic SDK (set max_retries on client init).
-        """
-        try:
-            response = self._llm_client.messages.create(
-                model=self._model,
-                max_tokens=8192,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": user_msg}],
+        compact: dict[str, str] = {}
+        for _, low_key, original_key in ranked_keys:
+            if len(compact) >= self._max_characteristics_per_sample:
+                break
+            value = characteristics.get(original_key, "")
+            compact[low_key] = self._truncate(value)
+
+        return compact
+
+    def _compact_supplementary_files(self, supplementary_files: list[str]) -> list[str]:
+        if not supplementary_files:
+            return []
+
+        compact_files = []
+        for raw in supplementary_files[: self._max_files_per_sample]:
+            file_name = Path(raw).name if "/" in raw else raw
+            compact_files.append(self._truncate(file_name))
+        return compact_files
+
+    def _truncate(self, text: str) -> str:
+        text = (text or "").strip()
+        if len(text) <= self._max_chars:
+            return text
+        return text[: self._max_chars - 3].rstrip() + "..."
+
+
+def preprocess_family_soft_directory(
+    input_dir: str | Path,
+    output_file: str | Path | None = None,
+    max_chars: int = 140,
+    max_files_per_sample: int = 4,
+    max_characteristics_per_sample: int = 6,
+) -> dict[str, dict[str, Any]]:
+    """Build Phase 1 context for all local *_family.soft files in a directory."""
+    input_path = Path(input_dir)
+    files = sorted(input_path.glob("*_family.soft"))
+
+    skill = SampleSelectorSkill(
+        ncbi_client=None,
+        max_chars=max_chars,
+        max_files_per_sample=max_files_per_sample,
+        max_characteristics_per_sample=max_characteristics_per_sample,
+    )
+
+    contexts: dict[str, dict[str, Any]] = {}
+    for soft_file in files:
+        accession = soft_file.stem.replace("_family", "")
+        samples = parse_family_soft(soft_file.read_text(errors="ignore"))
+        contexts[accession] = skill.build_series_context(accession, samples)
+
+    if output_file:
+        output_path = Path(output_file)
+        output_path.write_text(
+            json.dumps(contexts, sort_keys=True, separators=(",", ":")),
+            encoding="utf-8",
+        )
+
+    return contexts
+
+
+def select_samples(
+    query: str,
+    metadata: dict[str, Any],
+    llm_client: Any,
+    model: str = "claude-haiku-4-5-20251001",
+    temperature: float = 0.1,
+    max_tokens: int = 2048,
+    include_debug: bool = False,
+) -> dict[str, Any]:
+    """Phase 2: call LLM to select ADT samples from one preprocessed series."""
+    if not query or not query.strip():
+        raise SkillError("query must be a non-empty string")
+    if not isinstance(metadata, dict):
+        raise SkillError("metadata must be a dict")
+
+    payload = {
+        "user_query": query.strip(),
+        "metadata": metadata,
+    }
+
+    try:
+        response = llm_client.messages.create(
+            model=model,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            system=SELECTOR_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": json.dumps(payload, separators=(",", ":"))}],
+        )
+    except Exception as exc:
+        raise SkillError(f"LLM call failed: {exc}") from exc
+
+    try:
+        text = response.content[0].text
+    except Exception as exc:
+        raise SkillError(f"LLM response format is invalid: {exc}") from exc
+
+    result = _parse_json_object_from_llm_text(text)
+    validated = _validate_selection_output(result, metadata)
+    if not include_debug:
+        return validated
+    return {
+        "result": validated,
+        "raw_selector_output": text,
+        "raw_selector_json": result,
+    }
+
+
+def heuristic_select_samples(query: str, metadata: dict[str, Any]) -> dict[str, Any]:
+    """Fallback selector used when LLM is unavailable during debug runs."""
+    _ = query  # Reserved for future query-aware rules.
+
+    selected_samples: list[dict[str, str]] = []
+    sample_entries = metadata.get("samples", [])
+
+    for sample in sample_entries:
+        if not isinstance(sample, dict):
+            continue
+        gsm_id = str(sample.get("gsm_id", "")).strip()
+        title = str(sample.get("sample_title", "")).strip()
+        if not gsm_id:
+            continue
+
+        text_parts = [title, str(sample.get("molecule", "")), str(sample.get("library_source", ""))]
+        characteristics = sample.get("characteristics", {})
+        if isinstance(characteristics, dict):
+            text_parts.extend(str(v) for v in characteristics.values())
+        text_parts.extend(sample.get("supplementary_files", []) or [])
+        blob = " ".join(text_parts).lower()
+
+        adt_like = any(keyword in blob for keyword in _ADT_KEYWORDS)
+        rna_only_like = any(keyword in blob for keyword in _RNA_ONLY_KEYWORDS) and not adt_like
+        integrated_like = any(keyword in blob for keyword in _INTEGRATED_KEYWORDS)
+
+        if adt_like and not rna_only_like:
+            selected_samples.append(
+                {
+                    "gsm_id": gsm_id,
+                    "sample_title": title,
+                    "modality_inferred": "Integrated GEX+ADT" if integrated_like else "ADT",
+                }
             )
-            return response.content[0].text
-        except Exception as e:
-            raise SkillError(f"LLM call failed: {e}") from e
 
-    def _parse_llm_response(
-        self, raw_response: str, samples: list[GEOSample]
-    ) -> list[SampleSelection]:
-        """Parse JSON array from LLM response into SampleSelection objects."""
-        # Strip markdown fences if present
-        text = raw_response.strip()
-        text = re.sub(r"^```(?:json)?\s*\n?", "", text)
-        text = re.sub(r"\n?```\s*$", "", text)
-        text = text.strip()
+    if not selected_samples:
+        return {
+            "is_false_positive": True,
+            "download_strategy": "None",
+            "selected_samples": [],
+            "reasoning": "Heuristic fallback: no ADT/protein evidence found in sample-level metadata.",
+        }
 
-        # Extract JSON array — LLM sometimes outputs text before/after the JSON
-        bracket_start = text.find("[")
-        bracket_end = text.rfind("]")
-        if bracket_start != -1 and bracket_end > bracket_start:
-            text = text[bracket_start : bracket_end + 1]
+    samples_with_files = 0
+    integrated_selected = False
+    sample_lookup = {
+        str(item.get("gsm_id", "")): item
+        for item in sample_entries
+        if isinstance(item, dict)
+    }
+    for selected in selected_samples:
+        src = sample_lookup.get(selected["gsm_id"], {})
+        files = src.get("supplementary_files", []) or []
+        if files:
+            samples_with_files += 1
+        text_blob = " ".join([selected["sample_title"], *[str(f) for f in files]]).lower()
+        if any(keyword in text_blob for keyword in _INTEGRATED_KEYWORDS):
+            integrated_selected = True
 
-        try:
-            data = json.loads(text)
-        except json.JSONDecodeError as e:
-            raise SkillError(f"LLM returned invalid JSON: {e}\nResponse: {text[:500]}")
+    if integrated_selected:
+        strategy = "Integrated_Object"
+    elif samples_with_files == 0:
+        strategy = "GSE_Level_Bundled"
+    else:
+        strategy = "GSM_Level_Separated"
 
-        if not isinstance(data, list):
-            raise SkillError(f"LLM returned non-array JSON: {type(data)}")
+    return {
+        "is_false_positive": False,
+        "download_strategy": strategy,
+        "selected_samples": selected_samples,
+        "reasoning": "Heuristic fallback: selected samples with ADT/protein-like evidence.",
+    }
 
-        # Build lookup for supplementary files from original samples
-        sample_files = {s.accession: s.supplementary_files for s in samples}
 
-        results = []
-        for item in data:
-            acc = item.get("accession", "")
-            lib_type = item.get("library_type", "OTHER").upper()
-            confidence = float(item.get("confidence", 0.0))
-            reasoning = item.get("reasoning", "")
+def _parse_json_object_from_llm_text(raw_text: str) -> dict[str, Any]:
+    text = (raw_text or "").strip()
+    text = re.sub(r"^```(?:json)?\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+    text = text.strip()
 
-            # Normalize unknown types to OTHER
-            if lib_type not in VALID_LIBRARY_TYPES:
-                logger.warning(
-                    f"Unknown library_type '{lib_type}' for {acc}, mapping to OTHER"
-                )
-                lib_type = "OTHER"
-                needs_review = True
-            else:
-                needs_review = confidence < self._confidence_threshold
+    start = text.find("{")
+    end = text.rfind("}")
+    if start != -1 and end > start:
+        text = text[start : end + 1]
 
-            # Clamp confidence
-            confidence = max(0.0, min(1.0, confidence))
+    try:
+        obj = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise SkillError(f"LLM returned invalid JSON object: {exc}") from exc
 
-            results.append(SampleSelection(
-                accession=acc,
-                library_type=lib_type,
-                confidence=confidence,
-                reasoning=reasoning,
-                needs_review=needs_review,
-                supplementary_files=sample_files.get(acc, []),
-            ))
+    if not isinstance(obj, dict):
+        raise SkillError("LLM output must be a JSON object")
+    return obj
 
-        return results
+
+def _validate_selection_output(result: dict[str, Any], metadata: dict[str, Any]) -> dict[str, Any]:
+    sample_lookup = {
+        str(item.get("gsm_id", "")): str(item.get("sample_title", ""))
+        for item in metadata.get("samples", [])
+        if isinstance(item, dict) and item.get("gsm_id")
+    }
+
+    if "is_false_positive" not in result or not isinstance(result["is_false_positive"], bool):
+        raise SkillError("Output field `is_false_positive` must be boolean")
+    if "download_strategy" not in result or not isinstance(result["download_strategy"], str):
+        raise SkillError("Output field `download_strategy` must be string")
+    if "selected_samples" not in result or not isinstance(result["selected_samples"], list):
+        raise SkillError("Output field `selected_samples` must be list")
+    if "reasoning" not in result or not isinstance(result["reasoning"], str):
+        raise SkillError("Output field `reasoning` must be string")
+
+    strategy = _normalize_strategy(result["download_strategy"])
+    if strategy not in VALID_DOWNLOAD_STRATEGIES:
+        raise SkillError(f"Unsupported download_strategy: {result['download_strategy']}")
+
+    cleaned_samples: list[dict[str, str]] = []
+    for item in result["selected_samples"]:
+        if not isinstance(item, dict):
+            raise SkillError("Each selected sample must be an object")
+
+        gsm_id = str(item.get("gsm_id", "")).strip()
+        sample_title = str(item.get("sample_title", "")).strip()
+        modality = str(item.get("modality_inferred", "")).strip()
+
+        if not gsm_id:
+            raise SkillError("selected_samples[].gsm_id is required")
+        if sample_lookup and gsm_id not in sample_lookup:
+            raise SkillError(f"selected sample {gsm_id} is not in metadata")
+        if not sample_title and gsm_id in sample_lookup:
+            sample_title = sample_lookup[gsm_id]
+        if not sample_title:
+            raise SkillError(f"selected sample {gsm_id} is missing sample_title")
+
+        modality = _normalize_modality(modality)
+        if modality not in VALID_MODALITIES:
+            raise SkillError(f"Unsupported modality_inferred for {gsm_id}: {modality}")
+
+        cleaned_samples.append(
+            {
+                "gsm_id": gsm_id,
+                "sample_title": sample_title,
+                "modality_inferred": modality,
+            }
+        )
+
+    if result["is_false_positive"]:
+        strategy = "None"
+        cleaned_samples = []
+
+    return {
+        "is_false_positive": result["is_false_positive"],
+        "download_strategy": strategy,
+        "selected_samples": cleaned_samples,
+        "reasoning": result["reasoning"].strip(),
+    }
+
+
+def _normalize_strategy(strategy: str) -> str:
+    normalized = strategy.strip()
+    aliases = {
+        "gsm_level_separated": "GSM_Level_Separated",
+        "gse_level_bundled": "GSE_Level_Bundled",
+        "integrated_object": "Integrated_Object",
+        "none": "None",
+    }
+    key = normalized.lower()
+    if key in aliases:
+        return aliases[key]
+    return normalized
+
+
+def _normalize_modality(modality: str) -> str:
+    normalized = modality.strip()
+    aliases = {
+        "adt": "ADT",
+        "integrated gex+adt": "Integrated GEX+ADT",
+        "integrated": "Integrated GEX+ADT",
+    }
+    key = normalized.lower()
+    if key in aliases:
+        return aliases[key]
+    return normalized

@@ -1,0 +1,3316 @@
+{
+  "query": "Extract all CITE-seq protein/ADT samples",
+  "generated_at_utc": "2026-03-04T01:14:53.327170+00:00",
+  "summary": {
+    "series_count": 22,
+    "false_positive_count": 4,
+    "series_with_selected_samples": 18,
+    "total_selected_samples": 178,
+    "llm_status": "ok",
+    "model": "claude-haiku-4-5-20251001"
+  },
+  "rows": [
+    {
+      "series_id": "GSE266455",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 24,
+      "selected_gsm_ids": [
+        "GSM8247204",
+        "GSM8247206",
+        "GSM8247208",
+        "GSM8247210",
+        "GSM8247212",
+        "GSM8247214",
+        "GSM8247216",
+        "GSM8247218",
+        "GSM8247220",
+        "GSM8247222",
+        "GSM8247224",
+        "GSM8247226",
+        "GSM8247228",
+        "GSM8247230",
+        "GSM8247232",
+        "GSM8247234",
+        "GSM8247236",
+        "GSM8247238",
+        "GSM8247240",
+        "GSM8247242",
+        "GSM8247244",
+        "GSM8247246",
+        "GSM8247248",
+        "GSM8247250"
+      ],
+      "selected_sample_titles": [
+        "PID145week0replicate1Primer,ADT",
+        "PID145week0replicate2Primer,ADT",
+        "PID8026week24replicate1Primer,ADT",
+        "PID8026week24replicate2Primer,ADT",
+        "PID8026week24replicate3Primer,ADT",
+        "PID8026week24replicate4Primer,ADT",
+        "PID8026week0replicate5Primer,ADT",
+        "PID8026week0replicate6Primer,ADT",
+        "PID8026week0replicate7Primer,ADT",
+        "PID8026week0replicate8Primer,ADT",
+        "PID1052week0replicate1NOTHING,ADT",
+        "PID1052week0replicate2NOTHING,ADT",
+        "PID1052week0replicate3Primer,ADT",
+        "PID1052week0replicate4Primer,ADT",
+        "PID1052week0replicate5Primer,ADT",
+        "PID1052week0replicate6Primer,ADT",
+        "PID8027week0replicate1NOTHING,ADT",
+        "PID8027week0replicate2NOTHING,ADT",
+        "PID8027week45replicate3NOTHING,ADT",
+        "PID8027week45replicate4NOTHING,ADT",
+        "PID8027week0replicate5Primer,ADT",
+        "PID8027week0replicate6Primer,ADT",
+        "PID8027week45replicate7Primer,ADT",
+        "PID8027week45replicate8Primer,ADT"
+      ],
+      "selected_links": [],
+      "reasoning": "GSE266455 contains 48 samples split evenly into GEX and ADT modalities at the GSM level. Each biological replicate has a paired GEX sample (library type=GEX, molecule=polyA RNA, library_source=transcriptomic) and an ADT sample (library type=ADT, molecule=protein, library_source=other). All 24 ADT samples are explicitly labeled with library type 'ADT' and molecule 'protein', confirming CITE-seq protein signal. GEX-only samples are excluded. No supplementary files are present at either level, so raw data must be retrieved via SRA from the individual ADT GSMs. Download strategy is GSM_Level_Separated as each modality is a distinct GSM.",
+      "total_samples": 48,
+      "samples_with_files": 0,
+      "samples_without_files": 48,
+      "candidate_adt_like_count": 24,
+      "excluded_rna_like_count": 24,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "gex",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8247204\",\n      \"sample_title\": \"PID145week0replicate1Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247206\",\n      \"sample_title\": \"PID145week0replicate2Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247208\",\n      \"sample_title\": \"PID8026week24replicate1Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247210\",\n      \"sample_title\": \"PID8026week24replicate2Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247212\",\n      \"sample_title\": \"PID8026week24replicate3Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247214\",\n      \"sample_title\": \"PID8026week24replicate4Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247216\",\n      \"sample_title\": \"PID8026week0replicate5Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247218\",\n      \"sample_title\": \"PID8026week0replicate6Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247220\",\n      \"sample_title\": \"PID8026week0replicate7Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247222\",\n      \"sample_title\": \"PID8026week0replicate8Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247224\",\n      \"sample_title\": \"PID1052week0replicate1NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247226\",\n      \"sample_title\": \"PID1052week0replicate2NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247228\",\n      \"sample_title\": \"PID1052week0replicate3Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247230\",\n      \"sample_title\": \"PID1052week0replicate4Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247232\",\n      \"sample_title\": \"PID1052week0replicate5Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247234\",\n      \"sample_title\": \"PID1052week0replicate6Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247236\",\n      \"sample_title\": \"PID8027week0replicate1NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247238\",\n      \"sample_title\": \"PID8027week0replicate2NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247240\",\n      \"sample_title\": \"PID8027week45replicate3NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247242\",\n      \"sample_title\": \"PID8027week45replicate4NOTHING,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247244\",\n      \"sample_title\": \"PID8027week0replicate5Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247246\",\n      \"sample_title\": \"PID8027week0replicate6Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247248\",\n      \"sample_title\": \"PID8027week45replicate7Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8247250\",\n      \"sample_title\": \"PID8027week45replicate8Primer,ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"GSE266455 contains 48 samples split evenly into GEX and ADT modalities at the GSM level. Each biological replicate has a paired GEX sample (library type=GEX, molecule=polyA RNA, library_source=transcriptomic) and an ADT sample (library type=ADT, molecule=protein, library_source=other). All 24 ADT samples are explicitly labeled with library type 'ADT' and molecule 'protein', confirming CITE-seq protein signal. GEX-only samples are excluded. No supplementary files are present at either level, so raw data must be retrieved via SRA from the individual ADT GSMs. Download strategy is GSM_Level_Separated as each modality is a distinct GSM.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8247204",
+            "sample_title": "PID145week0replicate1Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247206",
+            "sample_title": "PID145week0replicate2Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247208",
+            "sample_title": "PID8026week24replicate1Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247210",
+            "sample_title": "PID8026week24replicate2Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247212",
+            "sample_title": "PID8026week24replicate3Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247214",
+            "sample_title": "PID8026week24replicate4Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247216",
+            "sample_title": "PID8026week0replicate5Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247218",
+            "sample_title": "PID8026week0replicate6Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247220",
+            "sample_title": "PID8026week0replicate7Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247222",
+            "sample_title": "PID8026week0replicate8Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247224",
+            "sample_title": "PID1052week0replicate1NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247226",
+            "sample_title": "PID1052week0replicate2NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247228",
+            "sample_title": "PID1052week0replicate3Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247230",
+            "sample_title": "PID1052week0replicate4Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247232",
+            "sample_title": "PID1052week0replicate5Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247234",
+            "sample_title": "PID1052week0replicate6Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247236",
+            "sample_title": "PID8027week0replicate1NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247238",
+            "sample_title": "PID8027week0replicate2NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247240",
+            "sample_title": "PID8027week45replicate3NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247242",
+            "sample_title": "PID8027week45replicate4NOTHING,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247244",
+            "sample_title": "PID8027week0replicate5Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247246",
+            "sample_title": "PID8027week0replicate6Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247248",
+            "sample_title": "PID8027week45replicate7Primer,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8247250",
+            "sample_title": "PID8027week45replicate8Primer,ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSE266455 contains 48 samples split evenly into GEX and ADT modalities at the GSM level. Each biological replicate has a paired GEX sample (library type=GEX, molecule=polyA RNA, library_source=transcriptomic) and an ADT sample (library type=ADT, molecule=protein, library_source=other). All 24 ADT samples are explicitly labeled with library type 'ADT' and molecule 'protein', confirming CITE-seq protein signal. GEX-only samples are excluded. No supplementary files are present at either level, so raw data must be retrieved via SRA from the individual ADT GSMs. Download strategy is GSM_Level_Separated as each modality is a distinct GSM."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8247204",
+          "sample_title": "PID145week0replicate1Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247206",
+          "sample_title": "PID145week0replicate2Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247208",
+          "sample_title": "PID8026week24replicate1Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247210",
+          "sample_title": "PID8026week24replicate2Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247212",
+          "sample_title": "PID8026week24replicate3Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247214",
+          "sample_title": "PID8026week24replicate4Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247216",
+          "sample_title": "PID8026week0replicate5Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247218",
+          "sample_title": "PID8026week0replicate6Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247220",
+          "sample_title": "PID8026week0replicate7Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247222",
+          "sample_title": "PID8026week0replicate8Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247224",
+          "sample_title": "PID1052week0replicate1NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247226",
+          "sample_title": "PID1052week0replicate2NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247228",
+          "sample_title": "PID1052week0replicate3Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247230",
+          "sample_title": "PID1052week0replicate4Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247232",
+          "sample_title": "PID1052week0replicate5Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247234",
+          "sample_title": "PID1052week0replicate6Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247236",
+          "sample_title": "PID8027week0replicate1NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247238",
+          "sample_title": "PID8027week0replicate2NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247240",
+          "sample_title": "PID8027week45replicate3NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247242",
+          "sample_title": "PID8027week45replicate4NOTHING,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247244",
+          "sample_title": "PID8027week0replicate5Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247246",
+          "sample_title": "PID8027week0replicate6Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247248",
+          "sample_title": "PID8027week45replicate7Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8247250",
+          "sample_title": "PID8027week45replicate8Primer,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE268991",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 14,
+      "selected_gsm_ids": [
+        "GSM8304231",
+        "GSM8304232",
+        "GSM8304233",
+        "GSM8304234",
+        "GSM8304247",
+        "GSM8304248",
+        "GSM8304249",
+        "GSM8304250",
+        "GSM8304265",
+        "GSM8304266",
+        "GSM8304267",
+        "GSM8304268",
+        "GSM8304269",
+        "GSM8304270"
+      ],
+      "selected_sample_titles": [
+        "Normal, CRC 78, Surface",
+        "Tumor, CRC 78, Surface",
+        "Normal, CRC 81, Surface",
+        "Tumor, CRC 81, Surface",
+        "Normal, CRC 77, Surface",
+        "Tumor, CRC 77, Surface",
+        "Normal, CRC 79, Surface",
+        "Tumor, CRC 79, Surface",
+        "Normal, CRC 91, Surface",
+        "Tumor, CRC 91, Surface",
+        "Normal, CRC 85, Surface",
+        "Tumor, CRC 85, Surface",
+        "Normal, CRC 86, Surface",
+        "Tumor, CRC 86, Surface"
+      ],
+      "selected_links": [],
+      "reasoning": "14 samples with library type 'Surface', molecule 'protein', and explicit TotalSeq antibody panel listed in the 'adt' characteristic field are confirmed ADT/CITE-seq samples. GEX samples (5'GEX, transcriptomic) and TCR VDJ samples (gd/ab TCR) are excluded. ADT samples lack individual supplementary files in the metadata, while GEX/TCR samples have them at GSM level; ADT data files are likely bundled at GSE level or absent individually, but samples are clearly modality-split, so GSM_Level_Separated is appropriate for targeted ADT retrieval.",
+      "total_samples": 56,
+      "samples_with_files": 28,
+      "samples_without_files": 28,
+      "candidate_adt_like_count": 14,
+      "excluded_rna_like_count": 42,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "gex",
+        "protein",
+        "rna",
+        "surface",
+        "tcr",
+        "vdj"
+      ],
+      "raw_selector_output": "{\"is_false_positive\":false,\"download_strategy\":\"GSM_Level_Separated\",\"selected_samples\":[{\"gsm_id\":\"GSM8304231\",\"sample_title\":\"Normal, CRC 78, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304232\",\"sample_title\":\"Tumor, CRC 78, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304233\",\"sample_title\":\"Normal, CRC 81, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304234\",\"sample_title\":\"Tumor, CRC 81, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304247\",\"sample_title\":\"Normal, CRC 77, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304248\",\"sample_title\":\"Tumor, CRC 77, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304249\",\"sample_title\":\"Normal, CRC 79, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304250\",\"sample_title\":\"Tumor, CRC 79, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304265\",\"sample_title\":\"Normal, CRC 91, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304266\",\"sample_title\":\"Tumor, CRC 91, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304267\",\"sample_title\":\"Normal, CRC 85, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304268\",\"sample_title\":\"Tumor, CRC 85, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304269\",\"sample_title\":\"Normal, CRC 86, Surface\",\"modality_inferred\":\"ADT\"},{\"gsm_id\":\"GSM8304270\",\"sample_title\":\"Tumor, CRC 86, Surface\",\"modality_inferred\":\"ADT\"}],\"reasoning\":\"14 samples with library type 'Surface', molecule 'protein', and explicit TotalSeq antibody panel listed in the 'adt' characteristic field are confirmed ADT/CITE-seq samples. GEX samples (5'GEX, transcriptomic) and TCR VDJ samples (gd/ab TCR) are excluded. ADT samples lack individual supplementary files in the metadata, while GEX/TCR samples have them at GSM level; ADT data files are likely bundled at GSE level or absent individually, but samples are clearly modality-split, so GSM_Level_Separated is appropriate for targeted ADT retrieval.\"}",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8304231",
+            "sample_title": "Normal, CRC 78, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304232",
+            "sample_title": "Tumor, CRC 78, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304233",
+            "sample_title": "Normal, CRC 81, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304234",
+            "sample_title": "Tumor, CRC 81, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304247",
+            "sample_title": "Normal, CRC 77, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304248",
+            "sample_title": "Tumor, CRC 77, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304249",
+            "sample_title": "Normal, CRC 79, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304250",
+            "sample_title": "Tumor, CRC 79, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304265",
+            "sample_title": "Normal, CRC 91, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304266",
+            "sample_title": "Tumor, CRC 91, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304267",
+            "sample_title": "Normal, CRC 85, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304268",
+            "sample_title": "Tumor, CRC 85, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304269",
+            "sample_title": "Normal, CRC 86, Surface",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8304270",
+            "sample_title": "Tumor, CRC 86, Surface",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "14 samples with library type 'Surface', molecule 'protein', and explicit TotalSeq antibody panel listed in the 'adt' characteristic field are confirmed ADT/CITE-seq samples. GEX samples (5'GEX, transcriptomic) and TCR VDJ samples (gd/ab TCR) are excluded. ADT samples lack individual supplementary files in the metadata, while GEX/TCR samples have them at GSM level; ADT data files are likely bundled at GSE level or absent individually, but samples are clearly modality-split, so GSM_Level_Separated is appropriate for targeted ADT retrieval."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8304231",
+          "sample_title": "Normal, CRC 78, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304232",
+          "sample_title": "Tumor, CRC 78, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304233",
+          "sample_title": "Normal, CRC 81, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304234",
+          "sample_title": "Tumor, CRC 81, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304247",
+          "sample_title": "Normal, CRC 77, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304248",
+          "sample_title": "Tumor, CRC 77, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304249",
+          "sample_title": "Normal, CRC 79, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304250",
+          "sample_title": "Tumor, CRC 79, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304265",
+          "sample_title": "Normal, CRC 91, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304266",
+          "sample_title": "Tumor, CRC 91, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304267",
+          "sample_title": "Normal, CRC 85, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304268",
+          "sample_title": "Tumor, CRC 85, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304269",
+          "sample_title": "Normal, CRC 86, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8304270",
+          "sample_title": "Tumor, CRC 86, Surface",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE269123",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 7,
+      "selected_gsm_ids": [
+        "GSM8306677",
+        "GSM8306682",
+        "GSM8306686",
+        "GSM8306687",
+        "GSM8306692",
+        "GSM8306693",
+        "GSM8306695"
+      ],
+      "selected_sample_titles": [
+        "MV-8",
+        "Thy2-Sur",
+        "Thy4-Sur",
+        "MV-5",
+        "Thy6-Sur",
+        "MV-6",
+        "MV-7"
+      ],
+      "selected_links": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_matrix.mtx.gz"
+      ],
+      "reasoning": "Seven samples are explicitly annotated with library type 'ADT', molecule 'protein', and library_source 'other', with an 'adt' characteristic referencing a feature reference panel — all hallmarks of CITE-seq ADT libraries. GSM8306677, GSM8306687, GSM8306693, GSM8306695 (feature-ref2) and GSM8306682, GSM8306686, GSM8306692 (feature-ref1) are selected. Note that GSM8306682 and GSM8306686 and GSM8306692 lack supplementary files at the GSM level; their matrix files may be bundled with paired GEX samples or missing, but they are still valid ADT samples by metadata. All remaining samples are pure GEX (total RNA), TCR VDJ (ab or gd), and are excluded.",
+      "total_samples": 28,
+      "samples_with_files": 21,
+      "samples_without_files": 7,
+      "candidate_adt_like_count": 7,
+      "excluded_rna_like_count": 21,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "protein",
+        "rna",
+        "tcr",
+        "vdj"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8306677\",\n      \"sample_title\": \"MV-8\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306682\",\n      \"sample_title\": \"Thy2-Sur\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306686\",\n      \"sample_title\": \"Thy4-Sur\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306687\",\n      \"sample_title\": \"MV-5\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306692\",\n      \"sample_title\": \"Thy6-Sur\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306693\",\n      \"sample_title\": \"MV-6\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8306695\",\n      \"sample_title\": \"MV-7\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Seven samples are explicitly annotated with library type 'ADT', molecule 'protein', and library_source 'other', with an 'adt' characteristic referencing a feature reference panel — all hallmarks of CITE-seq ADT libraries. GSM8306677, GSM8306687, GSM8306693, GSM8306695 (feature-ref2) and GSM8306682, GSM8306686, GSM8306692 (feature-ref1) are selected. Note that GSM8306682 and GSM8306686 and GSM8306692 lack supplementary files at the GSM level; their matrix files may be bundled with paired GEX samples or missing, but they are still valid ADT samples by metadata. All remaining samples are pure GEX (total RNA), TCR VDJ (ab or gd), and are excluded.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8306677",
+            "sample_title": "MV-8",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306682",
+            "sample_title": "Thy2-Sur",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306686",
+            "sample_title": "Thy4-Sur",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306687",
+            "sample_title": "MV-5",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306692",
+            "sample_title": "Thy6-Sur",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306693",
+            "sample_title": "MV-6",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8306695",
+            "sample_title": "MV-7",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Seven samples are explicitly annotated with library type 'ADT', molecule 'protein', and library_source 'other', with an 'adt' characteristic referencing a feature reference panel — all hallmarks of CITE-seq ADT libraries. GSM8306677, GSM8306687, GSM8306693, GSM8306695 (feature-ref2) and GSM8306682, GSM8306686, GSM8306692 (feature-ref1) are selected. Note that GSM8306682 and GSM8306686 and GSM8306692 lack supplementary files at the GSM level; their matrix files may be bundled with paired GEX samples or missing, but they are still valid ADT samples by metadata. All remaining samples are pure GEX (total RNA), TCR VDJ (ab or gd), and are excluded."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8306677",
+          "sample_title": "MV-8",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306677/suppl/GSM8306677_Thy10_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8306682",
+          "sample_title": "Thy2-Sur",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8306686",
+          "sample_title": "Thy4-Sur",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8306687",
+          "sample_title": "MV-5",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306687/suppl/GSM8306687_Thy5_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8306692",
+          "sample_title": "Thy6-Sur",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8306693",
+          "sample_title": "MV-6",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306693/suppl/GSM8306693_Thy6-2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8306695",
+          "sample_title": "MV-7",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8306nnn/GSM8306695/suppl/GSM8306695_Thy9_matrix.mtx.gz"
+          ]
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE280852",
+      "is_false_positive": true,
+      "download_strategy": "None",
+      "selected_gsm_count": 0,
+      "selected_gsm_ids": [],
+      "selected_sample_titles": [],
+      "selected_links": [],
+      "reasoning": "All 6 samples in GSE280852 are annotated as 'transcriptomic single cell' with 'polyA RNA' molecule type, consistent with pure GEX/scRNA-seq. Supplementary files follow standard 10x Genomics matrix format (barcodes/features/matrix) with no ADT-specific files (e.g., no '*_adt*', '*_protein*', or separate antibody capture matrices). No CITE-seq or ADT signal is evidenced at either the sample or file level. This series is a false positive for CITE-seq protein/ADT content.",
+      "total_samples": 6,
+      "samples_with_files": 6,
+      "samples_without_files": 0,
+      "candidate_adt_like_count": 0,
+      "excluded_rna_like_count": 6,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": true,\n  \"download_strategy\": \"None\",\n  \"selected_samples\": [],\n  \"reasoning\": \"All 6 samples in GSE280852 are annotated as 'transcriptomic single cell' with 'polyA RNA' molecule type, consistent with pure GEX/scRNA-seq. Supplementary files follow standard 10x Genomics matrix format (barcodes/features/matrix) with no ADT-specific files (e.g., no '*_adt*', '*_protein*', or separate antibody capture matrices). No CITE-seq or ADT signal is evidenced at either the sample or file level. This series is a false positive for CITE-seq protein/ADT content.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": true,
+        "download_strategy": "None",
+        "selected_samples": [],
+        "reasoning": "All 6 samples in GSE280852 are annotated as 'transcriptomic single cell' with 'polyA RNA' molecule type, consistent with pure GEX/scRNA-seq. Supplementary files follow standard 10x Genomics matrix format (barcodes/features/matrix) with no ADT-specific files (e.g., no '*_adt*', '*_protein*', or separate antibody capture matrices). No CITE-seq or ADT signal is evidenced at either the sample or file level. This series is a false positive for CITE-seq protein/ADT content."
+      },
+      "selected_samples_enriched": [],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE283984",
+      "is_false_positive": false,
+      "download_strategy": "GSE_Level_Bundled",
+      "selected_gsm_count": 1,
+      "selected_gsm_ids": [
+        "GSM8675316"
+      ],
+      "selected_sample_titles": [
+        "PBMCs, ADT-derived cDNA"
+      ],
+      "selected_links": [],
+      "reasoning": "GSM8675316 is explicitly typed as library type 'ADT' with molecule 'protein' and lists four anti-CD antibody tags (CD27, CD21, CD24, CD38 via Abseq), confirming CITE-seq ADT signal. GSM8675315 is pure mRNA/GEX and GSM8675317 is HTO (sample multiplexing tags), both excluded. No supplementary files are present at the sample level (samples_with_supp_files=0), so data is expected to be bundled at the GSE level, hence GSE_Level_Bundled strategy.",
+      "total_samples": 3,
+      "samples_with_files": 0,
+      "samples_without_files": 3,
+      "candidate_adt_like_count": 2,
+      "excluded_rna_like_count": 1,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "abseq",
+        "adt",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSE_Level_Bundled\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8675316\",\n      \"sample_title\": \"PBMCs, ADT-derived cDNA\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"GSM8675316 is explicitly typed as library type 'ADT' with molecule 'protein' and lists four anti-CD antibody tags (CD27, CD21, CD24, CD38 via Abseq), confirming CITE-seq ADT signal. GSM8675315 is pure mRNA/GEX and GSM8675317 is HTO (sample multiplexing tags), both excluded. No supplementary files are present at the sample level (samples_with_supp_files=0), so data is expected to be bundled at the GSE level, hence GSE_Level_Bundled strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSE_Level_Bundled",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8675316",
+            "sample_title": "PBMCs, ADT-derived cDNA",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSM8675316 is explicitly typed as library type 'ADT' with molecule 'protein' and lists four anti-CD antibody tags (CD27, CD21, CD24, CD38 via Abseq), confirming CITE-seq ADT signal. GSM8675315 is pure mRNA/GEX and GSM8675317 is HTO (sample multiplexing tags), both excluded. No supplementary files are present at the sample level (samples_with_supp_files=0), so data is expected to be bundled at the GSE level, hence GSE_Level_Bundled strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8675316",
+          "sample_title": "PBMCs, ADT-derived cDNA",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE287976",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 5,
+      "selected_gsm_ids": [
+        "GSM8756666",
+        "GSM8756668",
+        "GSM8756670",
+        "GSM8756672",
+        "GSM8756674"
+      ],
+      "selected_sample_titles": [
+        "Donor A pbmcs Surface Protein",
+        "Donor B sorted basophils Surface Protein",
+        "Donor C MACS basophils_Surface_Protein",
+        "Donor D1 MACS basophils_Surface_Protein",
+        "Donor_D2_MACS_basophils_Surface_Protein"
+      ],
+      "selected_links": [],
+      "reasoning": "Five samples are explicitly typed as ADT library with molecule=protein and carry TotalSeq antibody panel metadata (GSM8756666, GSM8756668, GSM8756670, GSM8756672, GSM8756674). The remaining seven samples are pure GEX (polyA RNA, transcriptomic) or long-read mRNA libraries with no ADT signal. GEX and ADT libraries are split into separate GSMs, so GSM_Level_Separated is the appropriate strategy. No integrated multi-omic objects are present.",
+      "total_samples": 12,
+      "samples_with_files": 2,
+      "samples_without_files": 10,
+      "candidate_adt_like_count": 5,
+      "excluded_rna_like_count": 7,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "protein",
+        "rna",
+        "surface"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8756666\",\n      \"sample_title\": \"Donor A pbmcs Surface Protein\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8756668\",\n      \"sample_title\": \"Donor B sorted basophils Surface Protein\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8756670\",\n      \"sample_title\": \"Donor C MACS basophils_Surface_Protein\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8756672\",\n      \"sample_title\": \"Donor D1 MACS basophils_Surface_Protein\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8756674\",\n      \"sample_title\": \"Donor_D2_MACS_basophils_Surface_Protein\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Five samples are explicitly typed as ADT library with molecule=protein and carry TotalSeq antibody panel metadata (GSM8756666, GSM8756668, GSM8756670, GSM8756672, GSM8756674). The remaining seven samples are pure GEX (polyA RNA, transcriptomic) or long-read mRNA libraries with no ADT signal. GEX and ADT libraries are split into separate GSMs, so GSM_Level_Separated is the appropriate strategy. No integrated multi-omic objects are present.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8756666",
+            "sample_title": "Donor A pbmcs Surface Protein",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8756668",
+            "sample_title": "Donor B sorted basophils Surface Protein",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8756670",
+            "sample_title": "Donor C MACS basophils_Surface_Protein",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8756672",
+            "sample_title": "Donor D1 MACS basophils_Surface_Protein",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8756674",
+            "sample_title": "Donor_D2_MACS_basophils_Surface_Protein",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Five samples are explicitly typed as ADT library with molecule=protein and carry TotalSeq antibody panel metadata (GSM8756666, GSM8756668, GSM8756670, GSM8756672, GSM8756674). The remaining seven samples are pure GEX (polyA RNA, transcriptomic) or long-read mRNA libraries with no ADT signal. GEX and ADT libraries are split into separate GSMs, so GSM_Level_Separated is the appropriate strategy. No integrated multi-omic objects are present."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8756666",
+          "sample_title": "Donor A pbmcs Surface Protein",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8756668",
+          "sample_title": "Donor B sorted basophils Surface Protein",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8756670",
+          "sample_title": "Donor C MACS basophils_Surface_Protein",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8756672",
+          "sample_title": "Donor D1 MACS basophils_Surface_Protein",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8756674",
+          "sample_title": "Donor_D2_MACS_basophils_Surface_Protein",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE291290",
+      "is_false_positive": true,
+      "download_strategy": "None",
+      "selected_gsm_count": 0,
+      "selected_gsm_ids": [],
+      "selected_sample_titles": [],
+      "selected_links": [],
+      "reasoning": "All 6 samples in GSE291290 are annotated as library_source='transcriptomic' with molecule='total RNA', indicating pure GEX libraries. No ADT/protein modality is present in any sample title, characteristics, or supplementary files (samples_with_supp_files=0). There is no evidence of CITE-seq protein/ADT signal in this series.",
+      "total_samples": 6,
+      "samples_with_files": 0,
+      "samples_without_files": 6,
+      "candidate_adt_like_count": 0,
+      "excluded_rna_like_count": 6,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": true,\n  \"download_strategy\": \"None\",\n  \"selected_samples\": [],\n  \"reasoning\": \"All 6 samples in GSE291290 are annotated as library_source='transcriptomic' with molecule='total RNA', indicating pure GEX libraries. No ADT/protein modality is present in any sample title, characteristics, or supplementary files (samples_with_supp_files=0). There is no evidence of CITE-seq protein/ADT signal in this series.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": true,
+        "download_strategy": "None",
+        "selected_samples": [],
+        "reasoning": "All 6 samples in GSE291290 are annotated as library_source='transcriptomic' with molecule='total RNA', indicating pure GEX libraries. No ADT/protein modality is present in any sample title, characteristics, or supplementary files (samples_with_supp_files=0). There is no evidence of CITE-seq protein/ADT signal in this series."
+      },
+      "selected_samples_enriched": [],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE294427",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 3,
+      "selected_gsm_ids": [
+        "GSM8905195",
+        "GSM8905196",
+        "GSM8905197"
+      ],
+      "selected_sample_titles": [
+        "CITE-seq ADT library 1",
+        "CITE-seq ADT library 2",
+        "CITE-seq ADT library 3"
+      ],
+      "selected_links": [],
+      "reasoning": "Three samples (GSM8905195–GSM8905197) are explicitly labeled 'CITE-seq ADT library' with library_source='other' and molecule='protein', confirming ADT modality. The remaining six samples are pure GEX (polyA RNA) or TCR (total RNA) libraries and are excluded. No supplementary files are present at either GSM or GSE level, but the ADT samples are clearly delineated at the GSM level, so GSM_Level_Separated is the appropriate download strategy.",
+      "total_samples": 9,
+      "samples_with_files": 0,
+      "samples_without_files": 9,
+      "candidate_adt_like_count": 9,
+      "excluded_rna_like_count": 0,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "cite",
+        "protein"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8905195\",\n      \"sample_title\": \"CITE-seq ADT library 1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8905196\",\n      \"sample_title\": \"CITE-seq ADT library 2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8905197\",\n      \"sample_title\": \"CITE-seq ADT library 3\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Three samples (GSM8905195–GSM8905197) are explicitly labeled 'CITE-seq ADT library' with library_source='other' and molecule='protein', confirming ADT modality. The remaining six samples are pure GEX (polyA RNA) or TCR (total RNA) libraries and are excluded. No supplementary files are present at either GSM or GSE level, but the ADT samples are clearly delineated at the GSM level, so GSM_Level_Separated is the appropriate download strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8905195",
+            "sample_title": "CITE-seq ADT library 1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8905196",
+            "sample_title": "CITE-seq ADT library 2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8905197",
+            "sample_title": "CITE-seq ADT library 3",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Three samples (GSM8905195–GSM8905197) are explicitly labeled 'CITE-seq ADT library' with library_source='other' and molecule='protein', confirming ADT modality. The remaining six samples are pure GEX (polyA RNA) or TCR (total RNA) libraries and are excluded. No supplementary files are present at either GSM or GSE level, but the ADT samples are clearly delineated at the GSM level, so GSM_Level_Separated is the appropriate download strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8905195",
+          "sample_title": "CITE-seq ADT library 1",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8905196",
+          "sample_title": "CITE-seq ADT library 2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM8905197",
+          "sample_title": "CITE-seq ADT library 3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE296447",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 4,
+      "selected_gsm_ids": [
+        "GSM8970687",
+        "GSM8970689",
+        "GSM8970691",
+        "GSM8970693"
+      ],
+      "selected_sample_titles": [
+        "Citeseq, P16, ADT",
+        "Citeseq, P5, ADT",
+        "Citeseq, P8, ADT",
+        "Citeseq, P9, ADT"
+      ],
+      "selected_links": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_matrix.mtx.gz"
+      ],
+      "reasoning": "GSE296447 contains 8 samples from a CITE-seq experiment on gum tissue, modality-split at the GSM level into paired ADT and GEX samples. Four samples (GSM8970687, GSM8970689, GSM8970691, GSM8970693) are explicitly labeled ADT, have library_source='other', molecule='protein', and carry raw ADT matrix files (barcodes/features/matrix). The remaining four are pure GEX (polyA RNA, transcriptomic) and are excluded. Each ADT sample has its own supplementary files, so GSM_Level_Separated is the appropriate download strategy.",
+      "total_samples": 8,
+      "samples_with_files": 8,
+      "samples_without_files": 0,
+      "candidate_adt_like_count": 8,
+      "excluded_rna_like_count": 0,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "cite",
+        "protein"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM8970687\",\n      \"sample_title\": \"Citeseq, P16, ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8970689\",\n      \"sample_title\": \"Citeseq, P5, ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8970691\",\n      \"sample_title\": \"Citeseq, P8, ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM8970693\",\n      \"sample_title\": \"Citeseq, P9, ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"GSE296447 contains 8 samples from a CITE-seq experiment on gum tissue, modality-split at the GSM level into paired ADT and GEX samples. Four samples (GSM8970687, GSM8970689, GSM8970691, GSM8970693) are explicitly labeled ADT, have library_source='other', molecule='protein', and carry raw ADT matrix files (barcodes/features/matrix). The remaining four are pure GEX (polyA RNA, transcriptomic) and are excluded. Each ADT sample has its own supplementary files, so GSM_Level_Separated is the appropriate download strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM8970687",
+            "sample_title": "Citeseq, P16, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8970689",
+            "sample_title": "Citeseq, P5, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8970691",
+            "sample_title": "Citeseq, P8, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM8970693",
+            "sample_title": "Citeseq, P9, ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSE296447 contains 8 samples from a CITE-seq experiment on gum tissue, modality-split at the GSM level into paired ADT and GEX samples. Four samples (GSM8970687, GSM8970689, GSM8970691, GSM8970693) are explicitly labeled ADT, have library_source='other', molecule='protein', and carry raw ADT matrix files (barcodes/features/matrix). The remaining four are pure GEX (polyA RNA, transcriptomic) and are excluded. Each ADT sample has its own supplementary files, so GSM_Level_Separated is the appropriate download strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM8970687",
+          "sample_title": "Citeseq, P16, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970687/suppl/GSM8970687_P16_raw_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8970689",
+          "sample_title": "Citeseq, P5, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970689/suppl/GSM8970689_P5_raw_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8970691",
+          "sample_title": "Citeseq, P8, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970691/suppl/GSM8970691_P8_raw_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM8970693",
+          "sample_title": "Citeseq, P9, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8970nnn/GSM8970693/suppl/GSM8970693_P9_raw_ADT_matrix.mtx.gz"
+          ]
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE299416",
+      "is_false_positive": false,
+      "download_strategy": "GSE_Level_Bundled",
+      "selected_gsm_count": 3,
+      "selected_gsm_ids": [
+        "GSM9038872",
+        "GSM9038873",
+        "GSM9038874"
+      ],
+      "selected_sample_titles": [
+        "postInfusion_ADT1",
+        "postInfusion_ADT2",
+        "postInfusion_ADT3"
+      ],
+      "selected_links": [],
+      "reasoning": "Three samples (GSM9038872–GSM9038874) are explicitly named with the '_ADT' suffix, confirming they represent CITE-seq antibody-derived tag libraries from a CAR-T PBMC study. The remaining six samples are GEX (transcriptomic single cell, RNA) or VDJ (TCR contig annotations) libraries and are excluded. None of the ADT samples carry individual supplementary files, indicating ADT count matrices are likely bundled at the GSE level, hence GSE_Level_Bundled strategy is appropriate.",
+      "total_samples": 9,
+      "samples_with_files": 3,
+      "samples_without_files": 6,
+      "candidate_adt_like_count": 3,
+      "excluded_rna_like_count": 6,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "gex",
+        "rna",
+        "vdj"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSE_Level_Bundled\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9038872\",\n      \"sample_title\": \"postInfusion_ADT1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9038873\",\n      \"sample_title\": \"postInfusion_ADT2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9038874\",\n      \"sample_title\": \"postInfusion_ADT3\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Three samples (GSM9038872–GSM9038874) are explicitly named with the '_ADT' suffix, confirming they represent CITE-seq antibody-derived tag libraries from a CAR-T PBMC study. The remaining six samples are GEX (transcriptomic single cell, RNA) or VDJ (TCR contig annotations) libraries and are excluded. None of the ADT samples carry individual supplementary files, indicating ADT count matrices are likely bundled at the GSE level, hence GSE_Level_Bundled strategy is appropriate.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSE_Level_Bundled",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9038872",
+            "sample_title": "postInfusion_ADT1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9038873",
+            "sample_title": "postInfusion_ADT2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9038874",
+            "sample_title": "postInfusion_ADT3",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Three samples (GSM9038872–GSM9038874) are explicitly named with the '_ADT' suffix, confirming they represent CITE-seq antibody-derived tag libraries from a CAR-T PBMC study. The remaining six samples are GEX (transcriptomic single cell, RNA) or VDJ (TCR contig annotations) libraries and are excluded. None of the ADT samples carry individual supplementary files, indicating ADT count matrices are likely bundled at the GSE level, hence GSE_Level_Bundled strategy is appropriate."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9038872",
+          "sample_title": "postInfusion_ADT1",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9038873",
+          "sample_title": "postInfusion_ADT2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9038874",
+          "sample_title": "postInfusion_ADT3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE303197",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 10,
+      "selected_gsm_ids": [
+        "GSM9120278",
+        "GSM9120281",
+        "GSM9120284",
+        "GSM9120286",
+        "GSM9120288",
+        "GSM9120290",
+        "GSM9120292",
+        "GSM9120294",
+        "GSM9120297",
+        "GSM9120300"
+      ],
+      "selected_sample_titles": [
+        "ADT and HTO from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+        "ADT and HTO from dARC COG5 and uninfected clone from donor OM5334",
+        "ADT and HTO from ARC Chr22 and uninfected clone from donor 5104",
+        "ADT and HTO from uninfected clones from donor 5104",
+        "ADT and HTO from ARC ZNF721 and uninfected clone from donor OM5334",
+        "ADT and HTO from ARC ZNF486 and uninfected clone from donor 603",
+        "ADT and HTO from uninfected clones from donor 603",
+        "ADT and HTO from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+        "ADT and HTO from ARC GS from donor GS",
+        "ADT from uninfected clones from donor OM5334"
+      ],
+      "selected_links": [],
+      "reasoning": "The GSE contains modality-split CITE-seq samples. Ten samples explicitly carry ADT/protein signal: library_source='other', molecule='protein', and the 'adt' characteristic field specifying TotalSeq-C Human Universal Cocktail. These are distinct from paired GEX (polyA RNA, transcriptomic) and TCR (contig annotation CSV) samples. All ten ADT/HTO samples are selected. No integrated multi-omic objects are present, so GSM_Level_Separated is appropriate.",
+      "total_samples": 25,
+      "samples_with_files": 5,
+      "samples_without_files": 20,
+      "candidate_adt_like_count": 10,
+      "excluded_rna_like_count": 15,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "protein",
+        "rna",
+        "tcr"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9120278\",\n      \"sample_title\": \"ADT and HTO from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120281\",\n      \"sample_title\": \"ADT and HTO from dARC COG5 and uninfected clone from donor OM5334\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120284\",\n      \"sample_title\": \"ADT and HTO from ARC Chr22 and uninfected clone from donor 5104\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120286\",\n      \"sample_title\": \"ADT and HTO from uninfected clones from donor 5104\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120288\",\n      \"sample_title\": \"ADT and HTO from ARC ZNF721 and uninfected clone from donor OM5334\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120290\",\n      \"sample_title\": \"ADT and HTO from ARC ZNF486 and uninfected clone from donor 603\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120292\",\n      \"sample_title\": \"ADT and HTO from uninfected clones from donor 603\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120294\",\n      \"sample_title\": \"ADT and HTO from dARC COG5 3 weeks and uninfected clone from donor OM5334\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120297\",\n      \"sample_title\": \"ADT and HTO from ARC GS from donor GS\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9120300\",\n      \"sample_title\": \"ADT from uninfected clones from donor OM5334\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"The GSE contains modality-split CITE-seq samples. Ten samples explicitly carry ADT/protein signal: library_source='other', molecule='protein', and the 'adt' characteristic field specifying TotalSeq-C Human Universal Cocktail. These are distinct from paired GEX (polyA RNA, transcriptomic) and TCR (contig annotation CSV) samples. All ten ADT/HTO samples are selected. No integrated multi-omic objects are present, so GSM_Level_Separated is appropriate.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9120278",
+            "sample_title": "ADT and HTO from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120281",
+            "sample_title": "ADT and HTO from dARC COG5 and uninfected clone from donor OM5334",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120284",
+            "sample_title": "ADT and HTO from ARC Chr22 and uninfected clone from donor 5104",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120286",
+            "sample_title": "ADT and HTO from uninfected clones from donor 5104",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120288",
+            "sample_title": "ADT and HTO from ARC ZNF721 and uninfected clone from donor OM5334",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120290",
+            "sample_title": "ADT and HTO from ARC ZNF486 and uninfected clone from donor 603",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120292",
+            "sample_title": "ADT and HTO from uninfected clones from donor 603",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120294",
+            "sample_title": "ADT and HTO from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120297",
+            "sample_title": "ADT and HTO from ARC GS from donor GS",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9120300",
+            "sample_title": "ADT from uninfected clones from donor OM5334",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "The GSE contains modality-split CITE-seq samples. Ten samples explicitly carry ADT/protein signal: library_source='other', molecule='protein', and the 'adt' characteristic field specifying TotalSeq-C Human Universal Cocktail. These are distinct from paired GEX (polyA RNA, transcriptomic) and TCR (contig annotation CSV) samples. All ten ADT/HTO samples are selected. No integrated multi-omic objects are present, so GSM_Level_Separated is appropriate."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9120278",
+          "sample_title": "ADT and HTO from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120281",
+          "sample_title": "ADT and HTO from dARC COG5 and uninfected clone from donor OM5334",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120284",
+          "sample_title": "ADT and HTO from ARC Chr22 and uninfected clone from donor 5104",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120286",
+          "sample_title": "ADT and HTO from uninfected clones from donor 5104",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120288",
+          "sample_title": "ADT and HTO from ARC ZNF721 and uninfected clone from donor OM5334",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120290",
+          "sample_title": "ADT and HTO from ARC ZNF486 and uninfected clone from donor 603",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120292",
+          "sample_title": "ADT and HTO from uninfected clones from donor 603",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120294",
+          "sample_title": "ADT and HTO from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120297",
+          "sample_title": "ADT and HTO from ARC GS from donor GS",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9120300",
+          "sample_title": "ADT from uninfected clones from donor OM5334",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE303984",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 34,
+      "selected_gsm_ids": [
+        "GSM9140301",
+        "GSM9140302",
+        "GSM9140303",
+        "GSM9140304",
+        "GSM9140305",
+        "GSM9140306",
+        "GSM9140307",
+        "GSM9140308",
+        "GSM9140309",
+        "GSM9140310",
+        "GSM9140311",
+        "GSM9140312",
+        "GSM9140313",
+        "GSM9140314",
+        "GSM9140315",
+        "GSM9140316",
+        "GSM9140317",
+        "GSM9140318",
+        "GSM9140319",
+        "GSM9140320",
+        "GSM9140321",
+        "GSM9140322",
+        "GSM9140323",
+        "GSM9140324",
+        "GSM9140325",
+        "GSM9140326",
+        "GSM9140327",
+        "GSM9140328",
+        "GSM9140341",
+        "GSM9140342",
+        "GSM9140343",
+        "GSM9140344",
+        "GSM9140345",
+        "GSM9140346"
+      ],
+      "selected_sample_titles": [
+        "AIM T cells, VAC007, Channel 1, ADT",
+        "AIM T cells, VAC007, Channel 2, ADT",
+        "AIM T cells, VAC007, Channel 3, ADT",
+        "AIM T cells, VAC007, Channel 4, ADT",
+        "AIM T cells, VAC008, Channel 1, ADT",
+        "AIM T cells, VAC008, Channel 2, ADT",
+        "AIM T cells, VAC008, Channel 3, ADT",
+        "AIM T cells, VAC008, Channel 4, ADT",
+        "AIM T cells, VAC008, Channel 5, ADT",
+        "AIM T cells, VAC008, Channel 6, ADT",
+        "AIM T cells, VAC008, Channel 7, ADT",
+        "AIM T cells, VAC008, Channel 8, ADT",
+        "AIM T cells, VAC009, Channel 1, ADT",
+        "AIM T cells, VAC009, Channel 2, ADT",
+        "AIM T cells, VAC009, Channel 3, ADT",
+        "AIM T cells, VAC009, Channel 4, ADT",
+        "AIM T cells, VAC010, Channel 1, ADT",
+        "AIM T cells, VAC010, Channel 2, ADT",
+        "AIM T cells, VAC010, Channel 3, ADT",
+        "AIM T cells, VAC010, Channel 4, ADT",
+        "AIM T cells, VAC011, Channel 1, ADT",
+        "AIM T cells, VAC011, Channel 2, ADT",
+        "AIM T cells, VAC011, Channel 3, ADT",
+        "AIM T cells, VAC011, Channel 4, ADT",
+        "AIM T cells, VAC012, Channel 1, ADT",
+        "AIM T cells, VAC012, Channel 2, ADT",
+        "AIM T cells, VAC012, Channel 3, ADT",
+        "AIM T cells, VAC012, Channel 4, ADT",
+        "CTVlo T cells, VAC013, Channel 1, ADT",
+        "CTVlo T cells, VAC013, Channel 2, ADT",
+        "CTVlo T cells, VAC014, Channel 3, ADT",
+        "CTVlo T cells, VAC014, Channel 4, ADT",
+        "CTVlo T cells, VAC015, Channel 1, ADT",
+        "CTVlo T cells, VAC015, Channel 2, ADT"
+      ],
+      "selected_links": [],
+      "reasoning": "GSE303984 contains 102 samples split across three modalities: TCR (VDJ contig CSVs), GEX/mRNA (transcriptomic), and ADT (library_source=other, molecule=protein, library type=ADT, with explicit TotalSeq-C antibody panel listed in characteristics). 34 samples are explicitly typed as ADT with protein molecule source and TotalSeq-C antibody annotations covering both the AIM batch (GSM9140301-9140328, 28 samples) and the CTVlo batch (GSM9140341-9140346, 6 samples). These are modality-separated at the GSM level with dedicated ADT samples, so GSM_Level_Separated is appropriate. All pure GEX and TCR samples are excluded.",
+      "total_samples": 102,
+      "samples_with_files": 34,
+      "samples_without_files": 68,
+      "candidate_adt_like_count": 34,
+      "excluded_rna_like_count": 68,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "gex",
+        "protein",
+        "rna",
+        "tcr",
+        "vdj"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\"gsm_id\": \"GSM9140301\", \"sample_title\": \"AIM T cells, VAC007, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140302\", \"sample_title\": \"AIM T cells, VAC007, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140303\", \"sample_title\": \"AIM T cells, VAC007, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140304\", \"sample_title\": \"AIM T cells, VAC007, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140305\", \"sample_title\": \"AIM T cells, VAC008, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140306\", \"sample_title\": \"AIM T cells, VAC008, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140307\", \"sample_title\": \"AIM T cells, VAC008, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140308\", \"sample_title\": \"AIM T cells, VAC008, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140309\", \"sample_title\": \"AIM T cells, VAC008, Channel 5, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140310\", \"sample_title\": \"AIM T cells, VAC008, Channel 6, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140311\", \"sample_title\": \"AIM T cells, VAC008, Channel 7, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140312\", \"sample_title\": \"AIM T cells, VAC008, Channel 8, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140313\", \"sample_title\": \"AIM T cells, VAC009, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140314\", \"sample_title\": \"AIM T cells, VAC009, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140315\", \"sample_title\": \"AIM T cells, VAC009, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140316\", \"sample_title\": \"AIM T cells, VAC009, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140317\", \"sample_title\": \"AIM T cells, VAC010, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140318\", \"sample_title\": \"AIM T cells, VAC010, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140319\", \"sample_title\": \"AIM T cells, VAC010, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140320\", \"sample_title\": \"AIM T cells, VAC010, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140321\", \"sample_title\": \"AIM T cells, VAC011, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140322\", \"sample_title\": \"AIM T cells, VAC011, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140323\", \"sample_title\": \"AIM T cells, VAC011, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140324\", \"sample_title\": \"AIM T cells, VAC011, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140325\", \"sample_title\": \"AIM T cells, VAC012, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140326\", \"sample_title\": \"AIM T cells, VAC012, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140327\", \"sample_title\": \"AIM T cells, VAC012, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140328\", \"sample_title\": \"AIM T cells, VAC012, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140341\", \"sample_title\": \"CTVlo T cells, VAC013, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140342\", \"sample_title\": \"CTVlo T cells, VAC013, Channel 2, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140343\", \"sample_title\": \"CTVlo T cells, VAC014, Channel 3, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140344\", \"sample_title\": \"CTVlo T cells, VAC014, Channel 4, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140345\", \"sample_title\": \"CTVlo T cells, VAC015, Channel 1, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9140346\", \"sample_title\": \"CTVlo T cells, VAC015, Channel 2, ADT\", \"modality_inferred\": \"ADT\"}\n  ],\n  \"reasoning\": \"GSE303984 contains 102 samples split across three modalities: TCR (VDJ contig CSVs), GEX/mRNA (transcriptomic), and ADT (library_source=other, molecule=protein, library type=ADT, with explicit TotalSeq-C antibody panel listed in characteristics). 34 samples are explicitly typed as ADT with protein molecule source and TotalSeq-C antibody annotations covering both the AIM batch (GSM9140301-9140328, 28 samples) and the CTVlo batch (GSM9140341-9140346, 6 samples). These are modality-separated at the GSM level with dedicated ADT samples, so GSM_Level_Separated is appropriate. All pure GEX and TCR samples are excluded.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9140301",
+            "sample_title": "AIM T cells, VAC007, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140302",
+            "sample_title": "AIM T cells, VAC007, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140303",
+            "sample_title": "AIM T cells, VAC007, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140304",
+            "sample_title": "AIM T cells, VAC007, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140305",
+            "sample_title": "AIM T cells, VAC008, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140306",
+            "sample_title": "AIM T cells, VAC008, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140307",
+            "sample_title": "AIM T cells, VAC008, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140308",
+            "sample_title": "AIM T cells, VAC008, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140309",
+            "sample_title": "AIM T cells, VAC008, Channel 5, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140310",
+            "sample_title": "AIM T cells, VAC008, Channel 6, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140311",
+            "sample_title": "AIM T cells, VAC008, Channel 7, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140312",
+            "sample_title": "AIM T cells, VAC008, Channel 8, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140313",
+            "sample_title": "AIM T cells, VAC009, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140314",
+            "sample_title": "AIM T cells, VAC009, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140315",
+            "sample_title": "AIM T cells, VAC009, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140316",
+            "sample_title": "AIM T cells, VAC009, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140317",
+            "sample_title": "AIM T cells, VAC010, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140318",
+            "sample_title": "AIM T cells, VAC010, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140319",
+            "sample_title": "AIM T cells, VAC010, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140320",
+            "sample_title": "AIM T cells, VAC010, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140321",
+            "sample_title": "AIM T cells, VAC011, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140322",
+            "sample_title": "AIM T cells, VAC011, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140323",
+            "sample_title": "AIM T cells, VAC011, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140324",
+            "sample_title": "AIM T cells, VAC011, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140325",
+            "sample_title": "AIM T cells, VAC012, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140326",
+            "sample_title": "AIM T cells, VAC012, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140327",
+            "sample_title": "AIM T cells, VAC012, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140328",
+            "sample_title": "AIM T cells, VAC012, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140341",
+            "sample_title": "CTVlo T cells, VAC013, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140342",
+            "sample_title": "CTVlo T cells, VAC013, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140343",
+            "sample_title": "CTVlo T cells, VAC014, Channel 3, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140344",
+            "sample_title": "CTVlo T cells, VAC014, Channel 4, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140345",
+            "sample_title": "CTVlo T cells, VAC015, Channel 1, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9140346",
+            "sample_title": "CTVlo T cells, VAC015, Channel 2, ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSE303984 contains 102 samples split across three modalities: TCR (VDJ contig CSVs), GEX/mRNA (transcriptomic), and ADT (library_source=other, molecule=protein, library type=ADT, with explicit TotalSeq-C antibody panel listed in characteristics). 34 samples are explicitly typed as ADT with protein molecule source and TotalSeq-C antibody annotations covering both the AIM batch (GSM9140301-9140328, 28 samples) and the CTVlo batch (GSM9140341-9140346, 6 samples). These are modality-separated at the GSM level with dedicated ADT samples, so GSM_Level_Separated is appropriate. All pure GEX and TCR samples are excluded."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9140301",
+          "sample_title": "AIM T cells, VAC007, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140302",
+          "sample_title": "AIM T cells, VAC007, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140303",
+          "sample_title": "AIM T cells, VAC007, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140304",
+          "sample_title": "AIM T cells, VAC007, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140305",
+          "sample_title": "AIM T cells, VAC008, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140306",
+          "sample_title": "AIM T cells, VAC008, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140307",
+          "sample_title": "AIM T cells, VAC008, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140308",
+          "sample_title": "AIM T cells, VAC008, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140309",
+          "sample_title": "AIM T cells, VAC008, Channel 5, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140310",
+          "sample_title": "AIM T cells, VAC008, Channel 6, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140311",
+          "sample_title": "AIM T cells, VAC008, Channel 7, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140312",
+          "sample_title": "AIM T cells, VAC008, Channel 8, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140313",
+          "sample_title": "AIM T cells, VAC009, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140314",
+          "sample_title": "AIM T cells, VAC009, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140315",
+          "sample_title": "AIM T cells, VAC009, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140316",
+          "sample_title": "AIM T cells, VAC009, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140317",
+          "sample_title": "AIM T cells, VAC010, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140318",
+          "sample_title": "AIM T cells, VAC010, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140319",
+          "sample_title": "AIM T cells, VAC010, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140320",
+          "sample_title": "AIM T cells, VAC010, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140321",
+          "sample_title": "AIM T cells, VAC011, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140322",
+          "sample_title": "AIM T cells, VAC011, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140323",
+          "sample_title": "AIM T cells, VAC011, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140324",
+          "sample_title": "AIM T cells, VAC011, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140325",
+          "sample_title": "AIM T cells, VAC012, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140326",
+          "sample_title": "AIM T cells, VAC012, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140327",
+          "sample_title": "AIM T cells, VAC012, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140328",
+          "sample_title": "AIM T cells, VAC012, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140341",
+          "sample_title": "CTVlo T cells, VAC013, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140342",
+          "sample_title": "CTVlo T cells, VAC013, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140343",
+          "sample_title": "CTVlo T cells, VAC014, Channel 3, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140344",
+          "sample_title": "CTVlo T cells, VAC014, Channel 4, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140345",
+          "sample_title": "CTVlo T cells, VAC015, Channel 1, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9140346",
+          "sample_title": "CTVlo T cells, VAC015, Channel 2, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE305370",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 20,
+      "selected_gsm_ids": [
+        "GSM9170323",
+        "GSM9170324",
+        "GSM9170325",
+        "GSM9170326",
+        "GSM9170327",
+        "GSM9170328",
+        "GSM9170329",
+        "GSM9170330",
+        "GSM9170331",
+        "GSM9170332",
+        "GSM9170333",
+        "GSM9170334",
+        "GSM9170335",
+        "GSM9170336",
+        "GSM9170337",
+        "GSM9170338",
+        "GSM9170339",
+        "GSM9170340",
+        "GSM9170341",
+        "GSM9170342"
+      ],
+      "selected_sample_titles": [
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+        "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10"
+      ],
+      "selected_links": [],
+      "reasoning": "GSE305370 contains three assay types: CITE-seq GEX (GSM9170303–9170322, transcriptomic/RNA), CITE-seq ADT (GSM9170323–9170342, library_source='other', molecule='protein'), and Multiome GEX+ATAC (GSM9170343–9170382). The 20 ADT samples (GSM9170323–9170342) are explicitly labeled 'CITE-seq ADT library', have molecule='protein' and library_source='other', confirming protein/ADT signal. Notably, these 20 ADT samples lack supplementary files at the GSM level (they are among the 20 samples_without_supp_files), but they are genuine ADT libraries registered as separate GSMs — the raw data is likely in SRA. The GEX and Multiome samples are excluded as pure RNA or ATAC modalities. Download strategy is GSM_Level_Separated as ADT samples are individually registered GSMs.",
+      "total_samples": 80,
+      "samples_with_files": 60,
+      "samples_without_files": 20,
+      "candidate_adt_like_count": 40,
+      "excluded_rna_like_count": 20,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "cite",
+        "gex",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9170323\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170324\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170325\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170326\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170327\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170328\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170329\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170330\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170331\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170332\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170333\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170334\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170335\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170336\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170337\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170338\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170339\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170340\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170341\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9170342\",\n      \"sample_title\": \"CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"GSE305370 contains three assay types: CITE-seq GEX (GSM9170303–9170322, transcriptomic/RNA), CITE-seq ADT (GSM9170323–9170342, library_source='other', molecule='protein'), and Multiome GEX+ATAC (GSM9170343–9170382). The 20 ADT samples (GSM9170323–9170342) are explicitly labeled 'CITE-seq ADT library', have molecule='protein' and library_source='other', confirming protein/ADT signal. Notably, these 20 ADT samples lack supplementary files at the GSM level (they are among the 20 samples_without_supp_files), but they are genuine ADT libraries registered as separate GSMs — the raw data is likely in SRA. The GEX and Multiome samples are excluded as pure RNA or ATAC modalities. Download strategy is GSM_Level_Separated as ADT samples are individually registered GSMs.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9170323",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170324",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170325",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170326",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170327",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170328",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170329",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170330",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170331",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170332",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170333",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170334",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170335",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170336",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170337",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170338",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170339",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170340",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170341",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9170342",
+            "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSE305370 contains three assay types: CITE-seq GEX (GSM9170303–9170322, transcriptomic/RNA), CITE-seq ADT (GSM9170323–9170342, library_source='other', molecule='protein'), and Multiome GEX+ATAC (GSM9170343–9170382). The 20 ADT samples (GSM9170323–9170342) are explicitly labeled 'CITE-seq ADT library', have molecule='protein' and library_source='other', confirming protein/ADT signal. Notably, these 20 ADT samples lack supplementary files at the GSM level (they are among the 20 samples_without_supp_files), but they are genuine ADT libraries registered as separate GSMs — the raw data is likely in SRA. The GEX and Multiome samples are excluded as pure RNA or ATAC modalities. Download strategy is GSM_Level_Separated as ADT samples are individually registered GSMs."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9170323",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170324",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170325",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170326",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170327",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170328",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170329",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170330",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170331",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170332",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170333",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170334",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170335",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170336",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170337",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170338",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170339",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170340",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170341",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9170342",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE306022",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 3,
+      "selected_gsm_ids": [
+        "GSM9191698",
+        "GSM9191701",
+        "GSM9191704"
+      ],
+      "selected_sample_titles": [
+        "Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+        "Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+        "Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]"
+      ],
+      "selected_links": [],
+      "reasoning": "Three donors (Ci10004, Ci10074, Ci10076) each have a dedicated Feature Barcoding [FB] sample (GSM9191698, GSM9191701, GSM9191704) with library_source='other' and molecule='other', consistent with CITE-seq ADT/hashtag feature barcoding libraries. Their paired [GEX] samples (GSM9191697, GSM9191700, GSM9191703) contain the combined GEX+FB matrix files (features.tsv.gz includes both gene and antibody features), but the explicit ADT modality is represented by the [FB] GSMs. The [GEX] samples are pure transcriptomic and the TCR samples (GSM9191699, GSM9191702, GSM9191705) are V(D)J only — both excluded. The [FB] samples lack their own supplementary files at GSM level (files appear bundled under the [GEX] GSMs), but the FB GSMs are the canonical ADT entries. Download strategy is GSM_Level_Separated as modalities are split across distinct GSMs.",
+      "total_samples": 9,
+      "samples_with_files": 6,
+      "samples_without_files": 3,
+      "candidate_adt_like_count": 6,
+      "excluded_rna_like_count": 3,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "fb",
+        "tcr"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9191698\",\n      \"sample_title\": \"Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9191701\",\n      \"sample_title\": \"Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9191704\",\n      \"sample_title\": \"Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Three donors (Ci10004, Ci10074, Ci10076) each have a dedicated Feature Barcoding [FB] sample (GSM9191698, GSM9191701, GSM9191704) with library_source='other' and molecule='other', consistent with CITE-seq ADT/hashtag feature barcoding libraries. Their paired [GEX] samples (GSM9191697, GSM9191700, GSM9191703) contain the combined GEX+FB matrix files (features.tsv.gz includes both gene and antibody features), but the explicit ADT modality is represented by the [FB] GSMs. The [GEX] samples are pure transcriptomic and the TCR samples (GSM9191699, GSM9191702, GSM9191705) are V(D)J only — both excluded. The [FB] samples lack their own supplementary files at GSM level (files appear bundled under the [GEX] GSMs), but the FB GSMs are the canonical ADT entries. Download strategy is GSM_Level_Separated as modalities are split across distinct GSMs.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9191698",
+            "sample_title": "Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9191701",
+            "sample_title": "Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9191704",
+            "sample_title": "Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Three donors (Ci10004, Ci10074, Ci10076) each have a dedicated Feature Barcoding [FB] sample (GSM9191698, GSM9191701, GSM9191704) with library_source='other' and molecule='other', consistent with CITE-seq ADT/hashtag feature barcoding libraries. Their paired [GEX] samples (GSM9191697, GSM9191700, GSM9191703) contain the combined GEX+FB matrix files (features.tsv.gz includes both gene and antibody features), but the explicit ADT modality is represented by the [FB] GSMs. The [GEX] samples are pure transcriptomic and the TCR samples (GSM9191699, GSM9191702, GSM9191705) are V(D)J only — both excluded. The [FB] samples lack their own supplementary files at GSM level (files appear bundled under the [GEX] GSMs), but the FB GSMs are the canonical ADT entries. Download strategy is GSM_Level_Separated as modalities are split across distinct GSMs."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9191698",
+          "sample_title": "Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9191701",
+          "sample_title": "Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9191704",
+          "sample_title": "Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE306608",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 2,
+      "selected_gsm_ids": [
+        "GSM9204557",
+        "GSM9204560"
+      ],
+      "selected_sample_titles": [
+        "CITE-seq, K5 PDX, ADT",
+        "CITE-seq, K7 PDX, ADT"
+      ],
+      "selected_links": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_matrix.mtx.gz"
+      ],
+      "reasoning": "The series contains modality-split samples for two CITE-seq experiments (K5 PDX and K7 PDX), each decomposed into GEX, ADT, and HTO libraries. GSM9204557 and GSM9204560 are the dedicated ADT samples with explicit 'library type: ADT', 'molecule: protein' characteristics, named ADT antibody panels (CD70, CAIX, CD19), and corresponding ADT matrix files. GEX samples (GSM9204556, GSM9204559) are pure transcriptomic and excluded. HTO samples (GSM9204558, GSM9204561) are hashtag oligo libraries, not protein/ADT signal, and are excluded. Files are present at the GSM level for each modality, so GSM_Level_Separated is the appropriate strategy.",
+      "total_samples": 6,
+      "samples_with_files": 6,
+      "samples_without_files": 0,
+      "candidate_adt_like_count": 6,
+      "excluded_rna_like_count": 0,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "cite",
+        "protein"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9204557\",\n      \"sample_title\": \"CITE-seq, K5 PDX, ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9204560\",\n      \"sample_title\": \"CITE-seq, K7 PDX, ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"The series contains modality-split samples for two CITE-seq experiments (K5 PDX and K7 PDX), each decomposed into GEX, ADT, and HTO libraries. GSM9204557 and GSM9204560 are the dedicated ADT samples with explicit 'library type: ADT', 'molecule: protein' characteristics, named ADT antibody panels (CD70, CAIX, CD19), and corresponding ADT matrix files. GEX samples (GSM9204556, GSM9204559) are pure transcriptomic and excluded. HTO samples (GSM9204558, GSM9204561) are hashtag oligo libraries, not protein/ADT signal, and are excluded. Files are present at the GSM level for each modality, so GSM_Level_Separated is the appropriate strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9204557",
+            "sample_title": "CITE-seq, K5 PDX, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9204560",
+            "sample_title": "CITE-seq, K7 PDX, ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "The series contains modality-split samples for two CITE-seq experiments (K5 PDX and K7 PDX), each decomposed into GEX, ADT, and HTO libraries. GSM9204557 and GSM9204560 are the dedicated ADT samples with explicit 'library type: ADT', 'molecule: protein' characteristics, named ADT antibody panels (CD70, CAIX, CD19), and corresponding ADT matrix files. GEX samples (GSM9204556, GSM9204559) are pure transcriptomic and excluded. HTO samples (GSM9204558, GSM9204561) are hashtag oligo libraries, not protein/ADT signal, and are excluded. Files are present at the GSM level for each modality, so GSM_Level_Separated is the appropriate strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9204557",
+          "sample_title": "CITE-seq, K5 PDX, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204557/suppl/GSM9204557_SH-2852_11_1_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9204560",
+          "sample_title": "CITE-seq, K7 PDX, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9204nnn/GSM9204560/suppl/GSM9204560_SH-2852_12_2_ADT_matrix.mtx.gz"
+          ]
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE313153",
+      "is_false_positive": false,
+      "download_strategy": "GSE_Level_Bundled",
+      "selected_gsm_count": 2,
+      "selected_gsm_ids": [
+        "GSM9362945",
+        "GSM9362947"
+      ],
+      "selected_sample_titles": [
+        "Donor 6 ADT",
+        "Donor 23 ADT"
+      ],
+      "selected_links": [],
+      "reasoning": "Two samples (GSM9362945, GSM9362947) are explicitly ADT modality with library_source='other' and molecule='protein', confirming CITE-seq protein signal. The paired RNA samples (GSM9362944, GSM9362946) are pure GEX and excluded. All four samples lack supplementary files at the GSM level (samples_without_supp_files=4), indicating data is likely bundled at the GSE level, hence GSE_Level_Bundled strategy.",
+      "total_samples": 4,
+      "samples_with_files": 0,
+      "samples_without_files": 4,
+      "candidate_adt_like_count": 2,
+      "excluded_rna_like_count": 2,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSE_Level_Bundled\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9362945\",\n      \"sample_title\": \"Donor 6 ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9362947\",\n      \"sample_title\": \"Donor 23 ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Two samples (GSM9362945, GSM9362947) are explicitly ADT modality with library_source='other' and molecule='protein', confirming CITE-seq protein signal. The paired RNA samples (GSM9362944, GSM9362946) are pure GEX and excluded. All four samples lack supplementary files at the GSM level (samples_without_supp_files=4), indicating data is likely bundled at the GSE level, hence GSE_Level_Bundled strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSE_Level_Bundled",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9362945",
+            "sample_title": "Donor 6 ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9362947",
+            "sample_title": "Donor 23 ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Two samples (GSM9362945, GSM9362947) are explicitly ADT modality with library_source='other' and molecule='protein', confirming CITE-seq protein signal. The paired RNA samples (GSM9362944, GSM9362946) are pure GEX and excluded. All four samples lack supplementary files at the GSM level (samples_without_supp_files=4), indicating data is likely bundled at the GSE level, hence GSE_Level_Bundled strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9362945",
+          "sample_title": "Donor 6 ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9362947",
+          "sample_title": "Donor 23 ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE313894",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 6,
+      "selected_gsm_ids": [
+        "GSM9377265",
+        "GSM9377266",
+        "GSM9377267",
+        "GSM9377268",
+        "GSM9377269",
+        "GSM9377270"
+      ],
+      "selected_sample_titles": [
+        "Donor_9_10_11,PBMC,total,Untreated,rep1,ADT",
+        "Donor_9_10_11,PBMC,total,Untreated,rep2,ADT",
+        "Donor_9_10_11,PBMC,CD4,Untreated,rep1,ADT",
+        "Donor_9_10_11,PBMC,CD4,Untreated,rep2,ADT",
+        "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,ADT",
+        "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,ADT"
+      ],
+      "selected_links": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_matrix.mtx.gz"
+      ],
+      "reasoning": "Six samples (GSM9377265–GSM9377270) are unambiguously ADT/protein: library_source='other', molecule='protein', sample titles suffixed with 'ADT', supplementary files named with '_ADT_' infix (barcodes/features/matrix MTX triplets), and HTO/hashtag metadata present. The remaining 62 samples are pure GEX (library_source='transcriptomic single cell' or 'transcriptomic', molecule='polyA RNA') with no ADT file evidence and are excluded. The ADT samples are deposited as separate GSM entries paired with corresponding GEX GSMs, so GSM_Level_Separated is the appropriate download strategy.",
+      "total_samples": 68,
+      "samples_with_files": 68,
+      "samples_without_files": 0,
+      "candidate_adt_like_count": 6,
+      "excluded_rna_like_count": 62,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "gex",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9377265\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,total,Untreated,rep1,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9377266\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,total,Untreated,rep2,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9377267\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,CD4,Untreated,rep1,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9377268\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,CD4,Untreated,rep2,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9377269\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9377270\",\n      \"sample_title\": \"Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"Six samples (GSM9377265–GSM9377270) are unambiguously ADT/protein: library_source='other', molecule='protein', sample titles suffixed with 'ADT', supplementary files named with '_ADT_' infix (barcodes/features/matrix MTX triplets), and HTO/hashtag metadata present. The remaining 62 samples are pure GEX (library_source='transcriptomic single cell' or 'transcriptomic', molecule='polyA RNA') with no ADT file evidence and are excluded. The ADT samples are deposited as separate GSM entries paired with corresponding GEX GSMs, so GSM_Level_Separated is the appropriate download strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9377265",
+            "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep1,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9377266",
+            "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep2,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9377267",
+            "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep1,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9377268",
+            "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep2,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9377269",
+            "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9377270",
+            "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "Six samples (GSM9377265–GSM9377270) are unambiguously ADT/protein: library_source='other', molecule='protein', sample titles suffixed with 'ADT', supplementary files named with '_ADT_' infix (barcodes/features/matrix MTX triplets), and HTO/hashtag metadata present. The remaining 62 samples are pure GEX (library_source='transcriptomic single cell' or 'transcriptomic', molecule='polyA RNA') with no ADT file evidence and are excluded. The ADT samples are deposited as separate GSM entries paired with corresponding GEX GSMs, so GSM_Level_Separated is the appropriate download strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9377265",
+          "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep1,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377265/suppl/GSM9377265_Donor9_10_11_totalPBMC_sample1_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9377266",
+          "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep2,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377266/suppl/GSM9377266_Donor9_10_11_totalPBMC_sample2_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9377267",
+          "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep1,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377267/suppl/GSM9377267_Donor9_10_11_CD4_sample1_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9377268",
+          "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep2,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377268/suppl/GSM9377268_Donor9_10_11_CD4_sample2_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9377269",
+          "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377269/suppl/GSM9377269_Donor9_10_11_CD4_PMAiIL2_sample1_ADT_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9377270",
+          "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9377nnn/GSM9377270/suppl/GSM9377270_Donor9_10_11_CD4_PMAiIL2_sample2_ADT_matrix.mtx.gz"
+          ]
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE315668",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 14,
+      "selected_gsm_ids": [
+        "GSM9434302",
+        "GSM9434303",
+        "GSM9434304",
+        "GSM9434305",
+        "GSM9434306",
+        "GSM9434307",
+        "GSM9434308",
+        "GSM9434309",
+        "GSM9434310",
+        "GSM9434311",
+        "GSM9434312",
+        "GSM9434313",
+        "GSM9434314",
+        "GSM9434315"
+      ],
+      "selected_sample_titles": [
+        "FB,Bcells,timepoint1,tube1",
+        "FB,Bcells,timepoint1,tube2",
+        "FB,Bcells,timepoint2,tube1",
+        "FB,Bcells,timepoint2,tube2",
+        "FB,Bcells,timepoint3,tube1",
+        "FB,Bcells,timepoint3,tube2",
+        "FB,Bcells,timepoint4,tube1",
+        "FB,Bcells,timepoint4,tube2",
+        "FB,Bcells,timepoint5,tube1",
+        "FB,Bcells,timepoint5,tube2",
+        "FB,Bcells,timepoint6,tube1",
+        "FB,Bcells,timepoint6,tube2",
+        "FB,Bcells,timepoint7,tube1",
+        "FB,Bcells,timepoint7,tube2"
+      ],
+      "selected_links": [
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_matrix.mtx.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_barcodes.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_features.tsv.gz",
+        "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_matrix.mtx.gz"
+      ],
+      "reasoning": "GSE315668 contains 42 samples split across three modalities: GEX (GSM9434288–GSM9434301, library_source=transcriptomic single cell, molecule=polyA RNA), Feature Barcoding/ADT (GSM9434302–GSM9434315, library_source=other, molecule=protein, title prefix 'FB'), and BCR (GSM9434316–GSM9434329, BCR contig annotation files). The 14 'FB' samples have molecule=protein, library_source=other, and carry standard 10x barcodes/features/matrix files consistent with CITE-seq ADT data. These are selected as ADT modality. GEX-only and BCR-only samples are excluded. Each ADT sample has its own GSM-level supplementary files, so GSM_Level_Separated is the appropriate download strategy.",
+      "total_samples": 42,
+      "samples_with_files": 42,
+      "samples_without_files": 0,
+      "candidate_adt_like_count": 14,
+      "excluded_rna_like_count": 28,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "bcr",
+        "fb",
+        "gex",
+        "protein",
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9434302\",\n      \"sample_title\": \"FB,Bcells,timepoint1,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434303\",\n      \"sample_title\": \"FB,Bcells,timepoint1,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434304\",\n      \"sample_title\": \"FB,Bcells,timepoint2,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434305\",\n      \"sample_title\": \"FB,Bcells,timepoint2,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434306\",\n      \"sample_title\": \"FB,Bcells,timepoint3,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434307\",\n      \"sample_title\": \"FB,Bcells,timepoint3,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434308\",\n      \"sample_title\": \"FB,Bcells,timepoint4,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434309\",\n      \"sample_title\": \"FB,Bcells,timepoint4,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434310\",\n      \"sample_title\": \"FB,Bcells,timepoint5,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434311\",\n      \"sample_title\": \"FB,Bcells,timepoint5,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434312\",\n      \"sample_title\": \"FB,Bcells,timepoint6,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434313\",\n      \"sample_title\": \"FB,Bcells,timepoint6,tube2\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434314\",\n      \"sample_title\": \"FB,Bcells,timepoint7,tube1\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9434315\",\n      \"sample_title\": \"FB,Bcells,timepoint7,tube2\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"GSE315668 contains 42 samples split across three modalities: GEX (GSM9434288–GSM9434301, library_source=transcriptomic single cell, molecule=polyA RNA), Feature Barcoding/ADT (GSM9434302–GSM9434315, library_source=other, molecule=protein, title prefix 'FB'), and BCR (GSM9434316–GSM9434329, BCR contig annotation files). The 14 'FB' samples have molecule=protein, library_source=other, and carry standard 10x barcodes/features/matrix files consistent with CITE-seq ADT data. These are selected as ADT modality. GEX-only and BCR-only samples are excluded. Each ADT sample has its own GSM-level supplementary files, so GSM_Level_Separated is the appropriate download strategy.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9434302",
+            "sample_title": "FB,Bcells,timepoint1,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434303",
+            "sample_title": "FB,Bcells,timepoint1,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434304",
+            "sample_title": "FB,Bcells,timepoint2,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434305",
+            "sample_title": "FB,Bcells,timepoint2,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434306",
+            "sample_title": "FB,Bcells,timepoint3,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434307",
+            "sample_title": "FB,Bcells,timepoint3,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434308",
+            "sample_title": "FB,Bcells,timepoint4,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434309",
+            "sample_title": "FB,Bcells,timepoint4,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434310",
+            "sample_title": "FB,Bcells,timepoint5,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434311",
+            "sample_title": "FB,Bcells,timepoint5,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434312",
+            "sample_title": "FB,Bcells,timepoint6,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434313",
+            "sample_title": "FB,Bcells,timepoint6,tube2",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434314",
+            "sample_title": "FB,Bcells,timepoint7,tube1",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9434315",
+            "sample_title": "FB,Bcells,timepoint7,tube2",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "GSE315668 contains 42 samples split across three modalities: GEX (GSM9434288–GSM9434301, library_source=transcriptomic single cell, molecule=polyA RNA), Feature Barcoding/ADT (GSM9434302–GSM9434315, library_source=other, molecule=protein, title prefix 'FB'), and BCR (GSM9434316–GSM9434329, BCR contig annotation files). The 14 'FB' samples have molecule=protein, library_source=other, and carry standard 10x barcodes/features/matrix files consistent with CITE-seq ADT data. These are selected as ADT modality. GEX-only and BCR-only samples are excluded. Each ADT sample has its own GSM-level supplementary files, so GSM_Level_Separated is the appropriate download strategy."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9434302",
+          "sample_title": "FB,Bcells,timepoint1,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434302/suppl/GSM9434302_FB_T1_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434303",
+          "sample_title": "FB,Bcells,timepoint1,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434303/suppl/GSM9434303_FB_T1_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434304",
+          "sample_title": "FB,Bcells,timepoint2,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434304/suppl/GSM9434304_FB_T2_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434305",
+          "sample_title": "FB,Bcells,timepoint2,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434305/suppl/GSM9434305_FB_T2_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434306",
+          "sample_title": "FB,Bcells,timepoint3,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434306/suppl/GSM9434306_FB_T3_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434307",
+          "sample_title": "FB,Bcells,timepoint3,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434307/suppl/GSM9434307_FB_T3_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434308",
+          "sample_title": "FB,Bcells,timepoint4,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434308/suppl/GSM9434308_FB_T4_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434309",
+          "sample_title": "FB,Bcells,timepoint4,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434309/suppl/GSM9434309_FB_T4_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434310",
+          "sample_title": "FB,Bcells,timepoint5,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434310/suppl/GSM9434310_FB_T5_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434311",
+          "sample_title": "FB,Bcells,timepoint5,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434311/suppl/GSM9434311_FB_T5_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434312",
+          "sample_title": "FB,Bcells,timepoint6,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434312/suppl/GSM9434312_FB_T6_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434313",
+          "sample_title": "FB,Bcells,timepoint6,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434313/suppl/GSM9434313_FB_T6_G2_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434314",
+          "sample_title": "FB,Bcells,timepoint7,tube1",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434314/suppl/GSM9434314_FB_T7_G1_matrix.mtx.gz"
+          ]
+        },
+        {
+          "gsm_id": "GSM9434315",
+          "sample_title": "FB,Bcells,timepoint7,tube2",
+          "modality_inferred": "ADT",
+          "supplementary_links": [
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_barcodes.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_features.tsv.gz",
+            "ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9434nnn/GSM9434315/suppl/GSM9434315_FB_T7_G2_matrix.mtx.gz"
+          ]
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE316069",
+      "is_false_positive": true,
+      "download_strategy": "None",
+      "selected_gsm_count": 0,
+      "selected_gsm_ids": [],
+      "selected_sample_titles": [],
+      "selected_links": [],
+      "reasoning": "No CITE-seq ADT samples are present in this dataset. The four samples with 'library type: HTO' and 'molecule: protein' (GSM9444087, GSM9444090, GSM9444093, GSM9444096) represent hashtag oligo (HTO) multiplexing reagents used for sample demultiplexing, not CITE-seq antibody-derived tags (ADT) measuring protein surface markers. HTO is a distinct modality from ADT and does not constitute CITE-seq protein profiling. The remaining samples are pure GEX (mRNA), TCR, or FLASHseq-based scRNA-seq libraries. No ADT/CITE-seq protein signal is present in this series.",
+      "total_samples": 14,
+      "samples_with_files": 6,
+      "samples_without_files": 8,
+      "candidate_adt_like_count": 4,
+      "excluded_rna_like_count": 10,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "gex",
+        "protein",
+        "rna",
+        "tcr"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": true,\n  \"download_strategy\": \"None\",\n  \"selected_samples\": [],\n  \"reasoning\": \"No CITE-seq ADT samples are present in this dataset. The four samples with 'library type: HTO' and 'molecule: protein' (GSM9444087, GSM9444090, GSM9444093, GSM9444096) represent hashtag oligo (HTO) multiplexing reagents used for sample demultiplexing, not CITE-seq antibody-derived tags (ADT) measuring protein surface markers. HTO is a distinct modality from ADT and does not constitute CITE-seq protein profiling. The remaining samples are pure GEX (mRNA), TCR, or FLASHseq-based scRNA-seq libraries. No ADT/CITE-seq protein signal is present in this series.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": true,
+        "download_strategy": "None",
+        "selected_samples": [],
+        "reasoning": "No CITE-seq ADT samples are present in this dataset. The four samples with 'library type: HTO' and 'molecule: protein' (GSM9444087, GSM9444090, GSM9444093, GSM9444096) represent hashtag oligo (HTO) multiplexing reagents used for sample demultiplexing, not CITE-seq antibody-derived tags (ADT) measuring protein surface markers. HTO is a distinct modality from ADT and does not constitute CITE-seq protein profiling. The remaining samples are pure GEX (mRNA), TCR, or FLASHseq-based scRNA-seq libraries. No ADT/CITE-seq protein signal is present in this series."
+      },
+      "selected_samples_enriched": [],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE316096",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 6,
+      "selected_gsm_ids": [
+        "GSM9444421",
+        "GSM9444424",
+        "GSM9444427",
+        "GSM9444430",
+        "GSM9444433",
+        "GSM9444436"
+      ],
+      "selected_sample_titles": [
+        "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT",
+        "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT",
+        "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT",
+        "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT",
+        "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT",
+        "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT"
+      ],
+      "selected_links": [],
+      "reasoning": "The GSE contains 18 samples split into three modality types per patient: mRNA (GEX), ADT (CITE-seq), and TCR VDJ. Six samples (GSM9444421, GSM9444424, GSM9444427, GSM9444430, GSM9444433, GSM9444436) are explicitly labeled 'CITE-seq ADT' with library_type='ADT', molecule='protein', library_source='other', and characteristic 'adt' listing 137 TotalSeq-C antibodies. These are clearly distinct ADT-only GSM entries. The 6 ADT samples lack individual supplementary files in the metadata (files are among the 12 samples_without_supp_files), suggesting ADT data may be bundled at GSE level or linked to paired GEX GSMs; however, since samples are modality-split at the GSM level with dedicated ADT entries, GSM_Level_Separated is the appropriate strategy. GEX and TCR/VDJ samples are excluded.",
+      "total_samples": 18,
+      "samples_with_files": 6,
+      "samples_without_files": 12,
+      "candidate_adt_like_count": 6,
+      "excluded_rna_like_count": 12,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "antibody",
+        "cite",
+        "protein",
+        "rna",
+        "tcr",
+        "vdj"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\n      \"gsm_id\": \"GSM9444421\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9444424\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9444427\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9444430\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9444433\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    },\n    {\n      \"gsm_id\": \"GSM9444436\",\n      \"sample_title\": \"PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT\",\n      \"modality_inferred\": \"ADT\"\n    }\n  ],\n  \"reasoning\": \"The GSE contains 18 samples split into three modality types per patient: mRNA (GEX), ADT (CITE-seq), and TCR VDJ. Six samples (GSM9444421, GSM9444424, GSM9444427, GSM9444430, GSM9444433, GSM9444436) are explicitly labeled 'CITE-seq ADT' with library_type='ADT', molecule='protein', library_source='other', and characteristic 'adt' listing 137 TotalSeq-C antibodies. These are clearly distinct ADT-only GSM entries. The 6 ADT samples lack individual supplementary files in the metadata (files are among the 12 samples_without_supp_files), suggesting ADT data may be bundled at GSE level or linked to paired GEX GSMs; however, since samples are modality-split at the GSM level with dedicated ADT entries, GSM_Level_Separated is the appropriate strategy. GEX and TCR/VDJ samples are excluded.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9444421",
+            "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9444424",
+            "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9444427",
+            "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9444430",
+            "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9444433",
+            "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9444436",
+            "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "The GSE contains 18 samples split into three modality types per patient: mRNA (GEX), ADT (CITE-seq), and TCR VDJ. Six samples (GSM9444421, GSM9444424, GSM9444427, GSM9444430, GSM9444433, GSM9444436) are explicitly labeled 'CITE-seq ADT' with library_type='ADT', molecule='protein', library_source='other', and characteristic 'adt' listing 137 TotalSeq-C antibodies. These are clearly distinct ADT-only GSM entries. The 6 ADT samples lack individual supplementary files in the metadata (files are among the 12 samples_without_supp_files), suggesting ADT data may be bundled at GSE level or linked to paired GEX GSMs; however, since samples are modality-split at the GSM level with dedicated ADT entries, GSM_Level_Separated is the appropriate strategy. GEX and TCR/VDJ samples are excluded."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9444421",
+          "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9444424",
+          "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9444427",
+          "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9444430",
+          "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9444433",
+          "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9444436",
+          "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE316782",
+      "is_false_positive": true,
+      "download_strategy": "None",
+      "selected_gsm_count": 0,
+      "selected_gsm_ids": [],
+      "selected_sample_titles": [],
+      "selected_links": [],
+      "reasoning": "All 18 samples in GSE316782 have library_source='transcriptomic' and molecule='total RNA', indicating pure GEX/RNA-seq data. No ADT, protein, or CITE-seq modality is evidenced in any sample metadata, characteristics, or supplementary files (samples_with_supp_files=0). There is no mention of CITE-seq, antibody-derived tags, or protein capture in any field. This series is a false positive with no ADT content.",
+      "total_samples": 18,
+      "samples_with_files": 0,
+      "samples_without_files": 18,
+      "candidate_adt_like_count": 0,
+      "excluded_rna_like_count": 18,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "rna"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": true,\n  \"download_strategy\": \"None\",\n  \"selected_samples\": [],\n  \"reasoning\": \"All 18 samples in GSE316782 have library_source='transcriptomic' and molecule='total RNA', indicating pure GEX/RNA-seq data. No ADT, protein, or CITE-seq modality is evidenced in any sample metadata, characteristics, or supplementary files (samples_with_supp_files=0). There is no mention of CITE-seq, antibody-derived tags, or protein capture in any field. This series is a false positive with no ADT content.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": true,
+        "download_strategy": "None",
+        "selected_samples": [],
+        "reasoning": "All 18 samples in GSE316782 have library_source='transcriptomic' and molecule='total RNA', indicating pure GEX/RNA-seq data. No ADT, protein, or CITE-seq modality is evidenced in any sample metadata, characteristics, or supplementary files (samples_with_supp_files=0). There is no mention of CITE-seq, antibody-derived tags, or protein capture in any field. This series is a false positive with no ADT content."
+      },
+      "selected_samples_enriched": [],
+      "validation_errors": [],
+      "selector_method": "llm"
+    },
+    {
+      "series_id": "GSE320155",
+      "is_false_positive": false,
+      "download_strategy": "GSM_Level_Separated",
+      "selected_gsm_count": 20,
+      "selected_gsm_ids": [
+        "GSM9535796",
+        "GSM9535799",
+        "GSM9535802",
+        "GSM9535805",
+        "GSM9535808",
+        "GSM9535811",
+        "GSM9535814",
+        "GSM9535817",
+        "GSM9535820",
+        "GSM9535823",
+        "GSM9535826",
+        "GSM9535829",
+        "GSM9535832",
+        "GSM9535835",
+        "GSM9535838",
+        "GSM9535841",
+        "GSM9535844",
+        "GSM9535847",
+        "GSM9535850",
+        "GSM9535853"
+      ],
+      "selected_sample_titles": [
+        "P061, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "P063, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "P064, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "P066, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "P080, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "P069, HCC, tumour and background liver tissues, Treg, ADT",
+        "P069, HCC, tumour and background liver tissues, Tconv, ADT",
+        "P091, HCC, tumour and background liver tissues, Treg, ADT",
+        "P091, HCC, tumour and background liver tissues, Tconv, ADT",
+        "P097, HCC, tumour and background liver tissues, Treg, ADT",
+        "P097, HCC, tumour and background liver tissues, Tconv, ADT",
+        "P102, HCC, tumour and background liver tissues, Treg, ADT",
+        "P102, HCC, tumour and background liver tissues, Tconv, ADT",
+        "P108, HCC, tumour and background liver tissues, Treg, ADT",
+        "P108, HCC, tumour and background liver tissues, Tconv, ADT"
+      ],
+      "selected_links": [],
+      "reasoning": "The GSE contains 60 samples split into three modalities per donor/cell-type combination: GEX (mRNA/polyA RNA), ADT (library type=ADT, molecule=protein, library_source=other), and VDJ (TCR). Twenty samples are explicitly labeled ADT with molecule=protein, confirming genuine CITE-seq protein signal. These are selected. GEX and VDJ samples are excluded. Modalities are deposited as separate GSM entries, so GSM_Level_Separated is the appropriate download strategy. No supplementary files are attached at the GSM level, so raw data will need to be retrieved from SRA or GSE-level archives.",
+      "total_samples": 60,
+      "samples_with_files": 0,
+      "samples_without_files": 60,
+      "candidate_adt_like_count": 20,
+      "excluded_rna_like_count": 40,
+      "confidence_summary": "n/a",
+      "evidence_keywords": [
+        "adt",
+        "gex",
+        "protein",
+        "rna",
+        "tcr",
+        "vdj"
+      ],
+      "raw_selector_output": "```json\n{\n  \"is_false_positive\": false,\n  \"download_strategy\": \"GSM_Level_Separated\",\n  \"selected_samples\": [\n    {\"gsm_id\": \"GSM9535796\", \"sample_title\": \"P061, Liver metastasis, PBMC and healthy liver, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535799\", \"sample_title\": \"P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535802\", \"sample_title\": \"P063, Liver metastasis, PBMC and healthy liver, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535805\", \"sample_title\": \"P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535808\", \"sample_title\": \"P064, Liver metastasis, PBMC and healthy liver, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535811\", \"sample_title\": \"P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535814\", \"sample_title\": \"P066, Liver metastasis, PBMC and healthy liver, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535817\", \"sample_title\": \"P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535820\", \"sample_title\": \"P080, Liver metastasis, PBMC and healthy liver, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535823\", \"sample_title\": \"P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535826\", \"sample_title\": \"P069, HCC, tumour and background liver tissues, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535829\", \"sample_title\": \"P069, HCC, tumour and background liver tissues, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535832\", \"sample_title\": \"P091, HCC, tumour and background liver tissues, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535835\", \"sample_title\": \"P091, HCC, tumour and background liver tissues, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535838\", \"sample_title\": \"P097, HCC, tumour and background liver tissues, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535841\", \"sample_title\": \"P097, HCC, tumour and background liver tissues, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535844\", \"sample_title\": \"P102, HCC, tumour and background liver tissues, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535847\", \"sample_title\": \"P102, HCC, tumour and background liver tissues, Tconv, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535850\", \"sample_title\": \"P108, HCC, tumour and background liver tissues, Treg, ADT\", \"modality_inferred\": \"ADT\"},\n    {\"gsm_id\": \"GSM9535853\", \"sample_title\": \"P108, HCC, tumour and background liver tissues, Tconv, ADT\", \"modality_inferred\": \"ADT\"}\n  ],\n  \"reasoning\": \"The GSE contains 60 samples split into three modalities per donor/cell-type combination: GEX (mRNA/polyA RNA), ADT (library type=ADT, molecule=protein, library_source=other), and VDJ (TCR). Twenty samples are explicitly labeled ADT with molecule=protein, confirming genuine CITE-seq protein signal. These are selected. GEX and VDJ samples are excluded. Modalities are deposited as separate GSM entries, so GSM_Level_Separated is the appropriate download strategy. No supplementary files are attached at the GSM level, so raw data will need to be retrieved from SRA or GSE-level archives.\"\n}\n```",
+      "raw_selector_json": {
+        "is_false_positive": false,
+        "download_strategy": "GSM_Level_Separated",
+        "selected_samples": [
+          {
+            "gsm_id": "GSM9535796",
+            "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535799",
+            "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535802",
+            "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535805",
+            "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535808",
+            "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535811",
+            "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535814",
+            "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535817",
+            "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535820",
+            "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535823",
+            "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535826",
+            "sample_title": "P069, HCC, tumour and background liver tissues, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535829",
+            "sample_title": "P069, HCC, tumour and background liver tissues, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535832",
+            "sample_title": "P091, HCC, tumour and background liver tissues, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535835",
+            "sample_title": "P091, HCC, tumour and background liver tissues, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535838",
+            "sample_title": "P097, HCC, tumour and background liver tissues, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535841",
+            "sample_title": "P097, HCC, tumour and background liver tissues, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535844",
+            "sample_title": "P102, HCC, tumour and background liver tissues, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535847",
+            "sample_title": "P102, HCC, tumour and background liver tissues, Tconv, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535850",
+            "sample_title": "P108, HCC, tumour and background liver tissues, Treg, ADT",
+            "modality_inferred": "ADT"
+          },
+          {
+            "gsm_id": "GSM9535853",
+            "sample_title": "P108, HCC, tumour and background liver tissues, Tconv, ADT",
+            "modality_inferred": "ADT"
+          }
+        ],
+        "reasoning": "The GSE contains 60 samples split into three modalities per donor/cell-type combination: GEX (mRNA/polyA RNA), ADT (library type=ADT, molecule=protein, library_source=other), and VDJ (TCR). Twenty samples are explicitly labeled ADT with molecule=protein, confirming genuine CITE-seq protein signal. These are selected. GEX and VDJ samples are excluded. Modalities are deposited as separate GSM entries, so GSM_Level_Separated is the appropriate download strategy. No supplementary files are attached at the GSM level, so raw data will need to be retrieved from SRA or GSE-level archives."
+      },
+      "selected_samples_enriched": [
+        {
+          "gsm_id": "GSM9535796",
+          "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535799",
+          "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535802",
+          "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535805",
+          "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535808",
+          "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535811",
+          "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535814",
+          "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535817",
+          "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535820",
+          "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535823",
+          "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535826",
+          "sample_title": "P069, HCC, tumour and background liver tissues, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535829",
+          "sample_title": "P069, HCC, tumour and background liver tissues, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535832",
+          "sample_title": "P091, HCC, tumour and background liver tissues, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535835",
+          "sample_title": "P091, HCC, tumour and background liver tissues, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535838",
+          "sample_title": "P097, HCC, tumour and background liver tissues, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535841",
+          "sample_title": "P097, HCC, tumour and background liver tissues, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535844",
+          "sample_title": "P102, HCC, tumour and background liver tissues, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535847",
+          "sample_title": "P102, HCC, tumour and background liver tissues, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535850",
+          "sample_title": "P108, HCC, tumour and background liver tissues, Treg, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        },
+        {
+          "gsm_id": "GSM9535853",
+          "sample_title": "P108, HCC, tumour and background liver tissues, Tconv, ADT",
+          "modality_inferred": "ADT",
+          "supplementary_links": []
+        }
+      ],
+      "validation_errors": [],
+      "selector_method": "llm"
+    }
+  ]
+}

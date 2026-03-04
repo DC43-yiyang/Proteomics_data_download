@@ -1,19 +1,20 @@
-"""Tests for SampleSelectorSkill with mocked NCBI + LLM clients."""
+"""Tests for SampleSelectorSkill Phase 1 preprocessing."""
 
 import json
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
 
 from geo_agent.models.context import PipelineContext
 from geo_agent.models.dataset import GEODataset
 from geo_agent.models.query import SearchQuery
-from geo_agent.models.sample import GEOSample, SampleSelection
-from geo_agent.skills.sample_selector import SampleSelectorSkill, VALID_LIBRARY_TYPES
+from geo_agent.skills.sample_selector import (
+    SampleSelectorSkill,
+    heuristic_select_samples,
+    preprocess_family_soft_directory,
+    select_samples,
+)
 from geo_agent.skills.base import SkillError
-
-
-# --- Fixtures ---
 
 FAMILY_SOFT_TWO_SAMPLES = """\
 ^SAMPLE = GSM9474997
@@ -21,268 +22,266 @@ FAMILY_SOFT_TWO_SAMPLES = """\
 !Sample_geo_accession = GSM9474997
 !Sample_organism_ch1 = Homo sapiens
 !Sample_characteristics_ch1 = library type: mRNA
+!Sample_characteristics_ch1 = tissue: PBMC
 !Sample_molecule_ch1 = polyA RNA
 !Sample_library_source = transcriptomic
-!Sample_description = Gene expression library
 !Sample_supplementary_file = ftp://example.com/GSM9474997_matrix.mtx.gz
 ^SAMPLE = GSM9475081
 !Sample_title = Patient 10-02_ADT timepoint T01 scRNAseq
 !Sample_geo_accession = GSM9475081
 !Sample_organism_ch1 = Homo sapiens
 !Sample_characteristics_ch1 = library type: ADT
+!Sample_characteristics_ch1 = tissue: PBMC
 !Sample_molecule_ch1 = protein
 !Sample_library_source = other
-!Sample_description = antibody-derived oligonucleotide library
-!Sample_supplementary_file = ftp://example.com/GSM9475081_matrix.mtx.gz
+!Sample_supplementary_file = NONE
 """
 
-LLM_RESPONSE_VALID = json.dumps([
-    {
-        "accession": "GSM9474997",
-        "library_type": "GEX",
-        "confidence": 0.95,
-        "reasoning": "title=_GEX, molecule=polyA RNA, library_source=transcriptomic",
-    },
-    {
-        "accession": "GSM9475081",
-        "library_type": "ADT",
-        "confidence": 0.95,
-        "reasoning": "title=_ADT, molecule=protein, library_source=other",
-    },
-])
 
-
-def _make_context(target_types=None):
-    ctx = PipelineContext(
+def _make_context():
+    return PipelineContext(
         query=SearchQuery(data_type="CITE-seq", organism="Homo sapiens"),
         filtered_datasets=[
-            GEODataset(accession="GSE317605", uid="123", title="Test series"),
+            GEODataset(accession="GSE317605", uid="123", title="Test"),
         ],
     )
-    if target_types:
-        ctx.target_library_types = target_types
-    return ctx
 
 
-def _make_mock_llm(response_text=LLM_RESPONSE_VALID):
-    """Create a mock Anthropic client that returns the given text."""
-    mock_client = MagicMock()
-    mock_response = MagicMock()
-    mock_response.content = [MagicMock(text=response_text)]
-    mock_client.messages.create.return_value = mock_response
-    return mock_client
+def _make_mock_ncbi():
+    client = MagicMock()
+    client.fetch_family_soft_batch.return_value = {"GSE317605": FAMILY_SOFT_TWO_SAMPLES}
+    return client
 
 
-def _make_mock_ncbi(soft_texts=None):
-    """Create a mock NCBIClient."""
-    mock_client = MagicMock()
-    if soft_texts is None:
-        soft_texts = {"GSE317605": FAMILY_SOFT_TWO_SAMPLES}
-    mock_client.fetch_family_soft_batch.return_value = soft_texts
-    return mock_client
+def _make_mock_llm(response_text: str):
+    client = MagicMock()
+    response = MagicMock()
+    response.content = [MagicMock(text=response_text)]
+    client.messages.create.return_value = response
+    return client
 
 
-# --- Tests ---
+def test_skill_name():
+    skill = SampleSelectorSkill(ncbi_client=_make_mock_ncbi())
+    assert skill.name == "sample_selector"
 
-class TestSampleSelectorSkill:
 
-    def test_basic_classification(self):
-        """End-to-end: 2 samples classified as GEX + ADT, filter for both."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
+def test_execute_builds_phase1_context_and_json():
+    skill = SampleSelectorSkill(ncbi_client=_make_mock_ncbi())
+    ctx = skill.execute(_make_context())
 
-        ctx = _make_context(target_types=["GEX", "ADT"])
-        ctx = skill.execute(ctx)
+    assert "GSE317605" in ctx.sample_metadata
+    assert len(ctx.sample_metadata["GSE317605"]) == 2
 
-        assert "GSE317605" in ctx.sample_metadata
-        assert len(ctx.sample_metadata["GSE317605"]) == 2
+    compact = ctx.sample_selector_context["GSE317605"]
+    assert compact["series_id"] == "GSE317605"
+    assert compact["sample_count"] == 2
+    assert compact["samples_with_supp_files"] == 1
+    assert compact["samples_without_supp_files"] == 1
 
-        assert "GSE317605" in ctx.selected_samples
-        selected = ctx.selected_samples["GSE317605"]
-        assert len(selected) == 2
-        types = {s.library_type for s in selected}
-        assert types == {"GEX", "ADT"}
+    compact_json = ctx.sample_selector_context_json["GSE317605"]
+    parsed_json = json.loads(compact_json)
+    assert parsed_json["series_id"] == "GSE317605"
+    assert len(parsed_json["samples"]) == 2
 
-    def test_filter_by_target_type(self):
-        """Only ADT samples should be selected when target is ADT."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
 
-        ctx = _make_context(target_types=["ADT"])
-        ctx = skill.execute(ctx)
+def test_supplementary_files_are_compacted_to_file_names():
+    skill = SampleSelectorSkill(ncbi_client=_make_mock_ncbi())
+    ctx = skill.execute(_make_context())
 
-        selected = ctx.selected_samples["GSE317605"]
-        assert len(selected) == 1
-        assert selected[0].library_type == "ADT"
-        assert selected[0].accession == "GSM9475081"
+    first = ctx.sample_selector_context["GSE317605"]["samples"][0]
+    assert first["supplementary_files"] == ["GSM9474997_matrix.mtx.gz"]
 
-    def test_supplementary_files_carried_over(self):
-        """supplementary_files from parsed samples should be in selections."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
 
-        ctx = _make_context(target_types=["GEX", "ADT"])
-        ctx = skill.execute(ctx)
+def test_characteristics_are_normalized_to_lowercase_keys():
+    skill = SampleSelectorSkill(ncbi_client=_make_mock_ncbi())
+    ctx = skill.execute(_make_context())
 
-        for s in ctx.selected_samples["GSE317605"]:
-            assert len(s.supplementary_files) >= 1
+    first = ctx.sample_selector_context["GSE317605"]["samples"][0]
+    assert "characteristics" in first
+    assert first["characteristics"]["library type"] == "mRNA"
+    assert first["characteristics"]["tissue"] == "PBMC"
 
-    def test_low_confidence_flags_needs_review(self):
-        """Samples below confidence threshold should have needs_review=True."""
-        low_confidence_response = json.dumps([
-            {
-                "accession": "GSM9474997",
-                "library_type": "GEX",
-                "confidence": 0.5,
-                "reasoning": "ambiguous signals",
-            },
-            {
-                "accession": "GSM9475081",
-                "library_type": "ADT",
-                "confidence": 0.95,
-                "reasoning": "clear ADT signals",
-            },
-        ])
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm(response_text=low_confidence_response)
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm, confidence_threshold=0.7)
 
-        ctx = _make_context(target_types=["GEX", "ADT"])
-        ctx = skill.execute(ctx)
+def test_preprocess_family_soft_directory(tmp_path):
+    soft_path = tmp_path / "GSE317605_family.soft"
+    soft_path.write_text(FAMILY_SOFT_TWO_SAMPLES)
 
-        selected = ctx.selected_samples["GSE317605"]
-        gex = [s for s in selected if s.library_type == "GEX"][0]
-        adt = [s for s in selected if s.library_type == "ADT"][0]
-        assert gex.needs_review is True
-        assert adt.needs_review is False
+    contexts = preprocess_family_soft_directory(
+        input_dir=tmp_path,
+        output_file=tmp_path / "phase1.json",
+    )
 
-    def test_unknown_library_type_mapped_to_other(self):
-        """Unknown library types should be normalized to OTHER."""
-        unknown_response = json.dumps([
-            {
-                "accession": "GSM9474997",
-                "library_type": "UNKNOWN_TYPE",
-                "confidence": 0.8,
-                "reasoning": "unknown",
-            },
-            {
-                "accession": "GSM9475081",
-                "library_type": "ADT",
-                "confidence": 0.95,
-                "reasoning": "clear",
-            },
-        ])
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm(response_text=unknown_response)
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
+    assert "GSE317605" in contexts
+    assert contexts["GSE317605"]["sample_count"] == 2
 
-        ctx = _make_context(target_types=["OTHER", "ADT"])
-        ctx = skill.execute(ctx)
+    output = (tmp_path / "phase1.json").read_text()
+    assert "\"GSE317605\"" in output
 
-        selected = ctx.selected_samples["GSE317605"]
-        other = [s for s in selected if s.library_type == "OTHER"]
-        assert len(other) == 1
-        assert other[0].needs_review is True
 
-    def test_llm_returns_markdown_fences(self):
-        """LLM response wrapped in ```json ... ``` fences should still parse."""
-        fenced = "```json\n" + LLM_RESPONSE_VALID + "\n```"
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm(response_text=fenced)
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = _make_context(target_types=["GEX", "ADT"])
-        ctx = skill.execute(ctx)
-
-        assert len(ctx.selected_samples["GSE317605"]) == 2
-
-    def test_empty_soft_records_error(self):
-        """Empty SOFT text should record an error, not crash."""
-        ncbi = _make_mock_ncbi(soft_texts={"GSE317605": ""})
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = _make_context(target_types=["GEX"])
-        ctx = skill.execute(ctx)
-
-        assert any("GSE317605" in e for e in ctx.errors)
-
-    def test_no_datasets_returns_early(self):
-        """Should return context unchanged if no datasets."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = PipelineContext(
-            query=SearchQuery(data_type="CITE-seq"),
-            filtered_datasets=[],
-            datasets=[],
-        )
-        ctx = skill.execute(ctx)
-
-        assert ctx.selected_samples == {}
-        assert ctx.sample_metadata == {}
-
-    def test_llm_invalid_json_records_error(self):
-        """Invalid JSON from LLM should record error after retry."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm(response_text="this is not json at all")
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = _make_context(target_types=["GEX"])
-        ctx = skill.execute(ctx)
-
-        assert any("GSE317605" in e for e in ctx.errors)
-
-    def test_confidence_clamped(self):
-        """Confidence values outside 0-1 should be clamped."""
-        out_of_range = json.dumps([
-            {
-                "accession": "GSM9474997",
-                "library_type": "GEX",
-                "confidence": 1.5,
-                "reasoning": "over-confident",
-            },
-            {
-                "accession": "GSM9475081",
-                "library_type": "ADT",
-                "confidence": -0.3,
-                "reasoning": "negative confidence",
-            },
-        ])
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm(response_text=out_of_range)
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = _make_context(target_types=["GEX", "ADT"])
-        ctx = skill.execute(ctx)
-
-        selected = ctx.selected_samples["GSE317605"]
-        for s in selected:
-            assert 0.0 <= s.confidence <= 1.0
-
-    def test_skill_name(self):
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-        assert skill.name == "sample_selector"
-
-    def test_fallback_to_datasets_when_no_filtered(self):
-        """Should use context.datasets if filtered_datasets is empty."""
-        ncbi = _make_mock_ncbi()
-        llm = _make_mock_llm()
-        skill = SampleSelectorSkill(ncbi_client=ncbi, llm_client=llm)
-
-        ctx = PipelineContext(
-            query=SearchQuery(data_type="CITE-seq"),
-            datasets=[
-                GEODataset(accession="GSE317605", uid="123", title="Test"),
+def test_select_samples_happy_path():
+    metadata = {
+        "series_id": "GSE317605",
+        "samples": [
+            {"gsm_id": "GSM9474997", "sample_title": "Patient 10-02_GEX timepoint T01 scRNAseq"},
+            {"gsm_id": "GSM9475081", "sample_title": "Patient 10-02_ADT timepoint T01 scRNAseq"},
+        ],
+    }
+    llm_output = json.dumps(
+        {
+            "is_false_positive": False,
+            "download_strategy": "GSM_Level_Separated",
+            "selected_samples": [
+                {
+                    "gsm_id": "GSM9475081",
+                    "sample_title": "Patient 10-02_ADT timepoint T01 scRNAseq",
+                    "modality_inferred": "ADT",
+                }
             ],
-            target_library_types=["GEX", "ADT"],
-        )
-        ctx = skill.execute(ctx)
+            "reasoning": "ADT sample is explicitly labeled.",
+        }
+    )
+    llm = _make_mock_llm(llm_output)
 
-        assert "GSE317605" in ctx.selected_samples
+    result = select_samples(
+        query="Extract all CITE-seq protein/ADT samples",
+        metadata=metadata,
+        llm_client=llm,
+    )
+
+    assert result["is_false_positive"] is False
+    assert result["download_strategy"] == "GSM_Level_Separated"
+    assert len(result["selected_samples"]) == 1
+    assert result["selected_samples"][0]["gsm_id"] == "GSM9475081"
+    assert result["selected_samples"][0]["modality_inferred"] == "ADT"
+
+    kwargs = llm.messages.create.call_args.kwargs
+    assert kwargs["temperature"] == 0.1
+
+    debug_result = select_samples(
+        query="Extract all CITE-seq protein/ADT samples",
+        metadata=metadata,
+        llm_client=llm,
+        include_debug=True,
+    )
+    assert "raw_selector_output" in debug_result
+    assert "result" in debug_result
+
+
+def test_select_samples_accepts_markdown_wrapped_json():
+    metadata = {
+        "series_id": "GSE317605",
+        "samples": [
+            {"gsm_id": "GSM9475081", "sample_title": "Patient 10-02_ADT timepoint T01 scRNAseq"},
+        ],
+    }
+    llm_output = """```json
+{"is_false_positive":false,"download_strategy":"GSM_Level_Separated","selected_samples":[{"gsm_id":"GSM9475081","sample_title":"Patient 10-02_ADT timepoint T01 scRNAseq","modality_inferred":"ADT"}],"reasoning":"ok"}
+```"""
+    llm = _make_mock_llm(llm_output)
+
+    result = select_samples(
+        query="Extract ADT samples",
+        metadata=metadata,
+        llm_client=llm,
+    )
+
+    assert result["selected_samples"][0]["gsm_id"] == "GSM9475081"
+
+
+def test_select_samples_false_positive_forces_empty_selection():
+    metadata = {
+        "series_id": "GSE280852",
+        "samples": [
+            {"gsm_id": "GSM8606565", "sample_title": "human liver, ctrl, P1"},
+        ],
+    }
+    llm_output = json.dumps(
+        {
+            "is_false_positive": True,
+            "download_strategy": "GSM_Level_Separated",
+            "selected_samples": [
+                {
+                    "gsm_id": "GSM8606565",
+                    "sample_title": "human liver, ctrl, P1",
+                    "modality_inferred": "ADT",
+                }
+            ],
+            "reasoning": "No ADT evidence.",
+        }
+    )
+    llm = _make_mock_llm(llm_output)
+
+    result = select_samples(
+        query="Extract all CITE-seq protein/ADT samples",
+        metadata=metadata,
+        llm_client=llm,
+    )
+
+    assert result["is_false_positive"] is True
+    assert result["download_strategy"] == "None"
+    assert result["selected_samples"] == []
+
+
+def test_select_samples_rejects_unknown_strategy():
+    metadata = {
+        "series_id": "GSE317605",
+        "samples": [
+            {"gsm_id": "GSM9475081", "sample_title": "Patient 10-02_ADT timepoint T01 scRNAseq"},
+        ],
+    }
+    llm_output = json.dumps(
+        {
+            "is_false_positive": False,
+            "download_strategy": "BadStrategy",
+            "selected_samples": [
+                {
+                    "gsm_id": "GSM9475081",
+                    "sample_title": "Patient 10-02_ADT timepoint T01 scRNAseq",
+                    "modality_inferred": "ADT",
+                }
+            ],
+            "reasoning": "bad strategy name",
+        }
+    )
+    llm = _make_mock_llm(llm_output)
+
+    with pytest.raises(SkillError):
+        select_samples(
+            query="Extract ADT samples",
+            metadata=metadata,
+            llm_client=llm,
+        )
+
+
+def test_heuristic_select_samples_returns_false_positive_when_no_adt():
+    metadata = {
+        "series_id": "GSE000001",
+        "samples": [
+            {"gsm_id": "GSM1", "sample_title": "control gex", "molecule": "polyA RNA"},
+            {"gsm_id": "GSM2", "sample_title": "case gex", "molecule": "polyA RNA"},
+        ],
+    }
+    result = heuristic_select_samples("Extract ADT", metadata)
+    assert result["is_false_positive"] is True
+    assert result["selected_samples"] == []
+    assert result["download_strategy"] == "None"
+
+
+def test_heuristic_select_samples_selects_adt_sample():
+    metadata = {
+        "series_id": "GSE000002",
+        "samples": [
+            {
+                "gsm_id": "GSM1",
+                "sample_title": "Patient ADT",
+                "molecule": "protein",
+                "supplementary_files": ["GSM1_ADT_matrix.mtx.gz"],
+            },
+            {"gsm_id": "GSM2", "sample_title": "Patient GEX", "molecule": "polyA RNA"},
+        ],
+    }
+    result = heuristic_select_samples("Extract ADT", metadata)
+    assert result["is_false_positive"] is False
+    assert len(result["selected_samples"]) == 1
+    assert result["selected_samples"][0]["gsm_id"] == "GSM1"

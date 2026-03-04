@@ -91,7 +91,7 @@ def _run_search(args):
     agent.register(GEOSearchSkill(client))
     agent.register(ReportSkill(output_file=args.report))
 
-    # When --library-type is provided, add FilterSkill + SampleSelectorSkill
+    # When --library-type is provided, add HierarchySkill + FilterSkill + StandaloneSampleSelectorSkill
     library_types = getattr(args, "library_type", None)
     if library_types:
         from geo_agent.skills.filter import FilterSkill
@@ -108,10 +108,12 @@ def _run_search(args):
 
         anthropic_client = anthropic.Anthropic(api_key=config.anthropic_api_key)
 
-        from geo_agent.skills.sample_selector import SampleSelectorSkill
+        from geo_agent.skills.hierarchy import HierarchySkill
+        from geo_agent.skills.standalone_sample_selector import StandaloneSampleSelectorSkill
 
+        agent.register(HierarchySkill(ncbi_client=client))
         agent.register(FilterSkill())
-        agent.register(SampleSelectorSkill(
+        agent.register(StandaloneSampleSelectorSkill(
             ncbi_client=client,
             llm_client=anthropic_client,
             model=config.llm_model,

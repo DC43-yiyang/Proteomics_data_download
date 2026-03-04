@@ -1,6 +1,6 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v0.7
+> **Version**: v0.8
 > **Created**: 2026-03-02
 > **Last updated**: 2026-03-03
 > **Environment**: Python 3.12.12 (uv) | isolated venv `.venv/`
@@ -57,8 +57,10 @@ Proteomics_data_download/
 │   │   ├── report.md              # ReportSkill spec
 │   │   ├── filter.py              # FilterSkill: keyword scoring + filtering
 │   │   ├── filter.md              # FilterSkill spec
-│   │   ├── sample_selector.py     # SampleSelectorSkill: LLM-based sample classification
-│   │   ├── sample_selector.md     # SampleSelectorSkill spec / 操作指南
+│   │   ├── hierarchy.py           # HierarchySkill: SuperSeries/SubSeries family tree
+│   │   ├── hierarchy.md           # HierarchySkill spec
+│   │   ├── standalone_sample_selector.py  # StandaloneSampleSelectorSkill: LLM classification for standalone series
+│   │   ├── standalone_sample_selector.md  # StandaloneSampleSelectorSkill spec
 │   │   └── validate.py            # ValidationSkill (not yet implemented)
 │   │
 │   ├── ncbi/
@@ -68,7 +70,8 @@ Proteomics_data_download/
 │   │
 │   └── utils/
 │       ├── __init__.py
-│       └── logging.py             # Logging config
+│       ├── logging.py             # Logging config
+│       └── hierarchy.py           # SeriesNode dataclass + build/format helpers
 │
 └── tests/
     ├── __init__.py
@@ -91,8 +94,11 @@ SearchQuery ──▶ [GEOSearchSkill] ──▶ list[GEODataset]
                   │                       │
                   ├─ esearch (UIDs)       │  Each dataset has:
                   ├─ esummary (metadata)  │  title, summary, organism,
-                  └─ acc.cgi SOFT         │  overall_design, sample_count...
+                  └─ acc.cgi SOFT         │  overall_design, relations...
                     (Overall design)      │
+                                          ▼
+                                   [HierarchySkill] ──▶ series_hierarchy (SuperSeries/SubSeries tree)
+                                          │                (optional: fetch titles for external refs)
                                           ▼
                                    [ReportSkill] ──▶ Markdown report + structured data
                                                           │
@@ -100,8 +106,8 @@ SearchQuery ──▶ [GEOSearchSkill] ──▶ list[GEODataset]
                                                    [FilterSkill] ──▶ scored & sorted (implemented)
                                                                          │
                                                                          ▼
-                                                               [SampleSelectorSkill] ──▶ per-GSM classification
-                                                                  │                       (when --library-type)
+                                                               [StandaloneSampleSelectorSkill] ──▶ per-GSM classification
+                                                                  │                       (standalone series only)
                                                                   ├─ acc.cgi Family SOFT (targ=gsm)
                                                                   └─ LLM classification (Claude Haiku)
                                                                                               │
@@ -128,9 +134,10 @@ class Skill(ABC):
 | Skill | Reads | Writes | Status |
 |-------|-------|--------|--------|
 | GEOSearchSkill | `query` | `datasets`, `total_found` | Implemented |
+| HierarchySkill | `datasets` | `series_hierarchy` | Implemented |
 | ReportSkill | `query`, `datasets`, `total_found` | `report`, `report_data` | Implemented |
 | FilterSkill | `datasets`, `query` | `filtered_datasets` | Implemented |
-| SampleSelectorSkill | `filtered_datasets`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented |
+| StandaloneSampleSelectorSkill | `series_hierarchy`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented (standalone series only) |
 | ValidationSkill | `filtered_datasets` | `validated_datasets` | Not yet implemented |
 
 ### 3.3 Agent orchestrator
@@ -258,6 +265,7 @@ Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →
 | `query` | `SearchQuery` | Caller (required) | Input search parameters |
 | `datasets` | `list[GEODataset]` | GEOSearchSkill | Search results with metadata |
 | `total_found` | `int` | GEOSearchSkill | Total matching records in GEO |
+| `series_hierarchy` | `dict[str, SeriesNode]` | HierarchySkill | Accession → node with role/parent/children |
 | `report` | `str` | ReportSkill | Markdown report text |
 | `report_data` | `list[dict]` | ReportSkill | Per-dataset dicts for AI/filter |
 | `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored and sorted subset |
@@ -442,7 +450,8 @@ These improvements came from review and are reflected in the code:
 | Phase 2 | Search Skill + Agent + CLI (MVP) | **Done** |
 | Phase 2.5 | Report Skill (Markdown + structured data) | **Done** |
 | Phase 3 | FilterSkill (relevance scoring) + Skill docs | **Done** |
-| Phase 3.5 | SampleSelectorSkill (LLM sample classification) | **Done** |
+| Phase 3.5 | StandaloneSampleSelectorSkill (LLM sample classification, standalone series only) | **Done** |
+| Phase 3.6 | HierarchySkill (SuperSeries/SubSeries family tree) | **Done** |
 | Phase 4 | Download Skill (deferred) | Not implemented |
 | Phase 5 | Logging, PipelineResult, JSON output | Not implemented |
 
@@ -477,3 +486,4 @@ These improvements came from review and are reflected in the code:
 | 2026-03-02 | v0.5 | Self-contained doc: Data models (GEODataset, SearchQuery, PipelineContext); Overall design motivation + SOFT example + parse logic; End-to-end example (CLI → query → esearch → esummary → SOFT → report → filter); FilterSkill scoring weights in Architecture |
 | 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM sample classification; Family SOFT fetch/parse (`fetch_family_soft`, `parse_family_soft`); GEOSample/SampleSelection data models; Anthropic SDK integration; `--library-type` CLI flag; Unit tests |
 | 2026-03-03 | v0.7 | Known issues from real-world testing (§7): GEO false positives, empty per-sample files, naming inconsistency; naming variant table; TODO for series-level false positive detection |
+| 2026-03-03 | v0.8 | HierarchySkill: SuperSeries/SubSeries family tree builder; `SeriesNode` dataclass; `build_series_hierarchy()` (3-pass relation parsing); `format_families()` / `format_standalone()` / `format_series_hierarchy()`; external title fetch via SOFT; `context.series_hierarchy`; `geo_agent/utils/hierarchy.py`; `skills/hierarchy.md` spec |

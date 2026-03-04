@@ -38,6 +38,8 @@ class PipelineContext:
     target_library_types: list[str] = field(default_factory=lambda: ["GEX"])
     sample_metadata: dict[str, list[GEOSample]] = field(default_factory=dict)
     selected_samples: dict[str, list[SampleSelection]] = field(default_factory=dict)
+    sample_selector_context: dict[str, dict[str, Any]] = field(default_factory=dict)
+    sample_selector_context_json: dict[str, str] = field(default_factory=dict)
 
     # Download config (Phase 4)
     download_dir: str = "./geo_downloads"

@@ -1,0 +1,404 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1772558059949,
+  "projectRoot": "/Users/ushii/Downloads/Proteomics_data_download",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "pyproject.toml"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": "pytest",
+    "lintCommand": "ruff check",
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "tests"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "Example": {
+      "path": "Example",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1772558059931,
+      "keyFiles": []
+    },
+    "debug_family_soft": {
+      "path": "debug_family_soft",
+      "purpose": null,
+      "fileCount": 10,
+      "lastAccessed": 1772558059932,
+      "keyFiles": [
+        "GSE268991_family.soft",
+        "GSE269123_family.soft",
+        "GSE280852_family.soft",
+        "GSE283984_family.soft",
+        "GSE303197_family.soft"
+      ]
+    },
+    "debug_soft": {
+      "path": "debug_soft",
+      "purpose": null,
+      "fileCount": 10,
+      "lastAccessed": 1772558059932,
+      "keyFiles": [
+        "GSE268991.soft",
+        "GSE269123.soft",
+        "GSE280852.soft",
+        "GSE283984.soft",
+        "GSE303197.soft"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 5,
+      "lastAccessed": 1772558059934,
+      "keyFiles": [
+        "Architecture.md",
+        "LLM_sample_selector.md",
+        "developer_notes_family_soft_findings.md",
+        "developer_notes_geo_superseries_subseries.md",
+        "search_report_example.md"
+      ]
+    },
+    "geo_agent": {
+      "path": "geo_agent",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1772558059934,
+      "keyFiles": [
+        "__init__.py",
+        "agent.py",
+        "cli.py",
+        "config.py",
+        "example.md"
+      ]
+    },
+    "geo_agent.egg-info": {
+      "path": "geo_agent.egg-info",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1772558059935,
+      "keyFiles": [
+        "PKG-INFO",
+        "SOURCES.txt",
+        "dependency_links.txt",
+        "entry_points.txt",
+        "requires.txt"
+      ]
+    },
+    "task_api": {
+      "path": "task_api",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1772558059936,
+      "keyFiles": []
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 3,
+      "lastAccessed": 1772558059936,
+      "keyFiles": [
+        "__init__.py",
+        "test_parse_family_soft.py",
+        "test_sample_selector.py"
+      ]
+    },
+    "geo_agent/models": {
+      "path": "geo_agent/models",
+      "purpose": "Data models",
+      "fileCount": 5,
+      "lastAccessed": 1772558059937,
+      "keyFiles": [
+        "__init__.py",
+        "context.py",
+        "dataset.py"
+      ]
+    },
+    "geo_agent/utils": {
+      "path": "geo_agent/utils",
+      "purpose": "Utility functions",
+      "fileCount": 2,
+      "lastAccessed": 1772558059938,
+      "keyFiles": [
+        "__init__.py",
+        "logging.py"
+      ]
+    },
+    "task_api/tests": {
+      "path": "task_api/tests",
+      "purpose": "Test files",
+      "fileCount": 0,
+      "lastAccessed": 1772558059940,
+      "keyFiles": []
+    },
+    "tests/fixtures": {
+      "path": "tests/fixtures",
+      "purpose": "Test fixtures",
+      "fileCount": 0,
+      "lastAccessed": 1772558059949,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "geo_agent/skills/sample_selector.py",
+      "accessCount": 12,
+      "lastAccessed": 1772569036390,
+      "type": "file"
+    },
+    {
+      "path": "debug_run.py",
+      "accessCount": 7,
+      "lastAccessed": 1772572400630,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/models.py",
+      "accessCount": 6,
+      "lastAccessed": 1772558814297,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/schemas.py",
+      "accessCount": 6,
+      "lastAccessed": 1772558814554,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/main.py",
+      "accessCount": 6,
+      "lastAccessed": 1772558814826,
+      "type": "file"
+    },
+    {
+      "path": "task_api/tests/test_api.py",
+      "accessCount": 6,
+      "lastAccessed": 1772558880465,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/config.py",
+      "accessCount": 5,
+      "lastAccessed": 1772564372816,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/database.py",
+      "accessCount": 4,
+      "lastAccessed": 1772558708650,
+      "type": "file"
+    },
+    {
+      "path": ".env",
+      "accessCount": 4,
+      "lastAccessed": 1772564613122,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/sample_selector.md",
+      "accessCount": 3,
+      "lastAccessed": 1772569036442,
+      "type": "file"
+    },
+    {
+      "path": ".",
+      "accessCount": 2,
+      "lastAccessed": 1772558442908,
+      "type": "directory"
+    },
+    {
+      "path": "pyproject.toml",
+      "accessCount": 2,
+      "lastAccessed": 1772559307835,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/search.md",
+      "accessCount": 2,
+      "lastAccessed": 1772563203545,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/report.md",
+      "accessCount": 2,
+      "lastAccessed": 1772563223157,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/filter.md",
+      "accessCount": 2,
+      "lastAccessed": 1772563233884,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/agent.py",
+      "accessCount": 2,
+      "lastAccessed": 1772563691194,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/base.py",
+      "accessCount": 2,
+      "lastAccessed": 1772569044506,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/models/sample.py",
+      "accessCount": 2,
+      "lastAccessed": 1772569044562,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/ncbi/parsers.py",
+      "accessCount": 2,
+      "lastAccessed": 1772572413041,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/__init__.py",
+      "accessCount": 1,
+      "lastAccessed": 1772558550551,
+      "type": "file"
+    },
+    {
+      "path": "task_api/tests/__init__.py",
+      "accessCount": 1,
+      "lastAccessed": 1772558552219,
+      "type": "file"
+    },
+    {
+      "path": "task_api/task_api/enums.py",
+      "accessCount": 1,
+      "lastAccessed": 1772558770806,
+      "type": "file"
+    },
+    {
+      "path": ".env.example",
+      "accessCount": 1,
+      "lastAccessed": 1772559307819,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/__init__.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559307864,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/cli.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559307986,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/ncbi/client.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559317567,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/models/__init__.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559317611,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/models/query.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559317662,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/models/context.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559317671,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/models/dataset.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559317723,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/utils/logging.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326238,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/search.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326252,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/filter.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326279,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_parse_family_soft.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326292,
+      "type": "file"
+    },
+    {
+      "path": "geo_agent/skills/report.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326300,
+      "type": "file"
+    },
+    {
+      "path": "tests/test_sample_selector.py",
+      "accessCount": 1,
+      "lastAccessed": 1772559326346,
+      "type": "file"
+    },
+    {
+      "path": "docs/developer_notes_family_soft_findings.md",
+      "accessCount": 1,
+      "lastAccessed": 1772571516803,
+      "type": "file"
+    },
+    {
+      "path": "docs/developer_notes_geo_superseries_subseries.md",
+      "accessCount": 1,
+      "lastAccessed": 1772571516854,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
