@@ -8,6 +8,8 @@ Generates:
 from __future__ import annotations
 
 import json
+import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,14 +22,43 @@ from geo_agent.skills.sample_selector import (
     select_samples,
 )
 
-QUERY = "Extract all CITE-seq protein/ADT samples"
+QUERY = os.getenv("SELECTOR_QUERY", "Extract all CITE-seq protein/ADT samples")
 PHASE1_FILE = Path("debug_phase1_context.json")
 FAMILY_SOFT_DIR = Path("debug_family_soft")
 OUTPUT_TABLE = Path("selector_results_table.md")
 OUTPUT_DEBUG = Path("selector_results_debug.json")
 
-ADT_KEYWORDS = ("adt", "surface", "abseq", "antibody", "protein", "cite", "fb")
-RNA_ONLY_KEYWORDS = ("gex", "rna", "scrna", "snrna", "tcr", "bcr", "vdj")
+QUERY_STOPWORDS = {
+    "all",
+    "and",
+    "any",
+    "data",
+    "dataset",
+    "datasets",
+    "download",
+    "downloads",
+    "extract",
+    "for",
+    "from",
+    "get",
+    "in",
+    "me",
+    "of",
+    "only",
+    "please",
+    "retrieve",
+    "sample",
+    "samples",
+    "select",
+    "selection",
+    "series",
+    "show",
+    "that",
+    "the",
+    "to",
+    "what",
+    "with",
+}
 
 
 def _build_phase1_context() -> dict[str, dict[str, Any]]:
@@ -84,26 +115,38 @@ def _sample_text(sample: dict[str, Any]) -> str:
     return " ".join(parts).lower()
 
 
-def _compute_debug_counters(metadata: dict[str, Any]) -> tuple[int, int, list[str]]:
-    adt_like = 0
-    rna_only = 0
+def _extract_query_terms(query: str) -> list[str]:
+    terms = re.findall(r"[a-zA-Z0-9+._-]{3,}", (query or "").lower())
+    filtered: list[str] = []
+    seen: set[str] = set()
+    for term in terms:
+        if term in QUERY_STOPWORDS:
+            continue
+        if term in seen:
+            continue
+        seen.add(term)
+        filtered.append(term)
+    return filtered
+
+
+def _compute_debug_counters(metadata: dict[str, Any], query_terms: list[str]) -> tuple[int, int, list[str]]:
+    query_match_count = 0
+    non_match_count = 0
     evidence: set[str] = set()
 
     for sample in metadata.get("samples", []):
         if not isinstance(sample, dict):
             continue
         text = _sample_text(sample)
-        hit_adt = [kw for kw in ADT_KEYWORDS if kw in text]
-        hit_rna = [kw for kw in RNA_ONLY_KEYWORDS if kw in text]
+        hit_terms = [kw for kw in query_terms if kw in text]
 
-        if hit_adt:
-            adt_like += 1
-            evidence.update(hit_adt)
-        elif hit_rna:
-            rna_only += 1
-            evidence.update(hit_rna)
+        if hit_terms:
+            query_match_count += 1
+            evidence.update(hit_terms)
+        else:
+            non_match_count += 1
 
-    return adt_like, rna_only, sorted(evidence)
+    return query_match_count, non_match_count, sorted(evidence)
 
 
 def _format_links(links: list[str]) -> str:
@@ -127,8 +170,8 @@ def _write_markdown_table(rows: list[dict[str, Any]], model: str | None, llm_sta
         "total_samples",
         "samples_with_files",
         "samples_without_files",
-        "candidate_adt_like_count",
-        "excluded_rna_like_count",
+        "candidate_query_match_count",
+        "excluded_non_match_count",
         "evidence_keywords",
         "selector_method",
         "validation_errors",
@@ -158,8 +201,8 @@ def _write_markdown_table(rows: list[dict[str, Any]], model: str | None, llm_sta
             row["total_samples"],
             row["samples_with_files"],
             row["samples_without_files"],
-            row["candidate_adt_like_count"],
-            row["excluded_rna_like_count"],
+            row["candidate_query_match_count"],
+            row["excluded_non_match_count"],
             ", ".join(row["evidence_keywords"]),
             row["selector_method"],
             "; ".join(row["validation_errors"]),
@@ -173,6 +216,7 @@ def main() -> None:
     contexts = _build_phase1_context()
     gsm_links = _build_gsm_links()
     llm_client, model, llm_status = _init_llm_client()
+    query_terms = _extract_query_terms(QUERY)
 
     rows: list[dict[str, Any]] = []
 
@@ -214,7 +258,9 @@ def main() -> None:
             selected_with_links.append({**sample, "supplementary_links": links})
             selected_links_flat.extend(links)
 
-        candidate_adt_like_count, excluded_rna_like_count, evidence_keywords = _compute_debug_counters(metadata)
+        candidate_query_match_count, excluded_non_match_count, evidence_keywords = _compute_debug_counters(
+            metadata, query_terms
+        )
 
         row = {
             "series_id": series_id,
@@ -228,8 +274,8 @@ def main() -> None:
             "total_samples": metadata.get("sample_count", len(metadata.get("samples", []))),
             "samples_with_files": metadata.get("samples_with_supp_files", 0),
             "samples_without_files": metadata.get("samples_without_supp_files", 0),
-            "candidate_adt_like_count": candidate_adt_like_count,
-            "excluded_rna_like_count": excluded_rna_like_count,
+            "candidate_query_match_count": candidate_query_match_count,
+            "excluded_non_match_count": excluded_non_match_count,
             "confidence_summary": "n/a",
             "evidence_keywords": evidence_keywords,
             "raw_selector_output": raw_selector_output,

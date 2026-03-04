@@ -32,26 +32,6 @@ VALID_DOWNLOAD_STRATEGIES = {
     "None",
 }
 
-VALID_MODALITIES = {"ADT", "Integrated GEX+ADT"}
-
-_ADT_KEYWORDS = (
-    "adt",
-    "antibody",
-    "abseq",
-    "surface",
-    "cite",
-    "protein",
-    "fb",
-)
-_RNA_ONLY_KEYWORDS = (
-    "gex",
-    "rna",
-    "scrna",
-    "snrna",
-    "tcr",
-    "bcr",
-    "vdj",
-)
 _INTEGRATED_KEYWORDS = (
     "integrated",
     "multiome",
@@ -61,12 +41,45 @@ _INTEGRATED_KEYWORDS = (
     ".h5",
 )
 
+_QUERY_STOPWORDS = {
+    "all",
+    "and",
+    "any",
+    "data",
+    "dataset",
+    "datasets",
+    "download",
+    "downloads",
+    "extract",
+    "for",
+    "from",
+    "get",
+    "in",
+    "me",
+    "of",
+    "only",
+    "please",
+    "retrieve",
+    "sample",
+    "samples",
+    "select",
+    "selection",
+    "series",
+    "show",
+    "that",
+    "the",
+    "to",
+    "what",
+    "with",
+}
+
 SELECTOR_SYSTEM_PROMPT = """\
 You are an expert Bioinformatics Data Curator and an AI module for GEO sample selection.
 
 Task:
 - Read the provided JSON metadata for one GSE series.
-- Select only samples containing CITE-seq protein/ADT signal.
+- Read `user_query` and infer what sample type the user wants.
+- Select only samples that match the user query using sample-level evidence.
 - Diagnose data locus and output strict JSON.
 
 Output schema (strict JSON object, no markdown):
@@ -77,17 +90,17 @@ Output schema (strict JSON object, no markdown):
     {
       "gsm_id": "GSMXXXXXXX",
       "sample_title": "Original title",
-      "modality_inferred": "ADT" | "Integrated GEX+ADT"
+      "selection_label": "short label of why this sample matches query"
     }
   ],
   "reasoning": "Concise justification."
 }
 
 Rules:
-- Exclude pure RNA/GEX/TCR/BCR only samples unless they are integrated multi-omic objects.
-- If CITE-seq is mentioned but no sample/file evidence supports ADT/protein, mark false positive with empty selected_samples.
-- Prefer sample-level ADT files when present.
-- Use GSE_Level_Bundled when samples are modality-split but files are bundled at GSE-level.
+- Selection must be driven by `user_query`, not fixed modality assumptions.
+- If no sample/file evidence supports the query target, mark false positive with empty selected_samples.
+- Prefer sample-level evidence when present (title, characteristics, molecule, library_source, files).
+- Use GSE_Level_Bundled when samples are split but files are only available at series level.
 - Keep reasoning concise.
 """
 
@@ -288,7 +301,7 @@ def select_samples(
     max_tokens: int = 2048,
     include_debug: bool = False,
 ) -> dict[str, Any]:
-    """Phase 2: call LLM to select ADT samples from one preprocessed series."""
+    """Phase 2: call LLM to select query-matching samples from one series."""
     if not query or not query.strip():
         raise SkillError("query must be a non-empty string")
     if not isinstance(metadata, dict):
@@ -328,7 +341,14 @@ def select_samples(
 
 def heuristic_select_samples(query: str, metadata: dict[str, Any]) -> dict[str, Any]:
     """Fallback selector used when LLM is unavailable during debug runs."""
-    _ = query  # Reserved for future query-aware rules.
+    query_terms = _extract_query_terms(query)
+    if not query_terms:
+        return {
+            "is_false_positive": True,
+            "download_strategy": "None",
+            "selected_samples": [],
+            "reasoning": "Heuristic fallback: query has no discriminative terms to match samples.",
+        }
 
     selected_samples: list[dict[str, str]] = []
     sample_entries = metadata.get("samples", [])
@@ -348,16 +368,19 @@ def heuristic_select_samples(query: str, metadata: dict[str, Any]) -> dict[str, 
         text_parts.extend(sample.get("supplementary_files", []) or [])
         blob = " ".join(text_parts).lower()
 
-        adt_like = any(keyword in blob for keyword in _ADT_KEYWORDS)
-        rna_only_like = any(keyword in blob for keyword in _RNA_ONLY_KEYWORDS) and not adt_like
+        matched_terms = [term for term in query_terms if term in blob]
         integrated_like = any(keyword in blob for keyword in _INTEGRATED_KEYWORDS)
 
-        if adt_like and not rna_only_like:
+        if matched_terms:
             selected_samples.append(
                 {
                     "gsm_id": gsm_id,
                     "sample_title": title,
-                    "modality_inferred": "Integrated GEX+ADT" if integrated_like else "ADT",
+                    "selection_label": (
+                        "Integrated_Object"
+                        if integrated_like
+                        else f"query-match:{','.join(matched_terms[:3])}"
+                    ),
                 }
             )
 
@@ -366,7 +389,7 @@ def heuristic_select_samples(query: str, metadata: dict[str, Any]) -> dict[str, 
             "is_false_positive": True,
             "download_strategy": "None",
             "selected_samples": [],
-            "reasoning": "Heuristic fallback: no ADT/protein evidence found in sample-level metadata.",
+            "reasoning": "Heuristic fallback: no sample text matched query terms.",
         }
 
     samples_with_files = 0
@@ -396,7 +419,10 @@ def heuristic_select_samples(query: str, metadata: dict[str, Any]) -> dict[str, 
         "is_false_positive": False,
         "download_strategy": strategy,
         "selected_samples": selected_samples,
-        "reasoning": "Heuristic fallback: selected samples with ADT/protein-like evidence.",
+        "reasoning": (
+            "Heuristic fallback: selected samples by query-term text matching "
+            f"({', '.join(query_terms[:6])})."
+        ),
     }
 
 
@@ -442,32 +468,39 @@ def _validate_selection_output(result: dict[str, Any], metadata: dict[str, Any])
         raise SkillError(f"Unsupported download_strategy: {result['download_strategy']}")
 
     cleaned_samples: list[dict[str, str]] = []
+    seen_gsm: set[str] = set()
     for item in result["selected_samples"]:
         if not isinstance(item, dict):
             raise SkillError("Each selected sample must be an object")
 
         gsm_id = str(item.get("gsm_id", "")).strip()
         sample_title = str(item.get("sample_title", "")).strip()
-        modality = str(item.get("modality_inferred", "")).strip()
+        selection_label = str(item.get("selection_label", "")).strip()
+        if not selection_label:
+            # Backward compatibility for older prompt outputs.
+            selection_label = str(item.get("modality_inferred", "")).strip()
 
         if not gsm_id:
             raise SkillError("selected_samples[].gsm_id is required")
         if sample_lookup and gsm_id not in sample_lookup:
             raise SkillError(f"selected sample {gsm_id} is not in metadata")
+        if gsm_id in seen_gsm:
+            continue
+        seen_gsm.add(gsm_id)
         if not sample_title and gsm_id in sample_lookup:
             sample_title = sample_lookup[gsm_id]
         if not sample_title:
             raise SkillError(f"selected sample {gsm_id} is missing sample_title")
-
-        modality = _normalize_modality(modality)
-        if modality not in VALID_MODALITIES:
-            raise SkillError(f"Unsupported modality_inferred for {gsm_id}: {modality}")
+        if not selection_label:
+            raise SkillError(f"selected sample {gsm_id} is missing selection_label")
 
         cleaned_samples.append(
             {
                 "gsm_id": gsm_id,
                 "sample_title": sample_title,
-                "modality_inferred": modality,
+                "selection_label": selection_label[:120],
+                # Backward-compatible alias for legacy downstream code.
+                "modality_inferred": selection_label[:120],
             }
         )
 
@@ -497,14 +530,15 @@ def _normalize_strategy(strategy: str) -> str:
     return normalized
 
 
-def _normalize_modality(modality: str) -> str:
-    normalized = modality.strip()
-    aliases = {
-        "adt": "ADT",
-        "integrated gex+adt": "Integrated GEX+ADT",
-        "integrated": "Integrated GEX+ADT",
-    }
-    key = normalized.lower()
-    if key in aliases:
-        return aliases[key]
-    return normalized
+def _extract_query_terms(query: str) -> list[str]:
+    terms = re.findall(r"[a-zA-Z0-9+._-]{3,}", (query or "").lower())
+    filtered: list[str] = []
+    seen: set[str] = set()
+    for term in terms:
+        if term in _QUERY_STOPWORDS:
+            continue
+        if term in seen:
+            continue
+        seen.add(term)
+        filtered.append(term)
+    return filtered

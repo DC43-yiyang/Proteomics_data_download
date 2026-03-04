@@ -65,7 +65,7 @@ contexts = preprocess_family_soft_directory(
 from geo_agent.skills.sample_selector import select_samples
 
 result = select_samples(
-    query="Extract all CITE-seq protein/ADT samples",
+    query="Select all ATAC-seq samples from this series",
     metadata=contexts["GSE317605"],   # output from Phase 1
     llm_client=anthropic_client,
     model="claude-haiku-4-5-20251001",
@@ -77,7 +77,8 @@ Return schema:
 
 - `is_false_positive`: `bool`
 - `download_strategy`: `GSM_Level_Separated | GSE_Level_Bundled | Integrated_Object | None`
-- `selected_samples`: list of `{gsm_id, sample_title, modality_inferred}`
+- `selected_samples`: list of `{gsm_id, sample_title, selection_label}`
+- backward compatibility: output also includes `modality_inferred` alias with the same value as `selection_label`
 - `reasoning`: concise string
 
 ## Why this design
@@ -104,4 +105,4 @@ Current debug payload includes:
 - Series-level decision (`is_false_positive`, `download_strategy`)
 - Selected GSM IDs and titles
 - Selected supplementary links (if present)
-- Evidence keywords and extra counters for manual review
+- Query-term evidence and extra counters for manual review
