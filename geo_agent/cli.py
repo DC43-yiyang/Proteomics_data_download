@@ -47,7 +47,14 @@ def main():
         help=(
             "Filter samples by library type (e.g. GEX, ADT, TCR, BCR, HTO, ATAC). "
             "Repeatable: --library-type GEX --library-type ADT. "
-            "Requires ANTHROPIC_API_KEY in .env"
+            "Uses local Family SOFT parsing (rule-based)."
+        ),
+    )
+    search_p.add_argument(
+        "--family-soft-dir", default="debug_family_soft",
+        help=(
+            "Directory containing local *_family.soft files for sample-level parsing "
+            "(default: debug_family_soft)."
         ),
     )
 
@@ -91,33 +98,17 @@ def _run_search(args):
     agent.register(GEOSearchSkill(client))
     agent.register(ReportSkill(output_file=args.report))
 
-    # When --library-type is provided, add HierarchySkill + FilterSkill + StandaloneSampleSelectorSkill
+    # When --library-type is provided, add HierarchySkill + FilterSkill + FamilySoftStructurerSkill
     library_types = getattr(args, "library_type", None)
     if library_types:
         from geo_agent.skills.filter import FilterSkill
 
-        if not config.anthropic_api_key:
-            print(
-                "Error: --library-type requires ANTHROPIC_API_KEY in .env\n"
-                "Get yours at: https://console.anthropic.com/",
-                file=sys.stderr,
-            )
-            sys.exit(1)
-
-        import anthropic
-
-        anthropic_client = anthropic.Anthropic(api_key=config.anthropic_api_key)
-
         from geo_agent.skills.hierarchy import HierarchySkill
-        from geo_agent.skills.standalone_sample_selector import StandaloneSampleSelectorSkill
+        from geo_agent.skills.family_soft_structurer import FamilySoftStructurerSkill
 
         agent.register(HierarchySkill(ncbi_client=client))
         agent.register(FilterSkill())
-        agent.register(StandaloneSampleSelectorSkill(
-            ncbi_client=client,
-            llm_client=anthropic_client,
-            model=config.llm_model,
-        ))
+        agent.register(FamilySoftStructurerSkill(soft_dir=args.family_soft_dir))
 
     context = PipelineContext(query=query)
     if library_types:
@@ -128,19 +119,43 @@ def _run_search(args):
     # Print the Markdown report to stdout
     print(context.report or "No report generated.")
 
-    # Print sample selection summary if --library-type was used
-    if library_types and context.selected_samples:
-        print("\n\n## Sample Selection Summary\n")
-        for gse, selections in context.selected_samples.items():
-            print(f"\n### {gse} ({len(selections)} matching samples)\n")
-            print("| GSM | Library Type | Confidence | Needs Review | Reasoning |")
-            print("|-----|-------------|------------|--------------|-----------|")
-            for s in selections:
-                review = "Yes" if s.needs_review else "No"
+    # Print sample-level structuring summary if --library-type was used.
+    if library_types and context.family_soft_structured:
+        target_types = {item.upper() for item in library_types}
+        print("\n\n## Family SOFT Parsing Summary\n")
+        for gse, series in sorted(context.family_soft_structured.items()):
+            samples = series.get("samples", [])
+            matched = [
+                item
+                for item in samples
+                if str(item.get("inferred_library_type", "")).upper() in target_types
+            ]
+            print(f"\n### {gse} ({len(matched)} matched / {len(samples)} total)\n")
+            print("| GSM | Modality | Tissue | Cell Type | Files | SRA | Notes |")
+            print("|-----|----------|--------|-----------|-------|-----|-------|")
+            for item in matched:
+                core = item.get("core_characteristics", {}) or {}
+                notes = "; ".join(item.get("notes", []) or [])
                 print(
-                    f"| {s.accession} | {s.library_type} | "
-                    f"{s.confidence:.2f} | {review} | {s.reasoning} |"
+                    f"| {item.get('gsm_id', '')} | {item.get('inferred_library_type', '')} "
+                    f"| {core.get('tissue', '')} | {core.get('cell type', '')} "
+                    f"| {len(item.get('supplementary_files', []) or [])} "
+                    f"| {len(item.get('relation_sra', []) or [])} | {notes} |"
                 )
+
+            watchlist = series.get("keyword_watchlist", []) or []
+            if watchlist:
+                top = ", ".join(
+                    f"{entry.get('keyword', '')}({entry.get('count', 0)})"
+                    for entry in watchlist[:10]
+                )
+                print(f"\nUnmapped keywords (top): {top}\n")
+
+    if library_types and context.errors:
+        print("\n\n## Sample Parsing Errors\n")
+        for err in context.errors:
+            if "Family SOFT file not found" in err or "failed to structure Family SOFT" in err:
+                print(f"- {err}")
 
 
 if __name__ == "__main__":

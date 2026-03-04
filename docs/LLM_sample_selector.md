@@ -1,8 +1,10 @@
-# LLM 生信样本智能筛选（Selector Only）计划书
+# LLM 生信样本智能筛选（通用 Selector）计划书
+
+> 状态说明（2026-03-04）：本文件描述的是 LLM 方案。当前主 pipeline 的 `--library-type` 已切换为 **rule-based Family SOFT 解析**（无 LLM 依赖）。此文档保留为历史设计参考。
 
 ## 1. 项目定位
 
-本项目目标是做一个 **样本筛选器（Selector）**，不是下载器。
+本项目目标是做一个 **通用样本筛选器（Selector）**，不是下载器。
 
 - 输入：自然语言筛选需求 + GEO 系列/样本元数据（Family SOFT 预处理结果）
 - 输出：可人工复核的筛选结果表（重点是“选中哪些 sample + 对应下载链接”）
@@ -14,8 +16,8 @@
 
 ### 2.1 包含
 
-- 识别目标 sample（例如 ADT / Surface / AbSeq / CITE 蛋白相关）
-- 识别假阳性系列（标题提到 CITE-seq，但样本层面无蛋白证据）
+- 识别目标 sample（由用户 query 决定，例如 ADT / ATAC / TCR / spatial / 特定文件格式等）
+- 识别假阳性系列（标题提到目标类型，但样本层面无证据）
 - 输出可检查的表格 + 调试字段（证据、置信度、规则命中情况）
 
 ### 2.2 不包含
@@ -27,9 +29,9 @@
 
 ## 3. 关键痛点（Selector 视角）
 
-1. **命名不统一**：ADT 可能叫 ADT / Surface / Antibody / AbSeq / Tags
-2. **摘要假阳性**：Series 介绍写 CITE-seq，但样本都是 RNA
-3. **GSM 无文件或信息不足**：样本标题有 GEX/ADT 拆分，但 sample 级链接为空
+1. **命名不统一**：同一目标类型在不同 series 下叫法差异很大（缩写、别名、平台词）
+2. **摘要假阳性**：Series 介绍提到目标类型，但样本层面并不成立
+3. **GSM 无文件或信息不足**：样本标题有拆分，但 sample 级链接可能为空
 4. **整合对象**：可能是 integrated 对象（如 `.h5ad` / `.rds`），非显式分模态
 
 ---
@@ -38,7 +40,7 @@
 
 ### 4.1 输入
 
-- `query`：用户自然语言目标（例如：`Extract all CITE-seq protein/ADT samples`）
+- `query`：用户自然语言目标（例如：`Select all ATAC-seq samples with fragment files`）
 - `metadata`：Phase 1 预处理后的单个 GSE JSON（包含 sample 列表与精简字段）
 
 ### 4.2 输出（核心 JSON）
@@ -51,7 +53,7 @@
     {
       "gsm_id": "GSMXXXXXXX",
       "sample_title": "...",
-      "modality_inferred": "ADT"
+      "selection_label": "ATAC"
     }
   ],
   "reasoning": "..."
@@ -86,10 +88,10 @@
 | `total_samples` | 该 GSE 下样本总数 |
 | `samples_with_files` | 有 sample 级文件的样本数 |
 | `samples_without_files` | 无 sample 级文件的样本数 |
-| `candidate_adt_like_count` | 被规则/模型初判为 ADT-like 的样本数 |
-| `excluded_rna_like_count` | 被排除的 RNA-only 样本数 |
+| `candidate_query_match_count` | 在样本文本中命中 query 关键词的样本数（调试统计） |
+| `excluded_non_match_count` | 未命中 query 关键词的样本数（调试统计） |
 | `confidence_summary` | 置信度摘要（min/mean/max） |
-| `evidence_keywords` | 命中的关键词（ADT/Surface/AbSeq/Antibody 等） |
+| `evidence_keywords` | 命中的 query 关键词（按本次查询动态变化） |
 | `raw_selector_output` | 原始模型输出（建议 JSON 字符串保存） |
 | `validation_errors` | JSON 校验或字段修正信息 |
 
@@ -111,7 +113,7 @@
 人工复核时重点检查：
 
 1. 是否漏掉应选 sample（False Negative）
-2. 是否误选 RNA-only sample（False Positive）
+2. 是否误选非目标 sample（False Positive）
 3. 链接是否对应被选中的 sample
 4. `reasoning` 是否能解释选择依据
 
@@ -119,7 +121,7 @@
 
 - prompt 规则
 - 输出校验器
-- 别名词典（Surface/AbSeq/HTO/FB 等）
+- 别名词典（面向多技术类型，按 query 动态扩展）
 
 ---
 
@@ -156,7 +158,7 @@
 
 ---
 
-## 11. 当前进展总结（2026-03-04）
+## 11. 当前进展快照（2026-03-04，示例）
 
 ### 11.1 已完成
 
@@ -164,7 +166,7 @@
 - Phase 2：已实现 `select_samples(query, metadata)` + 严格 JSON 校验
 - Phase 3：已完成 22 个 GSE 的批量 debug 运行并导出表格
 
-### 11.2 本次批量运行结果（22 个 GSE）
+### 11.2 本次批量运行结果（22 个 GSE，示例 query：CITE ADT）
 
 数据来源：`selector_results_debug.json`
 
@@ -174,6 +176,8 @@
 - `total_selected_samples`: 178
 - `llm_status`: ok
 - `model`: `claude-haiku-4-5-20251001`
+
+> 注：上述统计是“通用 selector”在一个 CITE/ADT 示例 query 下的运行结果，不代表系统只支持 CITE。
 
 假阳性（当前结果）：
 
@@ -207,4 +211,38 @@
 
 1. 误检（False Positive）和漏检（False Negative）
 2. `selected_links` 的完整性（补充 relation/SRA/GSE-level 线索）
-3. reasoning 过长或不清晰的条目
+3. 推理输出长度与可读性控制
+4. 建立“多 query 回归集”（如 ADT、ATAC、TCR、spatial、指定文件格式）验证通用性
+
+---
+
+## 13. 文档维护规范（必须执行）
+
+为避免“代码已更新、文档仍停留旧场景”，本文件按以下规则维护：
+
+### 13.1 稳定规范 vs 运行快照
+
+- **稳定规范（长期）**：第 1-10 节与第 12 节，描述通用 selector 的设计与流程。
+- **运行快照（短期）**：第 11 节，仅记录某次运行结果，允许随时间替换。
+
+### 13.2 每次批量运行后必须更新的字段
+
+- 运行日期（标题中的绝对日期）
+- 本次 query 文本
+- 模型名与 llm_status
+- `series_count / false_positive_count / total_selected_samples`
+- 假阳性系列列表
+- 输出产物文件名（如有新增/改名）
+
+### 13.3 变更触发规则
+
+- 修改 `select_samples` 输出 schema：必须同步更新第 4 节、`sample_selector.md`、相关测试说明。
+- 修改 debug 表头：必须同步更新第 6 节调试字段表与示例表头。
+- 新增支持的数据类型场景（如 ATAC/spatial）：必须在第 2 节与第 8 节补充评估口径。
+
+### 13.4 快速维护清单（提交前）
+
+1. 第 11 节日期是否与本次运行日期一致。  
+2. 第 11 节统计值是否来自最新 `selector_results_debug.json`。  
+3. 第 4/6/10 节字段名是否与代码当前输出一致。  
+4. 文档中是否仍存在“仅 CITE/ADT”字样（若有需改为 query 驱动表述）。

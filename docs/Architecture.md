@@ -270,8 +270,11 @@ Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →
 | `report_data` | `list[dict]` | ReportSkill | Per-dataset dicts for AI/filter |
 | `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored and sorted subset |
 | `target_library_types` | `list[str]` | CLI `--library-type` | Target library types (default `["GEX"]`) |
+| `target_series_ids` | `list[str]` | CLI / caller | Optional explicit GSE list for local Family SOFT parsing |
 | `sample_metadata` | `dict[str, list[GEOSample]]` | SampleSelectorSkill | Parsed samples per GSE |
 | `selected_samples` | `dict[str, list[SampleSelection]]` | SampleSelectorSkill | Classified + filtered samples per GSE |
+| `family_soft_structured` | `dict[str, dict]` | FamilySoftStructurerSkill | Rule-based sample parsing result per GSE |
+| `family_soft_structured_json` | `dict[str, str]` | FamilySoftStructurerSkill | Minified JSON string per GSE |
 | `validated_datasets` | `list[GEODataset]` | ValidationSkill | Not yet implemented |
 | `download_dir` | `str` | Config | Default `"./geo_downloads"` |
 | `downloaded_files` | `list[str]` | Download skill | Not yet implemented |
@@ -459,7 +462,7 @@ These improvements came from review and are reflected in the code:
 
 ## 11. Technology choices
 
-- **Custom framework vs LangChain**: Pipeline is mostly deterministic (search → report → filter); LLM is only used for sample classification (SampleSelectorSkill)
+- **Custom framework vs LangChain**: Pipeline is mostly deterministic (search → report → filter → Family SOFT rule parsing)
 - **requests vs httpx/aiohttp**: NCBI rate limit 3–10 req/s; async adds little for metadata phase
 - **uv + Python 3.12**: Isolated environment, independent of system Python
 - **Current focus on search**: Ensure search → report is correct first; download can follow later
@@ -487,3 +490,4 @@ These improvements came from review and are reflected in the code:
 | 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM sample classification; Family SOFT fetch/parse (`fetch_family_soft`, `parse_family_soft`); GEOSample/SampleSelection data models; Anthropic SDK integration; `--library-type` CLI flag; Unit tests |
 | 2026-03-03 | v0.7 | Known issues from real-world testing (§7): GEO false positives, empty per-sample files, naming inconsistency; naming variant table; TODO for series-level false positive detection |
 | 2026-03-03 | v0.8 | HierarchySkill: SuperSeries/SubSeries family tree builder; `SeriesNode` dataclass; `build_series_hierarchy()` (3-pass relation parsing); `format_families()` / `format_standalone()` / `format_series_hierarchy()`; external title fetch via SOFT; `context.series_hierarchy`; `geo_agent/utils/hierarchy.py`; `skills/hierarchy.md` spec |
+| 2026-03-04 | v0.9 | Main `--library-type` path switched to rule-based local Family SOFT parser (`FamilySoftStructurerSkill`); no Anthropic dependency in main sample parsing pipeline; sample-level outputs split into modality/biology/file locator + `notes`/`keyword_watchlist`; added batch debug parser script |
