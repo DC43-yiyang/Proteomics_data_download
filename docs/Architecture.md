@@ -1,23 +1,29 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v0.8
+> **Version**: v1.0
 > **Created**: 2026-03-02
-> **Last updated**: 2026-03-03
-> **Environment**: Python 3.12.12 (uv) | isolated venv `.venv/`
+> **Last updated**: 2026-03-05
+> **Environment**: Python 3.13 (uv) | isolated venv `.venv/`
 
 ---
 
 ## 1. Project overview
 
-NCBI GEO hosts a large number of public datasets (e.g. 276+ CITE-seq Homo sapiens–related records). Researchers need to filter by **data type, organism, disease, tissue**, and other dimensions. Manual search and review is not feasible.
+NCBI GEO hosts a large number of public datasets (e.g. 317 CITE-seq Homo sapiens–related records). Researchers need to filter by **data type, organism, disease, tissue**, and other dimensions. Manual search and review is not feasible.
 
-This tool uses an **Agent + Skill pipeline** with three automated stages:
+This tool uses an **Agent + Skill pipeline** with two independent branches:
 
-1. **Search** — Call NCBI E-utilities + GEO acc.cgi to get raw results and detailed metadata (Overall design)
+**Branch A — GEO search & report**
+1. **Search** — Call NCBI E-utilities + GEO acc.cgi to get raw results and detailed metadata
 2. **Report generation** — Structure as a readable report (Markdown + structured data)
-3. **AI filter/validation** — Smart filtering based on report content to surface the best matches
+3. **AI filter/validation** — Smart filtering based on report content
 
-> Current focus is search and report generation; download is not implemented yet (interfaces are stubbed).
+**Branch B — Multi-omics sample annotation (current focus)**
+1. **Parse** — `FamilySoftStructurerSkill` converts raw Family SOFT files to structured JSON
+2. **Annotate** — `MultiomicsAnalyzerSkill` uses a local LLM to annotate each GSM at three layers
+3. **Output** — Per-sample JSON + Markdown table for human review and downstream filtering
+
+> Download is not implemented. All skills output sample lists and links; execution is manual.
 
 ---
 
@@ -27,41 +33,41 @@ This tool uses an **Agent + Skill pipeline** with three automated stages:
 Proteomics_data_download/
 ├── pyproject.toml                  # Dependencies & CLI entry
 ├── .env                            # Real NCBI_API_KEY (git-ignored)
-├── .env.example                    # API Key template
-├── .gitignore
+├── run_multiomics_analysis.py      # Batch runner for multi-omics annotation
 │
 ├── docs/
-│   ├── ARCHITECTURE.md             # This document
+│   ├── Architecture.md             # This document
+│   ├── LLM_sample_selector.md      # LLM selector design notes
 │   └── search_report_example.md    # Search report example
 │
 ├── geo_agent/
 │   ├── __init__.py
 │   ├── cli.py                      # CLI entry (argparse)
 │   ├── agent.py                    # Agent orchestrator
-│   ├── config.py                   # Config (API Key, rate limits)
+│   ├── config.py                   # Config (API Key, LLM model, rate limits)
+│   │
+│   ├── llm/                        # LLM backend adapters
+│   │   ├── __init__.py
+│   │   └── ollama_client.py        # OllamaClient: local Ollama via /v1/chat/completions
 │   │
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── query.py                # SearchQuery dataclass
 │   │   ├── dataset.py              # GEODataset, SupplementaryFile
-│   │   ├── sample.py               # GEOSample, SampleSelection (sample-level models)
-│   │   └── result.py               # PipelineResult (not yet implemented)
+│   │   ├── sample.py               # GEOSample, SampleSelection
+│   │   └── context.py              # PipelineContext
 │   │
 │   ├── skills/
 │   │   ├── __init__.py
 │   │   ├── base.py                 # Skill abstract interface
-│   │   ├── README.md               # Skill development guide
-│   │   ├── search.py              # GEOSearchSkill: esearch + esummary + SOFT (Overall design)
-│   │   ├── search.md              # GEOSearchSkill spec
-│   │   ├── report.py              # ReportSkill: Markdown report
-│   │   ├── report.md              # ReportSkill spec
-│   │   ├── filter.py              # FilterSkill: keyword scoring + filtering
-│   │   ├── filter.md              # FilterSkill spec
-│   │   ├── hierarchy.py           # HierarchySkill: SuperSeries/SubSeries family tree
-│   │   ├── hierarchy.md           # HierarchySkill spec
-│   │   ├── standalone_sample_selector.py  # StandaloneSampleSelectorSkill: LLM classification for standalone series
-│   │   ├── standalone_sample_selector.md  # StandaloneSampleSelectorSkill spec
-│   │   └── validate.py            # ValidationSkill (not yet implemented)
+│   │   ├── search.py / .md         # GEOSearchSkill
+│   │   ├── report.py / .md         # ReportSkill
+│   │   ├── filter.py / .md         # FilterSkill
+│   │   ├── hierarchy.py / .md      # HierarchySkill
+│   │   ├── sample_selector.py / .md          # SampleSelectorSkill (query-driven, Anthropic)
+│   │   ├── standalone_sample_selector.py     # StandaloneSampleSelectorSkill
+│   │   ├── family_soft_structurer.py         # FamilySoftStructurerSkill (pure field extraction)
+│   │   └── multiomics_analyzer.py / .md      # MultiomicsAnalyzerSkill (LLM annotation)
 │   │
 │   ├── ncbi/
 │   │   ├── __init__.py
@@ -70,54 +76,85 @@ Proteomics_data_download/
 │   │
 │   └── utils/
 │       ├── __init__.py
-│       ├── logging.py             # Logging config
-│       └── hierarchy.py           # SeriesNode dataclass + build/format helpers
+│       ├── logging.py
+│       └── hierarchy.py            # SeriesNode dataclass + build/format helpers
 │
 └── tests/
-    ├── __init__.py
-    ├── test_parse_family_soft.py   # Family SOFT parser tests
-    ├── test_sample_selector.py     # SampleSelectorSkill tests (mocked LLM)
-    └── fixtures/                   # Offline test response data
+    ├── Test_family_soft_parse/
+    │   ├── run_family_soft_parser_debug.py   # Runs FamilySoftStructurerSkill on 22 series
+    │   └── family_soft_22_structured.json    # Output: structured metadata (no rule-based labels)
+    └── Test_multiomics_analysis/
+        └── run_multiomics_analysis.py        # Runs MultiomicsAnalyzerSkill
 ```
 
 ---
 
 ## 3. Core architecture
 
-### 3.1 Data flow
+### 3.1 Data flow — Branch B (multi-omics annotation)
 
 ```
-User CLI input
-    │
-    ▼
-SearchQuery ──▶ [GEOSearchSkill] ──▶ list[GEODataset]
-                  │                       │
-                  ├─ esearch (UIDs)       │  Each dataset has:
-                  ├─ esummary (metadata)  │  title, summary, organism,
-                  └─ acc.cgi SOFT         │  overall_design, relations...
-                    (Overall design)      │
-                                          ▼
-                                   [HierarchySkill] ──▶ series_hierarchy (SuperSeries/SubSeries tree)
-                                          │                (optional: fetch titles for external refs)
-                                          ▼
-                                   [ReportSkill] ──▶ Markdown report + structured data
-                                                          │
-                                                          ▼
-                                                   [FilterSkill] ──▶ scored & sorted (implemented)
-                                                                         │
-                                                                         ▼
-                                                               [StandaloneSampleSelectorSkill] ──▶ per-GSM classification
-                                                                  │                       (standalone series only)
-                                                                  ├─ acc.cgi Family SOFT (targ=gsm)
-                                                                  └─ LLM classification (Claude Haiku)
-                                                                                              │
-                                                                                              ▼
-                                                                                       [ValidateSkill] ──▶ validation (not yet implemented)
+debug_family_soft/*.soft  (raw GEO Family SOFT files)
+        │
+        ▼
+[FamilySoftStructurerSkill]          pure field extraction, no inference
+        │   - characteristics, library_type, molecule, description
+        │   - supplementary_files, relation_sra, relation_biosample
+        ▼
+family_soft_22_structured.json       structured per-sample metadata
+        │
+        ▼
+[MultiomicsAnalyzerSkill]            local LLM (Ollama qwen3:30b-a3b)
+        │   - reads raw fields, reasons from domain knowledge
+        │   - no hardcoded keyword mappings
+        ▼
+per-sample annotation:
+  measured_layers  (molecular layer: RNA / protein_surface / TCR_VDJ / ...)
+  platform         (sequencing chemistry: 10x Chromium 5', Smart-seq2, ...)
+  experiment       (experiment-level protocol: CITE-seq, 10x Multiome, ...)
+  assay            (sample-level detection: scRNA-seq, CITE-seq, TCR V(D)J, ...)
+  disease          (normalised: colorectal cancer (CRC))
+  tissue           (normalised: colon / PBMC)
+  tissue_subtype   (tumor / adjacent normal / "")
+  confidence + evidence
+        │
+        ▼
+multiomics_results.json  +  multiomics_results_table.md
 ```
 
-### 3.2 Skill interface
+### 3.2 Three-layer annotation design
 
-Each Skill is a stateless processor with a single `execute(context) -> context` contract:
+Each GSM is annotated at three independent levels to support flexible downstream filtering:
+
+| Field | Level | Example (GEX sample in CITE-seq) | Example (ADT sample) |
+|---|---|---|---|
+| `measured_layers` | Molecular | `["RNA"]` | `["protein_surface"]` |
+| `experiment` | Experiment | `CITE-seq` | `CITE-seq` |
+| `assay` | Sample detection | `scRNA-seq` | `CITE-seq` |
+
+This allows:
+- "Give me all protein surface samples" → `"protein_surface" in measured_layers`
+- "Give me all samples from CITE-seq experiments" → `experiment == "CITE-seq"`
+- "Give me only the RNA component of CITE-seq" → `experiment == "CITE-seq" AND assay == "scRNA-seq"`
+
+### 3.3 Why LLM for annotation (not rules)
+
+Sample naming in GEO is wildly inconsistent across uploaders. Examples:
+
+| Molecular layer | Naming variants seen |
+|---|---|
+| RNA | `5'GEX`, `GEX`, `_RNA`, `Gene Expression`, `mRNA`, `scRNA` |
+| Protein surface | `ADT`, `Surface`, `Surface protein`, `AbSeq`, `CITE` |
+| TCR | `VDJ - ab TCR`, `VDJ - gd TCR`, `abTCR`, `gdTCR`, `TCR` |
+| Cell hashing | `HTO`, `hashtag`, `ADT/HTO mixed` |
+
+Writing rules for every variant is not scalable — especially for future data types (spatial transcriptomics, CUT&TAG, Perturb-seq). The LLM applies domain knowledge to reason from raw field values directly.
+
+`FamilySoftStructurerSkill` only extracts raw fields (no inference labels). All classification is done by the LLM.
+
+### 3.4 Skill interface
+
+Each Skill is a stateless processor:
 
 ```python
 class Skill(ABC):
@@ -137,72 +174,52 @@ class Skill(ABC):
 | HierarchySkill | `datasets` | `series_hierarchy` | Implemented |
 | ReportSkill | `query`, `datasets`, `total_found` | `report`, `report_data` | Implemented |
 | FilterSkill | `datasets`, `query` | `filtered_datasets` | Implemented |
-| StandaloneSampleSelectorSkill | `series_hierarchy`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented (standalone series only) |
+| FamilySoftStructurerSkill | `target_series_ids` | `family_soft_structured`, `family_soft_structured_json` | Implemented |
+| MultiomicsAnalyzerSkill | `family_soft_structured`, `target_series_ids` | `multiomics_annotations` | Implemented |
+| StandaloneSampleSelectorSkill | `series_hierarchy`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented |
 | ValidationSkill | `filtered_datasets` | `validated_datasets` | Not yet implemented |
 
-### 3.3 Agent orchestrator
-
-- Maintains an ordered list of Skills; supports chained `agent.register(skill)`
-- Executes in order, passing a shared context
-- `SkillError` → log and continue with next Skill
-- Other exceptions → abort pipeline
-
-### 3.4 NCBI Client
+### 3.5 NCBI Client
 
 **Implemented API methods**:
 
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
 | `esearch(db, term, retmax)` | E-utilities | Search, get UID list |
-| `esummary(db, ids)` | E-utilities | Get dataset summaries (auto-batched, 200 per batch) |
+| `esummary(db, ids)` | E-utilities | Get dataset summaries (auto-batched, 200/batch) |
 | `efetch(db, ids, rettype, retmode)` | E-utilities | Get full records (XML) |
-| `fetch_geo_soft(accession)` | GEO acc.cgi | Get SOFT metadata for one GSE (incl. Overall design) |
-| `fetch_geo_soft_batch(accessions)` | GEO acc.cgi | Batch SOFT metadata; returns `dict[str, str]` |
-| `fetch_family_soft(accession)` | GEO acc.cgi | Get Family SOFT (`targ=gsm`) with all sample blocks; 60s timeout |
-| `fetch_family_soft_batch(accessions)` | GEO acc.cgi | Batch Family SOFT; returns `dict[str, str]` |
+| `fetch_geo_soft(accession)` | GEO acc.cgi | SOFT metadata for one GSE |
+| `fetch_geo_soft_batch(accessions)` | GEO acc.cgi | Batch SOFT metadata |
+| `fetch_family_soft(accession)` | GEO acc.cgi | Family SOFT (all sample blocks); 60s timeout |
+| `fetch_family_soft_batch(accessions)` | GEO acc.cgi | Batch Family SOFT |
 
-**Rate limits (implemented)**:
+**Rate limits**:
 
-| | No API Key | With API Key (current) | GEO acc.cgi |
+| | No API Key | With API Key | GEO acc.cgi |
 |---|---|---|---|
-| Max req/s | 3 | **10** | **4** |
-| Min interval | 0.34s | **0.1s** | **0.25s** |
-
-> **Note**: GEO acc.cgi is a web endpoint (not E-utilities), does not accept API Key; uses fixed 0.25s interval.
-> Full SOFT fetch for 317 records takes ~80 seconds.
-
-**Retry (implemented)**: Exponential backoff on HTTP 429/5xx, up to 3 attempts.
+| Max req/s | 3 | 10 | 4 |
+| Min interval | 0.34s | 0.1s | 0.25s |
 
 ---
 
 ## 4. Data models
 
-All types live under `geo_agent/models/`. Skills read/write these; changing report or filter logic requires knowing the exact fields.
-
-### 4.1 GEODataset and SupplementaryFile
+### 4.1 GEODataset
 
 **File**: `geo_agent/models/dataset.py`
 
 | Field | Type | Description |
 |-------|------|-------------|
 | `accession` | `str` | e.g. `"GSE164378"` |
-| `uid` | `str` | NCBI internal UID |
 | `title` | `str` | Dataset title |
 | `summary` | `str` | Series summary text |
 | `organism` | `str` | e.g. `"Homo sapiens"` |
 | `platform` | `str` | e.g. `"GPL24676"` |
-| `series_type` | `str` | e.g. `"Expression profiling by high throughput sequencing"` |
 | `sample_count` | `int` | Number of samples |
-| `overall_design` | `str` | Experiment design (from SOFT; often contains protocol info) |
-| `ftp_link` | `str` | FTP base URL for future download |
-| `supplementary_files` | `list[SupplementaryFile]` | Name + URL (+ optional size) |
-| `relevance_score` | `float` | Filled by FilterSkill (0.0 ~ 1.0) |
-| `is_valid` | `bool` | Filled by ValidationSkill (not yet implemented) |
-| `validation_notes` | `str` | Filled by ValidationSkill |
-
-**Computed**: `geo_url` property → `https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={accession}`
-
-**SupplementaryFile**: `name: str`, `url: str`, `size_bytes: Optional[int]`
+| `overall_design` | `str` | Experiment design (from SOFT) |
+| `ftp_link` | `str` | FTP base URL |
+| `supplementary_files` | `list[SupplementaryFile]` | Name + URL |
+| `relevance_score` | `float` | Filled by FilterSkill |
 
 ### 4.2 SearchQuery
 
@@ -210,271 +227,162 @@ All types live under `geo_agent/models/`. Skills read/write these; changing repo
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `data_type` | `str` | e.g. `"CITE-seq"`, `"scRNA-seq"`, `"WGS"`, `"WES"` |
+| `data_type` | `str` | e.g. `"CITE-seq"` |
 | `organism` | `Optional[str]` | e.g. `"Homo sapiens"` |
 | `disease` | `Optional[str]` | e.g. `"breast cancer"` |
-| `tissue` | `Optional[str]` | e.g. `"PBMC"`, `"T cells"` |
-| `file_types` | `list[str]` | Default `[".h5", ".mtx.gz", ".csv.gz"]` (for future download) |
+| `tissue` | `Optional[str]` | e.g. `"PBMC"` |
 | `max_results` | `int` | Default 100 |
 
-**`to_geo_query() -> str`**: Builds NCBI GEO search string. Logic:
-
-- `data_type` is first term (matched in [All Fields] by GEO).
-- If `organism`: append `"<organism>"[Organism]`.
-- If `disease` or `tissue`: append as extra terms (All Fields).
-- Always append `gse[EntryType]`.
-- All parts joined with ` AND `.
-
-Example: `SearchQuery(data_type="CITE-seq", organism="Homo sapiens")` →  
-`CITE-seq AND "Homo sapiens"[Organism] AND gse[EntryType]`
-
-### 4.3 GEOSample and SampleSelection
-
-**File**: `geo_agent/models/sample.py`
-
-**GEOSample** — per-GSM metadata parsed from Family SOFT:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `accession` | `str` | e.g. `"GSM9474997"` |
-| `title` | `str` | Sample title |
-| `organism` | `str` | e.g. `"Homo sapiens"` |
-| `molecule` | `str` | e.g. `"polyA RNA"`, `"protein"`, `"genomic DNA"` |
-| `characteristics` | `dict[str, str]` | Parsed from `!Sample_characteristics_ch1` (key: value pairs) |
-| `library_source` | `str` | e.g. `"transcriptomic"`, `"other"` |
-| `supplementary_files` | `list[str]` | URLs from `!Sample_supplementary_file` |
-| `description` | `str` | Sample description text |
-
-**SampleSelection** — LLM classification result:
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `accession` | `str` | GSM accession |
-| `library_type` | `str` | `GEX\|ADT\|TCR\|BCR\|HTO\|ATAC\|OTHER` |
-| `confidence` | `float` | 0.0–1.0 |
-| `reasoning` | `str` | LLM explanation |
-| `needs_review` | `bool` | `True` if confidence < threshold |
-| `supplementary_files` | `list[str]` | Carried from GEOSample |
-
-### 4.4 PipelineContext
+### 4.3 PipelineContext
 
 **File**: `geo_agent/models/context.py`
 
 | Field | Type | Set by | Description |
 |-------|------|--------|-------------|
-| `query` | `SearchQuery` | Caller (required) | Input search parameters |
-| `datasets` | `list[GEODataset]` | GEOSearchSkill | Search results with metadata |
-| `total_found` | `int` | GEOSearchSkill | Total matching records in GEO |
-| `series_hierarchy` | `dict[str, SeriesNode]` | HierarchySkill | Accession → node with role/parent/children |
-| `report` | `str` | ReportSkill | Markdown report text |
-| `report_data` | `list[dict]` | ReportSkill | Per-dataset dicts for AI/filter |
-| `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored and sorted subset |
-| `target_library_types` | `list[str]` | CLI `--library-type` | Target library types (default `["GEX"]`) |
-| `target_series_ids` | `list[str]` | CLI / caller | Optional explicit GSE list for local Family SOFT parsing |
-| `sample_metadata` | `dict[str, list[GEOSample]]` | SampleSelectorSkill | Parsed samples per GSE |
-| `selected_samples` | `dict[str, list[SampleSelection]]` | SampleSelectorSkill | Classified + filtered samples per GSE |
-| `family_soft_structured` | `dict[str, dict]` | FamilySoftStructurerSkill | Rule-based sample parsing result per GSE |
+| `query` | `SearchQuery` | Caller | Input search parameters |
+| `datasets` | `list[GEODataset]` | GEOSearchSkill | Search results |
+| `total_found` | `int` | GEOSearchSkill | Total GEO matches |
+| `series_hierarchy` | `dict[str, SeriesNode]` | HierarchySkill | SuperSeries/SubSeries tree |
+| `report` | `str` | ReportSkill | Markdown report |
+| `filtered_datasets` | `list[GEODataset]` | FilterSkill | Scored subset |
+| `target_series_ids` | `list[str]` | CLI / caller | Explicit GSE list for local parsing |
+| `family_soft_structured` | `dict[str, dict]` | FamilySoftStructurerSkill | Raw-field structured JSON per GSE |
 | `family_soft_structured_json` | `dict[str, str]` | FamilySoftStructurerSkill | Minified JSON string per GSE |
-| `validated_datasets` | `list[GEODataset]` | ValidationSkill | Not yet implemented |
-| `download_dir` | `str` | Config | Default `"./geo_downloads"` |
-| `downloaded_files` | `list[str]` | Download skill | Not yet implemented |
+| `multiomics_annotations` | `dict[str, dict]` | MultiomicsAnalyzerSkill | LLM annotation results per GSE |
+| `sample_metadata` | `dict[str, list[GEOSample]]` | SampleSelectorSkill | Parsed samples per GSE |
+| `selected_samples` | `dict[str, list[SampleSelection]]` | SampleSelectorSkill | Classified samples |
 | `errors` | `list[str]` | Agent | Accumulated SkillError messages |
 
----
+### 4.4 MultiomicsAnnotation (per-sample output)
 
-## 5. Overall design: why and how
+Output of `MultiomicsAnalyzerSkill`, stored in `context.multiomics_annotations`:
 
-### 5.1 Why a third step (SOFT)?
-
-E-utilities **esummary** does not return the **Overall design** field. For many scRNA-seq/CITE-seq entries, Title and Summary describe study background; the actual protocol (e.g. "CITE-seq, 151 antibodies") is only in **Overall design**. So GEOSearchSkill adds a third step: request SOFT from GEO acc.cgi per record and parse out `!Series_overall_design`.
-
-### 5.2 SOFT format example
-
-GEO acc.cgi returns SOFT: line-oriented key-value lines with `!` prefix and ` = ` separator. Example snippet:
-
-```
-!Series_geo_accession = GSE164378
-!Series_title = Single-cell RNA and protein profiling of ...
-!Series_summary = We applied joint single cell RNA and epitope analysis...
-!Series_overall_design = Tumour samples were processed for CITE-seq using 151 antibodies. Libraries were...
-!Series_type = Expression profiling by high throughput sequencing
-!Series_contributor = Smith,,John
-!Series_sample_id = GSM5012345
-!Series_sample_id = GSM5012346
-```
-
-### 5.3 Parsing logic
-
-**File**: `geo_agent/ncbi/parsers.py` → `parse_soft_text(soft_text: str) -> dict[str, str]`
-
-- Iterate lines; keep only lines starting with `!` and containing ` = `.
-- Split on first ` = `; key and value stripped.
-- Single-value fields (e.g. `!Series_overall_design`) → one entry in the dict (e.g. `overall_design`).
-- Multi-value fields (e.g. `!Series_contributor`, `!Series_sample_id`) → collected then joined with `"; "`.
-- GEOSearchSkill uses `parsed.get("overall_design", "")` to set `GEODataset.overall_design`; other fields are available for future use.
+| Field | Type | Description |
+|-------|------|-------------|
+| `gsm_id` | `str` | e.g. `"GSM8304227"` |
+| `sample_title` | `str` | Original GEO title |
+| `measured_layers` | `list[str]` | Molecular layers: `RNA`, `protein_surface`, `chromatin`, `TCR_VDJ`, `BCR_VDJ`, `cell_label`, `spatial`, `histone_mod`, `CRISPR`, `other` |
+| `platform` | `str` | Sequencing chemistry: `10x Chromium 5'`, `Smart-seq2`, … |
+| `experiment` | `str` | Experiment-level protocol: `CITE-seq`, `10x Multiome`, … |
+| `assay` | `str` | Sample-level detection: `scRNA-seq`, `CITE-seq`, `TCR V(D)J`, … |
+| `disease` | `str` | Normalised disease name |
+| `tissue` | `str` | Normalised tissue/cell type |
+| `tissue_subtype` | `str` | e.g. `tumor`, `adjacent normal`, `""` |
+| `confidence` | `float` | 0.0–1.0 |
+| `evidence` | `str` | Key fields used for inference |
 
 ---
 
-## 6. End-to-end example
+## 5. OllamaClient
 
-One full data flow from CLI to filtered output.
+**File**: `geo_agent/llm/ollama_client.py`
 
-### 6.1 CLI command
+Thin wrapper around Ollama's OpenAI-compatible `/v1/chat/completions` endpoint.
+
+```python
+client = OllamaClient(base_url="http://localhost:11434")
+resp = client.messages.create(
+    model="qwen3:30b-a3b",
+    system="You are a bioinformatics curator.",
+    messages=[{"role": "user", "content": "..."}],
+    temperature=0.1,
+    max_tokens=16384,
+)
+text = resp.choices[0].message.content
+```
+
+- Automatically strips `<think>...</think>` blocks (qwen3 thinking output)
+- Retry logic is handled at the skill level (`max_retries` in `annotate_series`)
+- `client.health_check()` and `client.list_models()` for pre-flight checks
+- Presents `.messages.create()` interface — compatible with Anthropic SDK calling convention, allowing skills to work with either backend
+
+---
+
+## 6. Batch runner
+
+**File**: `run_multiomics_analysis.py`
 
 ```bash
-.venv/bin/geo-agent search --data-type "CITE-seq" --organism "Homo sapiens" --disease "breast cancer" --max-results 10 --report results.md
+# Single series
+TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
+
+# Multiple series
+TARGET_SERIES=GSE266455,GSE268991 uv run python run_multiomics_analysis.py
+
+# All 22 series
+uv run python run_multiomics_analysis.py
+
+# Different model
+OLLAMA_MODEL=qwen3:72b TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
 ```
 
-### 6.2 Query building
-
-CLI builds `SearchQuery(data_type="CITE-seq", organism="Homo sapiens", disease="breast cancer", max_results=10)`.  
-`to_geo_query()` returns:
-
-```
-CITE-seq AND "Homo sapiens"[Organism] AND breast cancer AND gse[EntryType]
-```
-
-### 6.3 GEOSearchSkill (three steps)
-
-1. **esearch** — `NCBIClient.esearch(db="gds", term=geo_query, retmax=10)` → JSON → `parse_esearch_response()` → list of UIDs + `total_found`.
-2. **esummary** — `NCBIClient.esummary(db="gds", ids=uids)` → JSON → `parse_esummary_to_datasets()` → `list[GEODataset]` with accession, title, summary, organism, sample_count, ftp_link, etc. (no Overall design yet).
-3. **SOFT** — `NCBIClient.fetch_geo_soft_batch(accessions)` → one acc.cgi request per accession (0.25s spacing) → `parse_soft_text()` per response → set `ds.overall_design` on each dataset.
-
-Context after search: `context.datasets`, `context.total_found` populated.
-
-### 6.4 ReportSkill
-
-Reads `context.query`, `context.datasets`, `context.total_found`. Builds:
-
-- `context.report_data`: list of dicts (accession, title, organism, summary, overall_design, geo_url, …) for each dataset.
-- `context.report`: Markdown (overview table + per-dataset details). If `--report results.md` was given, also writes that file.
-
-### 6.5 FilterSkill (when registered)
-
-Reads `context.datasets` and `context.query`. For each dataset:
-
-- Applies `min_samples`, `required_keywords`, `exclude_keywords` (constructor params).
-- Computes **relevance score** from: data_type in title (0.30) / Overall design (0.25) / summary (0.15); organism exact (0.20); disease in title (0.20) / design or summary (0.10); tissue in title (0.15) / design or summary (0.08); sample count ≥50 (0.10) or ≥20 (0.05); has supplementary files (0.05). Sorted by score descending; threshold by `min_score`.
-- Writes `context.filtered_datasets`.
-
-> **Note**: The current CLI only registers GEOSearchSkill and ReportSkill; it does not register FilterSkill. To use filtering, instantiate and register FilterSkill (e.g. in a custom script or future CLI flag) before `agent.run()`.
-
-### 6.6 Summary flow
-
-```
-CLI args → SearchQuery → to_geo_query()
-    → esearch (UIDs) → esummary (GEODataset list) → acc.cgi SOFT (overall_design)
-    → ReportSkill (report + report_data)
-    → FilterSkill (filtered_datasets, if registered)
-```
+Output files are prefixed with the series ID when a single series is specified:
+- `GSE268991_results.json` — full per-sample annotation
+- `GSE268991_results_table.md` — series summary + flat per-sample table
 
 ---
 
-## 7. Known issues from real-world testing
-
-> Full analysis: `docs/developer_notes_family_soft_findings.md` (10 series tested)
+## 7. Known issues
 
 ### 7.1 GEO search returns false positives
 
-GEO's `esearch` matches keywords loosely. Example: GSE280852 was returned for a CITE-seq query but contains **only scRNA-seq** (6 samples, all polyA RNA, no ADT library). The study likely mentions "CITE-seq" in text without actually containing CITE-seq data.
-
-**Current mitigation**: FilterSkill scores catch some false positives (low data_type match). **Planned**: SampleSelectorSkill post-classification check — if all samples classify as GEX with no ADT/TCR, flag the series as a likely false positive (TODO, not yet implemented).
+GEO's `esearch` matches keywords loosely. Example: GSE280852 was returned for a CITE-seq query but contains only scRNA-seq (6 samples, no ADT). `MultiomicsAnalyzerSkill` correctly annotates such series as RNA-only — these become easy to filter out post-annotation.
 
 ### 7.2 Per-sample supplementary files can be empty
 
-Some series (e.g. GSE320155, 60 samples) set `!Sample_supplementary_file_1 = NONE` for every sample. Data is uploaded as Series-level aggregated files only (e.g. `_cellranger_aggr.gz`, `_RAW.tar`).
+Some series set `!Sample_supplementary_file_1 = NONE` for every sample. Data is uploaded as Series-level aggregated files only. `relation_sra` and `relation_biosample` in the structured JSON provide alternative links.
 
-**Impact on DownloadSkill**: Cannot rely solely on per-GSM FTP links. Must fall back to Series-level `supplementary_file` list when per-sample files are absent.
+### 7.3 Output token limit for large series
 
-### 7.3 Sample naming is wildly inconsistent across uploaders
-
-Observed naming for the same library type across 10 tested series:
-
-| Library type | Variants seen |
-|---|---|
-| GEX | `_GEX`, `, GEX`, `_RNA`, `_mRNA`, `5'GEX` |
-| ADT | `_ADT`, `, ADT`, `Surface`, `ADT/HTO mixed` |
-| TCR | `_VDJ`, `library type: TCR`, `gdTCR` / `abTCR` |
-| HTO | `_HTO`, `ADT/HTO mixed` |
-
-Rule-based classification cannot scale. This is the primary motivation for LLM-based sample classification in SampleSelectorSkill (see `docs/LLM_sample_selector.md`).
+Series with 50+ samples can approach the model's output token limit at `max_tokens=16384`. A retry with slightly higher temperature is attempted automatically (up to `max_retries=2`). If failures persist, consider splitting large series into batches or increasing `max_tokens`.
 
 ---
 
-## 8. Adopted improvements
-
-These improvements came from review and are reflected in the code:
-
-| Suggestion | Status | Notes |
-|------------|--------|-------|
-| FTP vs API separation | Adopted | E-utilities for metadata only; `GEODataset.ftp_link` holds FTP URL for future download |
-| Retry + backoff | Implemented | `NCBIClient._request_with_retry()` for 429/5xx |
-| UID batch requests | Implemented | `esummary()` auto-batches (200 per batch) |
-| Defer download phase | Adopted | Focus on search + report; download not implemented |
-| Metadata sync / download async | Not yet | Download phase will use `ThreadPoolExecutor` |
-| Resume download | Not yet | Download: file size check + HTTP Range |
-| Typed context | **Implemented** | `PipelineContext` dataclass instead of raw dict; IDE completion + spell-check |
-| Downstream AnnData | Not yet | After download, emit `metadata.json` for analysis |
-
----
-
-## 9. CLI usage
-
-```bash
-# Basic search
-.venv/bin/geo-agent search --data-type "CITE-seq" --organism "Homo sapiens"
-
-# Multi-dimensional search
-.venv/bin/geo-agent search --data-type "CITE-seq" --disease "breast cancer" --tissue "PBMC"
-
-# Save report to file
-.venv/bin/geo-agent search --data-type "CITE-seq" --organism "Homo sapiens" --report results.md
-
-# Limit results
-.venv/bin/geo-agent search --data-type "scRNA-seq" --max-results 50
-```
-
-### Search dimensions
-
-| Dimension | CLI option | GEO field | Examples |
-|-----------|------------|-----------|----------|
-| Data type | `--data-type` | `[Description]` | CITE-seq, scRNA-seq, WGS, WES |
-| Organism | `--organism` | `[Organism]` | Homo sapiens, Mus musculus |
-| Disease | `--disease` | `[Description]` | breast cancer, lung cancer |
-| Tissue/cell | `--tissue` | `[Description]` | PBMC, T cells, breast tissue |
-
----
-
-## 10. Implementation status
+## 8. Implementation status
 
 | Phase | Content | Status |
 |-------|---------|--------|
 | Phase 1 | Base (data models + NCBIClient) | **Done** |
 | Phase 2 | Search Skill + Agent + CLI (MVP) | **Done** |
-| Phase 2.5 | Report Skill (Markdown + structured data) | **Done** |
-| Phase 3 | FilterSkill (relevance scoring) + Skill docs | **Done** |
-| Phase 3.5 | StandaloneSampleSelectorSkill (LLM sample classification, standalone series only) | **Done** |
-| Phase 3.6 | HierarchySkill (SuperSeries/SubSeries family tree) | **Done** |
-| Phase 4 | Download Skill (deferred) | Not implemented |
+| Phase 2.5 | Report Skill | **Done** |
+| Phase 3 | FilterSkill (relevance scoring) | **Done** |
+| Phase 3.5 | StandaloneSampleSelectorSkill (Anthropic, standalone series) | **Done** |
+| Phase 3.6 | HierarchySkill (SuperSeries/SubSeries tree) | **Done** |
+| Phase 3.7 | FamilySoftStructurerSkill (pure field extraction) + MultiomicsAnalyzerSkill (LLM annotation via Ollama) | **Done** |
+| Phase 4 | Download Skill | Not implemented |
 | Phase 5 | Logging, PipelineResult, JSON output | Not implemented |
 
 ---
 
-## 11. Technology choices
+## 9. Technology choices
 
-- **Custom framework vs LangChain**: Pipeline is mostly deterministic (search → report → filter → Family SOFT rule parsing)
-- **requests vs httpx/aiohttp**: NCBI rate limit 3–10 req/s; async adds little for metadata phase
-- **uv + Python 3.12**: Isolated environment, independent of system Python
-- **Current focus on search**: Ensure search → report is correct first; download can follow later
+| Decision | Choice | Reason |
+|---|---|---|
+| LLM backend for annotation | Local Ollama (qwen3:30b-a3b) | No API cost; MoE architecture (~3.7B active params) is fast despite 30B total |
+| MoE vs Dense | qwen3:30b-a3b (MoE) faster than qwen3.5:9b (Dense) | Active parameter count determines speed, not total parameter count |
+| Annotation strategy | LLM reasoning on raw fields | Rule-based keyword matching cannot scale to all omics types and naming variants |
+| No `inferred_library_type` in LLM input | Removed from structurer | Hardcoded rules leak bias; LLM reasons better from raw evidence |
+| HTTP client | `requests` | Synchronous is sufficient; NCBI rate limit 3–10 req/s |
+| Package manager | `uv` | Fast, isolated venv independent of system Python |
 
 ---
 
-## 12. Extensibility
+## 10. CLI usage
 
-- **New Skill**: Implement `Skill` and call `agent.register()`
-- **Web UI**: Agent is CLI-agnostic; call `agent.run(context)` from FastAPI/Flask
-- **AI filtering**: `report_data` from ReportSkill (list of dicts) feeds LLM or other downstream filtering
-- **Downstream analysis**: Future download can emit `metadata.json` for Scanpy/Muon
+```bash
+# Basic search
+uv run geo-agent search --data-type "CITE-seq" --organism "Homo sapiens"
+
+# Save report to file
+uv run geo-agent search --data-type "CITE-seq" --organism "Homo sapiens" --report results.md
+
+# Run Family SOFT parser (generates structured JSON)
+cd tests/Test_family_soft_parse
+uv run python run_family_soft_parser_debug.py
+
+# Run multi-omics annotation
+TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
+```
 
 ---
 
@@ -483,11 +391,12 @@ These improvements came from review and are reflected in the code:
 | Date | Version | Changes |
 |------|---------|---------|
 | 2026-03-02 | v0.1 | Initial architecture |
-| 2026-03-02 | v0.2 | Phase 1/2/2.5 done; ReportSkill; review feedback (retry, FTP separation); flow search→report→AI filter; uv + API Key |
-| 2026-03-02 | v0.3 | PipelineContext dataclass; FilterSkill (keyword scoring); Skill docs under `docs/skills/` |
-| 2026-03-02 | v0.4 | Overall design: GEO acc.cgi SOFT; `fetch_geo_soft()` / `fetch_geo_soft_batch()`; `parse_soft_text()`; GEOSearchSkill 3-step (esearch→esummary→SOFT); FilterSkill scoring with design_lower (title 0.30 > design 0.25 > summary 0.15); GEO acc.cgi rate limit 0.25s |
-| 2026-03-02 | v0.5 | Self-contained doc: Data models (GEODataset, SearchQuery, PipelineContext); Overall design motivation + SOFT example + parse logic; End-to-end example (CLI → query → esearch → esummary → SOFT → report → filter); FilterSkill scoring weights in Architecture |
-| 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM sample classification; Family SOFT fetch/parse (`fetch_family_soft`, `parse_family_soft`); GEOSample/SampleSelection data models; Anthropic SDK integration; `--library-type` CLI flag; Unit tests |
-| 2026-03-03 | v0.7 | Known issues from real-world testing (§7): GEO false positives, empty per-sample files, naming inconsistency; naming variant table; TODO for series-level false positive detection |
-| 2026-03-03 | v0.8 | HierarchySkill: SuperSeries/SubSeries family tree builder; `SeriesNode` dataclass; `build_series_hierarchy()` (3-pass relation parsing); `format_families()` / `format_standalone()` / `format_series_hierarchy()`; external title fetch via SOFT; `context.series_hierarchy`; `geo_agent/utils/hierarchy.py`; `skills/hierarchy.md` spec |
-| 2026-03-04 | v0.9 | Main `--library-type` path switched to rule-based local Family SOFT parser (`FamilySoftStructurerSkill`); no Anthropic dependency in main sample parsing pipeline; sample-level outputs split into modality/biology/file locator + `notes`/`keyword_watchlist`; added batch debug parser script |
+| 2026-03-02 | v0.2 | Phase 1/2/2.5 done; ReportSkill; retry/FTP separation |
+| 2026-03-02 | v0.3 | PipelineContext dataclass; FilterSkill |
+| 2026-03-02 | v0.4 | Overall design: GEO acc.cgi SOFT; GEOSearchSkill 3-step |
+| 2026-03-02 | v0.5 | Self-contained doc: data models, end-to-end example |
+| 2026-03-03 | v0.6 | SampleSelectorSkill: LLM-based GSM classification; Anthropic SDK |
+| 2026-03-03 | v0.7 | Known issues from real-world testing |
+| 2026-03-03 | v0.8 | HierarchySkill: SuperSeries/SubSeries family tree |
+| 2026-03-04 | v0.9 | FamilySoftStructurerSkill: rule-based local SOFT parser (no LLM) |
+| 2026-03-05 | v1.0 | MultiomicsAnalyzerSkill: LLM-based three-layer annotation (measured_layers / experiment / assay) via local Ollama; OllamaClient adapter; removed hardcoded modality inference from FamilySoftStructurerSkill; three-layer annotation design (§3.2); MoE speed note (§9) |

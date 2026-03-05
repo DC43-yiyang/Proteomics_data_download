@@ -43,6 +43,7 @@ class PipelineContext:
     sample_selector_context_json: dict[str, str] = field(default_factory=dict)
     family_soft_structured: dict[str, dict[str, Any]] = field(default_factory=dict)
     family_soft_structured_json: dict[str, str] = field(default_factory=dict)
+    multiomics_annotations: dict[str, dict[str, Any]] = field(default_factory=dict)
 
     # Download config (Phase 4)
     download_dir: str = "./geo_downloads"

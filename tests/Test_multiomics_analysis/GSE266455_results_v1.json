@@ -1,0 +1,737 @@
+{
+  "model": "qwen3.5:35b-a3b-q8_0",
+  "generated_at_utc": "2026-03-05T16:34:32.364220+00:00",
+  "input_file": "../Test_family_soft_parse/family_soft_22_structured.json",
+  "series_count": 1,
+  "results": {
+    "GSE266455": {
+      "series_id": "GSE266455",
+      "disease_normalized": "unspecified",
+      "tissue_normalized": "blood",
+      "sample_count": 48,
+      "samples": [
+        {
+          "gsm_id": "GSM8247203",
+          "sample_title": "PID145week0replicate1Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247204",
+          "sample_title": "PID145week0replicate1Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247205",
+          "sample_title": "PID145week0replicate2Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247206",
+          "sample_title": "PID145week0replicate2Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247207",
+          "sample_title": "PID8026week24replicate1Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247208",
+          "sample_title": "PID8026week24replicate1Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247209",
+          "sample_title": "PID8026week24replicate2Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247210",
+          "sample_title": "PID8026week24replicate2Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247211",
+          "sample_title": "PID8026week24replicate3Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247212",
+          "sample_title": "PID8026week24replicate3Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247213",
+          "sample_title": "PID8026week24replicate4Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247214",
+          "sample_title": "PID8026week24replicate4Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247215",
+          "sample_title": "PID8026week0replicate5Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247216",
+          "sample_title": "PID8026week0replicate5Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247217",
+          "sample_title": "PID8026week0replicate6Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247218",
+          "sample_title": "PID8026week0replicate6Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247219",
+          "sample_title": "PID8026week0replicate7Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247220",
+          "sample_title": "PID8026week0replicate7Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247221",
+          "sample_title": "PID8026week0replicate8Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247222",
+          "sample_title": "PID8026week0replicate8Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247223",
+          "sample_title": "PID1052week0replicate1NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247224",
+          "sample_title": "PID1052week0replicate1NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247225",
+          "sample_title": "PID1052week0replicate2NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247226",
+          "sample_title": "PID1052week0replicate2NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247227",
+          "sample_title": "PID1052week0replicate3Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247228",
+          "sample_title": "PID1052week0replicate3Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247229",
+          "sample_title": "PID1052week0replicate4Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247230",
+          "sample_title": "PID1052week0replicate4Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247231",
+          "sample_title": "PID1052week0replicate5Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247232",
+          "sample_title": "PID1052week0replicate5Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247233",
+          "sample_title": "PID1052week0replicate6Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247234",
+          "sample_title": "PID1052week0replicate6Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247235",
+          "sample_title": "PID8027week0replicate1NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247236",
+          "sample_title": "PID8027week0replicate1NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247237",
+          "sample_title": "PID8027week0replicate2NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247238",
+          "sample_title": "PID8027week0replicate2NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247239",
+          "sample_title": "PID8027week45replicate3NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247240",
+          "sample_title": "PID8027week45replicate3NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247241",
+          "sample_title": "PID8027week45replicate4NOTHING,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247242",
+          "sample_title": "PID8027week45replicate4NOTHING,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247243",
+          "sample_title": "PID8027week0replicate5Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247244",
+          "sample_title": "PID8027week0replicate5Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247245",
+          "sample_title": "PID8027week0replicate6Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247246",
+          "sample_title": "PID8027week0replicate6Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247247",
+          "sample_title": "PID8027week45replicate7Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247248",
+          "sample_title": "PID8027week45replicate7Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247249",
+          "sample_title": "PID8027week45replicate8Primer,GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: GEX, molecule: polyA RNA, cell type: PBMC_T cells",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM8247250",
+          "sample_title": "PID8027week45replicate8Primer,ADT",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium 3'",
+          "assay": "CITE-seq",
+          "disease": "unspecified",
+          "tissue": "blood",
+          "tissue_subtype": "",
+          "confidence": 0.85,
+          "evidence": "library_type: ADT, molecule: protein, cell type: PBMC_T cells",
+          "in_input": true
+        }
+      ],
+      "reasoning": "This series contains 48 samples from a longitudinal study tracking multiple patients (PID145, PID8026, PID8027, PID1052) over time points (week0, week24, week45). All samples are derived from blood with PBMC_T cells as the cell type. The experiment uses CITE-seq methodology combining GEX (gene expression via polyA RNA sequencing) and ADT (antibody-derived tags for surface protein measurement) libraries. Platform inference is based on single-cell transcriptomic library characteristics (polyA RNA, 3' chemistry typical of 10x Chromium). No explicit disease information is provided in the metadata, so disease is marked as unspecified with lower confidence. Tissue subtype is empty as all samples are from peripheral blood without tumor/normal distinction."
+    }
+  }
+}

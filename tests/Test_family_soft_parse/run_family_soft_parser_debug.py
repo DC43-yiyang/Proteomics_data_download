@@ -171,7 +171,6 @@ def main() -> None:
         series_data = structure_family_soft_text(
             series_id=series_id,
             soft_text=soft_path.read_text(errors="ignore"),
-            debug_print=False,
             source_file=str(soft_path),
         )
         structured[series_id] = series_data
