@@ -1,6 +1,6 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v1.0
+> **Version**: v1.1
 > **Created**: 2026-03-02
 > **Last updated**: 2026-03-05
 > **Environment**: Python 3.13 (uv) | isolated venv `.venv/`
@@ -19,11 +19,15 @@ This tool uses an **Agent + Skill pipeline** with two independent branches:
 3. **AI filter/validation** — Smart filtering based on report content
 
 **Branch B — Multi-omics sample annotation (current focus)**
-1. **Parse** — `FamilySoftStructurerSkill` converts raw Family SOFT files to structured JSON
-2. **Annotate** — `MultiomicsAnalyzerSkill` uses a local LLM to annotate each GSM at three layers
-3. **Output** — Per-sample JSON + Markdown table for human review and downstream filtering
+1. **Hierarchy filter** — `HierarchySkill` classifies each GSE as `standalone` / `super` / `sub`; only `standalone` series (in search results) proceed further
+2. **Fetch** — `FetchFamilySoftSkill` calls `NCBIClient.fetch_family_soft_batch()` for the standalone GSE IDs
+3. **Parse** — `FamilySoftStructurerSkill` converts raw Family SOFT text to structured JSON
+4. **Annotate** — `MultiomicsAnalyzerSkill` uses a local LLM to annotate each GSM at three layers
+5. **Persist** — `PersistSkill` writes results into a local SQLite database (`geo_agent.db`)
 
-> Download is not implemented. All skills output sample lists and links; execution is manual.
+> SuperSeries and SubSeries are currently excluded from annotation; their sample structure is too complex to handle reliably without dedicated resolution logic. This constraint will be revisited in a later phase.
+>
+> Download of raw data files (fastq, h5) is not implemented.
 
 ---
 
@@ -94,33 +98,56 @@ Proteomics_data_download/
 ### 3.1 Data flow — Branch B (multi-omics annotation)
 
 ```
-debug_family_soft/*.soft  (raw GEO Family SOFT files)
-        │
-        ▼
-[FamilySoftStructurerSkill]          pure field extraction, no inference
-        │   - characteristics, library_type, molecule, description
-        │   - supplementary_files, relation_sra, relation_biosample
-        ▼
-family_soft_22_structured.json       structured per-sample metadata
-        │
-        ▼
-[MultiomicsAnalyzerSkill]            local LLM (Ollama qwen3:30b-a3b)
-        │   - reads raw fields, reasons from domain knowledge
-        │   - no hardcoded keyword mappings
-        ▼
-per-sample annotation:
-  measured_layers  (molecular layer: RNA / protein_surface / TCR_VDJ / ...)
-  platform         (sequencing chemistry: 10x Chromium 5', Smart-seq2, ...)
-  experiment       (experiment-level protocol: CITE-seq, 10x Multiome, ...)
-  assay            (sample-level detection: scRNA-seq, CITE-seq, TCR V(D)J, ...)
-  disease          (normalised: colorectal cancer (CRC))
-  tissue           (normalised: colon / PBMC)
-  tissue_subtype   (tumor / adjacent normal / "")
-  confidence + evidence
-        │
-        ▼
-multiomics_results.json  +  multiomics_results_table.md
+GEOSearchSkill  →  HierarchySkill
+                         │
+                         │  series_hierarchy: {role: standalone/super/sub}
+                         ▼
+               ┌─ standalone AND in_search_results ─┐   ← only these proceed
+               │  (super / sub series are skipped)   │
+               └───────────────────────────────────-─┘
+                         │
+                         ▼
+              [FetchFamilySoftSkill]         NCBIClient.fetch_family_soft_batch()
+                         │   - fetches raw Family SOFT text for each standalone GSE
+                         ▼
+              [FamilySoftStructurerSkill]    pure field extraction, no inference
+                         │   - characteristics, library_type, molecule, description
+                         │   - supplementary_files, relation_sra, relation_biosample
+                         ▼
+              [MultiomicsAnalyzerSkill]      local LLM (Ollama qwen3:30b-a3b)
+                         │   - reads raw fields, reasons from domain knowledge
+                         │   - no hardcoded keyword mappings
+                         ▼
+              per-sample annotation:
+                measured_layers  (RNA / protein_surface / TCR_VDJ / ...)
+                platform         (10x Chromium 5', Smart-seq2, ...)
+                experiment       (CITE-seq, 10x Multiome, ...)
+                assay            (scRNA-seq, CITE-seq, TCR V(D)J, ...)
+                disease          (normalised: colorectal cancer (CRC))
+                tissue           (normalised: colon / PBMC)
+                tissue_subtype   (tumor / adjacent normal / "")
+                confidence + evidence
+                         │
+                         ▼
+              [PersistSkill]                 SQLite: geo_agent.db
+                         │
+                         ├── series          (series-level metadata)
+                         ├── sample          (per-GSM annotation)
+                         ├── sample_layer    (measured_layers, one row per layer)
+                         └── sample_raw      (raw SOFT fields for traceability)
 ```
+
+#### 3.1.1 Standalone-only policy
+
+`HierarchySkill` assigns each series one of three roles based on `!Series_relation` fields:
+
+| Role | Meaning | Processed by Branch B? |
+|---|---|---|
+| `standalone` | No SuperSeries / SubSeries relations | **Yes** |
+| `super` | Has SubSeries children | No (future phase) |
+| `sub` | Belongs to a SuperSeries | No (future phase) |
+
+Only series with `role == "standalone" and in_search_results == True` are passed to `FetchFamilySoftSkill`. SuperSeries and SubSeries are excluded because their sample-level structure requires dedicated resolution logic (e.g. deduplication across SubSeries, mapping samples to the correct SubSeries SOFT block).
 
 ### 3.2 Three-layer annotation design
 
@@ -174,8 +201,10 @@ class Skill(ABC):
 | HierarchySkill | `datasets` | `series_hierarchy` | Implemented |
 | ReportSkill | `query`, `datasets`, `total_found` | `report`, `report_data` | Implemented |
 | FilterSkill | `datasets`, `query` | `filtered_datasets` | Implemented |
+| FetchFamilySoftSkill | `series_hierarchy` | `family_soft_raw` | Planned (Phase 3.8) |
 | FamilySoftStructurerSkill | `target_series_ids` | `family_soft_structured`, `family_soft_structured_json` | Implemented |
 | MultiomicsAnalyzerSkill | `family_soft_structured`, `target_series_ids` | `multiomics_annotations` | Implemented |
+| PersistSkill | `multiomics_annotations`, `family_soft_structured` | — (writes to SQLite) | Planned (Phase 3.8) |
 | StandaloneSampleSelectorSkill | `series_hierarchy`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented |
 | ValidationSkill | `filtered_datasets` | `validated_datasets` | Not yet implemented |
 
@@ -336,9 +365,107 @@ Some series set `!Sample_supplementary_file_1 = NONE` for every sample. Data is 
 
 Series with 50+ samples can approach the model's output token limit at `max_tokens=16384`. A retry with slightly higher temperature is attempted automatically (up to `max_retries=2`). If failures persist, consider splitting large series into batches or increasing `max_tokens`.
 
+### 7.4 Qwen JSON instability and rollback controls (added 2026-03-05)
+
+To reduce parse failures such as `no JSON object in LLM output`, the multi-omics runner now supports explicit output-stability controls:
+
+- `STRICT_JSON_MODE=1` (default): send `response_format={"type":"json_object"}` to Ollama OpenAI endpoint.
+- `LLM_TEMPERATURE=0.0` and `RETRY_TEMP_STEP=0.0` (default): avoid retry-time temperature drift.
+- `DISABLE_THINKING=1` (optional): send `think=false` for models/endpoints that support it.
+- `DEBUG_RAW_LLM_DIR=<dir>` (optional): save raw failed responses for debugging.
+
+Quick rollback to legacy behavior:
+
+```bash
+STRICT_JSON_MODE=0 \
+LLM_TEMPERATURE=0.1 \
+RETRY_TEMP_STEP=0.05 \
+DISABLE_THINKING=0 \
+uv run python run_multiomics_analysis.py
+```
+
 ---
 
-## 8. Implementation status
+## 8. SQLite database — `geo_agent.db`
+
+**File**: project root (`geo_agent.db`), git-ignored. Path configurable via `.env`.
+
+Managed by `PersistSkill`. Schema is created on first run (`CREATE TABLE IF NOT EXISTS`).
+
+```sql
+-- Series-level metadata
+CREATE TABLE series (
+    series_id          TEXT PRIMARY KEY,
+    title              TEXT,
+    organism           TEXT,
+    disease_normalized TEXT,
+    tissue_normalized  TEXT,
+    sample_count       INTEGER,
+    model              TEXT,       -- LLM model name used for annotation
+    annotated_at       TEXT        -- ISO8601 UTC
+);
+
+-- Per-sample annotation results
+CREATE TABLE sample (
+    gsm_id         TEXT PRIMARY KEY,
+    series_id      TEXT NOT NULL REFERENCES series(series_id),
+    sample_title   TEXT,
+    platform       TEXT,           -- sequencing chemistry
+    experiment     TEXT,           -- experiment-level protocol
+    assay          TEXT,           -- sample-level detection method
+    disease        TEXT,
+    tissue         TEXT,
+    tissue_subtype TEXT,
+    confidence     REAL,
+    evidence       TEXT
+);
+
+-- measured_layers: one row per layer per sample (atomic)
+-- Allows: SELECT * FROM sample JOIN sample_layer USING (gsm_id) WHERE layer = 'protein_surface'
+CREATE TABLE sample_layer (
+    gsm_id TEXT NOT NULL REFERENCES sample(gsm_id),
+    layer  TEXT NOT NULL,          -- RNA / protein_surface / TCR_VDJ / BCR_VDJ / ...
+    PRIMARY KEY (gsm_id, layer)
+);
+
+-- Raw SOFT fields: traceability back to original GEO metadata
+CREATE TABLE sample_raw (
+    gsm_id                   TEXT PRIMARY KEY REFERENCES sample(gsm_id),
+    library_type             TEXT,
+    molecule                 TEXT,
+    description              TEXT,
+    characteristics_json     TEXT,   -- JSON blob of raw characteristics_ch1 fields
+    supplementary_files_json TEXT,
+    relation_sra             TEXT,
+    relation_biosample       TEXT
+);
+```
+
+### Example queries
+
+```sql
+-- All protein surface samples from PBMC
+SELECT s.* FROM sample s
+JOIN sample_layer sl USING (gsm_id)
+WHERE sl.layer = 'protein_surface' AND s.tissue = 'PBMC';
+
+-- Layer distribution for a specific series
+SELECT sl.layer, COUNT(*) AS n
+FROM sample_layer sl
+JOIN sample s USING (gsm_id)
+WHERE s.series_id = 'GSE266455'
+GROUP BY sl.layer;
+
+-- High-confidence CITE-seq experiments across all series
+SELECT series_id, COUNT(*) AS n
+FROM sample
+WHERE experiment = 'CITE-seq' AND confidence >= 0.85
+GROUP BY series_id ORDER BY n DESC;
+```
+
+---
+
+## 9. Implementation status
 
 | Phase | Content | Status |
 |-------|---------|--------|
@@ -349,8 +476,9 @@ Series with 50+ samples can approach the model's output token limit at `max_toke
 | Phase 3.5 | StandaloneSampleSelectorSkill (Anthropic, standalone series) | **Done** |
 | Phase 3.6 | HierarchySkill (SuperSeries/SubSeries tree) | **Done** |
 | Phase 3.7 | FamilySoftStructurerSkill (pure field extraction) + MultiomicsAnalyzerSkill (LLM annotation via Ollama) | **Done** |
-| Phase 4 | Download Skill | Not implemented |
-| Phase 5 | Logging, PipelineResult, JSON output | Not implemented |
+| Phase 3.8 | FetchFamilySoftSkill (A→B bridge, standalone-only) + PersistSkill (SQLite: `geo_agent.db`) | **Planned** |
+| Phase 4 | Download Skill (raw data files: fastq / h5) | Not implemented |
+| Phase 5 | Logging, PipelineResult, unified JSON output | Not implemented |
 
 ---
 
@@ -400,3 +528,4 @@ TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
 | 2026-03-03 | v0.8 | HierarchySkill: SuperSeries/SubSeries family tree |
 | 2026-03-04 | v0.9 | FamilySoftStructurerSkill: rule-based local SOFT parser (no LLM) |
 | 2026-03-05 | v1.0 | MultiomicsAnalyzerSkill: LLM-based three-layer annotation (measured_layers / experiment / assay) via local Ollama; OllamaClient adapter; removed hardcoded modality inference from FamilySoftStructurerSkill; three-layer annotation design (§3.2); MoE speed note (§9) |
+| 2026-03-05 | v1.1 | Standalone-only policy for Branch B (§3.1.1); FetchFamilySoftSkill + PersistSkill planned as Phase 3.8; SQLite schema design (§8); updated data flow diagram to show full A→B pipeline |

@@ -51,7 +51,7 @@ class _MessagesNamespace:
         system: str | None = None,
         temperature: float = 0.1,
         max_tokens: int = 4096,
-        **_kwargs: Any,
+        **kwargs: Any,
     ) -> _Response:
         return self._client._chat(
             model=model,
@@ -59,6 +59,7 @@ class _MessagesNamespace:
             system=system,
             temperature=temperature,
             max_tokens=max_tokens,
+            **kwargs,
         )
 
 
@@ -80,7 +81,7 @@ class OllamaClient:
     def __init__(
         self,
         base_url: str = _DEFAULT_BASE_URL,
-        timeout: int = 300,
+        timeout: int = 600,
         strip_think_tags: bool = True,
     ) -> None:
         self._base_url = base_url.rstrip("/")
@@ -99,6 +100,10 @@ class OllamaClient:
         system: str | None,
         temperature: float,
         max_tokens: int,
+        response_format: dict[str, Any] | None = None,
+        seed: int | None = None,
+        think: bool | None = None,
+        **extra_payload: Any,
     ) -> _Response:
         # Prepend system message when provided (Anthropic-style calling convention)
         full_messages: list[dict[str, str]] = []
@@ -113,6 +118,13 @@ class OllamaClient:
             "max_tokens": max_tokens,
             "stream": False,
         }
+        if response_format is not None:
+            payload["response_format"] = response_format
+        if seed is not None:
+            payload["seed"] = seed
+        if think is not None:
+            payload["think"] = think
+        payload.update(extra_payload)
 
         url = f"{self._base_url}/v1/chat/completions"
         try:

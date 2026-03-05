@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-03-05T21:01:35.830723+00:00",
+  "count": 26,
+  "series": [
+    {
+      "accession": "GSE207438",
+      "title": "Immune Profiling-Based Treatment for ANCA-Associated Glomerulonephritis with Ustekinumab"
+    },
+    {
+      "accession": "GSE266455",
+      "title": "hiv-seq reveals global host gene expression differences between hiv-transcribing cells from viremic and suppressed people with hiv"
+    },
+    {
+      "accession": "GSE267552",
+      "title": "Tumour-associated tissue-resident memory T (TRM) cells and exhausted T cells are clonally and developmentally distinct populations"
+    },
+    {
+      "accession": "GSE268991",
+      "title": "Transcriptional profile and TCR sequences from tumor and adjacent normal human colorectal samples"
+    },
+    {
+      "accession": "GSE269123",
+      "title": "scRNA profiling of early postnatal thymus derived VÎ´1+ gamma delta T cells."
+    },
+    {
+      "accession": "GSE280852",
+      "title": "An immunobiliary single-cell atlas resolves crosstalk between type 2 conventional dendritic cells and Î³Î´ T cells in cholangitis [RNA-seq]"
+    },
+    {
+      "accession": "GSE283984",
+      "title": "A pipeline to unravel complexity of the human peripheral blood B cell compartment through multiomic cellular indexing of transcriptomes and epitopes by sequencing (CITE-seq) analyses"
+    },
+    {
+      "accession": "GSE287976",
+      "title": "Single-Cell Omics Analysis of Human Basophils Reveals Two Transcriptionally Distinct Populations"
+    },
+    {
+      "accession": "GSE291290",
+      "title": "Single cell multi-omic sequencing of human peripheral mononuclear cells (PBMCs) post heart transplantation"
+    },
+    {
+      "accession": "GSE294427",
+      "title": "CD8+ T cell recall cytotoxicity during chronic treated HIV-1 infection is associated with limited reservoir size and activity"
+    },
+    {
+      "accession": "GSE296447",
+      "title": "Distinct spatial organization governs oral mucosal immunity"
+    },
+    {
+      "accession": "GSE299415",
+      "title": "TCRs enable traceability of CAR-T cells but impair function in dual target cell contexts [car_pre_infusion]"
+    },
+    {
+      "accession": "GSE299416",
+      "title": "TCRs enable traceability of CAR-T cells but impair function in dual target cell contexts [car_post_infusion]"
+    },
+    {
+      "accession": "GSE303197",
+      "title": "Dynamic Antigen Expression and Intrinsic CTL Resistance in HIV-1 Reservoir Clones"
+    },
+    {
+      "accession": "GSE303984",
+      "title": "Dosing interval is a major factor determining the quality of T cells induced by SARS-CoV-2 mRNA and adenoviral vaccines"
+    },
+    {
+      "accession": "GSE305370",
+      "title": "Multimodal Single-Cell Integration Across Time, Individuals, and Batches"
+    },
+    {
+      "accession": "GSE306022",
+      "title": "CD8 T cells cross-restricted by HLA-B*57 and HLA-E*01 recognize HIV Gag with different functional profiles [dataset 1]"
+    },
+    {
+      "accession": "GSE306608",
+      "title": "Sensitive CAR T cells redefine targetable CD70 expression in solid tumors [CITE-seq]"
+    },
+    {
+      "accession": "GSE309625",
+      "title": "Antigen reactivity defines tissue-resident memory and exhausted T cells in tumours."
+    },
+    {
+      "accession": "GSE313153",
+      "title": "CITE-seq profiling of human splenic dendritic cells"
+    },
+    {
+      "accession": "GSE313894",
+      "title": "Single cell characterization of the gastrointestinal HIV reservoir reveals heterogeneous cellular phenotypes."
+    },
+    {
+      "accession": "GSE315668",
+      "title": "Robust effector memory features of human T-bet-hi B cells  induced by repeated mRNA vaccination"
+    },
+    {
+      "accession": "GSE316069",
+      "title": "Single-cell Profiling Reveals Diverse Î³Î´ T Cell Subsets in Ulcerative Colitis"
+    },
+    {
+      "accession": "GSE316096",
+      "title": "Clonal expansion of cytotoxic CD8+ T cells in lecanemab-associated ARIA"
+    },
+    {
+      "accession": "GSE316782",
+      "title": "Multimodal single-cell and spatial profiling reveals altered T cell-mediated immunity and B-cell follicular architecture in non-metastatic lymph nodes of patients with aggressive non-small cell lung cancer"
+    },
+    {
+      "accession": "GSE320155",
+      "title": "scRNAâseq of human intraâhepatic CD4âº T cells reveals unique Treg transcriptional identities and two steadyâstate tissueâadaptation programs across healthy and HCC liver samples"
+    }
+  ]
+}

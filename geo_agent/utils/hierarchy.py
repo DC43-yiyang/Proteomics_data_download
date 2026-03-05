@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from typing import Any
 
 from geo_agent.models.dataset import GEODataset
 
@@ -173,6 +175,80 @@ def format_standalone(nodes: dict[str, SeriesNode]) -> str:
         lines.append(f"  {s.accession}{title}")
 
     return "\n".join(lines)
+
+
+def serialize_standalone_json(nodes: dict[str, SeriesNode]) -> dict[str, Any]:
+    """Serialize standalone series to a JSON-compatible dict.
+
+    Schema::
+
+        {
+          "generated_at": "<ISO8601 UTC>",
+          "count": 25,
+          "series": [
+            {"accession": "GSE266455", "title": "..."},
+            ...
+          ]
+        }
+    """
+    standalone = sorted(
+        (n for n in nodes.values() if n.role == "standalone" and n.in_search_results),
+        key=lambda n: n.accession,
+    )
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "count": len(standalone),
+        "series": [{"accession": n.accession, "title": n.title} for n in standalone],
+    }
+
+
+def serialize_families_json(nodes: dict[str, SeriesNode]) -> dict[str, Any]:
+    """Serialize SuperSeries / SubSeries families to a JSON-compatible dict.
+
+    Schema::
+
+        {
+          "generated_at": "<ISO8601 UTC>",
+          "family_count": 3,
+          "families": [
+            {
+              "super": {"accession": "GSE123", "title": "...", "in_search_results": true},
+              "children": [
+                {"accession": "GSE124", "title": "...", "in_search_results": true},
+                ...
+              ]
+            },
+            ...
+          ]
+        }
+    """
+    super_roots = sorted(
+        (n for n in nodes.values() if n.role == "super" and n.parent is None),
+        key=lambda n: n.accession,
+    )
+    families = []
+    for sup in super_roots:
+        children = [
+            {
+                "accession": child_acc,
+                "title": nodes[child_acc].title if child_acc in nodes else "",
+                "in_search_results": nodes[child_acc].in_search_results if child_acc in nodes else False,
+            }
+            for child_acc in sorted(sup.children)
+        ]
+        families.append({
+            "super": {
+                "accession": sup.accession,
+                "title": sup.title,
+                "in_search_results": sup.in_search_results,
+            },
+            "children": children,
+        })
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "family_count": len(families),
+        "families": families,
+    }
 
 
 def format_series_hierarchy(nodes: dict[str, SeriesNode]) -> str:

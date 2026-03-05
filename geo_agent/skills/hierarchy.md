@@ -36,9 +36,9 @@ Builds a SuperSeries / SubSeries family tree from `!Series_relation` fields alre
 from geo_agent.skills.hierarchy import HierarchySkill
 
 skill = HierarchySkill(
-    ncbi_client=ncbi_client,          # optional; needed to fill external titles
-    families_file="families.txt",     # optional; write family tree text to file
-    standalone_file="standalone.txt", # optional; write standalone list to file
+    ncbi_client=ncbi_client,                              # optional; needed to fill external titles
+    families_file="tests/Test_hierarchy/hierarchy_families.json",    # optional; JSON output
+    standalone_file="tests/Test_hierarchy/hierarchy_standalone.json", # optional; JSON output
 )
 context = skill.execute(context)
 ```
@@ -51,6 +51,41 @@ from geo_agent.utils.hierarchy import format_series_hierarchy
 print(format_series_hierarchy(context.series_hierarchy))
 ```
 
+## JSON output format
+
+### `hierarchy_standalone.json`
+
+```json
+{
+  "generated_at": "2026-03-05T10:00:00+00:00",
+  "count": 25,
+  "series": [
+    {"accession": "GSE266455", "title": "CITE-seq of T cells..."},
+    ...
+  ]
+}
+```
+
+### `hierarchy_families.json`
+
+```json
+{
+  "generated_at": "2026-03-05T10:00:00+00:00",
+  "family_count": 3,
+  "families": [
+    {
+      "super": {"accession": "GSE123", "title": "...", "in_search_results": true},
+      "children": [
+        {"accession": "GSE124", "title": "...", "in_search_results": true},
+        {"accession": "GSE125", "title": "...", "in_search_results": false}
+      ]
+    }
+  ]
+}
+```
+
+`hierarchy_standalone.json` is consumed by `FetchFamilySoftSkill` test as its input — no re-querying needed.
+
 ## Pipeline position
 
-GEOSearchSkill → **HierarchySkill** → ReportSkill → FilterSkill → SampleSelectorSkill
+GEOSearchSkill → **HierarchySkill** → FetchFamilySoftSkill → FamilySoftStructurerSkill → MultiomicsAnalyzerSkill

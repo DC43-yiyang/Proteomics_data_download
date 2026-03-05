@@ -1,3 +1,4 @@
+import json
 import logging
 
 from geo_agent.models.context import PipelineContext
@@ -6,8 +7,8 @@ from geo_agent.ncbi.parsers import parse_soft_text
 from geo_agent.skills.base import Skill
 from geo_agent.utils.hierarchy import (
     build_series_hierarchy,
-    format_families,
-    format_standalone,
+    serialize_families_json,
+    serialize_standalone_json,
 )
 
 logger = logging.getLogger(__name__)
@@ -83,18 +84,18 @@ class HierarchySkill(Skill):
             f"({supers} families, {standalone} standalone, {external} external references)"
         )
 
-        # Save families file
+        # Save families JSON
         if self._families_file:
-            text = format_families(hierarchy)
+            payload = serialize_families_json(hierarchy)
             with open(self._families_file, "w", encoding="utf-8") as f:
-                f.write(text + "\n")
-            logger.info(f"Families saved to {self._families_file}")
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            logger.info(f"Families JSON saved to {self._families_file} ({payload['family_count']} families)")
 
-        # Save standalone file
+        # Save standalone JSON
         if self._standalone_file:
-            text = format_standalone(hierarchy)
+            payload = serialize_standalone_json(hierarchy)
             with open(self._standalone_file, "w", encoding="utf-8") as f:
-                f.write(text + "\n")
-            logger.info(f"Standalone saved to {self._standalone_file}")
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            logger.info(f"Standalone JSON saved to {self._standalone_file} ({payload['count']} series)")
 
         return context

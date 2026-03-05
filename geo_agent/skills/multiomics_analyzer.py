@@ -94,10 +94,15 @@ def annotate_series(
     series_data: dict[str, Any],
     llm_client: Any,
     model: str = _DEFAULT_MODEL,
-    temperature: float = 0.1,
+    temperature: float = 0.0,
     max_tokens: int = _DEFAULT_MAX_TOKENS,
     max_retries: int = 2,
     system_prompt: str | None = None,
+    retry_temperature_step: float = 0.0,
+    strict_json_mode: bool = True,
+    seed: int | None = None,
+    disable_thinking: bool = False,
+    debug_raw_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     """Annotate all samples in one series.
 
@@ -113,8 +118,10 @@ def annotate_series(
     user_content = json.dumps(payload, ensure_ascii=False)
 
     last_exc: Exception | None = None
+    use_strict_json_mode = strict_json_mode
+    debug_dir_path = Path(debug_raw_dir) if debug_raw_dir else None
     for attempt in range(1 + max_retries):
-        attempt_temp = min(temperature + attempt * 0.05, 0.5)
+        attempt_temp = min(temperature + attempt * retry_temperature_step, 0.5)
         try:
             response = llm_client.messages.create(
                 model=model,
@@ -122,8 +129,20 @@ def annotate_series(
                 temperature=attempt_temp,
                 system=prompt,
                 messages=[{"role": "user", "content": user_content}],
+                response_format={"type": "json_object"} if use_strict_json_mode else None,
+                seed=seed,
+                think=False if disable_thinking else None,
             )
         except Exception as exc:
+            if use_strict_json_mode and _is_json_mode_rejected(exc):
+                logger.warning(
+                    "%s: JSON mode rejected by Ollama, falling back to legacy mode: %s",
+                    series_id,
+                    exc,
+                )
+                use_strict_json_mode = False
+                last_exc = exc
+                continue
             raise RuntimeError(f"LLM call failed for {series_id}: {exc}") from exc
 
         raw_text = response.choices[0].message.content
@@ -132,6 +151,14 @@ def annotate_series(
             result = _validate(parsed, payload, series_id)
         except (ValueError, KeyError) as exc:
             last_exc = exc
+            if debug_dir_path:
+                _write_raw_debug_output(
+                    debug_dir=debug_dir_path,
+                    series_id=series_id,
+                    attempt=attempt + 1,
+                    error=exc,
+                    text=raw_text,
+                )
             if attempt < max_retries:
                 logger.warning(
                     "%s: parse/validate failed (attempt %d/%d): %s - retrying",
@@ -156,6 +183,48 @@ def annotate_series(
 
 
 _THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
+
+
+def _is_json_mode_rejected(exc: Exception) -> bool:
+    msg = str(exc).lower()
+    return (
+        "response_format" in msg
+        or "json_object" in msg
+        or "unrecognized field" in msg
+        or "unknown field" in msg
+        or "invalid request" in msg
+        or "422" in msg
+        or "400" in msg
+    )
+
+
+def _write_raw_debug_output(
+    debug_dir: Path,
+    series_id: str,
+    attempt: int,
+    error: Exception,
+    text: str,
+) -> None:
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    base = f"{series_id}_attempt{attempt}_{ts}"
+    raw_file = debug_dir / f"{base}.txt"
+    meta_file = debug_dir / f"{base}.meta.json"
+    raw_file.write_text(text, encoding="utf-8")
+    meta_file.write_text(
+        json.dumps(
+            {
+                "series_id": series_id,
+                "attempt": attempt,
+                "error": str(error),
+                "saved_at_utc": datetime.now(timezone.utc).isoformat(),
+                "raw_file": str(raw_file),
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
 
 
 def load_system_prompt(md_path: str | Path | None = None) -> str:
@@ -255,10 +324,15 @@ class MultiomicsAnalyzerSkill(Skill):
         self,
         llm_client: Any,
         model: str = _DEFAULT_MODEL,
-        temperature: float = 0.1,
+        temperature: float = 0.0,
         max_tokens: int = _DEFAULT_MAX_TOKENS,
         max_retries: int = 2,
         system_prompt: str | None = None,
+        retry_temperature_step: float = 0.0,
+        strict_json_mode: bool = True,
+        seed: int | None = None,
+        disable_thinking: bool = False,
+        debug_raw_dir: str | Path | None = None,
     ):
         self._llm_client = llm_client
         self._model = model
@@ -266,6 +340,11 @@ class MultiomicsAnalyzerSkill(Skill):
         self._max_tokens = max_tokens
         self._max_retries = max_retries
         self._system_prompt = system_prompt
+        self._retry_temperature_step = retry_temperature_step
+        self._strict_json_mode = strict_json_mode
+        self._seed = seed
+        self._disable_thinking = disable_thinking
+        self._debug_raw_dir = debug_raw_dir
 
     @property
     def name(self) -> str:
@@ -293,6 +372,11 @@ class MultiomicsAnalyzerSkill(Skill):
                     max_tokens=self._max_tokens,
                     max_retries=self._max_retries,
                     system_prompt=self._system_prompt,
+                    retry_temperature_step=self._retry_temperature_step,
+                    strict_json_mode=self._strict_json_mode,
+                    seed=self._seed,
+                    disable_thinking=self._disable_thinking,
+                    debug_raw_dir=self._debug_raw_dir,
                 )
             except Exception as exc:
                 context.errors.append(f"{series_id}: {exc}")
@@ -439,6 +523,48 @@ def _parse_args() -> argparse.Namespace:
         default=2,
         help="Retries on parse/validation failures per series.",
     )
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=0.0,
+        help="Base temperature per request (default: 0.0).",
+    )
+    parser.add_argument(
+        "--retry-temperature-step",
+        type=float,
+        default=0.0,
+        help="Added temperature per retry attempt (default: 0.0).",
+    )
+    parser.add_argument(
+        "--strict-json-mode",
+        action="store_true",
+        default=True,
+        help="Use response_format=json_object (default: enabled).",
+    )
+    parser.add_argument(
+        "--no-strict-json-mode",
+        action="store_false",
+        dest="strict_json_mode",
+        help="Disable response_format=json_object and use legacy free-form output.",
+    )
+    parser.add_argument(
+        "--disable-thinking",
+        action="store_true",
+        default=False,
+        help="Send think=false if the Ollama endpoint supports it.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Optional deterministic seed.",
+    )
+    parser.add_argument(
+        "--debug-raw-dir",
+        type=Path,
+        default=None,
+        help="Directory to save raw LLM output when parse/validate fails.",
+    )
     return parser.parse_args()
 
 
@@ -480,7 +606,13 @@ def main() -> None:
                 series_data=series_data,
                 llm_client=client,
                 model=args.model,
+                temperature=args.temperature,
                 max_retries=args.max_retries,
+                retry_temperature_step=args.retry_temperature_step,
+                strict_json_mode=args.strict_json_mode,
+                seed=args.seed,
+                disable_thinking=args.disable_thinking,
+                debug_raw_dir=args.debug_raw_dir,
             )
         except Exception as exc:
             result = {"series_id": series_id, "error": str(exc)}

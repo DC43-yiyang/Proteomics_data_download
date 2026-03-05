@@ -61,7 +61,7 @@ Use domain knowledge and reasoning; do NOT rely on fixed keyword mappings.
       "evidence": "<key fields used for inference, comma-separated>"
     }
   ],
-  "reasoning": "<one paragraph explaining the annotation logic for this series>"
+  "reasoning": "<1 sentence: key evidence used>"
 }
 
 ## measured_layers - use ONLY these exact strings (list, may contain multiple)

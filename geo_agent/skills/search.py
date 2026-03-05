@@ -12,11 +12,25 @@ logger = logging.getLogger(__name__)
 class GEOSearchSkill(Skill):
     """Search GEO database via NCBI E-utilities.
 
+    Fetches **Series SOFT** files (``targ=self``) for each GSE — these contain
+    series-level metadata only: title, summary, overall_design, and
+    ``!Series_relation`` lines (SuperSeries / SubSeries / BioProject links).
+    They do NOT contain per-sample (GSM) blocks.
+
+    For per-sample metadata use FetchFamilySoftSkill, which fetches
+    **Family SOFT** files (``targ=gsm``) containing all ``^SAMPLE`` blocks.
+
+    Three-step pipeline:
+        1. esearch      — get GEO Series UIDs matching the query
+        2. esummary     — get structured metadata (title, organism, sample_count…)
+        3. fetch_geo_soft_batch (Series SOFT, targ=self) — populate overall_design
+                                                           and relations fields
+
     Reads:
         context.query — SearchQuery instance
 
     Writes:
-        context.datasets — list[GEODataset] with metadata populated
+        context.datasets   — list[GEODataset] with metadata populated
         context.total_found — int, total matching records in GEO
     """
 
@@ -60,9 +74,11 @@ class GEOSearchSkill(Skill):
         datasets = parse_esummary_to_datasets(summary_result)
         logger.info(f"Populated {len(datasets)} dataset objects")
 
-        # Step 3: Fetch SOFT metadata for Overall design
+        # Step 3: Fetch Series SOFT (targ=self) for overall_design and relations.
+        # This is NOT Family SOFT — it contains series-level fields only,
+        # not per-sample (GSM) blocks. Use FetchFamilySoftSkill for those.
         if self._fetch_details and datasets:
-            logger.info(f"Fetching detailed metadata (Overall design) for {len(datasets)} datasets...")
+            logger.info(f"Fetching Series SOFT metadata for {len(datasets)} datasets...")
             accessions = [ds.accession for ds in datasets]
             soft_data = self._client.fetch_geo_soft_batch(accessions)
 

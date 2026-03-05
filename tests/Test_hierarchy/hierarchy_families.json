@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-03-05T21:01:35.830426+00:00",
+  "family_count": 5,
+  "families": [
+    {
+      "super": {
+        "accession": "GSE284232",
+        "title": "",
+        "in_search_results": false
+      },
+      "children": [
+        {
+          "accession": "GSE284230",
+          "title": "Spatially Resolved Insights Into Fistulating Crohnâs Disease Pathogenesis - scRNA-Seq",
+          "in_search_results": true
+        }
+      ]
+    },
+    {
+      "super": {
+        "accession": "GSE303870",
+        "title": "",
+        "in_search_results": false
+      },
+      "children": [
+        {
+          "accession": "GSE303868",
+          "title": "A tumor-associated macrophage-targeted immunocytokine leveraging T and NK cell synergy for potent cancer immunotherapy [CITE-seq]",
+          "in_search_results": true
+        }
+      ]
+    },
+    {
+      "super": {
+        "accession": "GSE314854",
+        "title": "Targeting Modulated Vascular Smooth Muscle Cells in Atherosclerosis via FAP-Directed Immunotherapy",
+        "in_search_results": true
+      },
+      "children": [
+        {
+          "accession": "GSE314595",
+          "title": "",
+          "in_search_results": false
+        },
+        {
+          "accession": "GSE314596",
+          "title": "Targeting Modulated Vascular Smooth Muscle Cells in Atherosclerosis via FAP-Directed Immunotherapy [Human_CITEseq]",
+          "in_search_results": true
+        },
+        {
+          "accession": "GSE314598",
+          "title": "",
+          "in_search_results": false
+        },
+        {
+          "accession": "GSE314600",
+          "title": "",
+          "in_search_results": false
+        },
+        {
+          "accession": "GSE314851",
+          "title": "Targeting Modulated Vascular Smooth Muscle Cells in Atherosclerosis via FAP-Directed Immunotherapy [Visium]",
+          "in_search_results": true
+        },
+        {
+          "accession": "GSE315246",
+          "title": "Targeting Modulated Vascular Smooth Muscle Cells in Atherosclerosis via FAP-Directed Immunotherapy [Xenium in situ]",
+          "in_search_results": true
+        }
+      ]
+    },
+    {
+      "super": {
+        "accession": "GSE317606",
+        "title": "",
+        "in_search_results": false
+      },
+      "children": [
+        {
+          "accession": "GSE317605",
+          "title": "A Phase II Trial of Pembrolizumab plus Granulocyte Macrophage Colony Stimulating Factor in Advanced Biliary Cancer [CITE-Seq]",
+          "in_search_results": true
+        }
+      ]
+    },
+    {
+      "super": {
+        "accession": "GSE318420",
+        "title": "Immunosuppressiveâ¯monocytes are enriched in hepatocellular carcinoma patients withâ¯liver dysfunction in a phase II trial of combination sorafenib and nivolumab",
+        "in_search_results": true
+      },
+      "children": [
+        {
+          "accession": "GSE313642",
+          "title": "Immunosuppressiveâ¯monocytes are enriched in hepatocellular carcinoma patients withâ¯liver dysfunction in a phase II trial of combination sorafenib and nivolumab [CITE-Seq]",
+          "in_search_results": true
+        },
+        {
+          "accession": "GSE318418",
+          "title": "",
+          "in_search_results": false
+        }
+      ]
+    }
+  ]
+}
