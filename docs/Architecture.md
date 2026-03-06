@@ -1,6 +1,6 @@
 # GEO Data Search Agent - Architecture
 
-> **Version**: v1.1
+> **Version**: v1.2
 > **Created**: 2026-03-02
 > **Last updated**: 2026-03-05
 > **Environment**: Python 3.13 (uv) | isolated venv `.venv/`
@@ -22,7 +22,7 @@ This tool uses an **Agent + Skill pipeline** with two independent branches:
 1. **Hierarchy filter** — `HierarchySkill` classifies each GSE as `standalone` / `super` / `sub`; only `standalone` series (in search results) proceed further
 2. **Fetch** — `FetchFamilySoftSkill` calls `NCBIClient.fetch_family_soft_batch()` for the standalone GSE IDs
 3. **Parse** — `FamilySoftStructurerSkill` converts raw Family SOFT text to structured JSON
-4. **Annotate** — `MultiomicsAnalyzerSkill` uses a local LLM to annotate each GSM at three layers
+4. **Annotate** — `MultiomicsSeriesAnalyzerSkill` uses a local LLM to annotate all GSMs in a series with a single call (see §3.2 for strategy rationale)
 5. **Persist** — `PersistSkill` writes results into a local SQLite database (`geo_agent.db`)
 
 > SuperSeries and SubSeries are currently excluded from annotation; their sample structure is too complex to handle reliably without dedicated resolution logic. This constraint will be revisited in a later phase.
@@ -71,7 +71,9 @@ Proteomics_data_download/
 │   │   ├── sample_selector.py / .md          # SampleSelectorSkill (query-driven, Anthropic)
 │   │   ├── standalone_sample_selector.py     # StandaloneSampleSelectorSkill
 │   │   ├── family_soft_structurer.py         # FamilySoftStructurerSkill (pure field extraction)
-│   │   └── multiomics_analyzer.py / .md      # MultiomicsAnalyzerSkill (LLM annotation)
+│   │   ├── multiomics_analyze_series.py / .md  # MultiomicsSeriesAnalyzerSkill (one LLM call per series)
+│   │   ├── multiomics_analyze_sample.py / .md  # MultiomicsSampleAnalyzerSkill (one LLM call per sample)
+│   │   └── multiomics_runner.py              # run_series_mode() / run_sample_mode() runner logic
 │   │
 │   ├── ncbi/
 │   │   ├── __init__.py
@@ -88,7 +90,12 @@ Proteomics_data_download/
     │   ├── run_family_soft_parser_debug.py   # Runs FamilySoftStructurerSkill on 22 series
     │   └── family_soft_22_structured.json    # Output: structured metadata (no rule-based labels)
     └── Test_multiomics_analysis/
-        └── run_multiomics_analysis.py        # Runs MultiomicsAnalyzerSkill
+        ├── run_multiomics_analysis_series.py # Runner: per-series mode (calls run_series_mode)
+        ├── run_multiomics_analysis.py        # Runner: per-sample mode (calls run_sample_mode)
+        └── debug_multiomics_analysis/        # Output directory
+            ├── series/                       # Per-sample JSON files: {series_id}/{gsm_id}.json
+            ├── {series_id}_{model}_series_results.json
+            └── {series_id}_{model}_series_results_table.md
 ```
 
 ---
@@ -114,7 +121,8 @@ GEOSearchSkill  →  HierarchySkill
                          │   - characteristics, library_type, molecule, description
                          │   - supplementary_files, relation_sra, relation_biosample
                          ▼
-              [MultiomicsAnalyzerSkill]      local LLM (Ollama qwen3:30b-a3b)
+              [MultiomicsSeriesAnalyzerSkill]  local LLM (Ollama qwen3:30b-a3b)
+                         │   - all samples in one series submitted as a single compacted JSON
                          │   - reads raw fields, reasons from domain knowledge
                          │   - no hardcoded keyword mappings
                          ▼
@@ -149,7 +157,27 @@ GEOSearchSkill  →  HierarchySkill
 
 Only series with `role == "standalone" and in_search_results == True` are passed to `FetchFamilySoftSkill`. SuperSeries and SubSeries are excluded because their sample-level structure requires dedicated resolution logic (e.g. deduplication across SubSeries, mapping samples to the correct SubSeries SOFT block).
 
-### 3.2 Three-layer annotation design
+### 3.2 Annotation strategy: per-series vs per-sample
+
+Two annotation granularities were implemented and evaluated:
+
+| Strategy | LLM calls | Input tokens (GSE266455, 48 samples) | Runtime | Accuracy |
+|---|---|---|---|---|
+| **Per-series** | 1 per series | ~3,400 tokens (all samples compacted) | ~6 min | **High** |
+| Per-sample | 1 per GSM | ~90 tokens (single sample) | similar* | Degrades for paired-library experiments |
+
+\* Per-sample serial execution yields no meaningful wall-clock improvement over per-series in a local Ollama environment, because the total output token count is equivalent and the LLM processes requests sequentially by default.
+
+**Why per-sample accuracy degrades for multi-modal experiments**
+
+For paired-library datasets such as CITE-seq (where GEX and ADT libraries are separate GSM entries), the experiment type is only inferable by observing all samples together. A GEX sample annotated in isolation lacks the signal from its paired ADT counterpart, causing systematic misclassification:
+
+- `experiment` → `"scRNA-seq"` instead of `"CITE-seq"`
+- `tissue` → `"blood"` instead of `"PBMC"` (series-level summary not visible to the model)
+
+**Recommendation**: the per-series strategy is adopted as the primary annotation mode. Submitting all samples as a single compacted JSON payload preserves cross-sample context and correctly handles paired-library, multi-modal, and multi-condition series.
+
+### 3.3 Three-layer annotation design
 
 Each GSM is annotated at three independent levels to support flexible downstream filtering:
 
@@ -164,7 +192,7 @@ This allows:
 - "Give me all samples from CITE-seq experiments" → `experiment == "CITE-seq"`
 - "Give me only the RNA component of CITE-seq" → `experiment == "CITE-seq" AND assay == "scRNA-seq"`
 
-### 3.3 Why LLM for annotation (not rules)
+### 3.4 Why LLM for annotation (not rules)
 
 Sample naming in GEO is wildly inconsistent across uploaders. Examples:
 
@@ -179,7 +207,7 @@ Writing rules for every variant is not scalable — especially for future data t
 
 `FamilySoftStructurerSkill` only extracts raw fields (no inference labels). All classification is done by the LLM.
 
-### 3.4 Skill interface
+### 3.5 Skill interface
 
 Each Skill is a stateless processor:
 
@@ -203,7 +231,8 @@ class Skill(ABC):
 | FilterSkill | `datasets`, `query` | `filtered_datasets` | Implemented |
 | FetchFamilySoftSkill | `series_hierarchy` | `family_soft_raw` | Planned (Phase 3.8) |
 | FamilySoftStructurerSkill | `target_series_ids` | `family_soft_structured`, `family_soft_structured_json` | Implemented |
-| MultiomicsAnalyzerSkill | `family_soft_structured`, `target_series_ids` | `multiomics_annotations` | Implemented |
+| MultiomicsSeriesAnalyzerSkill | `family_soft_structured`, `target_series_ids` | `multiomics_annotations` | Implemented |
+| MultiomicsSampleAnalyzerSkill | `family_soft_structured`, `target_series_ids` | `multiomics_annotations` | Implemented (not recommended, see §3.2) |
 | PersistSkill | `multiomics_annotations`, `family_soft_structured` | — (writes to SQLite) | Planned (Phase 3.8) |
 | StandaloneSampleSelectorSkill | `series_hierarchy`, `target_library_types` | `sample_metadata`, `selected_samples` | Implemented |
 | ValidationSkill | `filtered_datasets` | `validated_datasets` | Not yet implemented |
@@ -327,27 +356,38 @@ text = resp.choices[0].message.content
 
 ---
 
-## 6. Batch runner
+## 6. Batch runners
 
-**File**: `run_multiomics_analysis.py`
+Two runner scripts live under `tests/Test_multiomics_analysis/`. Both are thin entry points; all logic resides in `geo_agent/skills/multiomics_runner.py`.
+
+**Per-series runner** (recommended):
 
 ```bash
-# Single series
-TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
+# Single series — output files are prefixed with the series ID
+TARGET_SERIES=GSE266455 DISABLE_THINKING=1 uv run python tests/Test_multiomics_analysis/run_multiomics_analysis_series.py
 
 # Multiple series
-TARGET_SERIES=GSE266455,GSE268991 uv run python run_multiomics_analysis.py
+TARGET_SERIES=GSE266455,GSE268991 uv run python tests/Test_multiomics_analysis/run_multiomics_analysis_series.py
 
-# All 22 series
-uv run python run_multiomics_analysis.py
-
-# Different model
-OLLAMA_MODEL=qwen3:72b TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
+# All series in the structured JSON
+uv run python tests/Test_multiomics_analysis/run_multiomics_analysis_series.py
 ```
 
-Output files are prefixed with the series ID when a single series is specified:
-- `GSE268991_results.json` — full per-sample annotation
-- `GSE268991_results_table.md` — series summary + flat per-sample table
+Output (under `debug_multiomics_analysis/`):
+- `{series_id}_{model}_series_results.json` — full annotation with `disease_normalized`, `tissue_normalized`, `reasoning`
+- `{series_id}_{model}_series_results_table.md` — series summary + flat per-sample table
+
+**Per-sample runner** (experimental, not recommended for production — see §3.2):
+
+```bash
+# Test first sample only
+TARGET_SERIES=GSE266455 TARGET_SAMPLE_INDEX=0 DISABLE_THINKING=1 uv run python tests/Test_multiomics_analysis/run_multiomics_analysis.py
+
+# Test first three samples
+TARGET_SERIES=GSE266455 TARGET_SAMPLE_INDEX=0,1,2 uv run python tests/Test_multiomics_analysis/run_multiomics_analysis.py
+```
+
+`TARGET_SAMPLE_INDEX` accepts comma-separated 0-based indices within each series. Output per-sample JSON is written to `debug_multiomics_analysis/series/{series_id}/{gsm_id}.json`.
 
 ---
 
@@ -489,6 +529,7 @@ GROUP BY series_id ORDER BY n DESC;
 | LLM backend for annotation | Local Ollama (qwen3:30b-a3b) | No API cost; MoE architecture (~3.7B active params) is fast despite 30B total |
 | MoE vs Dense | qwen3:30b-a3b (MoE) faster than qwen3.5:9b (Dense) | Active parameter count determines speed, not total parameter count |
 | Annotation strategy | LLM reasoning on raw fields | Rule-based keyword matching cannot scale to all omics types and naming variants |
+| Annotation granularity | Per-series (all samples in one call) | Per-sample mode loses cross-sample context; paired-library experiments (CITE-seq, 10x Multiome) misclassified when GEX and ADT samples are annotated in isolation (see §3.2) |
 | No `inferred_library_type` in LLM input | Removed from structurer | Hardcoded rules leak bias; LLM reasons better from raw evidence |
 | HTTP client | `requests` | Synchronous is sufficient; NCBI rate limit 3–10 req/s |
 | Package manager | `uv` | Fast, isolated venv independent of system Python |
@@ -529,3 +570,4 @@ TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
 | 2026-03-04 | v0.9 | FamilySoftStructurerSkill: rule-based local SOFT parser (no LLM) |
 | 2026-03-05 | v1.0 | MultiomicsAnalyzerSkill: LLM-based three-layer annotation (measured_layers / experiment / assay) via local Ollama; OllamaClient adapter; removed hardcoded modality inference from FamilySoftStructurerSkill; three-layer annotation design (§3.2); MoE speed note (§9) |
 | 2026-03-05 | v1.1 | Standalone-only policy for Branch B (§3.1.1); FetchFamilySoftSkill + PersistSkill planned as Phase 3.8; SQLite schema design (§8); updated data flow diagram to show full A→B pipeline |
+| 2026-03-05 | v1.2 | Refactored `multiomics_analyzer` into `multiomics_analyze_series` + `multiomics_analyze_sample` + `multiomics_runner`; added per-series vs per-sample strategy evaluation (§3.2); adopted per-series as primary annotation mode; added `TARGET_SAMPLE_INDEX` and `output_prefix` to test runners; updated project structure, skill table, batch runner docs |
