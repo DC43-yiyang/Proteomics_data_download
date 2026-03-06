@@ -1,0 +1,16 @@
+{
+  "series_id": "GSE266455",
+  "gsm_id": "GSM8247203",
+  "sample_title": "PID145week0replicate1Primer,GEX",
+  "measured_layers": [
+    "RNA"
+  ],
+  "platform": "10x Chromium 3'",
+  "experiment": "scRNA-seq",
+  "assay": "scRNA-seq",
+  "disease": "healthy",
+  "tissue": "blood",
+  "tissue_subtype": "",
+  "confidence": 0.75,
+  "evidence": "title GEX, characteristics tissue blood cell type PBMC_T cells, library_strategy RNA-Seq, molecule polyA RNA"
+}

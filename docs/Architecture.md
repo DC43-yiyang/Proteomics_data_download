@@ -555,6 +555,64 @@ TARGET_SERIES=GSE268991 uv run python run_multiomics_analysis.py
 
 ---
 
+<!-- TODO: review and integrate into main sections when ready
+## Developer Notes: Family SOFT Field Analysis — Real-world Findings
+
+> **Date**: 2026-03-03
+> **Context**: After implementing `fetch_family_soft()` and testing against real CITE-seq search results
+
+### Test corpus
+
+| GSE | Samples | File size | Library type distribution |
+|-----|---------|-----------|--------------------------|
+| GSE317605 | 168 | 918K | 84 GEX + 84 ADT |
+| GSE268991 | 56 | 230K | GEX (5'GEX) + Surface (ADT) + VDJ (TCR) |
+| GSE306608 | 6 | 19K | 2 GEX + 2 ADT + 2 HTO |
+| GSE313153 | 4 | 19K | 2 RNA + 2 ADT |
+| GSE283984 | 3 | 12K | 1 mRNA + 1 ADT + 1 HTO |
+| GSE269123 | 28 | 83K | GEX + ADT + gdTCR + abTCR |
+| GSE303197 | 25 | 142K | mRNA + ADT/HTO mixed + TCR |
+| GSE280852 | 6 | 16K | All polyA RNA (pure scRNA-seq, no CITE-seq sub-libraries) |
+| GSE320155 | 60 | 225K | 20 GEX + 20 ADT + 20 TCR |
+| GSE318420 | 210 | 866K | **SuperSeries** (SubSeries: GSE313642 CITE-seq + GSE318418) |
+| GSE315246 | 17 | — | **All Xenium spatial** (no sequencing, not CITE-seq at all) |
+| GSE314854 | 102 | — | SuperSeries shell (contains GSE315246 + GSE314851 + GSE314596) |
+| GSE314851 | 16 | — | Visium spatial transcriptomics |
+| GSE314596 | 58 | — | **True CITE-seq** (the only real one in this family) |
+
+### Finding 1: GEO search returns false positives
+
+GSE280852 contains only scRNA-seq (all 6 samples polyA RNA) — no CITE-seq sub-library. GSE315246 is Xenium spatial in situ (GPL33762), returned because extract protocol mentions "based on the CITE-seq reference map". SuperSeries families amplify this: one CITE-seq query returned 4 hits from one study with 75% false positive rate.
+
+**Implication**: LLM classification can detect "no ADT samples" or "spatial platform, not single-cell sequencing" and flag it. SampleSelectorSkill should also do series-level validation (TODO — not yet implemented).
+
+### Finding 2: Some series have no per-sample supplementary files
+
+GSE320155 has `!Sample_supplementary_file_1 = NONE` for all 60 samples. Actual data is at Series level as aggregated CellRanger outputs.
+
+**Implication**: DownloadSkill must support Series-level bundled file fallback (`_RAW.tar`, `_cellranger_aggr.gz`, etc.).
+
+### Finding 3: Naming conventions are inconsistent — LLM is essential
+
+| Library type | Observed naming variants |
+|---|---|
+| GEX | `_GEX`, `, GEX`, `_RNA`, `_mRNA`, `5'GEX` |
+| ADT | `_ADT`, `, ADT`, `Surface`, `ADT/HTO mixed` |
+| TCR | `_VDJ`, `library type: TCR`, `gdTCR` / `abTCR` |
+| HTO | `_HTO`, `ADT/HTO mixed` |
+
+Rule-based parsing would require an ever-growing pattern list. LLM-based classification handles all signals simultaneously and covers novel naming without code changes.
+
+### Impact on design
+
+1. **LLM classification is not optional** — the only reliable approach.
+2. **SampleSelectorSkill should detect false-positive series** (TODO) — flag series where LLM finds no ADT/TCR.
+3. **DownloadSkill must support per-GSM and Series-level file retrieval**.
+4. **Platform ID as a pre-filter** (potential optimization) — non-sequencing platforms (e.g. GPL33762 Xenium) can be blocked before spending LLM tokens.
+-->
+
+---
+
 ## Changelog
 
 | Date | Version | Changes |

@@ -1,0 +1,12 @@
+{
+  "model": "qwen3.5:35b-a3b",
+  "generated_at_utc": "2026-03-06T02:07:07.930963+00:00",
+  "input_file": "/home/compbiowizard_ravenclaw/projects/proteomics/geo_search/Proteomics_data_download/tests/Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 1,
+  "results": {
+    "GSE316782": {
+      "series_id": "GSE316782",
+      "error": "Could not parse LLM output after 3 attempts for GSE316782: GSE316782: no JSON object in LLM output"
+    }
+  }
+}
