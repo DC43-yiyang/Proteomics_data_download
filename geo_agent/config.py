@@ -15,10 +15,12 @@ class Config:
     tool_name: str = "geo_agent"
     download_dir: Path = field(default_factory=lambda: Path("./geo_downloads"))
 
-    # Anthropic LLM config
-    anthropic_api_key: Optional[str] = None
-    anthropic_base_url: Optional[str] = None
-    llm_model: str = "claude-haiku-4-5-20251001"
+    # OpenAI-compatible LLM config (for multi-omics annotation)
+    # Supported providers: ollama (local), deepseek, qwen, kimi, minimax, openai
+    llm_provider: str = "ollama"  # ollama | deepseek | qwen | kimi | minimax | openai
+    llm_api_key: Optional[str] = None
+    llm_base_url: Optional[str] = None
+    llm_annotation_model: str = "qwen3:30b-a3b"  # model name for annotation
 
     # Rate limiting (derived from api_key presence)
     @property
@@ -40,7 +42,9 @@ def load_config(env_file: Optional[str] = None) -> Config:
     return Config(
         api_key=os.getenv("NCBI_API_KEY") or None,
         email=os.getenv("NCBI_EMAIL", ""),
-        anthropic_api_key=os.getenv("ANTHROPIC_API_KEY") or None,
-        anthropic_base_url=os.getenv("ANTHROPIC_BASE_URL") or None,
-        llm_model=os.getenv("LLM_MODEL", "claude-haiku-4-5-20251001"),
+        # OpenAI-compatible LLM config
+        llm_provider=os.getenv("LLM_PROVIDER", "ollama"),
+        llm_api_key=os.getenv("LLM_API_KEY") or None,
+        llm_base_url=os.getenv("LLM_BASE_URL") or None,
+        llm_annotation_model=os.getenv("LLM_ANNOTATION_MODEL", "qwen3:30b-a3b"),
     )

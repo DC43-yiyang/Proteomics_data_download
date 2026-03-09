@@ -1,0 +1,110 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE306608",
+  "result": {
+    "series_id": "GSE306608",
+    "disease_normalized": "clear cell renal cell carcinoma (ccRCC)",
+    "tissue_normalized": "kidney",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM9204556",
+        "sample_title": "CITE-seq, K5 PDX, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, disease state, tissue, molecule",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204557",
+        "sample_title": "CITE-seq, K5 PDX, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, adt, molecule",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204558",
+        "sample_title": "CITE-seq, K5 PDX, HTO",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, hto, molecule",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204559",
+        "sample_title": "CITE-seq, K7 PDX, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, disease state, tissue, molecule",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204560",
+        "sample_title": "CITE-seq, K7 PDX, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, adt, molecule",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204561",
+        "sample_title": "CITE-seq, K7 PDX, HTO",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, library type, hto, molecule",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Metadata explicitly defines CITE-seq modalities (GEX, ADT, HTO) using TotalSeq antibodies on clear cell renal cell carcinoma kidney PDX models."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE294427",
+  "result": {
+    "series_id": "GSE294427",
+    "disease_normalized": "healthy",
+    "tissue_normalized": "PBMC",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM8905195",
+        "sample_title": "CITE-seq ADT library 1",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=protein, description mentions ADT and HTO",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905196",
+        "sample_title": "CITE-seq ADT library 2",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=protein, description mentions ADT and HTO",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905197",
+        "sample_title": "CITE-seq ADT library 3",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=protein, description mentions ADT and HTO",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905198",
+        "sample_title": "CITE-seq Gene Expression library 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=polyA RNA, library_source=transcriptomic",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905199",
+        "sample_title": "CITE-seq Gene Expression library 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=polyA RNA, library_source=transcriptomic",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905200",
+        "sample_title": "CITE-seq Gene Expression library 3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule=polyA RNA, library_source=transcriptomic",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905201",
+        "sample_title": "CITE-seq TCR library 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description mentions TCR and filtered_contig_annotations",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905202",
+        "sample_title": "CITE-seq TCR library 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description mentions TCR and filtered_contig_annotations",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905203",
+        "sample_title": "CITE-seq TCR library 3",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description mentions TCR and filtered_contig_annotations",
+        "in_input": true
+      }
+    ],
+    "reasoning": "CITE-seq multi-modal experiment with separate ADT (protein+HTO), GEX (RNA), and TCR VDJ libraries from PBMC T cells, platform inferred as 10x Chromium based on CITE-seq standard protocol."
+  }
+}

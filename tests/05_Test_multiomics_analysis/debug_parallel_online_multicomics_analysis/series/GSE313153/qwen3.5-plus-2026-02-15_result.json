@@ -1,0 +1,78 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE313153",
+  "result": {
+    "series_id": "GSE313153",
+    "disease_normalized": "healthy",
+    "tissue_normalized": "spleen",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM9362944",
+        "sample_title": "Donor 6 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "healthy",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule, library_source, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362945",
+        "sample_title": "Donor 6 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule, library_source, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362946",
+        "sample_title": "Donor 23 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "healthy",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule, library_source, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362947",
+        "sample_title": "Donor 23 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, molecule, library_source, characteristics",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Paired polyA RNA and ADT protein libraries from spleen splenocytes indicate a CITE-seq experiment likely on 10x Chromium platform."
+  }
+}

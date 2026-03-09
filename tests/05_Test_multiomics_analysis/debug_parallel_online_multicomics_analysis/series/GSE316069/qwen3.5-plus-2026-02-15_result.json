@@ -1,0 +1,238 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE316069",
+  "result": {
+    "series_id": "GSE316069",
+    "disease_normalized": "ulcerative colitis",
+    "tissue_normalized": "PBMC",
+    "sample_count": 14,
+    "samples": [
+      {
+        "gsm_id": "GSM9444084",
+        "sample_title": "colon, gdT cells, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLASHseq",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "tissue, library_type, description, series HTO donor info",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444085",
+        "sample_title": "colon, gdT cells, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLASHseq",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "tissue, library_type, description, series HTO donor info",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444086",
+        "sample_title": "PBMC, TCRgd Vd1,GEX, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "tissue, library_type, description, 10X5P in library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444087",
+        "sample_title": "PBMC, TCRgd Vd1, HTO, batch 1",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type HTO, molecule protein, HTO donor info with UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444088",
+        "sample_title": "PBMC, TCRgd Vd1, TCR, batch 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type TCR, description TCR library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444089",
+        "sample_title": "PBMC, TCRgd Vd1, GEX, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "tissue, library_type, description, 10X5P in library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444090",
+        "sample_title": "PBMC, TCRgd Vd1, HTO, batch 2",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type HTO, molecule protein, HTO donor info with UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444091",
+        "sample_title": "PBMC, TCRgd Vd1, TCR, batch 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type TCR, description TCR library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444092",
+        "sample_title": "PBMC, TCRgd Vd2, GEX, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "tissue, library_type, description, 10X5P in library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444093",
+        "sample_title": "PBMC, TCRgd Vd2, HTO, batch 1",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type HTO, molecule protein, HTO donor info with UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444094",
+        "sample_title": "PBMC, TCRgd Vd2, TCR, batch 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type TCR, description TCR library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444095",
+        "sample_title": "PBMC, TCRgd Vd2, GEX, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "tissue, library_type, description, 10X5P in library name",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444096",
+        "sample_title": "PBMC, TCRgd Vd2, HTO, batch 2",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type HTO, molecule protein, HTO donor info with UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444097",
+        "sample_title": "PBMC, TCRgd Vd2, TCR, batch 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell RNA-seq with Cell Hashing and TCR profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type TCR, description TCR library name",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Disease inferred from HTO donor metadata explicitly mentioning UC (ulcerative colitis) donors alongside healthy controls; platform distinguished by FLASHseq for colon samples versus 10X5P notation in PBMC library names; assay types determined by library_type field (mRNA/GEX for RNA, HTO for cell_label, TCR for TCR_VDJ)."
+  }
+}

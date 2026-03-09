@@ -1,0 +1,158 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE299416",
+  "result": {
+    "series_id": "GSE299416",
+    "disease_normalized": "hematologic malignancy",
+    "tissue_normalized": "PBMC",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM9038866",
+        "sample_title": "postInfusion_GEX1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, library_strategy, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038867",
+        "sample_title": "postInfusion_GEX2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, library_strategy, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038868",
+        "sample_title": "postInfusion_GEX3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, library_strategy, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038869",
+        "sample_title": "postInfusion_VDJ1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038870",
+        "sample_title": "postInfusion_VDJ2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038871",
+        "sample_title": "postInfusion_VDJ3",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038872",
+        "sample_title": "postInfusion_ADT1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038873",
+        "sample_title": "postInfusion_ADT2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038874",
+        "sample_title": "postInfusion_ADT3",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hematologic malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, description, characteristics",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples annotated based on 10x Genomics workflow inferred from VDJ/ADT presence indicating 5' chemistry, with disease inferred from Kymriah CAR-T treatment."
+  }
+}

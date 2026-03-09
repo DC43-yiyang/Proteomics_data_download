@@ -27,7 +27,7 @@ logging.basicConfig(
 
 _HERE            = Path(__file__).resolve().parent
 _OUTPUT_DIR      = _HERE / "debug_multiomics_analysis"
-_STRUCTURED_JSON = _HERE.parent / "Test_family_soft_parse" / "debug_family_soft_parse" / "family_soft_structured.json"
+_STRUCTURED_JSON = _HERE.parent / "04_Test_family_soft_parse" / "debug_family_soft_parse" / "family_soft_structured.json"
 
 # Prefix output files with series ID when a single series is targeted
 _target = [s.strip() for s in os.getenv("TARGET_SERIES", "").split(",") if s.strip()]

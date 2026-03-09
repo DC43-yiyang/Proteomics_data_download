@@ -41,7 +41,7 @@ Proteomics_data_download/
 │
 ├── docs/
 │   ├── Architecture.md             # This document
-│   ├── LLM_sample_selector.md      # LLM selector design notes
+│   ├── LLM_Providers.md            # LLM provider configuration guide
 │   └── search_report_example.md    # Search report example
 │
 ├── geo_agent/
@@ -52,7 +52,9 @@ Proteomics_data_download/
 │   │
 │   ├── llm/                        # LLM backend adapters
 │   │   ├── __init__.py
-│   │   └── ollama_client.py        # OllamaClient: local Ollama via /v1/chat/completions
+│   │   ├── ollama_client.py        # OllamaClient: local Ollama
+│   │   ├── openai_compatible_client.py  # OpenAICompatibleClient: commercial APIs
+│   │   └── factory.py              # create_llm_client(): unified factory
 │   │
 │   ├── models/
 │   │   ├── __init__.py

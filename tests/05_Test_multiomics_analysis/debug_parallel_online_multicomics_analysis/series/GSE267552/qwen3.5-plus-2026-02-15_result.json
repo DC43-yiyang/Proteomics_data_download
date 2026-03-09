@@ -1,0 +1,158 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE267552",
+  "result": {
+    "series_id": "GSE267552",
+    "disease_normalized": "breast cancer",
+    "tissue_normalized": "blood",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM8268683",
+        "sample_title": "RNA seq - lane A",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268684",
+        "sample_title": "RNA seq - lane B",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268685",
+        "sample_title": "RNA seq - lane C",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268686",
+        "sample_title": "CITE seq - lane A",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268687",
+        "sample_title": "CITE seq - lane B",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268688",
+        "sample_title": "CITE seq - lane C",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268689",
+        "sample_title": "VDJ seq - lane A",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268690",
+        "sample_title": "VDJ seq - lane B",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268691",
+        "sample_title": "VDJ seq - lane C",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x Multiome",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.75,
+        "evidence": "title, molecule, library_source, description, characteristics",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Inferred 10x 5' multi-omics protocol (GEX, ADT, VDJ) from CD3+ cells sourced from breast cancer patient blood based on 'breast/blood' metadata and layer separation."
+  }
+}

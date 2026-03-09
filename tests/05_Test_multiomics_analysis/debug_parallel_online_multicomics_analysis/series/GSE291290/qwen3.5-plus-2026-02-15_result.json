@@ -1,0 +1,128 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-06T03:46:30.727429+00:00",
+  "series_id": "GSE291290",
+  "result": {
+    "series_id": "GSE291290",
+    "disease_normalized": "heart transplantation",
+    "tissue_normalized": "PBMC",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM8833027",
+        "sample_title": "PBMC, post heart transplantation [Library1]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833028",
+        "sample_title": "PBMC, post heart transplantation [Library2]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833029",
+        "sample_title": "PBMC, post heart transplantation [Library3]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833030",
+        "sample_title": "PBMC, post heart transplantation [Library4]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833031",
+        "sample_title": "PBMC, post heart transplantation [Library5]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833032",
+        "sample_title": "PBMC, post heart transplantation [Library6]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ",
+          "BCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "BD Rhapsody CITE-seq with VDJ",
+        "assay": "BD Rhapsody CITE-seq with VDJ",
+        "disease": "heart transplantation",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "description files (Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv), characteristics (cell type PBMC, condition post heart transplantation), platform BD Rhapsody",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Metadata indicates PBMC samples from post-heart transplantation patients processed on BD Rhapsody with gene expression, antibody-derived tags, and VDJ libraries."
+  }
+}

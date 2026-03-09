@@ -10,11 +10,14 @@ write results under the provided output_dir.
 
 Environment variables (all optional)
 -------------------------------------
-    OLLAMA_BASE_URL   default: http://localhost:11434
-    OLLAMA_MODEL      default: qwen3.5:35b-a3b
-    OLLAMA_TIMEOUT    default: 600
+    LLM_PROVIDER      provider name (ollama, deepseek, qwen, kimi, minimax, openai); default: ollama
+    LLM_API_KEY       API key (required for non-ollama providers)
+    LLM_BASE_URL      base URL (optional, uses provider default if not specified)
+    LLM_ANNOTATION_MODEL  model name; default: provider-specific
+    LLM_TIMEOUT       request timeout in seconds; default: 600
     TARGET_SERIES     comma-separated GSE IDs; default: all
-    NUM_WORKERS       parallel workers; sample default: 4, series default: 1
+    NUM_WORKERS       parallel workers; default: 1 (serial), set >1 for parallel
+    PARALLEL_MODE     1=parallel (save per-series), 0=serial (save merged); default: 0
     MAX_RETRIES       retries per call; default: 2
     LLM_TEMPERATURE   default: 0.0
     RETRY_TEMP_STEP   added temperature per retry; default: 0.0
@@ -23,6 +26,11 @@ Environment variables (all optional)
     LLM_SEED          optional integer seed
     DEBUG_RAW_LLM_DIR directory to save raw failed LLM outputs
     MAX_TOKENS        default: 16384
+
+Legacy environment variables (deprecated, use LLM_* instead):
+    OLLAMA_BASE_URL   -> use LLM_BASE_URL
+    OLLAMA_MODEL      -> use LLM_ANNOTATION_MODEL
+    OLLAMA_TIMEOUT    -> use LLM_TIMEOUT
 """
 
 from __future__ import annotations
@@ -37,14 +45,18 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from geo_agent.llm.ollama_client import OllamaClient
+from geo_agent.llm import create_llm_client, get_default_model
 from geo_agent.skills.multiomics_analyze_sample import annotate_sample
 from geo_agent.skills.multiomics_analyze_series import annotate_series
+
+# Load .env file at module import time
+from dotenv import load_dotenv
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Model registry
+# Model registry (legacy, kept for backward compatibility)
 # ---------------------------------------------------------------------------
 
 AVAILABLE_MODELS: dict[str, str] = {
@@ -68,15 +80,42 @@ def _env_bool(name: str, default: bool) -> bool:
 
 
 def _load_config(default_workers: int) -> dict[str, Any]:
-    model = os.getenv("OLLAMA_MODEL", AVAILABLE_MODELS[DEFAULT_MODEL])
+    # Provider and credentials
+    provider = os.getenv("LLM_PROVIDER", "ollama")
+    api_key = os.getenv("LLM_API_KEY", "")
+    base_url = os.getenv("LLM_BASE_URL", "")
+
+    # Legacy support: OLLAMA_BASE_URL -> LLM_BASE_URL
+    if not base_url and os.getenv("OLLAMA_BASE_URL"):
+        base_url = os.getenv("OLLAMA_BASE_URL", "")
+
+    # Model selection with legacy support
+    model = os.getenv("LLM_ANNOTATION_MODEL", "")
+    if not model and os.getenv("OLLAMA_MODEL"):
+        # Legacy OLLAMA_MODEL support
+        model = os.getenv("OLLAMA_MODEL", AVAILABLE_MODELS[DEFAULT_MODEL])
+    elif not model:
+        # Use provider default
+        try:
+            model = get_default_model(provider)
+        except ValueError:
+            model = "qwen3:30b-a3b"  # fallback
+
+    # Timeout with legacy support
+    timeout_str = os.getenv("LLM_TIMEOUT") or os.getenv("OLLAMA_TIMEOUT") or "600"
+
     seed_raw = os.getenv("LLM_SEED", "").strip()
     debug_raw = os.getenv("DEBUG_RAW_LLM_DIR", "").strip()
+
     return {
-        "base_url":        os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+        "provider":        provider,
+        "api_key":         api_key or None,
+        "base_url":        base_url or None,
         "model":           model,
         "model_slug":      model.replace(":", "_").replace("/", "_"),
         "num_workers":     int(os.getenv("NUM_WORKERS", str(default_workers))),
-        "timeout":         int(os.getenv("OLLAMA_TIMEOUT", "600")),
+        "parallel_mode":   _env_bool("PARALLEL_MODE", False),
+        "timeout":         int(timeout_str),
         "max_tokens":      int(os.getenv("MAX_TOKENS", "16384")),
         "max_retries":     int(os.getenv("MAX_RETRIES", "2")),
         "temperature":     float(os.getenv("LLM_TEMPERATURE", "0.0")),
@@ -209,7 +248,7 @@ def _process_sample(
     series_id: str,
     series_data: dict[str, Any],
     sample: dict[str, Any],
-    client: OllamaClient,
+    client: Any,
     cfg: dict[str, Any],
     total: int,
     counter: list[int],
@@ -251,7 +290,7 @@ def _process_sample(
 def _process_series(
     series_id: str,
     series_data: dict[str, Any],
-    client: OllamaClient,
+    client: Any,
     cfg: dict[str, Any],
     total: int,
     counter: list[int],
@@ -308,9 +347,14 @@ def run_sample_mode(
         target_sample_indices:  0-based indices within each series to process; None means all
     """
     cfg = _load_config(default_workers=4)
-    client = OllamaClient(base_url=cfg["base_url"], timeout=cfg["timeout"])
+    client = create_llm_client(
+        provider=cfg["provider"],
+        api_key=cfg["api_key"],
+        base_url=cfg["base_url"],
+        timeout=cfg["timeout"],
+    )
     if not client.health_check():
-        logger.error("Ollama not reachable at %s", cfg["base_url"])
+        logger.error("LLM client not reachable (provider: %s, base_url: %s)", cfg["provider"], cfg["base_url"] or "default")
         sys.exit(1)
 
     series_results, series_ids = _load_input(structured_json, cfg["target_series"])
@@ -381,11 +425,26 @@ def run_series_mode(
 
     Args:
         output_prefix: prepended to output filenames (e.g. "GSE266455_")
+
+    Modes:
+        Serial (PARALLEL_MODE=0, default):
+            - Process series one by one (NUM_WORKERS=1)
+            - Save merged results to: {output_prefix}{model_slug}_series_results.json
+
+        Parallel (PARALLEL_MODE=1):
+            - Process multiple series concurrently (NUM_WORKERS>1)
+            - Save each series immediately after processing to: series/{series_id}/{model_slug}_result.json
+            - Also save merged results at the end
     """
     cfg = _load_config(default_workers=1)
-    client = OllamaClient(base_url=cfg["base_url"], timeout=cfg["timeout"])
+    client = create_llm_client(
+        provider=cfg["provider"],
+        api_key=cfg["api_key"],
+        base_url=cfg["base_url"],
+        timeout=cfg["timeout"],
+    )
     if not client.health_check():
-        logger.error("Ollama not reachable at %s", cfg["base_url"])
+        logger.error("LLM client not reachable (provider: %s, base_url: %s)", cfg["provider"], cfg["base_url"] or "default")
         sys.exit(1)
 
     series_results, series_ids = _load_input(structured_json, cfg["target_series"])
@@ -394,29 +453,54 @@ def run_series_mode(
     _log_config(cfg, mode="series", series_count=total, sample_count=None)
 
     generated_at = datetime.now(timezone.utc).isoformat()
+    slug = cfg["model_slug"]
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Prepare series directory for parallel mode
+    if cfg["parallel_mode"]:
+        series_dir = output_dir / "series"
+        series_dir.mkdir(parents=True, exist_ok=True)
+
     counter: list[int] = [0]
     lock = threading.Lock()
 
-    rows = _run_parallel(
-        tasks=[(sid, series_results[sid], None) for sid in series_ids],
-        worker=lambda sid, sdata, _: _process_series(sid, sdata, client, cfg, total, counter, lock),
-        task_keys=[(sid, None) for sid in series_ids],
-        num_workers=cfg["num_workers"],
-        key_fn=lambda r: (r["series_id"], None),
-    )
+    # Process with immediate saving in parallel mode
+    if cfg["parallel_mode"] and cfg["num_workers"] > 1:
+        rows = _run_parallel_with_save(
+            series_ids=series_ids,
+            series_results=series_results,
+            client=client,
+            cfg=cfg,
+            output_dir=output_dir,
+            generated_at=generated_at,
+            structured_json=structured_json,
+            total=total,
+            counter=counter,
+            lock=lock,
+        )
+    else:
+        # Serial mode: collect all results first, then save
+        rows = _run_parallel(
+            tasks=[(sid, series_results[sid], None) for sid in series_ids],
+            worker=lambda sid, sdata, _: _process_series(sid, sdata, client, cfg, total, counter, lock),
+            task_keys=[(sid, None) for sid in series_ids],
+            num_workers=cfg["num_workers"],
+            key_fn=lambda r: (r["series_id"], None),
+        )
 
-    slug = cfg["model_slug"]
-    output_dir.mkdir(parents=True, exist_ok=True)
+    # Always save merged results (for both serial and parallel modes)
     payload = {
         "model": cfg["model"],
         "generated_at_utc": generated_at,
         "input_file": str(structured_json),
         "series_count": len(rows),
+        "parallel_mode": cfg["parallel_mode"],
+        "num_workers": cfg["num_workers"],
         "results": {r["series_id"]: r for r in rows},
     }
-    (output_dir / f"{output_prefix}{slug}_series_results.json").write_text(
-        json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
+    merged_file = output_dir / f"{output_prefix}{slug}_series_results.json"
+    merged_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
     _write_series_table(
         rows, output_dir / f"{output_prefix}{slug}_series_results_table.md",
         cfg["model"], generated_at, str(structured_json),
@@ -473,6 +557,77 @@ def _run_parallel(
             r = future.result()
             rows_map[key_fn(r)] = r
     return [rows_map[k] for k in task_keys if k in rows_map]
+
+
+def _run_parallel_with_save(
+    series_ids: list[str],
+    series_results: dict[str, Any],
+    client: Any,
+    cfg: dict[str, Any],
+    output_dir: Path,
+    generated_at: str,
+    structured_json: Path,
+    total: int,
+    counter: list[int],
+    lock: threading.Lock,
+) -> list[dict[str, Any]]:
+    """Process series in parallel and save each result immediately after completion."""
+    slug = cfg["model_slug"]
+    series_dir = output_dir / "series"
+
+    all_rows: list[dict[str, Any]] = []
+    rows_lock = threading.Lock()
+
+    def worker_with_save(series_id: str) -> dict[str, Any]:
+        # Process the series
+        result = _process_series(
+            series_id,
+            series_results[series_id],
+            client,
+            cfg,
+            total,
+            counter,
+            lock
+        )
+
+        # Save immediately after processing
+        series_subdir = series_dir / series_id
+        series_subdir.mkdir(exist_ok=True)
+
+        # Save individual series result
+        series_file = series_subdir / f"{slug}_result.json"
+        series_payload = {
+            "model": cfg["model"],
+            "generated_at_utc": generated_at,
+            "series_id": series_id,
+            "result": result,
+        }
+        series_file.write_text(json.dumps(series_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        # Also save markdown table for this series
+        if not result.get("error"):
+            table_file = series_subdir / f"{slug}_result_table.md"
+            _write_series_table(
+                [result], table_file,
+                cfg["model"], generated_at, str(structured_json),
+            )
+
+        logger.info("  %s saved to %s", series_id, series_subdir)
+
+        # Add to results list
+        with rows_lock:
+            all_rows.append(result)
+
+        return result
+
+    # Run parallel processing with immediate saving
+    with ThreadPoolExecutor(max_workers=cfg["num_workers"]) as pool:
+        futures = [pool.submit(worker_with_save, sid) for sid in series_ids]
+        for future in as_completed(futures):
+            future.result()  # Wait for completion, errors will be raised here
+
+    logger.info("Parallel mode: saved %d series to %s/series/", len(all_rows), output_dir)
+    return all_rows
 
 
 def _print_summary(rows: list[dict[str, Any]], num_workers: int, output_dir: Path, mode: str) -> None:

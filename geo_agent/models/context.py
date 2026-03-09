@@ -34,13 +34,11 @@ class PipelineContext:
     # ValidationSkill outputs (Phase 3)
     validated_datasets: list[GEODataset] = field(default_factory=list)
 
-    # SampleSelectorSkill inputs/outputs
+    # Multi-omics annotation inputs/outputs
     target_library_types: list[str] = field(default_factory=lambda: ["GEX"])
     target_series_ids: list[str] = field(default_factory=list)
     sample_metadata: dict[str, list[GEOSample]] = field(default_factory=dict)
     selected_samples: dict[str, list[SampleSelection]] = field(default_factory=dict)
-    sample_selector_context: dict[str, dict[str, Any]] = field(default_factory=dict)
-    sample_selector_context_json: dict[str, str] = field(default_factory=dict)
     family_soft_structured: dict[str, dict[str, Any]] = field(default_factory=dict)
     family_soft_structured_json: dict[str, str] = field(default_factory=dict)
     multiomics_annotations: dict[str, dict[str, Any]] = field(default_factory=dict)
