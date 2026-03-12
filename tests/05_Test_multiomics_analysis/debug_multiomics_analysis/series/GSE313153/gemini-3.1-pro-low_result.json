@@ -1,0 +1,81 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE313153",
+  "result": {
+    "series_id": "GSE313153",
+    "disease_normalized": "normal",
+    "tissue_normalized": "spleen",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM9362944",
+        "sample_title": "Donor 6 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, molecule, library_source",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362945",
+        "sample_title": "Donor 6 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, molecule, library_source",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362946",
+        "sample_title": "Donor 23 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, molecule, library_source",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362947",
+        "sample_title": "Donor 23 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, molecule, library_source",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples are from non-diseased adult human spleen (trauma-induced splenectomy), measured via a CITE-seq experiment split into RNA and ADT libraries per donor.",
+    "is_layer_split": true,
+    "biological_sample_count": 4,
+    "layer_split_ratio": ""
+  }
+}

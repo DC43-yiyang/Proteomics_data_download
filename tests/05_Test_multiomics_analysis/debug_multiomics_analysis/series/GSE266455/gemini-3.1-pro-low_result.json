@@ -1,0 +1,785 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE266455",
+  "result": {
+    "series_id": "GSE266455",
+    "disease_normalized": "HIV infection",
+    "tissue_normalized": "peripheral blood mononuclear cells (PBMC)",
+    "is_layer_split": true,
+    "biological_sample_count": 24,
+    "layer_split_ratio": "1:2",
+    "samples": [
+      {
+        "gsm_id": "GSM8247203",
+        "sample_title": "PID145week0replicate1Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247204",
+        "sample_title": "PID145week0replicate1Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247205",
+        "sample_title": "PID145week0replicate2Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247206",
+        "sample_title": "PID145week0replicate2Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247207",
+        "sample_title": "PID8026week24replicate1Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247208",
+        "sample_title": "PID8026week24replicate1Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247209",
+        "sample_title": "PID8026week24replicate2Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247210",
+        "sample_title": "PID8026week24replicate2Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247211",
+        "sample_title": "PID8026week24replicate3Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247212",
+        "sample_title": "PID8026week24replicate3Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247213",
+        "sample_title": "PID8026week24replicate4Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247214",
+        "sample_title": "PID8026week24replicate4Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood mononuclear cells (PBMC)",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics:tissue,characteristics:cell type,characteristics:library type,summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247215",
+        "sample_title": "PID8026week0replicate5Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247216",
+        "sample_title": "PID8026week0replicate5Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247217",
+        "sample_title": "PID8026week0replicate6Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247218",
+        "sample_title": "PID8026week0replicate6Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247219",
+        "sample_title": "PID8026week0replicate7Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247220",
+        "sample_title": "PID8026week0replicate7Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247221",
+        "sample_title": "PID8026week0replicate8Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247222",
+        "sample_title": "PID8026week0replicate8Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247223",
+        "sample_title": "PID1052week0replicate1NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247224",
+        "sample_title": "PID1052week0replicate1NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247225",
+        "sample_title": "PID1052week0replicate2NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247226",
+        "sample_title": "PID1052week0replicate2NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary, title, characteristics: tissue, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247227",
+        "sample_title": "PID1052week0replicate3Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247228",
+        "sample_title": "PID1052week0replicate3Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247229",
+        "sample_title": "PID1052week0replicate4Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247230",
+        "sample_title": "PID1052week0replicate4Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247231",
+        "sample_title": "PID1052week0replicate5Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247232",
+        "sample_title": "PID1052week0replicate5Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247233",
+        "sample_title": "PID1052week0replicate6Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247234",
+        "sample_title": "PID1052week0replicate6Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247235",
+        "sample_title": "PID8027week0replicate1NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247236",
+        "sample_title": "PID8027week0replicate1NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247237",
+        "sample_title": "PID8027week0replicate2NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, characteristics specify PBMC_T cells, library type GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247238",
+        "sample_title": "PID8027week0replicate2NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary mentions HIV and ART, TotalSeq-C, characteristics specify ADT, molecule mentions protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247239",
+        "sample_title": "PID8027week45replicate3NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247240",
+        "sample_title": "PID8027week45replicate3NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247241",
+        "sample_title": "PID8027week45replicate4NOTHING,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247242",
+        "sample_title": "PID8027week45replicate4NOTHING,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247243",
+        "sample_title": "PID8027week0replicate5Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247244",
+        "sample_title": "PID8027week0replicate5Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247245",
+        "sample_title": "PID8027week0replicate6Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247246",
+        "sample_title": "PID8027week0replicate6Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247247",
+        "sample_title": "PID8027week45replicate7Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247248",
+        "sample_title": "PID8027week45replicate7Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247249",
+        "sample_title": "PID8027week45replicate8Primer,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary mentions HIV, CITE-seq and scRNAseq; characteristics mention blood and PBMC_T cells; title indicates GEX",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8247250",
+        "sample_title": "PID8027week45replicate8Primer,ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "TotalSeq-C in overall_design implies 10x 5' chemistry; title indicates ADT; summary mentions CITE-seq surface phenotyping",
+        "in_input": true
+      }
+    ],
+    "sample_count": 48,
+    "reasoning": "Samples were obtained from the blood (PBMCs) of HIV infected patients undergoing ART. GEX and ADT libraries infer single-cell transcriptomics (RNA) and surface protein (protein_surface) respectively via CITE-seq. Mention of TotalSeq-C indicates a 10x Chromium 5' chemistry. | Samples were inferred to be individual layers of a CITE-seq experiment on PBMC T cells from HIV patients based on summary descriptions and sample metadata. | The series evaluates PBMC_T cells from HIV patients undergoing ART, using a joint scRNAseq and ADT CITE-seq experiment design. | The abstract explicitly states the use of scRNAseq combined with CITE-seq for HIV surface phenotyping on blood-derived PBMCs, with 'TotalSeq-C' providing evidence for 10x Chromium 5' chemistry."
+  }
+}

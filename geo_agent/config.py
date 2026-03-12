@@ -15,6 +15,9 @@ class Config:
     tool_name: str = "geo_agent"
     download_dir: Path = field(default_factory=lambda: Path("./geo_downloads"))
 
+    # Database (optional -- None means no DB persistence)
+    db_path: Optional[Path] = None
+
     # OpenAI-compatible LLM config (for multi-omics annotation)
     # Supported providers: ollama (local), deepseek, qwen, kimi, minimax, openai
     llm_provider: str = "ollama"  # ollama | deepseek | qwen | kimi | minimax | openai
@@ -39,9 +42,12 @@ def load_config(env_file: Optional[str] = None) -> Config:
     else:
         load_dotenv()
 
+    db_raw = os.getenv("GEO_AGENT_DB", "")
+
     return Config(
         api_key=os.getenv("NCBI_API_KEY") or None,
         email=os.getenv("NCBI_EMAIL", ""),
+        db_path=Path(db_raw) if db_raw else None,
         # OpenAI-compatible LLM config
         llm_provider=os.getenv("LLM_PROVIDER", "ollama"),
         llm_api_key=os.getenv("LLM_API_KEY") or None,

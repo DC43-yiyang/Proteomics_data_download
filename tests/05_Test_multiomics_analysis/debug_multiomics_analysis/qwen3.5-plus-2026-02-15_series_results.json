@@ -1,0 +1,114 @@
+{
+  "model": "qwen3.5-plus-2026-02-15",
+  "generated_at_utc": "2026-03-10T20:25:30.540599+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 26,
+  "parallel_mode": true,
+  "num_workers": 15,
+  "results": {
+    "GSE294427": {
+      "series_id": "GSE294427",
+      "error": "LLM call failed for GSE294427: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE291290": {
+      "series_id": "GSE291290",
+      "error": "LLM call failed for GSE291290: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE299415": {
+      "series_id": "GSE299415",
+      "error": "LLM call failed for GSE299415: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE280852": {
+      "series_id": "GSE280852",
+      "error": "LLM call failed for GSE280852: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE303197": {
+      "series_id": "GSE303197",
+      "error": "LLM call failed for GSE303197: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE269123": {
+      "series_id": "GSE269123",
+      "error": "LLM call failed for GSE269123: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE266455": {
+      "series_id": "GSE266455",
+      "error": "LLM call failed for GSE266455: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE267552": {
+      "series_id": "GSE267552",
+      "error": "LLM call failed for GSE267552: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE299416": {
+      "series_id": "GSE299416",
+      "error": "LLM call failed for GSE299416: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE283984": {
+      "series_id": "GSE283984",
+      "error": "LLM call failed for GSE283984: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE296447": {
+      "series_id": "GSE296447",
+      "error": "LLM call failed for GSE296447: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE287976": {
+      "series_id": "GSE287976",
+      "error": "LLM call failed for GSE287976: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE268991": {
+      "series_id": "GSE268991",
+      "error": "LLM call failed for GSE268991: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE207438": {
+      "series_id": "GSE207438",
+      "error": "LLM call failed for GSE207438: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE303984": {
+      "series_id": "GSE303984",
+      "error": "LLM call failed for GSE303984: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE316782": {
+      "series_id": "GSE316782",
+      "error": "LLM call failed for GSE316782: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE313153": {
+      "series_id": "GSE313153",
+      "error": "LLM call failed for GSE313153: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE320155": {
+      "series_id": "GSE320155",
+      "error": "LLM call failed for GSE320155: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE306608": {
+      "series_id": "GSE306608",
+      "error": "LLM call failed for GSE306608: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE306022": {
+      "series_id": "GSE306022",
+      "error": "LLM call failed for GSE306022: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE309625": {
+      "series_id": "GSE309625",
+      "error": "LLM call failed for GSE309625: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE316096": {
+      "series_id": "GSE316096",
+      "error": "LLM call failed for GSE316096: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE316069": {
+      "series_id": "GSE316069",
+      "error": "LLM call failed for GSE316069: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE315668": {
+      "series_id": "GSE315668",
+      "error": "LLM call failed for GSE315668: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE305370": {
+      "series_id": "GSE305370",
+      "error": "LLM call failed for GSE305370: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    },
+    "GSE313894": {
+      "series_id": "GSE313894",
+      "error": "LLM call failed for GSE313894: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+    }
+  }
+}

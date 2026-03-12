@@ -1,0 +1,125 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE291290",
+  "result": {
+    "series_id": "GSE291290",
+    "disease_normalized": "heart transplant graft dysfunction",
+    "tissue_normalized": "PBMC",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM8833027",
+        "sample_title": "PBMC, post heart transplantation [Library1]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv (protein), Genes_raw.csv (RNA), Vdj_combined.csv (TCR)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833028",
+        "sample_title": "PBMC, post heart transplantation [Library2]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833029",
+        "sample_title": "PBMC, post heart transplantation [Library3]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833030",
+        "sample_title": "PBMC, post heart transplantation [Library4]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833031",
+        "sample_title": "PBMC, post heart transplantation [Library5]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8833032",
+        "sample_title": "PBMC, post heart transplantation [Library6]",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "TCR_VDJ"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq + VDJ-seq",
+        "assay": "CITE-seq + VDJ-seq",
+        "disease": "heart transplant graft dysfunction",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: PBMCs from patients with/without graft dysfunction post heart transplantation; description: Ab_raw.csv, Genes_raw.csv, Vdj_combined.csv",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples derive from PBMCs of heart transplant recipients with graft dysfunction subtypes (CAV, NGD, Normal HTx), and each library’s description confirms combined RNA, protein (Ab_raw), and TCR VDJ data from BD Rhapsody.",
+    "is_layer_split": false,
+    "biological_sample_count": 6,
+    "layer_split_ratio": ""
+  }
+}

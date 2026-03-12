@@ -1,0 +1,161 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE267552",
+  "result": {
+    "series_id": "GSE267552",
+    "disease_normalized": "breast cancer",
+    "tissue_normalized": "breast, blood",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM8268683",
+        "sample_title": "RNA seq - lane A",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": ": human cancers, overall_design: breast tissue from women with breast cancer and blood from healthy women, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268684",
+        "sample_title": "RNA seq - lane B",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: human cancers, overall_design: breast tissue from women with breast cancer and blood from healthy women, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268685",
+        "sample_title": "RNA seq - lane C",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: human cancers, overall_design: breast tissue from with breast cancer and blood from healthy women, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268686",
+        "sample_title": "CITE seq - lane A",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.85,
+        "evidence": "description: CITE-A, molecule: protein, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268687",
+        "sample_title": "CITE seq - lane B",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.85,
+        "evidence": "description: CITE-B, molecule: protein, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268688",
+        "sample_title": "CITE seq - lane C",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.85,
+        "evidence": "description: CITE-C, molecule: protein, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268689",
+        "sample_title": "VDJ seq - lane A",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title: VDJ seq, description: TCR-A, molecule: other, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268690",
+        "sample_title": "VDJ seq - lane B",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title: VDJ seq, description: TCR-B, molecule: other, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268691",
+        "sample_title": "VDJ seq - lane C",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "bulk Illumina",
+        "experiment": "CD3+ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title: VDJ seq, description: TCR-C, molecule: other, library_source: other, characteristics: tissue=breast/blood, cell type=CD3 pos cells",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Series focuses on CD3+ T cells from breast tumor tissue and blood of breast cancer patients and healthy donors; sample descriptions (GEX/CITE/TCR lanes A–C) indicate three biological specimens split across layers.",
+    "is_layer_split": true,
+    "biological_sample_count": 3,
+    "layer_split_ratio": "1:3"
+  }
+}

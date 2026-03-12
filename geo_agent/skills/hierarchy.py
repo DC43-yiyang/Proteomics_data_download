@@ -74,6 +74,22 @@ class HierarchySkill(Skill):
 
         context.series_hierarchy = hierarchy
 
+        # Persist to DB if available
+        if context.db is not None and context.pipeline_run_id is not None:
+            run_id = context.pipeline_run_id
+            for acc, node in hierarchy.items():
+                if node.in_search_results:
+                    context.db.update_hierarchy(
+                        acc, run_id, node.role,
+                        node.parent, node.in_search_results,
+                    )
+                else:
+                    context.db.upsert_external_series(
+                        acc, run_id, node.title,
+                        node.role, node.parent,
+                    )
+            logger.info("Persisted hierarchy for %d series to database", len(hierarchy))
+
         # Count stats
         supers = sum(1 for n in hierarchy.values() if n.role == "super" and n.parent is None)
         standalone = sum(1 for n in hierarchy.values() if n.role == "standalone")

@@ -1,0 +1,241 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE316069",
+  "result": {
+    "series_id": "GSE316069",
+    "disease_normalized": "ulcerative colitis (UC)",
+    "tissue_normalized": "colon, PBMC",
+    "sample_count": 14,
+    "samples": [
+      {
+        "gsm_id": "GSM9444084",
+        "sample_title": "colon, gdT cells, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLASH-seq",
+        "experiment": "scRNA-seq",
+        "assay": "RNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "summary: ulcerative colitis, overall_design: intestinal biopsies from UC patients and healthy donors, title: colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444085",
+        "sample_title": "colon, gdT cells, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLASH-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "summary: ulcerative colitis, overall_design: intestinal biopsies from UC patients and healthy donors, title: colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444086",
+        "sample_title": "PBMC, TCRgd Vd1,GEX, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library name: PBMC_Vd1_10X5P_GEX_1, characteristics: tissue=PBMC, library_type=mRNA, description includes HD/UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444087",
+        "sample_title": "PBMC, TCRgd Vd1, HTO, batch 1",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=HTO, molecule=protein, description: HTO info with HD/UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444088",
+        "sample_title": "PBMC, TCRgd Vd1, TCR, batch 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=TCR, molecule=polyA RNA, source_name=PBMC, description: PBMC_Vd1_10X5P_TCR_1",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444089",
+        "sample_title": "PBMC, TCRgd Vd1, GEX, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library name: PBMC_Vd1_10X5P_GEX_2, characteristics: tissue=PBMC, library_type=mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444090",
+        "sample_title": "PBMC, TCRgd Vd1, HTO, batch 2",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=HTO, description: PBMC_Vd1_10X5P_HTO_2, HTO info includes HD/UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444091",
+        "sample_title": "PBMC, TCRgd Vd1, TCR, batch 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=TCR, description: PBMC_Vd1_10X5P_TCR_2",
+        "in_input": true
+      },
+      {
+        "gsm_id": "SM9444092",
+        "sample_title": "PBMC, TCRgd Vd2, GEX, batch 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library name: PBMC_Vd2_10X5P_GEX_1, tissue=PBMC, library_type=mRNA",
+        "in_input": false
+      },
+      {
+        "gsm_id": "GSM9444093",
+        "sample_title": "PBMC, TCRgd Vd2, HTO, batch 1",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=HTO, description: PBMC_Vd2_10X5P_HTO_1, HTO info includes HD/UC donors",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444094",
+        "sample_title": "PBMC, TCRgd Vd2, TCR, batch 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=TCR, description: PBMC_Vd2_10X5P_TCR_1",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444095",
+        "sample_title": "PBMC, TCRgd Vd2, GEX, batch 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "scRNA-seq",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library name: PBMC_Vd2_10X5P_GEX_2, tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444096",
+        "sample_title": "PBMC, TCRgd Vd2, HTO, batch 2",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "HTO",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=HTO, description: PBMC_Vd2_10X5P_HTO_2",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444097",
+        "sample_title": "PBMC, TCRgd Vd2, TCR, batch 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "multi-modal PBMC γδ T cell profiling",
+        "assay": "TCR V(D)J",
+        "disease": "ulcerative colitis (UC)",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "library_type=TCR, description: PBMC_Vd2_10X5P_TCR_2",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Series summary explicitly states ulcerative colitis (UC) and intestinal biopsies; PBMC samples are from same donors (HD/UC) per HTO metadata; GSMs grouped by bio-sample (Vδ1/Vδ2, batch) with GEX/HTO/TCR layers confirm layer-split design.",
+    "is_layer_split": true,
+    "biological_sample_count": 6,
+    "layer_split_ratio": "1:2"
+  }
+}

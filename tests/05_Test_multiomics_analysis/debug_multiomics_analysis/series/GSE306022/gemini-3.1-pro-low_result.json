@@ -1,0 +1,164 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE306022",
+  "result": {
+    "series_id": "GSE306022",
+    "disease_normalized": "HIV",
+    "tissue_normalized": "PBMC",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM9191697",
+        "sample_title": "Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [GEX]",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scRNA-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191698",
+        "sample_title": "Ci10004 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "CITE-seq, Cell Hashing",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191699",
+        "sample_title": "Ci10004 CD8s cultured with various conditions - TCR data",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scTCR-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191700",
+        "sample_title": "Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [GEX]",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scRNA-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191701",
+        "sample_title": "Ci10074 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "CITE-seq, Cell Hashing",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191702",
+        "sample_title": "Ci10074 CD8s cultured with various conditions - TCR data",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scTCR-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191703",
+        "sample_title": "Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [GEX]",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scRNA-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191704",
+        "sample_title": "Ci10076 CD8s cultured with various conditions - GEX and FB combined for multi demultiplexing pipeline [FB]",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "CITE-seq, Cell Hashing",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9191705",
+        "sample_title": "Ci10076 CD8s cultured with various conditions - TCR data",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq, scTCR-seq, Cell Hashing",
+        "assay": "scTCR-seq",
+        "disease": "HIV",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description",
+        "in_input": true
+      }
+    ],
+    "reasoning": "The experiment splits each biological sample's libraries into separate GSMs for GEX (gene expression), FB (feature barcoding holding ADT and HTO for demultiplexing), and TCR V(D)J, run on 10x Chromium for CD8 T cells from HIV patients.",
+    "is_layer_split": true,
+    "biological_sample_count": 9,
+    "layer_split_ratio": ""
+  }
+}

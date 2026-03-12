@@ -1,0 +1,65 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE283984",
+  "result": {
+    "series_id": "GSE283984",
+    "disease_normalized": "Healthy",
+    "tissue_normalized": "peripheral blood",
+    "sample_count": 3,
+    "samples": [
+      {
+        "gsm_id": "GSM8675315",
+        "sample_title": "PBMCs, mRNA-derived cDNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: mRNA, description: WTA; 3' mRNA library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8675316",
+        "sample_title": "PBMCs, ADT-derived cDNA",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: ADT, antibodies/tags: Abseq, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8675317",
+        "sample_title": "PBMCs, HTO-derived cDNA",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "BD Rhapsody",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "Healthy",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: HTO, antibodies/tags: BD Human SMK Universal marker, description: Cell Hashing library",
+        "in_input": true
+      }
+    ],
+    "reasoning": "The series profiles heterogeneous B cells from human peripheral blood using a multiomic approach combining mRNA expression (WTA), surface protein phenotypes (ADT/Abseq), and sample multiplexing (HTO/Sample Tags) on the BD Rhapsody platform.",
+    "is_layer_split": true,
+    "biological_sample_count": 3,
+    "layer_split_ratio": ""
+  }
+}

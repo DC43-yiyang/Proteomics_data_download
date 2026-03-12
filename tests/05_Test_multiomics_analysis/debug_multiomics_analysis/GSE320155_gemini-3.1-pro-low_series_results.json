@@ -1,0 +1,14 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T22:56:40.703008+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 1,
+  "parallel_mode": true,
+  "num_workers": 1,
+  "results": {
+    "GSE320155": {
+      "series_id": "GSE320155",
+      "error": "LLM call failed for GSE320155: OpenAI-compatible API request failed: 504 Server Error: Gateway Time-out for url: https://www.fucheers.top/v1/chat/completions"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE280852",
+  "result": {
+    "series_id": "GSE280852",
+    "disease_normalized": "normal",
+    "tissue_normalized": "liver",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM8606565",
+        "sample_title": "human liver, ctrl, P1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606566",
+        "sample_title": "human liver, ctrl, P2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606567",
+        "sample_title": "human liver, ctrl, P3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606568",
+        "sample_title": "human liver, ctrl, P4",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606569",
+        "sample_title": "human liver, ctrl, P5",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606570",
+        "sample_title": "human liver, ctrl, P6",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "title, characteristics, overall_design",
+        "in_input": true
+      }
+    ],
+    "reasoning": "The samples provided in the series are human liver control samples described in the overall design as capturing 'pseudonormal liver cells'.",
+    "is_layer_split": false,
+    "biological_sample_count": 6,
+    "layer_split_ratio": ""
+  }
+}

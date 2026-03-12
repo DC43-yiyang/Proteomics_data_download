@@ -56,6 +56,24 @@ class FamilySoftStructurerSkill(Skill):
                 separators=(",", ":"),
             )
 
+            # Persist to DB if available
+            if context.db is not None and context.pipeline_run_id is not None:
+                context.db.save_samples_batch(
+                    series_id, context.pipeline_run_id,
+                    structured.get("samples", []),
+                )
+                logger.info("Persisted %d samples for %s to database",
+                            structured.get("sample_count", 0), series_id)
+
+                # Replace series supplementary files with accurate SOFT-parsed data
+                series_supp = structured.get("series_supplementary_files", [])
+                if series_supp:
+                    context.db.replace_series_supplementary_files(
+                        series_id, context.pipeline_run_id, series_supp,
+                    )
+                    logger.info("Updated %d series supplementary files for %s",
+                                len(series_supp), series_id)
+
         return context
 
 
@@ -129,6 +147,7 @@ def structure_family_soft_text(
         "source_file": source_file,
         "sample_count": len(samples),
         "field_inventory": field_inventory,
+        "series_supplementary_files": _parse_series_supplementary_files(soft_text),
         "samples": samples,
     }
 
@@ -315,6 +334,29 @@ def _first_value_by_prefix(raw_fields: dict[str, list[str]], prefix: str) -> str
 def _join_values(raw_fields: dict[str, list[str]], key: str) -> str:
     values = [item.strip() for item in raw_fields.get(key, []) if item and item.strip()]
     return "; ".join(values)
+
+
+def _parse_series_supplementary_files(soft_text: str) -> list[dict[str, str]]:
+    """Extract series-level supplementary file URLs from the ^SERIES block."""
+    parts = re.split(r"^\^SAMPLE\s*=\s*", soft_text, maxsplit=1, flags=re.MULTILINE)
+    series_block = parts[0] if parts else ""
+
+    files = []
+    for line in series_block.splitlines():
+        text = line.strip()
+        if not text.startswith("!Series_supplementary_file"):
+            continue
+        if " = " not in text:
+            continue
+        _, _, value = text.partition(" = ")
+        value = value.strip()
+        if not value or value.lower() == "none":
+            continue
+        files.append({
+            "url": value,
+            "file_name": _extract_file_name(value),
+        })
+    return files
 
 
 def _extract_file_name(path_value: str) -> str:

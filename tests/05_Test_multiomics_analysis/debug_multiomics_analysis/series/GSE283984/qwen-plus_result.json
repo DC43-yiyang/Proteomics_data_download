@@ -1,0 +1,65 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE283984",
+  "result": {
+    "series_id": "GSE283984",
+    "disease_normalized": "autoimmunity",
+    "tissue_normalized": "PBMC",
+    "sample_count": 3,
+    "samples": [
+      {
+        "gsm_id": "GSM8675315",
+        "sample_title": "PBMCs, mRNA-derived cDNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "autoimmunity",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design: 'CD19+IgM+IgDlow/- B cells' in human peripheral blood, therapeutic target for autoimmunity",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8675316",
+        "sample_title": "PBMCs, ADT-derived cDNA",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "autoimmunity",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "library_type: ADT, antibodies listed, overall_design: combined with scRNA for multiomic profiling of BDL subset",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8675317",
+        "sample_title": "PBMCs, HTO-derived cDNA",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "autoimmunity",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "library_type: HTO, description: 'Cell Hashing library', overall_design: 'multiplex samples' across 3 donors + 1 control",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All three GSMs derive from the same experimental workflow (CITE-seq on PBMCs from 4 deidentified human donors) targeting rare IgM+IgDlow/- B cells as a therapeutic candidate in autoimmunity.",
+    "is_layer_split": true,
+    "biological_sample_count": 4,
+    "layer_split_ratio": ""
+  }
+}

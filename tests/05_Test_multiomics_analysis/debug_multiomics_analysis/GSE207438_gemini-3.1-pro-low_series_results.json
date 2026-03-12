@@ -1,0 +1,88 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T22:05:40.493306+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 1,
+  "parallel_mode": true,
+  "num_workers": 10,
+  "results": {
+    "GSE207438": {
+      "series_id": "GSE207438",
+      "disease_normalized": "ANCA-associated glomerulonephritis (ANCA-GN)",
+      "tissue_normalized": "kidney and blood",
+      "sample_count": 4,
+      "samples": [
+        {
+          "gsm_id": "GSM6287633",
+          "sample_title": "Patient1, scRNAseq",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Genomics",
+          "experiment": "CITE-seq with cell hashing",
+          "assay": "scRNA-seq",
+          "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+          "tissue": "kidney and blood",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, description ('Patient1_GEX'), characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM6287634",
+          "sample_title": "Patient1, CITE-seq and Hashtag",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Genomics",
+          "experiment": "CITE-seq with cell hashing",
+          "assay": "CITE-seq and cell hashing",
+          "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+          "tissue": "kidney and blood",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, description ('Patient1_ADT_HTO'), characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM6287635",
+          "sample_title": "Patient2, scRNAseq",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Genomics",
+          "experiment": "CITE-seq with cell hashing",
+          "assay": "scRNA-seq",
+          "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+          "tissue": "kidney and blood",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, description ('Patient2_GEX'), characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM6287636",
+          "sample_title": "Patient2, CITE-seq and Hashtag",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Genomics",
+          "experiment": "CITE-seq with cell hashing",
+          "assay": "CITE-seq and cell hashing",
+          "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+          "tissue": "kidney and blood",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, description ('Patient2_ADT_HTO'), characteristics",
+          "in_input": true
+        }
+      ],
+      "reasoning": "Patients have mixed kidney and blood cells that are processed in parallel for GEX (RNA) and ADT/HTO (protein_surface + cell_label) and split into separate GSMs, showing a clear layer split of 2 biological samples across 4 GSMs.",
+      "is_layer_split": true,
+      "biological_sample_count": 2,
+      "layer_split_ratio": "1:2"
+    }
+  }
+}

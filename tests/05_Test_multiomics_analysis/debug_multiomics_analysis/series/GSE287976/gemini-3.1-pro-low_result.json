@@ -1,0 +1,209 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE287976",
+  "result": {
+    "series_id": "GSE287976",
+    "disease_normalized": "Normal",
+    "tissue_normalized": "peripheral blood",
+    "sample_count": 12,
+    "samples": [
+      {
+        "gsm_id": "GSM8756665",
+        "sample_title": "Donor A pbmcs Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756666",
+        "sample_title": "Donor A pbmcs Surface Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=ADT, adt characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756667",
+        "sample_title": "Donor B sorted basophils Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756668",
+        "sample_title": "Donor B sorted basophils Surface Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=ADT, adt characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756669",
+        "sample_title": "Donor C MACS basophils Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756670",
+        "sample_title": "Donor C MACS basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=ADT, adt characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756671",
+        "sample_title": "Donor D1 MACS basophils_Gene_Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756672",
+        "sample_title": "Donor D1 MACS basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=ADT, adt characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756673",
+        "sample_title": "Donor D2 MACS basophils_Gene_Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756674",
+        "sample_title": "Donor_D2_MACS_basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=ADT, adt characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756675",
+        "sample_title": "DonorC_MACS_basophils_Gene_Expression_Long_read",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "FLT-seq (scRNA-seq long-read)",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, description:FLT-seq",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756676",
+        "sample_title": "DonorD1_MACS_basophils_Gene_Expression_Long_read",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "FLT-seq (scRNA-seq long-read)",
+        "disease": "Normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:library type=mRNA, description:FLT-seq",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples are from peripheral blood profiled via 10x Genomics CITE-seq, split into independent GSMs for mRNA (scRNA-seq) and Surface Protein (ADT / CITE-seq), including two samples sequenced additionally with long reads (FLT-seq); samples represent healthy human basophil cell states.",
+    "is_layer_split": true,
+    "biological_sample_count": 12,
+    "layer_split_ratio": ""
+  }
+}

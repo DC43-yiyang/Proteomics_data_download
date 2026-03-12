@@ -163,20 +163,21 @@ class NCBIClient:
         return resp.text
 
     def fetch_family_soft(self, accession: str) -> str:
-        """Fetch GEO Family SOFT format (targ=gsm) for a single GSE accession.
+        """Fetch GEO Family SOFT format (targ=all) for a single GSE accession.
 
-        Returns all ^SAMPLE blocks with per-sample metadata (title,
-        characteristics, molecule, library_source, supplementary files).
-        Responses are 10-50x larger than targ=self, so uses a 60s timeout.
+        Returns ^SERIES block (with series-level supplementary files) and
+        all ^SAMPLE blocks with per-sample metadata (title, characteristics,
+        molecule, library_source, supplementary files).
+        Responses are large, so uses a 60s timeout.
 
         Args:
             accession: GSE accession number (e.g. "GSE317605")
 
         Returns:
-            Raw Family SOFT format text containing all sample blocks
+            Raw Family SOFT format text containing series and sample blocks
         """
         url = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi"
-        params = {"acc": accession, "targ": "gsm", "form": "text", "view": "brief"}
+        params = {"acc": accession, "targ": "all", "form": "text", "view": "brief"}
         self._rate_limit(interval=self._min_interval_geo)
         resp = self.session.get(url, params=params, timeout=60)
         resp.raise_for_status()

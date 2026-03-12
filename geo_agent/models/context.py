@@ -1,9 +1,12 @@
 from dataclasses import dataclass, field
-from typing import Any
+from typing import TYPE_CHECKING, Any, Optional
 
 from geo_agent.models.dataset import GEODataset
 from geo_agent.models.query import SearchQuery
 from geo_agent.models.sample import GEOSample, SampleSelection
+
+if TYPE_CHECKING:
+    from geo_agent.db.repository import DatabaseRepository
 
 
 @dataclass
@@ -46,6 +49,10 @@ class PipelineContext:
     # Download config (Phase 4)
     download_dir: str = "./geo_downloads"
     downloaded_files: list[str] = field(default_factory=list)
+
+    # Database (optional -- pipeline works without DB)
+    db: Optional["DatabaseRepository"] = None
+    pipeline_run_id: Optional[int] = None
 
     # Error tracking
     errors: list[str] = field(default_factory=list)

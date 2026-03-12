@@ -1,0 +1,161 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE309625",
+  "result": {
+    "series_id": "GSE309625",
+    "disease_normalized": "colorectal cancer liver metastasis",
+    "tissue_normalized": "liver",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM9270677",
+        "sample_title": "Gene expression - Lane A",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, tissue characteristic, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270678",
+        "sample_title": "Gene expression - Lane B",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, tissue characteristic, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270679",
+        "sample_title": "Gene expression - Lane C",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, tissue characteristic, summary",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270680",
+        "sample_title": "Cell surface protein - Lane A",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=ADT, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270681",
+        "sample_title": "Cell surface protein - Lane B",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=ADT, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270682",
+        "sample_title": "Cell surface protein - Lane C",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=ADT, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270683",
+        "sample_title": "TCR - Lane A",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=TCR, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270684",
+        "sample_title": "TCR - Lane B",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=TCR, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270685",
+        "sample_title": "TCR - Lane C",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer liver metastasis",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and adjacent normal",
+        "confidence": 0.95,
+        "evidence": "overall_design, library_type=TCR, title",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples derive from CD3+ T cells isolated from colorectal cancer liver metastases, distal non-cancerous liver, and liver from cancer-free donors, processed in 3 lanes with matched GEX, ADT, and TCR libraries using 10x 5' v2.",
+    "is_layer_split": true,
+    "biological_sample_count": 3,
+    "layer_split_ratio": "1:3"
+  }
+}

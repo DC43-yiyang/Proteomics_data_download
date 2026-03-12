@@ -26,6 +26,7 @@ Environment variables (all optional)
     LLM_SEED          optional integer seed
     DEBUG_RAW_LLM_DIR directory to save raw failed LLM outputs
     MAX_TOKENS        default: 16384
+    CHUNK_SIZE        max samples per LLM call; 0=no chunking; default: 15
 
 Legacy environment variables (deprecated, use LLM_* instead):
     OLLAMA_BASE_URL   -> use LLM_BASE_URL
@@ -46,8 +47,15 @@ from pathlib import Path
 from typing import Any
 
 from geo_agent.llm import create_llm_client, get_default_model
+from geo_agent.skills.layer_split_detector import detect_layer_split
 from geo_agent.skills.multiomics_analyze_sample import annotate_sample
-from geo_agent.skills.multiomics_analyze_series import annotate_series
+from geo_agent.skills.multiomics_analyze_series import (
+    annotate_series,
+    annotate_series_chunk,
+    load_prompt,
+    merge_chunk_results,
+    split_series_into_chunks,
+)
 
 # Load .env file at module import time
 from dotenv import load_dotenv
@@ -116,15 +124,16 @@ def _load_config(default_workers: int) -> dict[str, Any]:
         "num_workers":     int(os.getenv("NUM_WORKERS", str(default_workers))),
         "parallel_mode":   _env_bool("PARALLEL_MODE", False),
         "timeout":         int(timeout_str),
-        "max_tokens":      int(os.getenv("MAX_TOKENS", "16384")),
+        "max_tokens":      int(os.getenv("MAX_TOKENS", "131072")),
         "max_retries":     int(os.getenv("MAX_RETRIES", "2")),
         "temperature":     float(os.getenv("LLM_TEMPERATURE", "0.0")),
         "retry_temp_step": float(os.getenv("RETRY_TEMP_STEP", "0.0")),
         "strict_json":     _env_bool("STRICT_JSON_MODE", True),
-        "disable_thinking":_env_bool("DISABLE_THINKING", False),
+        "disable_thinking":_env_bool("DISABLE_THINKING", True),
         "seed":            int(seed_raw) if seed_raw else None,
         "debug_raw_dir":   Path(debug_raw) if debug_raw else None,
         "target_series":   [s.strip() for s in os.getenv("TARGET_SERIES", "").split(",") if s.strip()],
+        "chunk_size":      int(os.getenv("CHUNK_SIZE", "15")),
     }
 
 
@@ -188,22 +197,26 @@ def _write_series_table(rows: list[dict[str, Any]], output_path: Path, model: st
         "",
         "## Series Summary",
         "",
-        "| series_id | disease | tissue | samples | layers_present | status |",
-        "|---|---|---|---:|---|---|",
+        "| series_id | disease | tissue | samples | bio_samples | split | layers_present | status |",
+        "|---|---|---|---:|---:|---|---|---|",
     ]
     for row in rows:
         if row.get("error"):
-            lines.append(f"| {row['series_id']} | — | — | — | — | ERROR: {_md(row['error'])} |")
+            lines.append(f"| {row['series_id']} | — | — | — | — | — | — | ERROR: {_md(row['error'])} |")
             continue
         all_layers: set[str] = set()
         for s in row.get("samples", []):
             all_layers.update(s.get("measured_layers", []))
+        bio_count = row.get("biological_sample_count", row.get("sample_count", 0))
+        split_ratio = row.get("layer_split_ratio", "")
         lines.append(
             "| " + " | ".join([
                 _md(row["series_id"]),
                 _md(row.get("disease_normalized", "—")),
                 _md(row.get("tissue_normalized", "—")),
                 str(row.get("sample_count", 0)),
+                str(bio_count),
+                _md(split_ratio) if split_ratio else "—",
                 _md(", ".join(sorted(all_layers))),
                 "ok",
             ]) + " |"
@@ -301,6 +314,14 @@ def _process_series(
         idx = counter[0]
     logger.info("[%d/%d] %s  (%s samples)", idx, total, series_id, series_data.get("sample_count", "?"))
 
+    # Run layer-split heuristic before LLM call
+    layer_hint = detect_layer_split(series_data.get("samples", []))
+    if layer_hint.get("suspected_layer_split"):
+        logger.info("  %s: layer-split suspected (confidence=%s, groups=%d, ratio=%s)",
+                     series_id, layer_hint["confidence"],
+                     layer_hint["heuristic_bio_sample_count"], layer_hint["heuristic_split_ratio"])
+        series_data = {**series_data, "layer_split_hint": layer_hint}
+
     try:
         result = annotate_series(
             series_data=series_data,
@@ -314,6 +335,7 @@ def _process_series(
             seed=cfg["seed"],
             disable_thinking=cfg["disable_thinking"],
             debug_raw_dir=cfg["debug_raw_dir"],
+            chunk_size=cfg["chunk_size"],
         )
     except Exception as exc:
         logger.error("  %s FAILED: %s", series_id, exc)
@@ -339,12 +361,14 @@ def run_sample_mode(
     structured_json: Path,
     output_prefix: str = "",
     target_sample_indices: list[int] | None = None,
+    series_context: dict[str, dict[str, str]] | None = None,
 ) -> None:
     """Run per-sample annotation and write results under output_dir/series/{series_id}/{gsm_id}.json.
 
     Args:
         output_prefix:          prepended to combined output filenames (e.g. "GSE266455_")
         target_sample_indices:  0-based indices within each series to process; None means all
+        series_context:         optional dict mapping series_id -> {"summary": ..., "overall_design": ...}
     """
     cfg = _load_config(default_workers=4)
     client = create_llm_client(
@@ -358,6 +382,12 @@ def run_sample_mode(
         sys.exit(1)
 
     series_results, series_ids = _load_input(structured_json, cfg["target_series"])
+
+    # Enrich with series-level context (summary, overall_design) if provided
+    if series_context:
+        for sid in series_ids:
+            if sid in series_context:
+                series_results[sid] = {**series_results[sid], **series_context[sid]}
 
     tasks = []
     for sid in series_ids:
@@ -420,11 +450,13 @@ def run_series_mode(
     output_dir: Path,
     structured_json: Path,
     output_prefix: str = "",
+    series_context: dict[str, dict[str, str]] | None = None,
 ) -> None:
     """Run per-series annotation and write results under output_dir/.
 
     Args:
         output_prefix: prepended to output filenames (e.g. "GSE266455_")
+        series_context: optional dict mapping series_id -> {"summary": ..., "overall_design": ...}
 
     Modes:
         Serial (PARALLEL_MODE=0, default):
@@ -448,6 +480,13 @@ def run_series_mode(
         sys.exit(1)
 
     series_results, series_ids = _load_input(structured_json, cfg["target_series"])
+
+    # Enrich with series-level context (summary, overall_design) if provided
+    if series_context:
+        for sid in series_ids:
+            if sid in series_context:
+                series_results[sid] = {**series_results[sid], **series_context[sid]}
+
     total = len(series_ids)
 
     _log_config(cfg, mode="series", series_count=total, sample_count=None)
@@ -571,30 +610,135 @@ def _run_parallel_with_save(
     counter: list[int],
     lock: threading.Lock,
 ) -> list[dict[str, Any]]:
-    """Process series in parallel and save each result immediately after completion."""
+    """Process series in parallel at chunk granularity and save results.
+
+    Instead of submitting whole series as work items (which causes large series
+    to hold workers while running chunks sequentially inside), this function:
+    1. Pre-splits all series into chunks
+    2. Submits individual chunks to the thread pool
+    3. Merges chunk results per series after all complete
+
+    This ensures NUM_WORKERS controls actual concurrent LLM requests.
+    """
     slug = cfg["model_slug"]
     series_dir = output_dir / "series"
+    chunk_size = cfg["chunk_size"]
+    prompt = load_prompt()
+    debug_dir = cfg["debug_raw_dir"]
 
+    # Phase 1: Prepare — detect layer-split and expand series into chunks
+    # work item: (series_id, chunk_idx, num_chunks, chunk_data)
+    work_items: list[tuple[str, int, int, dict[str, Any]]] = []
+
+    for series_id in series_ids:
+        sdata = series_results[series_id]
+
+        # Layer-split heuristic (same as _process_series did)
+        layer_hint = detect_layer_split(sdata.get("samples", []))
+        if layer_hint.get("suspected_layer_split"):
+            logger.info("  %s: layer-split suspected (confidence=%s, groups=%d, ratio=%s)",
+                        series_id, layer_hint["confidence"],
+                        layer_hint["heuristic_bio_sample_count"],
+                        layer_hint["heuristic_split_ratio"])
+            sdata = {**sdata, "layer_split_hint": layer_hint}
+
+        chunks = split_series_into_chunks(sdata, chunk_size)
+        for ci, chunk_data in enumerate(chunks):
+            work_items.append((series_id, ci, len(chunks), chunk_data))
+
+    total_chunks = len(work_items)
+    chunk_counter: list[int] = [0]
+
+    logger.info("Expanded %d series into %d chunks (chunk_size=%d, workers=%d)",
+                len(series_ids), total_chunks, chunk_size, cfg["num_workers"])
+
+    # Phase 2: Submit chunks to thread pool — each chunk = one LLM call
+    # Collector: series_id -> list of (chunk_idx, result)
+    chunk_results_map: dict[str, list[tuple[int, dict[str, Any]]]] = {
+        sid: [] for sid in series_ids
+    }
+    results_lock = threading.Lock()
+
+    def process_chunk(
+        series_id: str, chunk_idx: int, num_chunks: int,
+        chunk_data: dict[str, Any],
+    ) -> None:
+        with lock:
+            chunk_counter[0] += 1
+            idx = chunk_counter[0]
+
+        n_samples = len(chunk_data.get("samples", []))
+        if num_chunks > 1:
+            logger.info("[%d/%d] %s chunk %d/%d (%d samples)",
+                        idx, total_chunks, series_id,
+                        chunk_idx + 1, num_chunks, n_samples)
+        else:
+            logger.info("[%d/%d] %s (%d samples)",
+                        idx, total_chunks, series_id, n_samples)
+
+        try:
+            result = annotate_series_chunk(
+                series_data=chunk_data,
+                llm_client=client,
+                model=cfg["model"],
+                temperature=cfg["temperature"],
+                max_tokens=cfg["max_tokens"],
+                max_retries=cfg["max_retries"],
+                system_prompt=prompt,
+                retry_temperature_step=cfg["retry_temp_step"],
+                strict_json_mode=cfg["strict_json"],
+                seed=cfg["seed"],
+                disable_thinking=cfg["disable_thinking"],
+                debug_raw_dir=debug_dir,
+                layer_split_hint=chunk_data.get("layer_split_hint"),
+            )
+        except Exception as exc:
+            logger.error("  %s chunk %d/%d FAILED: %s",
+                         series_id, chunk_idx + 1, num_chunks, exc)
+            result = {"series_id": series_id, "error": str(exc)}
+
+        with results_lock:
+            chunk_results_map[series_id].append((chunk_idx, result))
+
+    with ThreadPoolExecutor(max_workers=cfg["num_workers"]) as pool:
+        futures = [pool.submit(process_chunk, *item) for item in work_items]
+        for future in as_completed(futures):
+            future.result()
+
+    # Phase 3: Merge chunks per series and save
     all_rows: list[dict[str, Any]] = []
-    rows_lock = threading.Lock()
 
-    def worker_with_save(series_id: str) -> dict[str, Any]:
-        # Process the series
-        result = _process_series(
-            series_id,
-            series_results[series_id],
-            client,
-            cfg,
-            total,
-            counter,
-            lock
-        )
+    for series_id in series_ids:
+        chunk_pairs = chunk_results_map[series_id]
+        chunk_pairs.sort(key=lambda x: x[0])  # maintain sample order
+        ordered_results = [r for _, r in chunk_pairs]
 
-        # Save immediately after processing
+        # If any chunk errored, the whole series is an error
+        errors = [r for r in ordered_results if r.get("error")]
+        if errors:
+            error_msg = "; ".join(e["error"] for e in errors)
+            result = {"series_id": series_id, "error": error_msg}
+        elif len(ordered_results) == 1:
+            result = ordered_results[0]
+        else:
+            result = merge_chunk_results(ordered_results, series_id)
+            logger.info("  %s: merged %d chunks -> %d samples",
+                        series_id, len(ordered_results), result["sample_count"])
+
+        # Log summary
+        if not result.get("error"):
+            all_layers: set[str] = set()
+            for s in result.get("samples", []):
+                all_layers.update(s.get("measured_layers", []))
+            logger.info("  %s done | layers: %s | disease: %s | tissue: %s",
+                        series_id, sorted(all_layers),
+                        result.get("disease_normalized", "?"),
+                        result.get("tissue_normalized", "?"))
+
+        # Save per-series
         series_subdir = series_dir / series_id
         series_subdir.mkdir(exist_ok=True)
 
-        # Save individual series result
         series_file = series_subdir / f"{slug}_result.json"
         series_payload = {
             "model": cfg["model"],
@@ -602,9 +746,11 @@ def _run_parallel_with_save(
             "series_id": series_id,
             "result": result,
         }
-        series_file.write_text(json.dumps(series_payload, indent=2, ensure_ascii=False), encoding="utf-8")
+        series_file.write_text(
+            json.dumps(series_payload, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
 
-        # Also save markdown table for this series
         if not result.get("error"):
             table_file = series_subdir / f"{slug}_result_table.md"
             _write_series_table(
@@ -613,18 +759,7 @@ def _run_parallel_with_save(
             )
 
         logger.info("  %s saved to %s", series_id, series_subdir)
-
-        # Add to results list
-        with rows_lock:
-            all_rows.append(result)
-
-        return result
-
-    # Run parallel processing with immediate saving
-    with ThreadPoolExecutor(max_workers=cfg["num_workers"]) as pool:
-        futures = [pool.submit(worker_with_save, sid) for sid in series_ids]
-        for future in as_completed(futures):
-            future.result()  # Wait for completion, errors will be raised here
+        all_rows.append(result)
 
     logger.info("Parallel mode: saved %d series to %s/series/", len(all_rows), output_dir)
     return all_rows
@@ -632,9 +767,27 @@ def _run_parallel_with_save(
 
 def _print_summary(rows: list[dict[str, Any]], num_workers: int, output_dir: Path, mode: str) -> None:
     ok = sum(1 for r in rows if not r.get("error"))
+    failed = [r for r in rows if r.get("error")]
     print("=" * 60)
     print(f"mode      : {mode}")
-    print(f"processed : {len(rows)}  ok: {ok}  errors: {len(rows) - ok}")
+    print(f"processed : {len(rows)}  ok: {ok}  errors: {len(failed)}")
     print(f"workers   : {num_workers}")
     print(f"output    : {output_dir}")
     print("=" * 60)
+
+    if failed:
+        print(f"\n{'=' * 60}")
+        print("FAILED SERIES")
+        print(f"{'=' * 60}")
+        print(f"  {'series_id':<14} error")
+        print(f"  {'-'*14} {'-'*44}")
+        for r in sorted(failed, key=lambda x: x.get("series_id", "")):
+            sid = r.get("series_id", "?")
+            err = str(r.get("error", ""))[:120]
+            print(f"  {sid:<14} {err}")
+
+        # Save failed series IDs for later review
+        failed_ids = sorted(r.get("series_id", "") for r in failed)
+        failed_file = output_dir / "failed_series.txt"
+        failed_file.write_text("\n".join(failed_ids) + "\n", encoding="utf-8")
+        print(f"\nFailed IDs saved to {failed_file}")

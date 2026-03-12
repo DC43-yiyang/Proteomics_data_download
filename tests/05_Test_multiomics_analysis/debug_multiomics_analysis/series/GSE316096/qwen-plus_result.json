@@ -1,0 +1,305 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE316096",
+  "result": {
+    "series_id": "GSE316096",
+    "disease_normalized": "Alzheimer's disease (AD)",
+    "tissue_normalized": "PBMC",
+    "sample_count": 18,
+    "samples": [
+      {
+        "gsm_id": "GSM9444420",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "summary, title, characteristics.tissue, characteristics.cell type, characteristics.aria status",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444421",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "MC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type, characteristics.adt, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444422",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444423",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-E",
+        "confidence": 1.0,
+        "evidence": "summary, title, characteristics.aria status, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444424",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-E",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type, characteristics.adt",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444425",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-E",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444426",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.aria status, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444427",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444428",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444429",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-H",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.aria status, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444430",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-H",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444431",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-H",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444432",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.aria status, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444433",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444434",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "control",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444435",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-EH",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.aria status, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444436",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-EH",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444437",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease (AD)",
+        "tissue": "PBMC",
+        "tissue_subtype": "ARIA-EH",
+        "confidence": 1.0,
+        "evidence": "title, characteristics.library type",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples derive from PBMCs of Alzheimer’s disease patients treated with lecanemab, with ARIA status (control/ARIA-E/ARIA-H/ARIA-EH) defining subtypes; library types (mRNA/ADT/VDJ) and descriptions confirm layer-split design per patient.",
+    "is_layer_split": true,
+    "biological_sample_count": 6,
+    "layer_split_ratio": "1:3"
+  }
+}

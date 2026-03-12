@@ -1,0 +1,426 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE303197",
+  "result": {
+    "series_id": "GSE303197",
+    "disease_normalized": "HIV-1 infection",
+    "tissue_normalized": "peripheral blood",
+    "is_layer_split": true,
+    "biological_sample_count": 13,
+    "layer_split_ratio": "",
+    "samples": [
+      {
+        "gsm_id": "GSM9120277",
+        "sample_title": "mRNA from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120278",
+        "sample_title": "ADT and HTO from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title ADT and HTO, characteristics adt, hto, TotalSeq-C",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120279",
+        "sample_title": "TCR from ARC Chr16 3 weeks andARC Chr16 5 months from donor OM5334",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "scTCR-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title TCR, description VDJ library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120280",
+        "sample_title": "mRNA from dARC COG5 and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120281",
+        "sample_title": "ADT and HTO from dARC COG5 and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title ADT and HTO, characteristics adt, hto, TotalSeq-C",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120282",
+        "sample_title": "TCR from dARC COG5 and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "scTCR-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title TCR, description VDJ library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120283",
+        "sample_title": "mRNA from ARC Chr22 and uninfected clone from donor 5104",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120284",
+        "sample_title": "ADT and HTO from ARC Chr22 and uninfected clone from donor 5104",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title ADT and HTO, characteristics adt, hto, TotalSeq-C",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120285",
+        "sample_title": "mRNA from uninfected clones from donor 5104",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120286",
+        "sample_title": "ADT and HTO from uninfected clones from donor 5104",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title ADT and HTO, characteristics adt, hto, TotalSeq-C",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120287",
+        "sample_title": "mRNA from ARC ZNF721 and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120288",
+        "sample_title": "ADT and HTO from ARC ZNF721 and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title ADT and HTO, characteristics adt, hto, TotalSeq-C",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120289",
+        "sample_title": "mRNA from ARC ZNF486 and uninfected clone from donor 603",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR V(D)J",
+        "assay": "5' scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title mRNA, description GEX (5' mRNA) library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120290",
+        "sample_title": "ADT and HTO from ARC ZNF486 and uninfected clone from donor 603",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120291",
+        "sample_title": "mRNA from uninfected clones from donor 603",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120292",
+        "sample_title": "ADT and HTO from uninfected clones from donor 603",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120293",
+        "sample_title": "mRNA from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120294",
+        "sample_title": "ADT and HTO from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120295",
+        "sample_title": "TCR from dARC COG5 3 weeks and uninfected clone from donor OM5334",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120296",
+        "sample_title": "mRNA from ARC GS from donor GS",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120297",
+        "sample_title": "ADT and HTO from ARC GS from donor GS",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120298",
+        "sample_title": "TCR from ARC GS from donor GS",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120299",
+        "sample_title": "mRNA from uninfected clones from donor OM5334",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120300",
+        "sample_title": "ADT from uninfected clones from donor OM5334",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9120301",
+        "sample_title": "TCR from uninfected clones from donor OM5334",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV infection",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, characteristics, description",
+        "in_input": true
+      }
+    ],
+    "sample_count": 25,
+    "reasoning": "The normalisation is heavily based on series-level descriptions of HIV-1 provirus reservoirs, '5' CITE-seq gene expression and antibody derived tag libraries' and 'TCR clonotype libraries' from peripheral blood CD4+ T-cells, with sample titles directly indicating mRNA, ADT/HTO, or TCR data components. | Experiment involves 5' CITE-seq (scRNA-seq, ADT, HTO) and TCR clonotype sequencing of peripheral blood CD4+ T-cells from donors living with HIV."
+  }
+}

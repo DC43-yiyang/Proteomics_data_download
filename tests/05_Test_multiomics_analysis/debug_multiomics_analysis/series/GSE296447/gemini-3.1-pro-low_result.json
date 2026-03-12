@@ -1,0 +1,145 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE296447",
+  "result": {
+    "series_id": "GSE296447",
+    "disease_normalized": "periodontitis",
+    "tissue_normalized": "gingiva",
+    "sample_count": 8,
+    "samples": [
+      {
+        "gsm_id": "GSM8970687",
+        "sample_title": "Citeseq, P16, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970688",
+        "sample_title": "Citeseq, P16, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970689",
+        "sample_title": "Citeseq, P5, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970690",
+        "sample_title": "Citeseq, P5, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970691",
+        "sample_title": "Citeseq, P8, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970692",
+        "sample_title": "Citeseq, P8, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970693",
+        "sample_title": "Citeseq, P9, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8970694",
+        "sample_title": "Citeseq, P9, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "periodontitis",
+        "tissue": "gingiva",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, description, overall_design, characteristics",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Metadata explicitely describes patient samples with periodontitis profiled natively from gum (gingiva) using CITE-seq natively split into distinct ADT and GEX GEO records.",
+    "is_layer_split": true,
+    "biological_sample_count": 4,
+    "layer_split_ratio": "1:2"
+  }
+}

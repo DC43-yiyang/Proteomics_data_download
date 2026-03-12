@@ -1,0 +1,465 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE269123",
+  "result": {
+    "series_id": "GSE269123",
+    "disease_normalized": "Healthy",
+    "tissue_normalized": "thymus",
+    "is_layer_split": true,
+    "biological_sample_count": 14,
+    "layer_split_ratio": "",
+    "samples": [
+      {
+        "gsm_id": "GSM8306677",
+        "sample_title": "MV-8",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'ADT', description 'Thy10_ADT'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306678",
+        "sample_title": "MV-4",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "5' scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gene expression', description 'Thy10_GEX'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306679",
+        "sample_title": "Thy2-gdTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gdTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306680",
+        "sample_title": "Thy2-abTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'abTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306681",
+        "sample_title": "Thy2-5GE",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "5' scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gene expression'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306682",
+        "sample_title": "Thy2-Sur",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'ADT'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306683",
+        "sample_title": "Thy4-gdTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gdTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306684",
+        "sample_title": "Thy4-abTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'abTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306685",
+        "sample_title": "Thy4-5GE",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "5' scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gene expression'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306686",
+        "sample_title": "Thy4-Sur",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'ADT'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306687",
+        "sample_title": "MV-5",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'ADT', description 'Thy5_ADT'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306688",
+        "sample_title": "MV-1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "5' scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gene expression', description 'Thy5_GEX'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306689",
+        "sample_title": "Thy6-gdTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'gdTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306690",
+        "sample_title": "Thy6-abTCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling with CITE-seq",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "characteristics 'tissue', library type 'abTCR VDJ'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306691",
+        "sample_title": "Thy6-5GE",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306692",
+        "sample_title": "Thy6-Sur",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306693",
+        "sample_title": "MV-6",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306694",
+        "sample_title": "MV-2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306695",
+        "sample_title": "MV-7",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306696",
+        "sample_title": "MV-3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306697",
+        "sample_title": "MV-12",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306698",
+        "sample_title": "MV-16",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306699",
+        "sample_title": "MV-9",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306700",
+        "sample_title": "MV-13",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306701",
+        "sample_title": "MV-10",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306702",
+        "sample_title": "MV-14",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306703",
+        "sample_title": "MV-11",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8306704",
+        "sample_title": "MV-15",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Single Cell Immune Profiling",
+        "assay": "scTCR-seq",
+        "disease": "Healthy",
+        "tissue": "thymus",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics",
+        "in_input": true
+      }
+    ],
+    "sample_count": 28,
+    "reasoning": "The series consists of single-cell sorting of thymus Vdelta1 cells, with individual biological replicates ('Thy' numbering) manually split into different GSMs representing separately constructed CITE-seq (ADT), 5' scRNA-seq (GEX), and VDJ TCR sequencing libraries in a multi-modal 10x workflow. | Samples are from thymus tissue (presumed healthy, studying Vd1 development over time) sequenced for GEX, ADT, and VDJ layers using the 10x 5' Immune Profiling combined system, uploaded as split samples corresponding to RNA, surface proteins, and TCR VDJ expression layers."
+  }
+}

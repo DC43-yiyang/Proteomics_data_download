@@ -1,0 +1,161 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE309625",
+  "result": {
+    "series_id": "GSE309625",
+    "disease_normalized": "colorectal cancer (CRC)",
+    "tissue_normalized": "liver",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM9270677",
+        "sample_title": "Gene expression - Lane A",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270678",
+        "sample_title": "Gene expression - Lane B",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270679",
+        "sample_title": "Gene expression - Lane C",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270680",
+        "sample_title": "Cell surface protein - Lane A",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270681",
+        "sample_title": "Cell surface protein - Lane B",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270682",
+        "sample_title": "Cell surface protein - Lane C",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270683",
+        "sample_title": "TCR - Lane A",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270684",
+        "sample_title": "TCR - Lane B",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9270685",
+        "sample_title": "TCR - Lane C",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5' v2",
+        "experiment": "scRNA-seq with CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "liver",
+        "tissue_subtype": "mixed tumor and normal",
+        "confidence": 0.9,
+        "evidence": "overall_design, library_type, title",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples are from mixed colorectal cancer liver metastases, related non-cancerous liver, and healthy liver, split across 3 lanes matching mRNA, ADT and TCR libraries as determined by titles and descriptions.",
+    "is_layer_split": true,
+    "biological_sample_count": 9,
+    "layer_split_ratio": ""
+  }
+}

@@ -1,0 +1,1221 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE313894",
+  "result": {
+    "series_id": "GSE313894",
+    "disease_normalized": "HIV infection",
+    "tissue_normalized": "colon, PBMC",
+    "is_layer_split": false,
+    "biological_sample_count": 14,
+    "layer_split_ratio": "",
+    "samples": [
+      {
+        "gsm_id": "GSM9377203",
+        "sample_title": "Donor_1,Colon,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377204",
+        "sample_title": "Donor_1,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377205",
+        "sample_title": "Donor_1,PBMC,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (PBMC)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377206",
+        "sample_title": "Donor_1,PBMC,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (PBMC)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377207",
+        "sample_title": "Donor_2,Colon,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377208",
+        "sample_title": "Donor_2,Colon,total,Untreated,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377209",
+        "sample_title": "Donor_2,Colon,total,Untreated,rep3",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377210",
+        "sample_title": "Donor_2,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377211",
+        "sample_title": "Donor_2,Colon,total,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377212",
+        "sample_title": "Donor_2,Colon,total,PMAiIL2,rep3",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377213",
+        "sample_title": "Donor_2,Colon,total,PMAiIL2,rep4",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377214",
+        "sample_title": "Donor_2,Colon,total,PMAiIL2,rep5",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (Sigmoid Colon)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377215",
+        "sample_title": "Donor_2,PBMC,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (PBMC)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377216",
+        "sample_title": "Donor_2,PBMC,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design (CITE seq, TotalSeqB, HTO), title, characteristics (PBMC)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377217",
+        "sample_title": "Donor_3,Colon,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377218",
+        "sample_title": "Donor_3,Colon,total,Untreated,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377219",
+        "sample_title": "Donor_3,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377220",
+        "sample_title": "Donor_3,Colon,total,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377221",
+        "sample_title": "Donor_3,PBMC,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377222",
+        "sample_title": "Donor_3,PBMC,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377223",
+        "sample_title": "Donor_4,Colon,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377224",
+        "sample_title": "Donor_4,Colon,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377225",
+        "sample_title": "Donor_4,Colon,CD4,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377226",
+        "sample_title": "Donor_4,PBMC,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377227",
+        "sample_title": "Donor_4,PBMC,CD4,Untreated,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377228",
+        "sample_title": "Donor_4,PBMC,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377229",
+        "sample_title": "Donor_5,Colon,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377230",
+        "sample_title": "Donor_5,Colon,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: Sigmoid Colon, overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV (PWH)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377231",
+        "sample_title": "Donor_5,Colon,CD4,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377232",
+        "sample_title": "Donor_5,Colon,CD4,PMAiIL2,rep3",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377233",
+        "sample_title": "Donor_5,PBMC,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377234",
+        "sample_title": "Donor_5,PBMC,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377235",
+        "sample_title": "Donor_6,Colon,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377236",
+        "sample_title": "Donor_6,Colon,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377237",
+        "sample_title": "Donor_6,Colon,CD4,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377238",
+        "sample_title": "Donor_6,PBMC,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377239",
+        "sample_title": "Donor_6,PBMC,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377240",
+        "sample_title": "Donor_7,Colon,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377241",
+        "sample_title": "Donor_7,Colon,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377242",
+        "sample_title": "Donor_7,Colon,CD4,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377243",
+        "sample_title": "Donor_7,Colon,CD4,PMAiIL2,rep3",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377244",
+        "sample_title": "Donor_7,Colon,CD4,PMAiIL2,rep4",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "overall_design, characteristics:tissue",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377245",
+        "sample_title": "Donor_7,PBMC,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377246",
+        "sample_title": "Donor_7,PBMC,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377247",
+        "sample_title": "Donor_8,Colon,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377248",
+        "sample_title": "Donor_8,Colon,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377249",
+        "sample_title": "Donor_8,PBMC,CD4,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377250",
+        "sample_title": "Donor_8,PBMC,CD4,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377251",
+        "sample_title": "Donor_9,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377252",
+        "sample_title": "Donor_9,Colon,total,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377253",
+        "sample_title": "Donor_10,Colon,total,Untreated,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377254",
+        "sample_title": "Donor_10,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377255",
+        "sample_title": "Donor_10,Colon,total,PMAiIL2,rep2",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377256",
+        "sample_title": "Donor_10,Colon,total,PMAiIL2,rep3",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377257",
+        "sample_title": "Donor_10,Colon,total,PMAiIL2,rep4",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV infection",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: CITE seq using TotalSeqB panel with hash tag oligo (HTO) indexing, summary: people with HIV, tissue: Sigmoid Colon",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377258",
+        "sample_title": "Donor_11,Colon,total,PMAiIL2,rep1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "colon",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "Donor 11 is HIV seronegative; Sigmoid Colon; TotalSeqB mentions elsewhere imply 10x 3' chemistry",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377259",
+        "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep1,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377260",
+        "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep2,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377261",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep1,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377262",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep2,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377263",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377264",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "GEX library of pooled donors 9,10 (HIV positive) and 11 (HIV negative); PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377265",
+        "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep1,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377266",
+        "sample_title": "Donor_9_10_11,PBMC,total,Untreated,rep2,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377267",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep1,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377268",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,Untreated,rep2,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377269",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep1,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9377270",
+        "sample_title": "Donor_9_10_11,PBMC,CD4,PMAiIL2,rep2,ADT",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq, cell hashing",
+        "disease": "HIV infection, Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "ADT and HTO matrix explicitly detailed in description; pooled donors; TotalSeqB indicates 10x 3'",
+        "in_input": true
+      }
+    ],
+    "sample_count": 68,
+    "reasoning": "Experiment is based on the overall design mentioning CITE-seq, TotalSeqB (implying 10x 3' compatibility), and HTO tracing of samples from HIV-positive and HIV-negative donors for colon and PBMC tissues. | Samples are from PBMC and colon of people with HIV (PWH), processed via CITE-seq using TotalSeqB and HTO, confirming RNA, multiplexing cell labels, and antibody surface protein layers in a single assay. | Samples run under conditions described in the overall design where CITE-seq containing TotalSeqB (protein_surface) and HTO (cell_label) was applied to scRNA-seq (RNA) of colon and PBMC samples from HIV seropositive donors. | Samples are from HIV+ donors (PBMC or Colon) profiled using CITE-seq (TotalSeqB) with HTO indexing, indicating RNA, protein_surface, and cell_label layers. | Experiment utilizes scRNA-seq and CITE-seq tracking HIV reservoirs in patient PBMC and colon samples, deploying TotalSeqB (matching 10x 3') with GEX and ADT/HTO libraries uploaded separately."
+  }
+}

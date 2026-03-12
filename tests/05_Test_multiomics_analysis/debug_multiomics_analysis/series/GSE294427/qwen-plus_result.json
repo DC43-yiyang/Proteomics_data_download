@@ -1,0 +1,161 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE294427",
+  "result": {
+    "series_id": "GSE294427",
+    "disease_normalized": "HIV-1 infection",
+    "tissue_normalized": "PBMC",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM8905195",
+        "sample_title": "CITE-seq ADT library 1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, summary: HIV-1 proviral persistence",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905196",
+        "sample_title": "CITE-seq ADT library 2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, summary: HIV-1 proviral persistence",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905197",
+        "sample_title": "CITE-seq ADT library 3",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, summary: HIV-1 proviral persistence",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905198",
+        "sample_title": "CITE-seq Gene Expression library 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: RNA library, molecule: polyA RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905199",
+        "sample_title": "CITE-seq Gene Expression library 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: RNA library, molecule: polyA RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905200",
+        "sample_title": "CITE-seq Gene Expression library 3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: RNA library, molecule: polyA RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905201",
+        "sample_title": "CITE-seq TCR library 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV-1 infection",
+        "tissue": "PB",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: TCR library, molecule: total RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905202",
+        "sample_title": "CITE-seq TCR library 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: TCR library, molecule: total RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8905203",
+        "sample_title": "CITE-seq TCR library 3",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "HIV-1 infection",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: T cells, treatment: ATI, description: TCR library, molecule: total RNA",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples derive from PBMCs of HIV-1-infected individuals undergoing analytical treatment interruption (ATI), with CITE-seq multi-omics split across ADT (protein_surface), GEX (RNA), and TCR (TCR_VDJ) libraries.",
+    "is_layer_split": true,
+    "biological_sample_count": 3,
+    "layer_split_ratio": "1:3"
+  }
+}

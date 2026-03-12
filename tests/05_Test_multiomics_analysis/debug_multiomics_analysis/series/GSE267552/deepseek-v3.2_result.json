@@ -1,0 +1,9 @@
+{
+  "model": "deepseek-v3.2",
+  "generated_at_utc": "2026-03-10T21:10:31.176866+00:00",
+  "series_id": "GSE267552",
+  "result": {
+    "series_id": "GSE267552",
+    "error": "LLM call failed for GSE267552: 'NoneType' object is not subscriptable"
+  }
+}

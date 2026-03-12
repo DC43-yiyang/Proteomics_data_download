@@ -1,0 +1,689 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE315668",
+  "result": {
+    "series_id": "GSE315668",
+    "disease_normalized": "Healthy",
+    "tissue_normalized": "PBMC",
+    "is_layer_split": true,
+    "biological_sample_count": 14,
+    "layer_split_ratio": "1:3",
+    "samples": [
+      {
+        "gsm_id": "GSM9434288",
+        "sample_title": "GEX,Bcells,timepoint1,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434289",
+        "sample_title": "GEX,Bcells,timepoint1,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434290",
+        "sample_title": "GEX,Bcells,timepoint2,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434291",
+        "sample_title": "GEX,Bcells,timepoint2,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434292",
+        "sample_title": "GEX,Bcells,timepoint3,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434293",
+        "sample_title": "GEX,Bcells,timepoint3,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434294",
+        "sample_title": "GEX,Bcells,timepoint4,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434295",
+        "sample_title": "GEX,Bcells,timepoint4,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434296",
+        "sample_title": "GEX,Bcells,timepoint5,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434297",
+        "sample_title": "GEX,Bcells,timepoint5,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434298",
+        "sample_title": "GEX,Bcells,timepoint6,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434299",
+        "sample_title": "GEX,Bcells,timepoint6,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434300",
+        "sample_title": "GEX,Bcells,timepoint7,tube1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434301",
+        "sample_title": "GEX,Bcells,timepoint7,tube2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434302",
+        "sample_title": "FB,Bcells,timepoint1,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434303",
+        "sample_title": "FB,Bcells,timepoint1,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434304",
+        "sample_title": "FB,Bcells,timepoint2,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434305",
+        "sample_title": "FB,Bcells,timepoint2,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434306",
+        "sample_title": "FB,Bcells,timepoint3,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434307",
+        "sample_title": "FB,Bcells,timepoint3,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434308",
+        "sample_title": "FB,Bcells,timepoint4,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434309",
+        "sample_title": "FB,Bcells,timepoint4,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434310",
+        "sample_title": "FB,Bcells,timepoint5,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434311",
+        "sample_title": "FB,Bcells,timepoint5,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434312",
+        "sample_title": "FB,Bcells,timepoint6,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434313",
+        "sample_title": "FB,Bcells,timepoint6,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434314",
+        "sample_title": "FB,Bcells,timepoint7,tube1",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434315",
+        "sample_title": "FB,Bcells,timepoint7,tube2",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434316",
+        "sample_title": "BCR,Bcells,timepoint1,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434317",
+        "sample_title": "BCR,Bcells,timepoint1,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434318",
+        "sample_title": "BCR,Bcells,timepoint2,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434319",
+        "sample_title": "BCR,Bcells,timepoint2,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434320",
+        "sample_title": "BCR,Bcells,timepoint3,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434321",
+        "sample_title": "BCR,Bcells,timepoint3,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434322",
+        "sample_title": "BCR,Bcells,timepoint4,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434323",
+        "sample_title": "BCR,Bcells,timepoint4,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434324",
+        "sample_title": "BCR,Bcells,timepoint5,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434325",
+        "sample_title": "BCR,Bcells,timepoint5,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434326",
+        "sample_title": "BCR,Bcells,timepoint6,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434327",
+        "sample_title": "BCR,Bcells,timepoint6,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434328",
+        "sample_title": "BCR,Bcells,timepoint7,tube1",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9434329",
+        "sample_title": "BCR,Bcells,timepoint7,tube2",
+        "measured_layers": [
+          "BCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and V(D)J",
+        "assay": "BCR V(D)J",
+        "disease": "Healthy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture",
+        "in_input": true
+      }
+    ],
+    "sample_count": 42,
+    "reasoning": "The series focuses on B cells from PBMCs in healthy, vaccinated individuals; the experiment overall is CITE-seq as per the overall_design, but the provided samples contain specifically the GEX (gene expression / RNA) fraction. | Samples represent ADT/protein feature barcode data from healthy individuals tracking B cells via CITE-seq over multiple timepoints. | Samples are from healthy PBMCs vaccinated with SARS-CoV-2 vaccine; titles and descriptions specify 'BCR', indicating these specific GSMs are the B-cell receptor V(D)J sequencing layer from a combined 10x 5' CITE-seq & V(D)J experiment."
+  }
+}

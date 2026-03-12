@@ -1,0 +1,161 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE267552",
+  "result": {
+    "series_id": "GSE267552",
+    "disease_normalized": "breast cancer / healthy",
+    "tissue_normalized": "breast, blood",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM8268683",
+        "sample_title": "RNA seq - lane A",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: RNA seq, description: GEX, overall_design: Breast tissue and blood sampled",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268684",
+        "sample_title": "RNA seq - lane B",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: RNA seq, description: GEX, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268685",
+        "sample_title": "RNA seq - lane C",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "scRNA-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: RNA seq, description: GEX, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268686",
+        "sample_title": "CITE seq - lane A",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: CITE seq, description: CITE-A, molecule: protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268687",
+        "sample_title": "CITE seq - lane B",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: CITE seq, description: CITE-B, molecule: protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268688",
+        "sample_title": "CITE seq - lane C",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "CITE-seq",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: CITE seq, description: CITE-C, molecule: protein",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268689",
+        "sample_title": "VDJ seq - lane A",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ seq, description: TCR-A, summary: CD3+ T cells sequenced",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268690",
+        "sample_title": "VDJ seq - lane B",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ seq, description: TCR-B, summary: CD3+ T cells sequenced",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8268691",
+        "sample_title": "VDJ seq - lane C",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J profiling",
+        "assay": "TCR V(D)J",
+        "disease": "breast cancer / healthy",
+        "tissue": "breast, blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ seq, description: TCR-C, summary: CD3+ T cells sequenced",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples are clearly separated by omic layer across lanes A, B, and C, with GEX identifying RNA, CITE representing surface protein, and TCR representing VDJ; metadata confirms breast and blood samples in breast cancer/healthy context from CD3+ cells.",
+    "is_layer_split": true,
+    "biological_sample_count": 9,
+    "layer_split_ratio": ""
+  }
+}

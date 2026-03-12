@@ -1,0 +1,60 @@
+# Multi-omics Annotation Results (per-series)
+
+- model: `gemini-3.1-pro-low`
+- generated_at_utc: `2026-03-10T23:31:58.467452+00:00`
+- input: `/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json`
+
+## Series Summary
+
+| series_id | disease | tissue | samples | bio_samples | split | layers_present | status |
+|---|---|---|---:|---:|---|---|---|
+| GSE315668 | Healthy | PBMC | 42 | 14 | 1:3 | BCR_VDJ, RNA, protein_surface | ok |
+
+---
+
+## Per-sample Annotations
+
+| series_id | gsm_id | sample_title | measured_layers | platform | experiment | assay | disease | tissue | tissue_subtype | confidence | evidence |
+|---|---|---|---|---|---|---|---|---|---|---:|---|
+| GSE315668 | GSM9434288 | GEX,Bcells,timepoint1,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434289 | GEX,Bcells,timepoint1,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434290 | GEX,Bcells,timepoint2,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434291 | GEX,Bcells,timepoint2,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434292 | GEX,Bcells,timepoint3,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434293 | GEX,Bcells,timepoint3,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434294 | GEX,Bcells,timepoint4,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434295 | GEX,Bcells,timepoint4,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434296 | GEX,Bcells,timepoint5,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434297 | GEX,Bcells,timepoint5,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434298 | GEX,Bcells,timepoint6,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434299 | GEX,Bcells,timepoint6,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434300 | GEX,Bcells,timepoint7,tube1 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434301 | GEX,Bcells,timepoint7,tube2 | RNA | 10x Chromium | CITE-seq | scRNA-seq | Healthy | PBMC |  | 0.95 | summary: healthy individuals, tissue: PBMC, title: GEX, description: 10X GEX data, overall_design: stained with CITE-seq antibodies |
+| GSE315668 | GSM9434302 | FB,Bcells,timepoint1,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434303 | FB,Bcells,timepoint1,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434304 | FB,Bcells,timepoint2,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434305 | FB,Bcells,timepoint2,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434306 | FB,Bcells,timepoint3,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434307 | FB,Bcells,timepoint3,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434308 | FB,Bcells,timepoint4,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434309 | FB,Bcells,timepoint4,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434310 | FB,Bcells,timepoint5,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434311 | FB,Bcells,timepoint5,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434312 | FB,Bcells,timepoint6,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434313 | FB,Bcells,timepoint6,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434314 | FB,Bcells,timepoint7,tube1 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434315 | FB,Bcells,timepoint7,tube2 | protein_surface | 10x Chromium | CITE-seq | CITE-seq | healthy | PBMC |  | 0.95 | tissue: PBMC, cell type: B cells, description: Feature barcode data (ADT) |
+| GSE315668 | GSM9434316 | BCR,Bcells,timepoint1,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434317 | BCR,Bcells,timepoint1,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434318 | BCR,Bcells,timepoint2,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434319 | BCR,Bcells,timepoint2,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434320 | BCR,Bcells,timepoint3,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434321 | BCR,Bcells,timepoint3,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434322 | BCR,Bcells,timepoint4,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434323 | BCR,Bcells,timepoint4,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434324 | BCR,Bcells,timepoint5,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434325 | BCR,Bcells,timepoint5,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434326 | BCR,Bcells,timepoint6,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434327 | BCR,Bcells,timepoint6,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434328 | BCR,Bcells,timepoint7,tube1 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |
+| GSE315668 | GSM9434329 | BCR,Bcells,timepoint7,tube2 | BCR_VDJ | 10x Chromium 5' | CITE-seq and V(D)J | BCR V(D)J | Healthy | PBMC |  | 0.95 | title specifies BCR; summary mentions PBMCs from healthy individuals; overall_design mentions CITE-seq antibodies and single gem (tube) suggesting 10x 5' chemistry for BCR capture |

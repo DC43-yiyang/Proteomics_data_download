@@ -1,0 +1,113 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE280852",
+  "result": {
+    "series_id": "GSE280852",
+    "disease_normalized": "cholangitis",
+    "tissue_normalized": "liver",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM8606565",
+        "sample_title": "human liver, ctrl, P1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606566",
+        "sample_title": "human liver, ctrl, P2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "RNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606567",
+        "sample_title": "human liver, ctrl, P3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606568",
+        "sample_title": "human liver, ctrl, P4",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606569",
+        "sample_title": "human liver, ctrl, P5",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8606570",
+        "sample_title": "human liver, ctrl, P6",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "scRNA-seq",
+        "experiment": "scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "cholangitis",
+        "tissue": "liver",
+        "tissue_subtype": "normal",
+        "confidence": 0.9,
+        "evidence": "summary: 'spatial and multimodal single-cell RNA sequencing atlas of the liver', overall_design: '6 human liver samples to capture pseudonormal liver cells'",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples are human liver controls from a study focused on cholangitis pathophysiology, with summary and design explicitly linking them to a cholangitis-relevant atlas.",
+    "is_layer_split": false,
+    "biological_sample_count": 6,
+    "layer_split_ratio": ""
+  }
+}

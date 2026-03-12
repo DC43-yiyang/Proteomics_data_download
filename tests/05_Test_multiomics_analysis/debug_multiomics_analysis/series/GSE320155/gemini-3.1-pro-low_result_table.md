@@ -1,0 +1,78 @@
+# Multi-omics Annotation Results (per-series)
+
+- model: `gemini-3.1-pro-low`
+- generated_at_utc: `2026-03-10T23:31:58.467452+00:00`
+- input: `/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json`
+
+## Series Summary
+
+| series_id | disease | tissue | samples | bio_samples | split | layers_present | status |
+|---|---|---|---:|---:|---|---|---|
+| GSE320155 | hepatocellular carcinoma (HCC) and liver metastasis | PBMC and liver | 60 | 20 | 1:3 | RNA, TCR_VDJ, protein_surface | ok |
+
+---
+
+## Per-sample Annotations
+
+| series_id | gsm_id | sample_title | measured_layers | platform | experiment | assay | disease | tissue | tissue_subtype | confidence | evidence |
+|---|---|---|---|---|---|---|---|---|---|---:|---|
+| GSE320155 | GSM9535795 | P061, Liver metastasis, PBMC and healthy liver, Treg, GEX | RNA | 10x Chromium 5' | CITE-seq and TCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, 10x TCR implies 5' chemistry |
+| GSE320155 | GSM9535796 | P061, Liver metastasis, PBMC and healthy liver, Treg, ADT | protein_surface | 10x Chromium 5' | CITE-seq and TCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type ADT |
+| GSE320155 | GSM9535797 | P061, Liver metastasis, PBMC and healthy liver, Treg, VDJ | TCR_VDJ | 10x Chromium 5' | CITE-seq and TCR-seq | TCR V(D)J | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type TCR |
+| GSE320155 | GSM9535798 | P061, Liver metastasis, PBMC and healthy liver, Tconv, GEX | RNA | 10x Chromium 5' | CITE-seq and TCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type mRNA |
+| GSE320155 | GSM9535799 | P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT | protein_surface | 10x Chromium 5' | CITE-seq and TCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type ADT |
+| GSE320155 | GSM9535800 | P061, Liver metastasis, PBMC and healthy liver, Tconv, VDJ | TCR_VDJ | 10x Chromium 5' | CITE-seq and TCR-seq | TCR V(D)J | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type TCR |
+| GSE320155 | GSM9535801 | P063, Liver metastasis, PBMC and healthy liver, Treg, GEX | RNA | 10x Chromium 5' | CITE-seq and TCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type mRNA |
+| GSE320155 | GSM9535802 | P063, Liver metastasis, PBMC and healthy liver, Treg, ADT | protein_surface | 10x Chromium 5' | CITE-seq and TCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type ADT |
+| GSE320155 | GSM9535803 | P063, Liver metastasis, PBMC and healthy liver, Treg, VDJ | TCR_VDJ | 10x Chromium 5' | CITE-seq and TCR-seq | TCR V(D)J | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type TCR |
+| GSE320155 | GSM9535804 | P063, Liver metastasis, PBMC and healthy liver, Tconv, GEX | RNA | 10x Chromium 5' | CITE-seq and TCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type mRNA |
+| GSE320155 | GSM9535805 | P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT | protein_surface | 10x Chromium 5' | CITE-seq and TCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type ADT |
+| GSE320155 | GSM9535806 | P063, Liver metastasis, PBMC and healthy liver, Tconv, VDJ | TCR_VDJ | 10x Chromium 5' | CITE-seq and TCR-seq | TCR V(D)J | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type TCR |
+| GSE320155 | GSM9535807 | P064, Liver metastasis, PBMC and healthy liver, Treg, GEX | RNA | 10x Chromium 5' | CITE-seq and TCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type mRNA |
+| GSE320155 | GSM9535808 | P064, Liver metastasis, PBMC and healthy liver, Treg, ADT | protein_surface | 10x Chromium 5' | CITE-seq and TCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type ADT |
+| GSE320155 | GSM9535809 | P064, Liver metastasis, PBMC and healthy liver, Treg, VDJ | TCR_VDJ | 10x Chromium 5' | CITE-seq and TCR-seq | TCR V(D)J | liver metastasis | PBMC and liver |  | 0.95 | title, summary, library_type TCR |
+| GSE320155 | GSM9535810 | P064, Liver metastasis, PBMC and healthy liver, Tconv, GEX | RNA | 10x Genomics | CITE-seq and scTCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535811 | P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq and scTCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535812 | P064, Liver metastasis, PBMC and healthy liver, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq and scTCR-seq | scTCR-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535813 | P066, Liver metastasis, PBMC and healthy liver, Treg, GEX | RNA | 10x Genomics | CITE-seq and scTCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535814 | P066, Liver metastasis, PBMC and healthy liver, Treg, ADT | protein_surface | 10x Genomics | CITE-seq and scTCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535815 | P066, Liver metastasis, PBMC and healthy liver, Treg, VDJ | TCR_VDJ | 10x Genomics | CITE-seq and scTCR-seq | scTCR-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535816 | P066, Liver metastasis, PBMC and healthy liver, Tconv, GEX | RNA | 10x Genomics | CITE-seq and scTCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535817 | P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq and scTCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535818 | P066, Liver metastasis, PBMC and healthy liver, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq and scTCR-seq | scTCR-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535819 | P080, Liver metastasis, PBMC and healthy liver, Treg, GEX | RNA | 10x Genomics | CITE-seq and scTCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535820 | P080, Liver metastasis, PBMC and healthy liver, Treg, ADT | protein_surface | 10x Genomics | CITE-seq and scTCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535821 | P080, Liver metastasis, PBMC and healthy liver, Treg, VDJ | TCR_VDJ | 10x Genomics | CITE-seq and scTCR-seq | scTCR-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535822 | P080, Liver metastasis, PBMC and healthy liver, Tconv, GEX | RNA | 10x Genomics | CITE-seq and scTCR-seq | scRNA-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535823 | P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq and scTCR-seq | CITE-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535824 | P080, Liver metastasis, PBMC and healthy liver, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq and scTCR-seq | scTCR-seq | liver metastasis | PBMC and liver |  | 0.95 | title, summary, characteristics |
+| GSE320155 | GSM9535825 | P069, HCC, tumour and background liver tissues, Treg, GEX | RNA | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | scRNA-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: GEX, library type: mRNA, source_name: HCC and background liver |
+| GSE320155 | GSM9535826 | P069, HCC, tumour and background liver tissues, Treg, ADT | protein_surface | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | CITE-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: ADT, library type: ADT, description: Antibody-derived oligonucleotide (ADT) |
+| GSE320155 | GSM9535827 | P069, HCC, tumour and background liver tissues, Treg, VDJ | TCR_VDJ | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | TCR V(D)J | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: VDJ, library type: TCR |
+| GSE320155 | GSM9535828 | P069, HCC, tumour and background liver tissues, Tconv, GEX | RNA | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | scRNA-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: GEX, library type: mRNA |
+| GSE320155 | GSM9535829 | P069, HCC, tumour and background liver tissues, Tconv, ADT | protein_surface | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | CITE-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: ADT, library type: ADT |
+| GSE320155 | GSM9535830 | P069, HCC, tumour and background liver tissues, Tconv, VDJ | TCR_VDJ | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | TCR V(D)J | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: VDJ, library type: TCR |
+| GSE320155 | GSM9535831 | P091, HCC, tumour and background liver tissues, Treg, GEX | RNA | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | scRNA-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: GEX, library type: mRNA, source_name: HCC and background liver |
+| GSE320155 | GSM9535832 | P091, HCC, tumour and background liver tissues, Treg, ADT | protein_surface | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | CITE-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: ADT, library type: ADT |
+| GSE320155 | GSM9535833 | P091, HCC, tumour and background liver tissues, Treg, VDJ | TCR_VDJ | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | TCR V(D)J | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: VDJ, library type: TCR |
+| GSE320155 | GSM9535834 | P091, HCC, tumour and background liver tissues, Tconv, GEX | RNA | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | scRNA-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: GEX, library type: mRNA |
+| GSE320155 | GSM9535835 | P091, HCC, tumour and background liver tissues, Tconv, ADT | protein_surface | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | CITE-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: ADT, library type: ADT |
+| GSE320155 | GSM9535836 | P091, HCC, tumour and background liver tissues, Tconv, VDJ | TCR_VDJ | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | TCR V(D)J | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: VDJ, library type: TCR |
+| GSE320155 | GSM9535837 | P097, HCC, tumour and background liver tissues, Treg, GEX | RNA | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | scRNA-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: GEX, library type: mRNA |
+| GSE320155 | GSM9535838 | P097, HCC, tumour and background liver tissues, Treg, ADT | protein_surface | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | CITE-seq | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: ADT, library type: ADT |
+| GSE320155 | GSM9535839 | P097, HCC, tumour and background liver tissues, Treg, VDJ | TCR_VDJ | 10x Genomics | scRNA-seq, CITE-seq, TCR V(D)J | TCR V(D)J | hepatocellular carcinoma (HCC) | liver |  | 0.95 | title: VDJ, library type: TCR |
+| GSE320155 | GSM9535840 | P097, HCC, tumour and background liver tissues, Tconv, GEX | RNA | 10x Genomics | CITE-seq | scRNA-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.90 | title: GEX, characteristics library type: mRNA |
+| GSE320155 | GSM9535841 | P097, HCC, tumour and background liver tissues, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq | CITE-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: ADT, characteristics library type: ADT |
+| GSE320155 | GSM9535842 | P097, HCC, tumour and background liver tissues, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq | TCR V(D)J | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: VDJ, characteristics library type: TCR, characteristics cell type: CD4+ T cells |
+| GSE320155 | GSM9535843 | P102, HCC, tumour and background liver tissues, Treg, GEX | RNA | 10x Genomics | CITE-seq | scRNA-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.90 | title: GEX, characteristics library type: mRNA |
+| GSE320155 | GSM9535844 | P102, HCC, tumour and background liver tissues, Treg, ADT | protein_surface | 10x Genomics | CITE-seq | CITE-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: ADT, characteristics library type: ADT |
+| GSE320155 | GSM9535845 | P102, HCC, tumour and background liver tissues, Treg, VDJ | TCR_VDJ | 10x Genomics | CITE-seq | TCR V(D)J | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells |
+| GSE320155 | GSM9535846 | P102, HCC, tumour and background liver tissues, Tconv, GEX | RNA | 10x Genomics | CITE-seq | scRNA-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.90 | title: GEX, characteristics library type: mRNA |
+| GSE320155 | GSM9535847 | P102, HCC, tumour and background liver tissues, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq | CITE-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: ADT, characteristics library type: ADT |
+| GSE320155 | GSM9535848 | P102, HCC, tumour and background liver tissues, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq | TCR V(D)J | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells |
+| GSE320155 | GSM9535849 | P108, HCC, tumour and background liver tissues, Treg, GEX | RNA | 10x Genomics | CITE-seq | scRNA-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.90 | title: GEX, characteristics library type: mRNA |
+| GSE320155 | GSM9535850 | P108, HCC, tumour and background liver tissues, Treg, ADT | protein_surface | 10x Genomics | CITE-seq | CITE-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: ADT, characteristics library type: ADT |
+| GSE320155 | GSM9535851 | P108, HCC, tumour and background liver tissues, Treg, VDJ | TCR_VDJ | 10x Genomics | CITE-seq | TCR V(D)J | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells |
+| GSE320155 | GSM9535852 | P108, HCC, tumour and background liver tissues, Tconv, GEX | RNA | 10x Genomics | CITE-seq | scRNA-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.90 | title: GEX, characteristics library type: mRNA |
+| GSE320155 | GSM9535853 | P108, HCC, tumour and background liver tissues, Tconv, ADT | protein_surface | 10x Genomics | CITE-seq | CITE-seq | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: ADT, characteristics library type: ADT |
+| GSE320155 | GSM9535854 | P108, HCC, tumour and background liver tissues, Tconv, VDJ | TCR_VDJ | 10x Genomics | CITE-seq | TCR V(D)J | hepatocellular carcinoma (HCC) | liver | tumor and background liver | 0.95 | title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells |

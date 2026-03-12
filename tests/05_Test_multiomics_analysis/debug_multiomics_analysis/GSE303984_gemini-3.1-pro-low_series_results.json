@@ -1,0 +1,1688 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T22:08:51.959942+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 1,
+  "parallel_mode": true,
+  "num_workers": 10,
+  "results": {
+    "GSE303984": {
+      "series_id": "GSE303984",
+      "disease_normalized": "COVID-19",
+      "tissue_normalized": "PBMC",
+      "is_layer_split": true,
+      "biological_sample_count": 34,
+      "layer_split_ratio": "",
+      "samples": [
+        {
+          "gsm_id": "GSM9140245",
+          "sample_title": "AIM T cells, VAC007, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140246",
+          "sample_title": "AIM T cells, VAC007, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140247",
+          "sample_title": "AIM T cells, VAC007, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140248",
+          "sample_title": "AIM T cells, VAC007, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140249",
+          "sample_title": "AIM T cells, VAC008, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140250",
+          "sample_title": "AIM T cells, VAC008, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140251",
+          "sample_title": "AIM T cells, VAC008, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140252",
+          "sample_title": "AIM T cells, VAC008, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140253",
+          "sample_title": "AIM T cells, VAC008, Channel 5, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140254",
+          "sample_title": "AIM T cells, VAC008, Channel 6, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140255",
+          "sample_title": "AIM T cells, VAC008, Channel 7, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140256",
+          "sample_title": "AIM T cells, VAC008, Channel 8, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140257",
+          "sample_title": "AIM T cells, VAC009, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140258",
+          "sample_title": "AIM T cells, VAC009, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140259",
+          "sample_title": "AIM T cells, VAC009, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140260",
+          "sample_title": "AIM T cells, VAC009, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140261",
+          "sample_title": "AIM T cells, VAC010, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, library_type, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140262",
+          "sample_title": "AIM T cells, VAC010, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140263",
+          "sample_title": "AIM T cells, VAC010, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140264",
+          "sample_title": "AIM T cells, VAC010, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140265",
+          "sample_title": "AIM T cells, VAC011, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140266",
+          "sample_title": "AIM T cells, VAC011, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140267",
+          "sample_title": "AIM T cells, VAC011, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140268",
+          "sample_title": "AIM T cells, VAC011, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140269",
+          "sample_title": "AIM T cells, VAC012, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140270",
+          "sample_title": "AIM T cells, VAC012, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140271",
+          "sample_title": "AIM T cells, VAC012, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140272",
+          "sample_title": "AIM T cells, VAC012, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "TCR V(D)J",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type TCR, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140273",
+          "sample_title": "AIM T cells, VAC007, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140274",
+          "sample_title": "AIM T cells, VAC007, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140275",
+          "sample_title": "AIM T cells, VAC007, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140276",
+          "sample_title": "AIM T cells, VAC007, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140277",
+          "sample_title": "AIM T cells, VAC008, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140278",
+          "sample_title": "AIM T cells, VAC008, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "sample title, library_type mRNA, overall_design, description 5' mRNA",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140279",
+          "sample_title": "AIM T cells, VAC008, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140280",
+          "sample_title": "AIM T cells, VAC008, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140281",
+          "sample_title": "AIM T cells, VAC008, Channel 5, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140282",
+          "sample_title": "AIM T cells, VAC008, Channel 6, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140283",
+          "sample_title": "AIM T cells, VAC008, Channel 7, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140284",
+          "sample_title": "AIM T cells, VAC008, Channel 8, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140285",
+          "sample_title": "AIM T cells, VAC009, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140286",
+          "sample_title": "AIM T cells, VAC009, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140287",
+          "sample_title": "AIM T cells, VAC009, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140288",
+          "sample_title": "AIM T cells, VAC009, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140289",
+          "sample_title": "AIM T cells, VAC010, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140290",
+          "sample_title": "AIM T cells, VAC010, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140291",
+          "sample_title": "AIM T cells, VAC010, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140292",
+          "sample_title": "AIM T cells, VAC010, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140293",
+          "sample_title": "AIM T cells, VAC011, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140294",
+          "sample_title": "AIM T cells, VAC011, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140295",
+          "sample_title": "AIM T cells, VAC011, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "overall_design explicitly states CITE-seq, library_source is transcriptomic, description confirms 5' mRNA library",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140296",
+          "sample_title": "AIM T cells, VAC011, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: GEX, description: 5' mRNA library, overall_design: CITE-seq",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140297",
+          "sample_title": "AIM T cells, VAC012, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: GEX, description: 5' mRNA library, overall_design: CITE-seq",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140298",
+          "sample_title": "AIM T cells, VAC012, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: GEX, description: 5' mRNA library, overall_design: CITE-seq",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140299",
+          "sample_title": "AIM T cells, VAC012, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: GEX, description: 5' mRNA library, overall_design: CITE-seq",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140300",
+          "sample_title": "AIM T cells, VAC012, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: GEX, description: 5' mRNA library, overall_design: CITE-seq",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140301",
+          "sample_title": "AIM T cells, VAC007, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140302",
+          "sample_title": "AIM T cells, VAC007, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140303",
+          "sample_title": "AIM T cells, VAC007, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140304",
+          "sample_title": "AIM T cells, VAC007, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140305",
+          "sample_title": "AIM T cells, VAC008, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140306",
+          "sample_title": "AIM T cells, VAC008, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140307",
+          "sample_title": "AIM T cells, VAC008, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140308",
+          "sample_title": "AIM T cells, VAC008, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140309",
+          "sample_title": "AIM T cells, VAC008, Channel 5, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140310",
+          "sample_title": "AIM T cells, VAC008, Channel 6, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140311",
+          "sample_title": "AIM T cells, VAC008, Channel 7, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140312",
+          "sample_title": "AIM T cells, VAC008, Channel 8, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title: ADT, description: Antibody/Hashtag Derived Tag reads, TotalSeq-C antibodies",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140313",
+          "sample_title": "AIM T cells, VAC009, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140314",
+          "sample_title": "AIM T cells, VAC009, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140315",
+          "sample_title": "AIM T cells, VAC009, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140316",
+          "sample_title": "AIM T cells, VAC009, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140317",
+          "sample_title": "AIM T cells, VAC010, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140318",
+          "sample_title": "AIM T cells, VAC010, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140319",
+          "sample_title": "AIM T cells, VAC010, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140320",
+          "sample_title": "AIM T cells, VAC010, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140321",
+          "sample_title": "AIM T cells, VAC011, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140322",
+          "sample_title": "AIM T cells, VAC011, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140323",
+          "sample_title": "AIM T cells, VAC011, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140324",
+          "sample_title": "AIM T cells, VAC011, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140325",
+          "sample_title": "AIM T cells, VAC012, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140326",
+          "sample_title": "AIM T cells, VAC012, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140327",
+          "sample_title": "AIM T cells, VAC012, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140328",
+          "sample_title": "AIM T cells, VAC012, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics:adt, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140329",
+          "sample_title": "CTVlo T cells, VAC013, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, overall_design",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140330",
+          "sample_title": "CTVlo T cells, VAC013, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140331",
+          "sample_title": "CTVlo T cells, VAC014, Channel 3, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140332",
+          "sample_title": "CTVlo T cells, VAC014, Channel 4, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140333",
+          "sample_title": "CTVlo T cells, VAC015, Channel 1, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140334",
+          "sample_title": "CTVlo T cells, VAC015, Channel 2, GEX",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140335",
+          "sample_title": "CTVlo T cells, VAC013, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140336",
+          "sample_title": "CTVlo T cells, VAC013, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140337",
+          "sample_title": "CTVlo T cells, VAC014, Channel 3, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140338",
+          "sample_title": "CTVlo T cells, VAC014, Channel 4, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140339",
+          "sample_title": "CTVlo T cells, VAC015, Channel 1, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140340",
+          "sample_title": "CTVlo T cells, VAC015, Channel 2, TCR",
+          "measured_layers": [
+            "TCR_VDJ"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "scTCR-seq",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140341",
+          "sample_title": "CTVlo T cells, VAC013, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140342",
+          "sample_title": "CTVlo T cells, VAC013, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140343",
+          "sample_title": "CTVlo T cells, VAC014, Channel 3, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140344",
+          "sample_title": "CTVlo T cells, VAC014, Channel 4, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140345",
+          "sample_title": "CTVlo T cells, VAC015, Channel 1, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9140346",
+          "sample_title": "CTVlo T cells, VAC015, Channel 2, ADT",
+          "measured_layers": [
+            "protein_surface",
+            "cell_label"
+          ],
+          "platform": "10x Chromium 5'",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq and Cell Hashing",
+          "disease": "COVID-19",
+          "tissue": "PBMC",
+          "tissue_subtype": "",
+          "confidence": 1.0,
+          "evidence": "title, library_type, description, characteristics",
+          "in_input": true
+        }
+      ],
+      "sample_count": 102,
+      "reasoning": "The experiment is CITE-seq on PBMCs targeting T cell response to COVID-19 infection and vaccination, using a 10x 5' assay to read TCR, GEX, and ADT layers separated by GSM. | The samples belong to a CITE-seq experiment studying PBMC responses to COVID-19 vaccination/infection using 10x 5' chemistry, with individual GSMs manually separated into TCR and GEX layers as indicated by titles and library types. | Samples are unambiguously part of a split CITE-seq experiment based on sample titles ending in omic layer ('GEX') and the layer split hint grouping matching biological specimens. | The experiment utilizes CITE-seq (GEX, ADT surface proteins, and multiplexing barcodes) on PBMC collected from COVID-19 infected and previously vaccinated donors, where files are uploaded as split layers per matching biological sample. | Samples are from PBMC of individuals monitored for COVID-19 immune responses, utilizing split omics for 5' GEX and ADT/Cell Hashing libraries across physical cell pools (channels) representing mixed patient samples. | The data originates from a 10x Chromium 5' CITE-seq and scTCR-seq analysis of PBMCs from COVID-19 vaccinated/infected individuals, and the specific layers (GEX, TCR, ADT/Hashing) for each biological sample channel are explicitly split into independent GSM records."
+    }
+  }
+}

@@ -94,6 +94,17 @@ def _run_search(args):
         max_results=args.max_results,
     )
 
+    # Database setup (optional)
+    db = None
+    repo = None
+    run_id = None
+    if config.db_path:
+        from geo_agent.db import Database, DatabaseRepository
+        db = Database(config.db_path)
+        db.open()
+        repo = DatabaseRepository(db)
+        run_id = repo.create_run(query)
+
     agent = Agent()
     agent.register(GEOSearchSkill(client))
     agent.register(ReportSkill(output_file=args.report))
@@ -110,11 +121,18 @@ def _run_search(args):
         agent.register(FilterSkill())
         agent.register(FamilySoftStructurerSkill(soft_dir=args.family_soft_dir))
 
-    context = PipelineContext(query=query)
+    context = PipelineContext(query=query, db=repo, pipeline_run_id=run_id)
     if library_types:
         context.target_library_types = [t.upper() for t in library_types]
 
-    context = agent.run(context)
+    try:
+        context = agent.run(context)
+    finally:
+        if repo and run_id is not None:
+            status = "failed" if context.errors else "completed"
+            repo.finish_run(run_id, context.total_found, status)
+        if db:
+            db.close()
 
     # Print the Markdown report to stdout
     print(context.report or "No report generated.")

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T21:01:35.830723+00:00",
+  "generated_at": "2026-03-10T23:29:20.424739+00:00",
   "count": 26,
   "series": [
     {
@@ -20,11 +20,11 @@
     },
     {
       "accession": "GSE269123",
-      "title": "scRNA profiling of early postnatal thymus derived VÎ´1+ gamma delta T cells."
+      "title": "scRNA profiling of early postnatal thymus derived Vδ1+ gamma delta T cells."
     },
     {
       "accession": "GSE280852",
-      "title": "An immunobiliary single-cell atlas resolves crosstalk between type 2 conventional dendritic cells and Î³Î´ T cells in cholangitis [RNA-seq]"
+      "title": "An immunobiliary single-cell atlas resolves crosstalk between type 2 conventional dendritic cells and γδ T cells in cholangitis [RNA-seq]"
     },
     {
       "accession": "GSE283984",
@@ -92,7 +92,7 @@
     },
     {
       "accession": "GSE316069",
-      "title": "Single-cell Profiling Reveals Diverse Î³Î´ T Cell Subsets in Ulcerative Colitis"
+      "title": "Single-cell Profiling Reveals Diverse γδ T Cell Subsets in Ulcerative Colitis"
     },
     {
       "accession": "GSE316096",
@@ -104,7 +104,7 @@
     },
     {
       "accession": "GSE320155",
-      "title": "scRNAâseq of human intraâhepatic CD4âº T cells reveals unique Treg transcriptional identities and two steadyâstate tissueâadaptation programs across healthy and HCC liver samples"
+      "title": "scRNA‑seq of human intra‑hepatic CD4⁺ T cells reveals unique Treg transcriptional identities and two steady‑state tissue‑adaptation programs across healthy and HCC liver samples"
     }
   ]
 }

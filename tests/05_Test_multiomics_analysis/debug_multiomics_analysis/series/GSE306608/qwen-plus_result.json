@@ -1,0 +1,113 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE306608",
+  "result": {
+    "series_id": "GSE306608",
+    "disease_normalized": "clear cell renal cell carcinoma (ccRCC)",
+    "tissue_normalized": "kidney",
+    "sample_count": 6,
+    "samples": [
+      {
+        "gsm_id": "GSM9204556",
+        "sample_title": "CITE-seq, K5 PDX, GEX",
+        "measured_layers": [
+          "other"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "tumor",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "disease state: ccRCC, tissue: Kidney PDX, library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204557",
+        "sample_title": "CITE-seq, K5 PDX, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "library type: ADT, molecule: protein, adt antibodies listed, same bio-sample as GSM9204556",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204558",
+        "sample_title": "CITE-seq, K5 PDX, HTO",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "library type: HTO, molecule: protein, hto: Hashtag 1, same bio-sample as GSM9204556",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204559",
+        "sample_title": "CITE-seq, K7 PDX, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "disease state: ccRCC, tissue: Kidney PDX, library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9204560",
+        "sample_title": "CITE-seq, K7 PDX, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "library type: ADT, molecule: protein, adt antibodies listed, same bio-sample as GSM9204559",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9201",
+        "sample_title": "CITE-seq, K7 PDX, HTO",
+        "measured_layers": [
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "HTO",
+        "disease": "clear cell renal cell carcinoma (ccRCC)",
+        "tissue": "kidney",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "library type: HTO: protein, hto: Hashtag 1, same bio-sample as GSM9204559",
+        "in_input": false
+      }
+    ],
+    "reasoning": "Two biological specimens (K5 and K7 PDX tumors) each split into three GSMs (GEX, ADT, HTO), confirmed by matching library names (SH-2852_11_1 and SH-2852_12_2) and consistent metadata.",
+    "is_layer_split": true,
+    "biological_sample_count": 2,
+    "layer_split_ratio": "1:3"
+  }
+}

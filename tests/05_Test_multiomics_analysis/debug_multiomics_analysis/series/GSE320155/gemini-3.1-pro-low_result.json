@@ -1,0 +1,977 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE320155",
+  "result": {
+    "series_id": "GSE320155",
+    "disease_normalized": "hepatocellular carcinoma (HCC) and liver metastasis",
+    "tissue_normalized": "PBMC and liver",
+    "is_layer_split": true,
+    "biological_sample_count": 20,
+    "layer_split_ratio": "1:3",
+    "samples": [
+      {
+        "gsm_id": "GSM9535795",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, 10x TCR implies 5' chemistry",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535796",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535797",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535798",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535799",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535800",
+        "sample_title": "P061, Liver metastasis, PBMC and healthy liver, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535801",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535802",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535803",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535804",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535805",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535806",
+        "sample_title": "P063, Liver metastasis, PBMC and healthy liver, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535807",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535808",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535809",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR-seq",
+        "assay": "TCR V(D)J",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, library_type TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535810",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535811",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535812",
+        "sample_title": "P064, Liver metastasis, PBMC and healthy liver, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scTCR-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535813",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535814",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535815",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scTCR-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535816",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535817",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535818",
+        "sample_title": "P066, Liver metastasis, PBMC and healthy liver, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scTCR-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535819",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535820",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535821",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scTCR-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535822",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scRNA-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535823",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "CITE-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535824",
+        "sample_title": "P080, Liver metastasis, PBMC and healthy liver, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq and scTCR-seq",
+        "assay": "scTCR-seq",
+        "disease": "liver metastasis",
+        "tissue": "PBMC and liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, summary, characteristics",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535825",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: GEX, library type: mRNA, source_name: HCC and background liver",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535826",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: ADT, library type: ADT, description: Antibody-derived oligonucleotide (ADT)",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535827",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, library type: TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535828",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: GEX, library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535829",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: ADT, library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535830",
+        "sample_title": "P069, HCC, tumour and background liver tissues, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, library type: TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535831",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: GEX, library type: mRNA, source_name: HCC and background liver",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535832",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: ADT, library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535833",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, library type: TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535834",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: GEX, library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535835",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: ADT, library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535836",
+        "sample_title": "P091, HCC, tumour and background liver tissues, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, library type: TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535837",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: GEX, library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535838",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: ADT, library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535839",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "scRNA-seq, CITE-seq, TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, library type: TCR",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535840",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.9,
+        "evidence": "title: GEX, characteristics library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535841",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: ADT, characteristics library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535842",
+        "sample_title": "P097, HCC, tumour and background liver tissues, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, characteristics library type: TCR, characteristics cell type: CD4+ T cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535843",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.9,
+        "evidence": "title: GEX, characteristics library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535844",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: ADT, characteristics library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535845",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535846",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.9,
+        "evidence": "title: GEX, characteristics library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535847",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: ADT, characteristics library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535848",
+        "sample_title": "P102, HCC, tumour and background liver tissues, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535849",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Treg, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.9,
+        "evidence": "title: GEX, characteristics library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535850",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Treg, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: ADT, characteristics library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535851",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Treg, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535852",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Tconv, GEX",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.9,
+        "evidence": "title: GEX, characteristics library type: mRNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535853",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Tconv, ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: ADT, characteristics library type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9535854",
+        "sample_title": "P108, HCC, tumour and background liver tissues, Tconv, VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "CITE-seq",
+        "assay": "TCR V(D)J",
+        "disease": "hepatocellular carcinoma (HCC)",
+        "tissue": "liver",
+        "tissue_subtype": "tumor and background liver",
+        "confidence": 0.95,
+        "evidence": "title: VDJ, characteristics library type: TCR, cell type: CD4+ T cells",
+        "in_input": true
+      }
+    ],
+    "sample_count": 60,
+    "reasoning": "Samples were generated using 10x Genomics (assumed 5' chemistry due to paired TCR profiling). Titles clearly separate individual libraries (GEX, ADT, VDJ) representing gene expression, surface protein (CITE-seq), and TCR repertoire for CD4+ T cell subsets from liver metastasis patients. | Authors uploaded GEX, ADT, and VDJ layers as distinct GEO samples per biological sample, splitting them by molecule and library type. | The series describes single-cell profiling (scRNA-seq, CITE-seq, TCR-seq) of CD4+ T cells from HCC and background liver using the 10x Genomics platform, with samples clearly split into GEX, ADT, and VDJ libraries. | Samples were inferred as a layer-split 'CITE-seq' experiment capturing gene expression (scRNA-seq), surface-protein representation (CITE-seq/ADT), and TCR specificities (VDJ) on CD4+ Tconv/Treg cells isolated from human liver with hepatocellular carcinoma and paired background tissues on the 10x Genomics platform."
+  }
+}

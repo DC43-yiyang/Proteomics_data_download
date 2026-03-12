@@ -1,0 +1,209 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE287976",
+  "result": {
+    "series_id": "GSE287976",
+    "disease_normalized": "normal",
+    "tissue_normalized": "peripheral blood",
+    "sample_count": 12,
+    "samples": [
+      {
+        "gsm_id": "GSM8756665",
+        "sample_title": "Donor A pbmcs Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "sorted low-density leukocytes basophils",
+        "confidence": 0.95,
+        "evidence": "summary: basophil profiling, characteristics: peripheral blood, cell type: Sorted low-density leukocytes plus basophils",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756666",
+        "sample_title": "Donor A pbmcs Surface Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "sorted low-density leukocytes plus basophils",
+        "confidence": 0.95,
+        "evidence": "title: Surface Protein, library_type: ADT, characteristics: same dataset number and cell type as GSM8756665",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756667",
+        "sample_title": "Donor B sorted basophils Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "sorted basophils",
+        "confidence": 0.95,
+        "evidence": "characteristics: peripheral blood, cell type: Sorted basophils, dataset number: 2",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756668",
+        "sample_title": "Donor B sorted basophils Surface Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "sorted basophils",
+        "confidence": 0.95,
+        "evidence": "same dataset number and cell type as GSM8756667, library_type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756669",
+        "sample_title": "Donor C MACS basophils Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "characteristics: peripheral blood, cell type: CCR3 enriched low-density leukocytes, dataset number: 3",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756670",
+        "sample_title": "Donor C MACS basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITEq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "same dataset number and cell type as GSM8756669, library_type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756671",
+        "sample_title": "Donor D1 MACS basophils_Gene_Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "dataset number: 3, cell type: CCR3 enriched low-density leukocytes",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756672",
+        "sample_title": "Donor D1 MACS basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "same dataset number and cell type as GSM8756671, library_type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756673",
+        "sample_title": "Donor D2 MACS basophils_Gene_Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "dataset number: 3, cell type: CCR3 enriched low-density leukocytes",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756674",
+        "sample_title": "Donor_D2_MACS_basophils_Surface_Protein",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.95,
+        "evidence": "same dataset number and cell type as GSM8756673, library_type: ADT",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756675",
+        "sample_title": "DonorC_MACS_basophils_Gene_Expression_Long_read",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLT-seq (10x Genomics)",
+        "experiment": "long-read scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.9,
+        "evidence": "description: FLT-seq from 10X genomics cDNA, same donor and cell type as GSM8756669/GSM8756670, dataset number: 4",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8756676",
+        "sample_title": "DonorD1_MACS_basophils_Gene_Expression_Long_read",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "FLT-seq (10x Genomics)",
+        "experiment": "long-read scRNA-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "peripheral blood",
+        "tissue_subtype": "CCR3 enriched low-density leukocytes",
+        "confidence": 0.9,
+        "evidence": "description: FLT-seq from 10X genomics cDNA, same donor and cell type as GSM8756671/GSM8756672, dataset number: 4",
+        "in_input": true
+      }
+    ],
+    "reasoning": "All samples derive from healthy human peripheral blood basophils or basophil-enriched fractions, with paired RNA and ADT libraries per donor indicating layer-split design; long-read samples are additional RNA-only replicates.",
+    "is_layer_split": true,
+    "biological_sample_count": 6,
+    "layer_split_ratio": "1:2"
+  }
+}

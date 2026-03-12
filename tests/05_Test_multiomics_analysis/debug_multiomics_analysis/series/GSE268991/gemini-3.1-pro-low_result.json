@@ -1,0 +1,919 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE268991",
+  "result": {
+    "series_id": "GSE268991",
+    "disease_normalized": "colorectal cancer",
+    "tissue_normalized": "colon",
+    "is_layer_split": true,
+    "biological_sample_count": 14,
+    "layer_split_ratio": "1:4",
+    "samples": [
+      {
+        "gsm_id": "GSM8304227",
+        "sample_title": "Normal, CRC 78, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:disease state, tissue, tissue type, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304228",
+        "sample_title": "Tumor, CRC 78, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:disease state, tissue, tissue type, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304229",
+        "sample_title": "Normal, CRC 81, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:disease state, tissue, tissue type, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304230",
+        "sample_title": "Tumor, CRC 81, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:disease state, tissue, tissue type, library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304231",
+        "sample_title": "Normal, CRC 78, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:adt, library type, tissue type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304232",
+        "sample_title": "Tumor, CRC 78, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:adt, library type, tissue type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304233",
+        "sample_title": "Normal, CRC 81, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:adt, library type, tissue type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304234",
+        "sample_title": "Tumor, CRC 81, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:adt, library type, tissue type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304235",
+        "sample_title": "Normal, CRC 78, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304236",
+        "sample_title": "Tumor, CRC 78, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304237",
+        "sample_title": "Normal, CRC 81, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304238",
+        "sample_title": "Tumor, CRC 81, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304239",
+        "sample_title": "Normal, CRC 78, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304240",
+        "sample_title": "Tumor, CRC 78, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics:library type, tissue type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304241",
+        "sample_title": "Normal, CRC 81, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304242",
+        "sample_title": "Tumor, CRC 81, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304243",
+        "sample_title": "Normal, CRC 77, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304244",
+        "sample_title": "Tumor, CRC 77, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304245",
+        "sample_title": "Normal, CRC 79, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304246",
+        "sample_title": "Tumor, CRC 79, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304247",
+        "sample_title": "Normal, CRC 77, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304248",
+        "sample_title": "Tumor, CRC 77, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304249",
+        "sample_title": "Normal, CRC 79, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304250",
+        "sample_title": "Tumor, CRC 79, Surface",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304251",
+        "sample_title": "Normal, CRC 77, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304252",
+        "sample_title": "Tumor, CRC 77, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304253",
+        "sample_title": "Normal, CRC 79, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304254",
+        "sample_title": "Tumor, CRC 79, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 0.95,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304255",
+        "sample_title": "Normal, CRC 77, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304256",
+        "sample_title": "Tumor, CRC 77, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304257",
+        "sample_title": "Normal, CRC 79, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304258",
+        "sample_title": "Tumor, CRC 79, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304259",
+        "sample_title": "Normal, CRC 91, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304260",
+        "sample_title": "Tumor, CRC 91, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304261",
+        "sample_title": "Normal, CRC 85, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304262",
+        "sample_title": "Tumor, CRC 85, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304263",
+        "sample_title": "Normal, CRC 86, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304264",
+        "sample_title": "Tumor, CRC 86, Gex",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304265",
+        "sample_title": "Normal, CRC 91, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title, adt list",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304266",
+        "sample_title": "Tumor, CRC 91, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title, adt list",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304267",
+        "sample_title": "Normal, CRC 85, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title, adt list",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304268",
+        "sample_title": "Tumor, CRC 85, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "10x 5' CITE-seq and V(D)J",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "characteristics, library type, title, adt list",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304269",
+        "sample_title": "Normal, CRC 86, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type, characteristics:adt",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304270",
+        "sample_title": "Tumor, CRC 86, Surface",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "CITE-seq",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type, characteristics:adt",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304271",
+        "sample_title": "Normal, CRC 91, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304272",
+        "sample_title": "Tumor, CRC 91, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304273",
+        "sample_title": "Normal, CRC 85, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304274",
+        "sample_title": "Tumor, CRC 85, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304275",
+        "sample_title": "Normal, CRC 86, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304276",
+        "sample_title": "Tumor, CRC 86, gd TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304277",
+        "sample_title": "Normal, CRC 91, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304278",
+        "sample_title": "Tumor, CRC 91, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304279",
+        "sample_title": "Normal, CRC 85, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304280",
+        "sample_title": "Tumor, CRC 85, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304281",
+        "sample_title": "Normal, CRC 86, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "adjacent normal",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM8304282",
+        "sample_title": "Tumor, CRC 86, ab TCR",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Genomics",
+        "experiment": "10x Genomics 5' Single Cell Immune Profiling",
+        "assay": "TCR V(D)J",
+        "disease": "colorectal cancer (CRC)",
+        "tissue": "colon",
+        "tissue_subtype": "tumor",
+        "confidence": 1.0,
+        "evidence": "title, characteristics:tissue type, characteristics:library type",
+        "in_input": true
+      }
+    ],
+    "sample_count": 56,
+    "reasoning": "Extracted colon tissue, tumor/adjacent normal subtypes, and CRC (expanded to colorectal cancer); omic layers (RNA, protein_surface, TCR_VDJ) match respective assays scRNA-seq, CITE-seq, and TCR V(D)J, all run on the 10x Chromium 5' transcriptomics pipeline as evident in sample library types and overall design. | The normal and tumor colon tissues extracted from colorectal cancer patients were flow-sorted for T cells and sequenced using 10x 5' multi-omics, resulting in layer-split GSMs for 5' gene expression, CITE-seq surface proteins, and both ab/gd TCR V(D)J. | Disease and tissue normalized from series overall design and sample characteristics; Omics layers determined by 'library type' differentiating between 5'GEX (RNA), Surface (protein_surface, including Hashtag for cell_label), and VDJ - ab TCR (TCR_VDJ). | Disease (CRC) and tissue (colon) are explicitly stated in sample characteristics and series descriptions; subtypes are divided into tumor and adjacent normal; samples are clearly split by omic layers with library types defining CITE-seq (Surface) + Hashtag, and TCR V(D)J (ab and gd)."
+  }
+}

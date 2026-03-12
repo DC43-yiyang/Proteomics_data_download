@@ -1,0 +1,114 @@
+{
+  "model": "deepseek-v3.2",
+  "generated_at_utc": "2026-03-10T21:10:31.176866+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 26,
+  "parallel_mode": true,
+  "num_workers": 2,
+  "results": {
+    "GSE207438": {
+      "series_id": "GSE207438",
+      "error": "LLM call failed for GSE207438: 'NoneType' object is not subscriptable"
+    },
+    "GSE266455": {
+      "series_id": "GSE266455",
+      "error": "LLM call failed for GSE266455: 'NoneType' object is not subscriptable"
+    },
+    "GSE267552": {
+      "series_id": "GSE267552",
+      "error": "LLM call failed for GSE267552: 'NoneType' object is not subscriptable"
+    },
+    "GSE268991": {
+      "series_id": "GSE268991",
+      "error": "LLM call failed for GSE268991: 'NoneType' object is not subscriptable"
+    },
+    "GSE269123": {
+      "series_id": "GSE269123",
+      "error": "LLM call failed for GSE269123: 'NoneType' object is not subscriptable"
+    },
+    "GSE280852": {
+      "series_id": "GSE280852",
+      "error": "LLM call failed for GSE280852: 'NoneType' object is not subscriptable"
+    },
+    "GSE283984": {
+      "series_id": "GSE283984",
+      "error": "LLM call failed for GSE283984: 'NoneType' object is not subscriptable"
+    },
+    "GSE287976": {
+      "series_id": "GSE287976",
+      "error": "LLM call failed for GSE287976: 'NoneType' object is not subscriptable"
+    },
+    "GSE291290": {
+      "series_id": "GSE291290",
+      "error": "LLM call failed for GSE291290: 'NoneType' object is not subscriptable"
+    },
+    "GSE294427": {
+      "series_id": "GSE294427",
+      "error": "LLM call failed for GSE294427: 'NoneType' object is not subscriptable"
+    },
+    "GSE296447": {
+      "series_id": "GSE296447",
+      "error": "LLM call failed for GSE296447: 'NoneType' object is not subscriptable"
+    },
+    "GSE299415": {
+      "series_id": "GSE299415",
+      "error": "LLM call failed for GSE299415: 'NoneType' object is not subscriptable"
+    },
+    "GSE299416": {
+      "series_id": "GSE299416",
+      "error": "LLM call failed for GSE299416: 'NoneType' object is not subscriptable"
+    },
+    "GSE303197": {
+      "series_id": "GSE303197",
+      "error": "LLM call failed for GSE303197: 'NoneType' object is not subscriptable"
+    },
+    "GSE303984": {
+      "series_id": "GSE303984",
+      "error": "LLM call failed for GSE303984: 'NoneType' object is not subscriptable"
+    },
+    "GSE305370": {
+      "series_id": "GSE305370",
+      "error": "LLM call failed for GSE305370: 'NoneType' object is not subscriptable"
+    },
+    "GSE306022": {
+      "series_id": "GSE306022",
+      "error": "LLM call failed for GSE306022: 'NoneType' object is not subscriptable"
+    },
+    "GSE306608": {
+      "series_id": "GSE306608",
+      "error": "LLM call failed for GSE306608: 'NoneType' object is not subscriptable"
+    },
+    "GSE309625": {
+      "series_id": "GSE309625",
+      "error": "LLM call failed for GSE309625: 'NoneType' object is not subscriptable"
+    },
+    "GSE313153": {
+      "series_id": "GSE313153",
+      "error": "LLM call failed for GSE313153: 'NoneType' object is not subscriptable"
+    },
+    "GSE313894": {
+      "series_id": "GSE313894",
+      "error": "LLM call failed for GSE313894: 'NoneType' object is not subscriptable"
+    },
+    "GSE315668": {
+      "series_id": "GSE315668",
+      "error": "LLM call failed for GSE315668: 'NoneType' object is not subscriptable"
+    },
+    "GSE316069": {
+      "series_id": "GSE316069",
+      "error": "LLM call failed for GSE316069: 'NoneType' object is not subscriptable"
+    },
+    "GSE316096": {
+      "series_id": "GSE316096",
+      "error": "LLM call failed for GSE316096: 'NoneType' object is not subscriptable"
+    },
+    "GSE316782": {
+      "series_id": "GSE316782",
+      "error": "LLM call failed for GSE316782: 'NoneType' object is not subscriptable"
+    },
+    "GSE320155": {
+      "series_id": "GSE320155",
+      "error": "LLM call failed for GSE320155: 'NoneType' object is not subscriptable"
+    }
+  }
+}

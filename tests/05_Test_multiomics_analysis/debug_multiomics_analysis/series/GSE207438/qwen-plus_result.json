@@ -1,0 +1,85 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE207438",
+  "result": {
+    "series_id": "GSE207438",
+    "disease_normalized": "ANCA-associated glomerulonephritis (ANCA-GN)",
+    "tissue_normalized": "kidney and blood",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM6287633",
+        "sample_title": "Patient1, scRNAseq",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary, overall_design, characteristics.disease, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287634",
+        "sample_title": "Patient1, CITE-seq and Hashtag",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics.molecule subtype, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287635",
+        "sample_title": "Patient2, scRNAseq",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "summary, overall_design, characteristics.disease, description",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287636",
+        "sample_title": "Patient2, CITE-seq and Hashtag",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "ANCA-associated glomerulonephritis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design, characteristics.molecule subtype, description",
+        "in_input": true
+      }
+    ],
+    "reasoning": "The series combines scRNA-seq (GEX), CITE-seq (ADT), and hashtag (HTO) per patient, with paired GSMs per biological sample indicating layer-split design.",
+    "is_layer_split": true,
+    "biological_sample_count": 2,
+    "layer_split_ratio": "1:2"
+  }
+}

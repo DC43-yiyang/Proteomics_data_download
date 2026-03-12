@@ -75,11 +75,21 @@ def build_sample_input(series_data: dict[str, Any], sample: dict[str, Any]) -> d
     if desc:
         entry["description"] = desc[:200]
 
-    return {
+    result: dict[str, Any] = {
         "series_id":    series_data.get("series_id", ""),
         "sample_count": series_data.get("sample_count", 0),
-        "sample":       entry,
     }
+
+    # Series-level context for disease/tissue inference
+    summary = series_data.get("summary", "")
+    if summary:
+        result["summary"] = summary[:500]
+    overall_design = series_data.get("overall_design", "")
+    if overall_design:
+        result["overall_design"] = overall_design[:500]
+
+    result["sample"] = entry
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -267,6 +277,15 @@ class MultiomicsSampleAnalyzerSkill(Skill):
             logger.warning("No family_soft_structured data to annotate")
             return context
 
+        # Build lookup for series-level context (summary, overall_design)
+        # from GEODataset objects — family_soft_structured doesn't have these.
+        series_context: dict[str, dict[str, str]] = {}
+        for ds in context.datasets:
+            series_context[ds.accession] = {
+                "summary": ds.summary or "",
+                "overall_design": ds.overall_design or "",
+            }
+
         series_ids = (context.target_series_ids
                       if context.target_series_ids
                       else sorted(context.family_soft_structured.keys()))
@@ -278,12 +297,15 @@ class MultiomicsSampleAnalyzerSkill(Skill):
                 context.errors.append(f"{series_id}: missing structured series data")
                 continue
 
+            # Inject series-level context for disease/tissue inference
+            enriched = {**series_data, **series_context.get(series_id, {})}
+
             sample_results: list[dict[str, Any]] = []
             for sample in series_data.get("samples", []):
                 gsm_id = sample.get("gsm_id", "unknown")
                 try:
                     sample_results.append(annotate_sample(
-                        series_data=series_data,
+                        series_data=enriched,
                         sample=sample,
                         llm_client=self._llm_client,
                         model=self._model,
@@ -306,6 +328,15 @@ class MultiomicsSampleAnalyzerSkill(Skill):
                 "sample_count": len(sample_results),
                 "samples":      sample_results,
             }
+
+            # Persist to DB if available
+            if context.db is not None and context.pipeline_run_id is not None:
+                context.db.save_sample_annotations_batch(
+                    series_id, context.pipeline_run_id,
+                    self._model, sample_results,
+                )
+                logger.info("Persisted %d sample annotations for %s to database",
+                            len(sample_results), series_id)
 
         context.multiomics_annotations = results
         return context

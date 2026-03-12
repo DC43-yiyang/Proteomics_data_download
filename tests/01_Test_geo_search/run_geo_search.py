@@ -1,19 +1,21 @@
 """GEO search test.
 
 Runs GEOSearchSkill with a configurable query and prints a summary of results.
+When DB_PATH is set, persists series + raw SOFT text to SQLite.
 
 Usage
 -----
-    uv run python tests/Test_geo_search/run_geo_search.py
+    uv run python tests/01_Test_geo_search/run_geo_search.py
 
 Environment overrides (all optional):
     DATA_TYPE     default: CITE-seq
     ORGANISM      default: Homo sapiens
     DISEASE       default: (not set)
     TISSUE        default: (not set)
-    MAX_RESULTS   default: 20
+    MAX_RESULTS   default: 35
     SOFT_DIR      directory to save raw Series SOFT files (default: debug_soft/)
                   set to empty string to skip saving
+    DB_PATH       SQLite database path (default: data/geo_agent.db)
 """
 
 from __future__ import annotations
@@ -37,7 +39,8 @@ ORGANISM    = os.getenv("ORGANISM",    "Homo sapiens")
 DISEASE     = os.getenv("DISEASE",     "") or None
 TISSUE      = os.getenv("TISSUE",      "") or None
 MAX_RESULTS = int(os.getenv("MAX_RESULTS", "35"))
-SOFT_DIR    = os.getenv("SOFT_DIR", "tests/Test_geo_search/debug_soft") or None
+SOFT_DIR    = os.getenv("SOFT_DIR", "tests/01_Test_geo_search/debug_soft") or None
+DB_PATH     = Path(os.getenv("DB_PATH", "data/geo_agent.db"))
 
 
 if __name__ == "__main__":
@@ -52,13 +55,27 @@ if __name__ == "__main__":
         max_results=MAX_RESULTS,
     )
 
+    # ── Database setup ────────────────────────────────────────────────────
+    from geo_agent.db import Database, DatabaseRepository
+
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    db = Database(DB_PATH)
+    db.open()
+    repo = DatabaseRepository(db)
+    run_id = repo.create_run(query)
+
     print("=" * 70)
     print(f"Query : {query.to_geo_query()}")
     print(f"SOFT  : {SOFT_DIR or '(not saving)'}")
+    print(f"DB    : {DB_PATH}  (run_id={run_id})")
     print("=" * 70)
 
-    ctx = PipelineContext(query=query)
-    ctx = GEOSearchSkill(client, debug_dir=SOFT_DIR).execute(ctx)
+    ctx = PipelineContext(query=query, db=repo, pipeline_run_id=run_id)
+    try:
+        ctx = GEOSearchSkill(client, debug_dir=SOFT_DIR).execute(ctx)
+    finally:
+        status = "failed" if ctx.errors else "completed"
+        repo.finish_run(run_id, ctx.total_found, status)
 
     print(f"\nTotal in GEO : {ctx.total_found}")
     print(f"Returned     : {len(ctx.datasets)}\n")
@@ -100,3 +117,28 @@ if __name__ == "__main__":
         print(f"\nErrors ({len(ctx.errors)}):")
         for e in ctx.errors:
             print(f"  - {e}")
+
+    # ── Database summary ──────────────────────────────────────────────────
+    series_count = db.conn.execute(
+        "SELECT COUNT(*) FROM series WHERE pipeline_run_id = ?", (run_id,)
+    ).fetchone()[0]
+    soft_count = db.conn.execute(
+        "SELECT COUNT(*) FROM series_soft_text WHERE pipeline_run_id = ?", (run_id,)
+    ).fetchone()[0]
+    supp_count = db.conn.execute(
+        "SELECT COUNT(*) FROM series_supplementary_file WHERE pipeline_run_id = ?", (run_id,)
+    ).fetchone()[0]
+    rel_count = db.conn.execute(
+        "SELECT COUNT(*) FROM series_relation WHERE pipeline_run_id = ?", (run_id,)
+    ).fetchone()[0]
+
+    print(f"\n{'=' * 70}")
+    print(f"Database summary (run_id={run_id})")
+    print(f"{'=' * 70}")
+    print(f"  series                  : {series_count}")
+    print(f"  series_soft_text        : {soft_count}")
+    print(f"  series_supplementary_file: {supp_count}")
+    print(f"  series_relation         : {rel_count}")
+
+    db.close()
+    print(f"\n[ok] Database saved to {DB_PATH}")

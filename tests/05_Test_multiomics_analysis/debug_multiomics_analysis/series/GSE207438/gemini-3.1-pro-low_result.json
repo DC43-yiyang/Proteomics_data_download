@@ -1,0 +1,83 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE207438",
+  "result": {
+    "series_id": "GSE207438",
+    "disease_normalized": "ANCA-associated vasculitis (ANCA-GN)",
+    "tissue_normalized": "kidney and blood",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM6287633",
+        "sample_title": "Patient1, scRNAseq",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq with Cell Hashing",
+        "assay": "scRNA-seq",
+        "disease": "ANCA-associated vasculitis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, description:Patient1_GEX, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287634",
+        "sample_title": "Patient1, CITE-seq and Hashtag",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq with Cell Hashing",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "ANCA-associated vasculitis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, description:Patient1_ADT_HTO, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287635",
+        "sample_title": "Patient2, scRNAseq",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq with Cell Hashing",
+        "assay": "scRNA-seq",
+        "disease": "ANCA-associated vasculitis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, description:Patient2_GEX, overall_design",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM6287636",
+        "sample_title": "Patient2, CITE-seq and Hashtag",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq with Cell Hashing",
+        "assay": "CITE-seq and Cell Hashing",
+        "disease": "ANCA-associated vasculitis (ANCA-GN)",
+        "tissue": "kidney and blood",
+        "tissue_subtype": "",
+        "confidence": 1.0,
+        "evidence": "title, description:Patient2_ADT_HTO, overall_design",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples were obtained from kidney and blood of ANCA-GN patients, and separated into RNA (GEX) and ADT/HTO fractions for 10x sequencing.",
+    "is_layer_split": true,
+    "biological_sample_count": 4,
+    "layer_split_ratio": ""
+  }
+}

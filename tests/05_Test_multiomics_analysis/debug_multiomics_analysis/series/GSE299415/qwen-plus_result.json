@@ -1,0 +1,81 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE299415",
+  "result": {
+    "series_id": "GSE299415",
+    "disease_normalized": "B-cell malignancy",
+    "tissue_normalized": "PBMC",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM9038862",
+        "sample_title": "preInfusion, GEX, 1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "scRNA-seq + TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "CAR-T cell product",
+        "confidence": 0.95,
+        "evidence": "summary: anti-CD19 CAR-T in B-cell malignancies; characteristics: treatment=CAR-T infusion, cell type=T cells",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM938863",
+        "sample_title": "preInfusion, GEX, 2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "scRNA-seq + TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "CAR-T cell product",
+        "confidence": 0.95,
+        "evidence": "summary: anti-CD19 CAR-T in B-cell malignancies; characteristics: treatment=CAR-T infusion, cell type=T cells",
+        "in_input": false
+      },
+      {
+        "gsm_id": "GSM9038864",
+        "sample_title": "preInfusion, VDJ, 1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "scRNA-seq + TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "CAR-T cell product",
+        "confidence": 0.95,
+        "evidence": "summary: clonotype tracking; title: VDJ; description: preInfusion_VDJ1; same donor as GSM9038862",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038865",
+        "sample_title": "preInfusion, VDJ, 2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "scRNA-seq + TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "CAR-T cell product",
+        "confidence": 0.95,
+        "evidence": "summary: clonotype tracking; title: VDJ; description: preInfusion_VDJ2; same donor as GSM9038863",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Two biological donors each split into GEX and VDJ libraries (per layer_split_hint and title patterns), with all samples from CAR-T products for B-cell malignancy patients.",
+    "is_layer_split": true,
+    "biological_sample_count": 2,
+    "layer_split_ratio": "1:2"
+  }
+}

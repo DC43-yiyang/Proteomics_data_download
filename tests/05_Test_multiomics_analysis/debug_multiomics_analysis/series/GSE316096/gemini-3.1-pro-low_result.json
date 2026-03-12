@@ -1,0 +1,305 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE316096",
+  "result": {
+    "series_id": "GSE316096",
+    "disease_normalized": "Alzheimer's disease",
+    "tissue_normalized": "PBMC",
+    "is_layer_split": true,
+    "biological_sample_count": 9,
+    "layer_split_ratio": "",
+    "samples": [
+      {
+        "gsm_id": "GSM9444420",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: Gene Expression, library type: mRNA, summary: Single-cell RNA sequencing",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444421",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: CITE-seq ADT, library type: ADT, characteristics: 137 TotalSeq-C antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444422",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E3/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: TCR VDJ, library type: VDJ, description: T cell receptor V(D)J sequencing library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444423",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: Gene Expression, library type: mRNA, summary: Single-cell RNA sequencing",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444424",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: CITE-seq ADT, library type: ADT, characteristics: 137 TotalSeq-C antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444425",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E, 70-74F, E3/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: TCR VDJ, library type: VDJ, description: T cell receptor V(D)J sequencing library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444426",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: Gene Expression, library type: mRNA, summary: Single-cell RNA sequencing",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444427",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: CITE-seq ADT, library type: ADT, characteristics: 137 TotalSeq-C antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444428",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 70-74M, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "CITE-seq and TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.98,
+        "evidence": "title: TCR VDJ, library type: VDJ, description: T cell receptor V(D)J sequencing library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444429",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: mRNA, description: gene expression library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444430",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: ADT, description: antibody-derived tag library with 137 TotalSeq-C antibodies",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444431",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-H, 65-69M, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: VDJ, description: T cell receptor V(D)J sequencing library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444432",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: mRNA, characteristics: aria status Control",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444433",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: ADT, characteristics: aria status Control",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444434",
+        "sample_title": "PBMCs, AD patient, lecanemab, control, 75-79F, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: VDJ, characteristics: aria status Control",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444435",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, Gene Expression",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "scRNA-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: mRNA, description: gene expression library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444436",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, CITE-seq ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "CITE-seq",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: ADT, description: antibody-derived tag library",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9444437",
+        "sample_title": "PBMCs, AD patient, lecanemab, ARIA-E+H, 70-74F, E4/E4, TCR VDJ",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "Single-cell immune profiling (CITE-seq + VDJ)",
+        "assay": "TCR V(D)J",
+        "disease": "Alzheimer's disease",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title, library type: VDJ, description: T cell receptor V(D)J sequencing library",
+        "in_input": true
+      }
+    ],
+    "sample_count": 18,
+    "reasoning": "The series profiles PBMCs from Alzheimer's disease patients using a multi-omic 10x Chromium 5' approach, with samples clearly split into Gene Expression (scRNA-seq), CITE-seq ADT (TotalSeq-C), and TCR V(D)J libraries per patient. | Samples are clearly split by layer into Gene Expression (scRNA-seq), CITE-seq ADT (protein_surface), and TCR VDJ (TCR_VDJ); TotalSeq-C antibodies and TCR sequencing indicate the 10x Chromium 5' platform."
+  }
+}

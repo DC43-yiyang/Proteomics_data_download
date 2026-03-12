@@ -77,6 +77,7 @@ class GEOSearchSkill(Skill):
         # Step 3: Fetch Series SOFT (targ=self) for overall_design and relations.
         # This is NOT Family SOFT — it contains series-level fields only,
         # not per-sample (GSM) blocks. Use FetchFamilySoftSkill for those.
+        soft_data: dict[str, str] = {}
         if self._fetch_details and datasets:
             logger.info(f"Fetching Series SOFT metadata for {len(datasets)} datasets...")
             accessions = [ds.accession for ds in datasets]
@@ -105,4 +106,15 @@ class GEOSearchSkill(Skill):
 
         context.datasets = datasets
         context.total_found = total_count
+
+        # Persist to DB if available
+        if context.db is not None and context.pipeline_run_id is not None:
+            run_id = context.pipeline_run_id
+            context.db.save_series_batch(datasets, run_id)
+            if self._fetch_details and soft_data:
+                for acc, text in soft_data.items():
+                    if text:
+                        context.db.save_series_soft_text(acc, run_id, text)
+            logger.info("Persisted %d series to database", len(datasets))
+
         return context

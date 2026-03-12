@@ -3,7 +3,8 @@
 !Series_geo_accession = GSE315668
 !Series_status = Public on Jan 13 2026
 !Series_submission_date = Jan 06 2026
-!Series_last_update_date = Jan 13 2026
+!Series_last_update_date = Mar 06 2026
+!Series_pubmed_id = 41716987
 !Series_summary = The heterogeneity of memory B cells in response to repetitive cognate antigen challenges remains to be fully elucidated. Here we identified a transcriptionally distinct cluster of T-bethi B cells, among SARS-CoV-2 RBD-specific B cells in PBMCs from healthy individuals vaccinated with the BNT162b2 SARS-CoV-2 mRNA vaccine. Our findings indicate that T-bethi B cells can be defined by a combination of CD11c and FcRL5 receptors, and are distinguished by distinct gene regulatory networks associated with effector functions. Notably, these T-bethi B cells were affinity-matured and exhibited rapid differentiation into antibody-secreting cells (ASCs) producing neutralizing antibodies comparable to classical memory B cells, underscoring their role in early recall responses. Taken together, these findings illuminate the potent effector memory roles of T-bethi B cells in adaptive immunity following vaccinations.
 !Series_overall_design = The stained B cells were sorted into tetramer+ cells and tetramerâ cells and cells from 4 individuals were pooled, stained with CITE-seq antibodies to be included in a single gem (tube) , 2 gems per a single timepoint. Timepoints are as follows: T1 (D0), T2 (D7 after 1st dose), T3 (D14 after 1st dose), T4 (D14 after 2nd dose), T5 (D180 after 2nd dose), T6 (D14 after 3rd dose) and T7 (D90 after 3rd dose)
 !Series_type = Other

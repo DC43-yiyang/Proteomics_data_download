@@ -1,0 +1,1302 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:25:53.259035+00:00",
+  "input_file": "/Users/yniu2/Project/Proteomics_data_download/tests/04_Test_family_soft_parse/debug_family_soft_parse/family_soft_structured.json",
+  "series_count": 1,
+  "parallel_mode": true,
+  "num_workers": 1,
+  "results": {
+    "GSE305370": {
+      "series_id": "GSE305370",
+      "disease_normalized": "healthy",
+      "tissue_normalized": "peripheral blood",
+      "is_layer_split": false,
+      "biological_sample_count": 14,
+      "layer_split_ratio": "",
+      "samples": [
+        {
+          "gsm_id": "GSM9170303",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170304",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170305",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170306",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170307",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170308",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170309",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170310",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170311",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170312",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170313",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170314",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170315",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170316",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170317",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170318",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170319",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170320",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170321",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170322",
+          "sample_title": "CITE-seq GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "scRNA-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170323",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170324",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170325",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170326",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170327",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170328",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170329",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170330",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics:cell type, characteristics:tissue",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170331",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170332",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170333",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170334",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170335",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170336",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170337",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170338",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170339",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170340",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170341",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170342",
+          "sample_title": "CITE-seq ADT  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+          "measured_layers": [
+            "protein_surface"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "CITE-seq",
+          "assay": "CITE-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170343",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170344",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170345",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170346",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170347",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170348",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170349",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170350",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170351",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170352",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170353",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170354",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170355",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170356",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.9,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170357",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170358",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170359",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170360",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170361",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170362",
+          "sample_title": "Multiome GEX  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+          "measured_layers": [
+            "RNA"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scRNA-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170363",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 2",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170364",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 2",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170365",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 2",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170366",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 2",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170367",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 3",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170368",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 3",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170369",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 3",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium Multiome",
+          "experiment": "10x Multiome",
+          "assay": "scATAC-seq",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, characteristics, description",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170370",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 3",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170371",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 4",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170372",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 4",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170373",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 4",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170374",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 4",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170375",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 7",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170376",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 7",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170377",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 7",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170378",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 7",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170379",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 13176 at Day 10",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170380",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 32606 at Day 10",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170381",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 27678 at Day 10",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        },
+        {
+          "gsm_id": "GSM9170382",
+          "sample_title": "Multiome ATAC-seq  library from mobilized peripheral CD34+ HSPC donor 31800 at Day 10",
+          "measured_layers": [
+            "chromatin"
+          ],
+          "platform": "10x Chromium",
+          "experiment": "10x Multiome",
+          "assay": "10x Multiome ATAC",
+          "disease": "Healthy",
+          "tissue": "peripheral blood",
+          "tissue_subtype": "",
+          "confidence": 0.95,
+          "evidence": "title, description, characteristics",
+          "in_input": true
+        }
+      ],
+      "sample_count": 80,
+      "reasoning": "Samples are scRNA-seq (GEX) libraries from a CITE-seq experiment on mobilized peripheral blood CD34+ HSPCs obtained from ostensibly healthy donors, processed using 10x Genomics technology. | Samples are mobilized peripheral blood CD34+ HSPCs cultured in vitro, profiled via CITE-seq where GEX (scRNA-seq) and ADT (surface proteins) libraries are sequenced and uploaded as separate GSMs. | Samples are derived from mobilized peripheral blood HSPC donors (healthy) cultured in vitro, profiled across timepoints using CITE-seq (ADT layer shown) and 10x Multiome (GEX layer shown). | Samples are derived from mobilized peripheral CD34+ HSPC donors and analysed using 10x Single Cell Multiome (GEX libraries present here), indicating Healthy donors and peripheral blood tissue. | Samples are in vitro cultured multipotent CD34+ hematopoietic stem and progenitor cells recovered from mobilized peripheral blood of healthy donors, assayed via 10x Chromium Single Cell Multiome identifying separated GEX (scRNA-seq) and ATAC (scATAC-seq) libraries. | Samples are explicitly labeled as Multiome ATAC-seq libraries from healthy donor peripheral blood CD34+ HSPCs, matching the 'chromatin' layer on the 10x Chromium Multiome platform."
+    }
+  }
+}

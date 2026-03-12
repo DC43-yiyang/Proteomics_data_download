@@ -1,0 +1,332 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE316782",
+  "result": {
+    "series_id": "GSE316782",
+    "disease_normalized": "non-small cell lung cancer (NSCLC)",
+    "tissue_normalized": "lung, lymph node",
+    "is_layer_split": false,
+    "biological_sample_count": 9,
+    "layer_split_ratio": "",
+    "samples": [
+      {
+        "gsm_id": "GSM9460196",
+        "sample_title": "CJ_XC_LR_010_TL",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung, lymph node",
+        "tissue_subtype": "tumor and normal mixed",
+        "confidence": 0.9,
+        "evidence": "characteristics: Tumor and lymph node, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460197",
+        "sample_title": "CJ_XC_LR_012_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "characteristics: Lymph node, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460198",
+        "sample_title": "CJ_XC_LR_012_TL",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "characteristics: Tumor, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460199",
+        "sample_title": "CJ_XC_LR_013_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "characteristics: Tumor, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460200",
+        "sample_title": "CJ_XC_LR_014_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "characteristics: Lymph node, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460201",
+        "sample_title": "CJ_XC_LR_014_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "characteristics: Tumor, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460202",
+        "sample_title": "XC_CJ_LR_015_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "characteristics: Lymph node, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460203",
+        "sample_title": "XC_CJ_LR_015_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "characteristics: Tumor, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460204",
+        "sample_title": "XC_CJ_LR_016_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "characteristics: Lymph node, description: Multiplexed CITE-seq data",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460205",
+        "sample_title": "XC_CJ_LR_016_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Tumor",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460206",
+        "sample_title": "CJ_XC_LR_017_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Lymph node",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460207",
+        "sample_title": "CJ_XC_LR_017_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Tumor",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460208",
+        "sample_title": "CJ_XC_LR_018_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Lymph node",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460209",
+        "sample_title": "CJ_XC_LR_018_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor and normal",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Tumor and normal lung",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460210",
+        "sample_title": "CJ_XC_1027LR_019_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Lymph node",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460211",
+        "sample_title": "CJ_XC_1027LR_019_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor and normal",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Tumor and normal lung",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460212",
+        "sample_title": "CJ_XC_1027LR_020_L",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lymph node",
+        "tissue_subtype": "",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Lymph node",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9460213",
+        "sample_title": "CJ_XC_1027LR_020_T",
+        "measured_layers": [
+          "RNA",
+          "protein_surface"
+        ],
+        "platform": "10x Chromium",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "non-small cell lung cancer (NSCLC)",
+        "tissue": "lung",
+        "tissue_subtype": "tumor and normal",
+        "confidence": 0.9,
+        "evidence": "summary: non-small cell lung cancer; description: Multiplexed CITE-seq data; tissue: Tumor and normal lung",
+        "in_input": true
+      }
+    ],
+    "sample_count": 18,
+    "reasoning": "Samples represent specific tissues (lymph node, primary lung tumor) from NSCLC patients analysed using multiplexed CITE-seq, capturing RNA, surface proteins, and presumably multiplexing barcodes within individual GSM libraries. | Samples are annotated as NSCLC derived from lymph node or lung (tumor/normal tissue mixtures based on sample metadata), characterized by CITE-seq assessing RNA and surface proteins."
+  }
+}

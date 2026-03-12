@@ -1,0 +1,9 @@
+{
+  "model": "qwen3.5-plus",
+  "generated_at_utc": "2026-03-10T21:15:08.543850+00:00",
+  "series_id": "GSE299416",
+  "result": {
+    "series_id": "GSE299416",
+    "error": "LLM call failed for GSE299416: OpenAI-compatible API request failed: 429 Client Error: Too Many Requests for url: https://api.vectorengine.ai/v1/chat/completions"
+  }
+}

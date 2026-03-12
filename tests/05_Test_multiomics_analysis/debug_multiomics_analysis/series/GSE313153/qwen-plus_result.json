@@ -1,0 +1,81 @@
+{
+  "model": "qwen-plus",
+  "generated_at_utc": "2026-03-10T20:18:04.287554+00:00",
+  "series_id": "GSE313153",
+  "result": {
+    "series_id": "GSE313153",
+    "disease_normalized": "normal",
+    "tissue_normalized": "spleen",
+    "sample_count": 4,
+    "samples": [
+      {
+        "gsm_id": "GSM9362944",
+        "sample_title": "Donor 6 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: non-diseased adult human donors, trauma-induced splenectomy; characteristics: spleen, splenocytes",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362945",
+        "sample_title": "Donor 6 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: non-diseased adult human donors; title: Donor 6 ADT; molecule: protein; library_source: other",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362946",
+        "sample_title": "Donor 23 RNA",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "scRNA-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: non-diseased adult human donors; characteristics: spleen, splenocytes; title: Donor 23 RNA",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9362947",
+        "sample_title": "Donor 23 ADT",
+        "measured_layers": [
+          "protein_surface"
+        ],
+        "platform": "10x Chromium 3'",
+        "experiment": "CITE-seq",
+        "assay": "CITE-seq",
+        "disease": "normal",
+        "tissue": "spleen",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "overall_design: non-diseased adult human donors; title: Donor 23 ADT; molecule: protein",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Two donors each with paired RNA and ADT samples from normal spleen splenocytes (Lin⁻HLA-DR⁺), consistent with CITE-seq layer-split design.",
+    "is_layer_split": true,
+    "biological_sample_count": 2,
+    "layer_split_ratio": "1:2"
+  }
+}

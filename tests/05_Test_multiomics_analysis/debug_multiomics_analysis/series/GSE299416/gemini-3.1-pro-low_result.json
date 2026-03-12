@@ -1,0 +1,164 @@
+{
+  "model": "gemini-3.1-pro-low",
+  "generated_at_utc": "2026-03-10T23:31:58.467452+00:00",
+  "series_id": "GSE299416",
+  "result": {
+    "series_id": "GSE299416",
+    "disease_normalized": "B-cell malignancy",
+    "tissue_normalized": "PBMC",
+    "sample_count": 9,
+    "samples": [
+      {
+        "gsm_id": "GSM9038866",
+        "sample_title": "postInfusion_GEX1",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_GEX1, overall_design: 5' scRNAseq, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038867",
+        "sample_title": "postInfusion_GEX2",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_GEX2, overall_design: 5' scRNAseq, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038868",
+        "sample_title": "postInfusion_GEX3",
+        "measured_layers": [
+          "RNA"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "scRNA-seq",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_GEX3, overall_design: 5' scRNAseq, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038869",
+        "sample_title": "postInfusion_VDJ1",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_VDJ1, summary: TCR clonotype tracking, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038870",
+        "sample_title": "postInfusion_VDJ2",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_VDJ2, summary: TCR clonotype tracking, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038871",
+        "sample_title": "postInfusion_VDJ3",
+        "measured_layers": [
+          "TCR_VDJ"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "TCR V(D)J",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_VDJ3, summary: TCR clonotype tracking, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038872",
+        "sample_title": "postInfusion_ADT1",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "CITE-seq / Cell Hashing",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_ADT1, overall_design: CITEseq and TotalSeq-C anti-human hashtag antibodies, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038873",
+        "sample_title": "postInfusion_ADT2",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "CITE-seq / Cell Hashing",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_ADT2, overall_design: CITEseq and TotalSeq-C anti-human hashtag antibodies, characteristics: tissue=PBMC",
+        "in_input": true
+      },
+      {
+        "gsm_id": "GSM9038874",
+        "sample_title": "postInfusion_ADT3",
+        "measured_layers": [
+          "protein_surface",
+          "cell_label"
+        ],
+        "platform": "10x Chromium 5'",
+        "experiment": "5' scRNA-seq + CITE-seq + TCR V(D)J",
+        "assay": "CITE-seq / Cell Hashing",
+        "disease": "B-cell malignancy",
+        "tissue": "PBMC",
+        "tissue_subtype": "",
+        "confidence": 0.95,
+        "evidence": "title: postInfusion_ADT3, overall_design: CITEseq and TotalSeq-C anti-human hashtag antibodies, characteristics: tissue=PBMC",
+        "in_input": true
+      }
+    ],
+    "reasoning": "Samples contain layer-split GEO records indicated by title tags (GEX, VDJ, ADT) processed from multiplexed PBMC samples (indicated by cell hashing) of patients with B-cell malignancies, measured via 10x Genomics 5' scRNA-seq, CITE-seq, and TCR V(D)J tracking.",
+    "is_layer_split": true,
+    "biological_sample_count": 9,
+    "layer_split_ratio": ""
+  }
+}

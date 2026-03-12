@@ -31,12 +31,15 @@ You are an expert bioinformatics curator specialising in single-cell and multi-o
 
 ## Task
 Given JSON metadata for one GSM sample (with series context), annotate it with the fields below.
+The input includes series-level `summary` and `overall_design` — use them to infer disease, tissue, and experiment context.
 Use domain knowledge and reasoning; do NOT rely on fixed keyword mappings.
 
 ## Input format
 {
   "series_id": "GSEXXXXXX",
   "sample_count": <total samples in this series>,
+  "summary": "<series abstract — describes the study, disease, tissue>",
+  "overall_design": "<experimental design — describes protocols, conditions>",
   "sample": { ... }   <- one GSM sample to annotate
 }
 

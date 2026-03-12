@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T21:01:35.830426+00:00",
+  "generated_at": "2026-03-10T23:29:20.424099+00:00",
   "family_count": 5,
   "families": [
     {
@@ -11,7 +11,7 @@
       "children": [
         {
           "accession": "GSE284230",
-          "title": "Spatially Resolved Insights Into Fistulating Crohnâs Disease Pathogenesis - scRNA-Seq",
+          "title": "Spatially Resolved Insights Into Fistulating Crohn’s Disease Pathogenesis - scRNA-Seq",
           "in_search_results": true
         }
       ]
@@ -86,13 +86,13 @@
     {
       "super": {
         "accession": "GSE318420",
-        "title": "Immunosuppressiveâ¯monocytes are enriched in hepatocellular carcinoma patients withâ¯liver dysfunction in a phase II trial of combination sorafenib and nivolumab",
+        "title": "Immunosuppressive monocytes are enriched in hepatocellular carcinoma patients with liver dysfunction in a phase II trial of combination sorafenib and nivolumab",
         "in_search_results": true
       },
       "children": [
         {
           "accession": "GSE313642",
-          "title": "Immunosuppressiveâ¯monocytes are enriched in hepatocellular carcinoma patients withâ¯liver dysfunction in a phase II trial of combination sorafenib and nivolumab [CITE-Seq]",
+          "title": "Immunosuppressive monocytes are enriched in hepatocellular carcinoma patients with liver dysfunction in a phase II trial of combination sorafenib and nivolumab [CITE-Seq]",
           "in_search_results": true
         },
         {
